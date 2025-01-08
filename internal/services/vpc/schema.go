@@ -46,7 +46,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						"sydney",
 						"tokyo",
 						"washingtondc",
-						"staging",
 					),
 				},
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
