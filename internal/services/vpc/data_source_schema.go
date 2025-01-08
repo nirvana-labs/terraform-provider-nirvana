@@ -48,7 +48,6 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 						"sydney",
 						"tokyo",
 						"washingtondc",
-						"staging",
 					),
 				},
 			},
