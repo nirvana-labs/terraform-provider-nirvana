@@ -58,7 +58,7 @@ func (d *FirewallRuleDataSource) Read(ctx context.Context, req datasource.ReadRe
 	}
 
 	res := new(http.Response)
-	_, err := d.client.FirewallRule.Get(
+	_, err := d.client.FirewallRules.Get(
 		ctx,
 		data.VPCID.ValueString(),
 		data.FirewallRuleID.ValueString(),
