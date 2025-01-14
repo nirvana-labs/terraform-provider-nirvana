@@ -11,7 +11,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go"
-	"github.com/nirvana-labs/nirvana-go/firewall_rule"
+	"github.com/nirvana-labs/nirvana-go/firewall_rules"
 	"github.com/nirvana-labs/nirvana-go/option"
 	"github.com/stainless-sdks/nirvana-terraform/internal/apijson"
 	"github.com/stainless-sdks/nirvana-terraform/internal/importpath"
@@ -70,10 +70,10 @@ func (r *FirewallRuleResource) Create(ctx context.Context, req resource.CreateRe
 		return
 	}
 	res := new(http.Response)
-	_, err = r.client.FirewallRule.New(
+	_, err = r.client.FirewallRules.New(
 		ctx,
 		data.VPCID.ValueString(),
-		firewall_rule.FirewallRuleNewParams{},
+		firewall_rules.FirewallRuleNewParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
@@ -115,11 +115,11 @@ func (r *FirewallRuleResource) Update(ctx context.Context, req resource.UpdateRe
 		return
 	}
 	res := new(http.Response)
-	_, err = r.client.FirewallRule.Update(
+	_, err = r.client.FirewallRules.Update(
 		ctx,
 		data.VPCID.ValueString(),
 		data.ID.ValueString(),
-		firewall_rule.FirewallRuleUpdateParams{},
+		firewall_rules.FirewallRuleUpdateParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
@@ -148,7 +148,7 @@ func (r *FirewallRuleResource) Read(ctx context.Context, req resource.ReadReques
 	}
 
 	res := new(http.Response)
-	_, err := r.client.FirewallRule.Get(
+	_, err := r.client.FirewallRules.Get(
 		ctx,
 		data.VPCID.ValueString(),
 		data.ID.ValueString(),
@@ -183,7 +183,7 @@ func (r *FirewallRuleResource) Delete(ctx context.Context, req resource.DeleteRe
 		return
 	}
 
-	_, err := r.client.FirewallRule.Delete(
+	_, err := r.client.FirewallRules.Delete(
 		ctx,
 		data.VPCID.ValueString(),
 		data.ID.ValueString(),
@@ -217,7 +217,7 @@ func (r *FirewallRuleResource) ImportState(ctx context.Context, req resource.Imp
 	data.ID = types.StringValue(path_firewall_rule_id)
 
 	res := new(http.Response)
-	_, err := r.client.FirewallRule.Get(
+	_, err := r.client.FirewallRules.Get(
 		ctx,
 		path_vpc_id,
 		path_firewall_rule_id,
