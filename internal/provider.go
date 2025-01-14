@@ -15,6 +15,7 @@ import (
 	"github.com/stainless-sdks/nirvana-terraform/internal/services/firewall_rule"
 	"github.com/stainless-sdks/nirvana-terraform/internal/services/vm"
 	"github.com/stainless-sdks/nirvana-terraform/internal/services/vm_operation"
+	"github.com/stainless-sdks/nirvana-terraform/internal/services/volume"
 	"github.com/stainless-sdks/nirvana-terraform/internal/services/vpc"
 	"github.com/stainless-sdks/nirvana-terraform/internal/services/vpc_operation"
 )
@@ -92,6 +93,7 @@ func (p *NirvanaProvider) Resources(ctx context.Context) []func() resource.Resou
 		vm.NewResource,
 		vpc.NewResource,
 		firewall_rule.NewResource,
+		volume.NewResource,
 	}
 }
 
