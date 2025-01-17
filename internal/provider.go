@@ -4,6 +4,7 @@ package internal
 
 import (
 	"context"
+	"os"
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/provider"
@@ -61,8 +62,6 @@ func (p *NirvanaProvider) Schema(ctx context.Context, req provider.SchemaRequest
 
 func (p *NirvanaProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
 
-	// TODO(terraform): apiKey := os.Getenv("API_KEY")
-
 	var data NirvanaProviderModel
 
 	resp.Diagnostics.Append(req.Config.Get(ctx, &data)...)
@@ -71,6 +70,9 @@ func (p *NirvanaProvider) Configure(ctx context.Context, req provider.ConfigureR
 
 	if !data.BaseURL.IsNull() {
 		opts = append(opts, option.WithBaseURL(data.BaseURL.ValueString()))
+	}
+	if o, ok := os.LookupEnv("NIRVANA_LABS_AUTH_TOKEN"); ok {
+		opts = append(opts, option.WithAuthToken(o))
 	}
 	if !data.AuthToken.IsNull() {
 		opts = append(opts, option.WithAuthToken(data.AuthToken.ValueString()))
