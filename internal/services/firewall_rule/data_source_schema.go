@@ -53,10 +53,10 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 			"updated_at": schema.StringAttribute{
 				Computed: true,
 			},
-			"dest": schema.SingleNestedAttribute{
+			"destination": schema.SingleNestedAttribute{
 				Description: "Firewall rule endpoint.",
 				Computed:    true,
-				CustomType:  customfield.NewNestedObjectType[FirewallRuleDestDataSourceModel](ctx),
+				CustomType:  customfield.NewNestedObjectType[FirewallRuleDestinationDataSourceModel](ctx),
 				Attributes: map[string]schema.Attribute{
 					"address": schema.StringAttribute{
 						Computed: true,

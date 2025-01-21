@@ -8,19 +8,19 @@ import (
 )
 
 type FirewallRuleDataSourceModel struct {
-	FirewallRuleID types.String                                                `tfsdk:"firewall_rule_id" path:"firewall_rule_id,required"`
-	VPCID          types.String                                                `tfsdk:"vpc_id" path:"vpc_id,computed"`
-	CreatedAt      types.String                                                `tfsdk:"created_at" json:"created_at,computed"`
-	ID             types.String                                                `tfsdk:"id" json:"id,computed"`
-	Name           types.String                                                `tfsdk:"name" json:"name,computed"`
-	Protocol       types.String                                                `tfsdk:"protocol" json:"protocol,computed"`
-	Status         types.String                                                `tfsdk:"status" json:"status,computed"`
-	UpdatedAt      types.String                                                `tfsdk:"updated_at" json:"updated_at,computed"`
-	Dest           customfield.NestedObject[FirewallRuleDestDataSourceModel]   `tfsdk:"dest" json:"dest,computed"`
-	Source         customfield.NestedObject[FirewallRuleSourceDataSourceModel] `tfsdk:"source" json:"source,computed"`
+	FirewallRuleID types.String                                                     `tfsdk:"firewall_rule_id" path:"firewall_rule_id,required"`
+	VPCID          types.String                                                     `tfsdk:"vpc_id" path:"vpc_id,computed"`
+	CreatedAt      types.String                                                     `tfsdk:"created_at" json:"created_at,computed"`
+	ID             types.String                                                     `tfsdk:"id" json:"id,computed"`
+	Name           types.String                                                     `tfsdk:"name" json:"name,computed"`
+	Protocol       types.String                                                     `tfsdk:"protocol" json:"protocol,computed"`
+	Status         types.String                                                     `tfsdk:"status" json:"status,computed"`
+	UpdatedAt      types.String                                                     `tfsdk:"updated_at" json:"updated_at,computed"`
+	Destination    customfield.NestedObject[FirewallRuleDestinationDataSourceModel] `tfsdk:"destination" json:"destination,computed"`
+	Source         customfield.NestedObject[FirewallRuleSourceDataSourceModel]      `tfsdk:"source" json:"source,computed"`
 }
 
-type FirewallRuleDestDataSourceModel struct {
+type FirewallRuleDestinationDataSourceModel struct {
 	Address types.String                   `tfsdk:"address" json:"address,computed"`
 	Ports   customfield.List[types.String] `tfsdk:"ports" json:"ports,computed"`
 }
