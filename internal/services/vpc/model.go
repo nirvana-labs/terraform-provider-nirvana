@@ -32,18 +32,18 @@ func (m VPCModel) MarshalJSONForUpdate(state VPCModel) (data []byte, err error) 
 }
 
 type VPCFirewallRulesModel struct {
-	ID        types.String                                          `tfsdk:"id" json:"id,computed"`
-	CreatedAt types.String                                          `tfsdk:"created_at" json:"created_at,computed"`
-	Dest      customfield.NestedObject[VPCFirewallRulesDestModel]   `tfsdk:"dest" json:"dest,computed"`
-	Name      types.String                                          `tfsdk:"name" json:"name,computed"`
-	Protocol  types.String                                          `tfsdk:"protocol" json:"protocol,computed"`
-	Source    customfield.NestedObject[VPCFirewallRulesSourceModel] `tfsdk:"source" json:"source,computed"`
-	Status    types.String                                          `tfsdk:"status" json:"status,computed"`
-	UpdatedAt types.String                                          `tfsdk:"updated_at" json:"updated_at,computed"`
-	VPCID     types.String                                          `tfsdk:"vpc_id" json:"vpc_id,computed"`
+	ID          types.String                                               `tfsdk:"id" json:"id,computed"`
+	CreatedAt   types.String                                               `tfsdk:"created_at" json:"created_at,computed"`
+	Destination customfield.NestedObject[VPCFirewallRulesDestinationModel] `tfsdk:"destination" json:"destination,computed"`
+	Name        types.String                                               `tfsdk:"name" json:"name,computed"`
+	Protocol    types.String                                               `tfsdk:"protocol" json:"protocol,computed"`
+	Source      customfield.NestedObject[VPCFirewallRulesSourceModel]      `tfsdk:"source" json:"source,computed"`
+	Status      types.String                                               `tfsdk:"status" json:"status,computed"`
+	UpdatedAt   types.String                                               `tfsdk:"updated_at" json:"updated_at,computed"`
+	VPCID       types.String                                               `tfsdk:"vpc_id" json:"vpc_id,computed"`
 }
 
-type VPCFirewallRulesDestModel struct {
+type VPCFirewallRulesDestinationModel struct {
 	Address types.String                   `tfsdk:"address" json:"address,computed"`
 	Ports   customfield.List[types.String] `tfsdk:"ports" json:"ports,computed"`
 }

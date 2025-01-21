@@ -12,7 +12,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/stainless-sdks/nirvana-terraform/internal/customfield"
 )
 
 var _ resource.ResourceWithConfigValidators = (*FirewallRuleResource)(nil)
@@ -103,21 +102,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			},
 			"updated_at": schema.StringAttribute{
 				Computed: true,
-			},
-			"dest": schema.SingleNestedAttribute{
-				Description: "Firewall rule endpoint.",
-				Computed:    true,
-				CustomType:  customfield.NewNestedObjectType[FirewallRuleDestModel](ctx),
-				Attributes: map[string]schema.Attribute{
-					"address": schema.StringAttribute{
-						Computed: true,
-					},
-					"ports": schema.ListAttribute{
-						Computed:    true,
-						CustomType:  customfield.NewListType[types.String](ctx),
-						ElementType: types.StringType,
-					},
-				},
 			},
 		},
 	}

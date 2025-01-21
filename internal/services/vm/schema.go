@@ -285,10 +285,10 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 								"created_at": schema.StringAttribute{
 									Computed: true,
 								},
-								"dest": schema.SingleNestedAttribute{
+								"destination": schema.SingleNestedAttribute{
 									Description: "Firewall rule endpoint.",
 									Computed:    true,
-									CustomType:  customfield.NewNestedObjectType[VMVPCFirewallRulesDestModel](ctx),
+									CustomType:  customfield.NewNestedObjectType[VMVPCFirewallRulesDestinationModel](ctx),
 									Attributes: map[string]schema.Attribute{
 										"address": schema.StringAttribute{
 											Computed: true,
