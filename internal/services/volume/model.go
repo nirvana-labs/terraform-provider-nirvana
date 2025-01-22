@@ -10,8 +10,8 @@ import (
 type VolumeModel struct {
 	ID         types.String `tfsdk:"id" json:"id,computed"`
 	VMID       types.String `tfsdk:"vm_id" path:"vm_id,required"`
-	Size       types.Int64  `tfsdk:"size" json:"size,required"`
 	Type       types.String `tfsdk:"type" json:"type,optional"`
+	Size       types.Int64  `tfsdk:"size" json:"size,required"`
 	Kind       types.String `tfsdk:"kind" json:"kind,computed"`
 	ResourceID types.String `tfsdk:"resource_id" json:"resource_id,computed"`
 	Status     types.String `tfsdk:"status" json:"status,computed"`
@@ -22,5 +22,5 @@ func (m VolumeModel) MarshalJSON() (data []byte, err error) {
 }
 
 func (m VolumeModel) MarshalJSONForUpdate(state VolumeModel) (data []byte, err error) {
-	return apijson.MarshalForUpdate(m, state)
+	return apijson.MarshalForPatch(m, state)
 }

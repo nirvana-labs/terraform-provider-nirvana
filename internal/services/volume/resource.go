@@ -112,10 +112,11 @@ func (r *VolumeResource) Update(ctx context.Context, req resource.UpdateRequest,
 		return
 	}
 	res := new(http.Response)
-	_, err = r.client.Volumes.New(
+	_, err = r.client.Volumes.Update(
 		ctx,
+		data.VMID.ValueString(),
 		data.ID.ValueString(),
-		volumes.VolumeNewParams{},
+		volumes.VolumeUpdateParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
