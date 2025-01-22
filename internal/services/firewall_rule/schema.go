@@ -39,10 +39,10 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Required:    true,
 				Attributes: map[string]schema.Attribute{
 					"address": schema.StringAttribute{
-						Required: true,
+						Optional: true,
 					},
 					"ports": schema.ListAttribute{
-						Required:    true,
+						Optional:    true,
 						ElementType: types.StringType,
 					},
 				},
@@ -52,10 +52,10 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Required:    true,
 				Attributes: map[string]schema.Attribute{
 					"address": schema.StringAttribute{
-						Required: true,
+						Optional: true,
 					},
 					"ports": schema.ListAttribute{
-						Required:    true,
+						Optional:    true,
 						ElementType: types.StringType,
 					},
 				},

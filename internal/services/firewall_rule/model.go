@@ -31,11 +31,11 @@ func (m FirewallRuleModel) MarshalJSONForUpdate(state FirewallRuleModel) (data [
 }
 
 type FirewallRuleDestinationModel struct {
-	Address types.String    `tfsdk:"address" json:"address,required"`
-	Ports   *[]types.String `tfsdk:"ports" json:"ports,required"`
+	Address types.String    `tfsdk:"address" json:"address,optional"`
+	Ports   *[]types.String `tfsdk:"ports" json:"ports,optional"`
 }
 
 type FirewallRuleSourceModel struct {
-	Address types.String    `tfsdk:"address" json:"address,required"`
-	Ports   *[]types.String `tfsdk:"ports" json:"ports,required"`
+	Address types.String    `tfsdk:"address" json:"address,optional"`
+	Ports   *[]types.String `tfsdk:"ports" json:"ports,optional"`
 }
