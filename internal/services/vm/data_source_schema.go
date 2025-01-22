@@ -72,6 +72,26 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 			"updated_at": schema.StringAttribute{
 				Computed: true,
 			},
+			"boot_volume": schema.SingleNestedAttribute{
+				Description: "Volume details.",
+				Computed:    true,
+				CustomType:  customfield.NewNestedObjectType[VMBootVolumeDataSourceModel](ctx),
+				Attributes: map[string]schema.Attribute{
+					"id": schema.StringAttribute{
+						Computed: true,
+					},
+					"size": schema.Int64Attribute{
+						Computed: true,
+					},
+					"type": schema.StringAttribute{
+						Description: "Storage type.",
+						Computed:    true,
+						Validators: []validator.String{
+							stringvalidator.OneOfCaseInsensitive("nvme"),
+						},
+					},
+				},
+			},
 			"cpu_config": schema.SingleNestedAttribute{
 				Description: "CPU details.",
 				Computed:    true,
@@ -85,6 +105,27 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 					},
 				},
 			},
+			"data_volumes": schema.ListNestedAttribute{
+				Computed:   true,
+				CustomType: customfield.NewNestedObjectListType[VMDataVolumesDataSourceModel](ctx),
+				NestedObject: schema.NestedAttributeObject{
+					Attributes: map[string]schema.Attribute{
+						"id": schema.StringAttribute{
+							Computed: true,
+						},
+						"size": schema.Int64Attribute{
+							Computed: true,
+						},
+						"type": schema.StringAttribute{
+							Description: "Storage type.",
+							Computed:    true,
+							Validators: []validator.String{
+								stringvalidator.OneOfCaseInsensitive("nvme"),
+							},
+						},
+					},
+				},
+			},
 			"mem_config": schema.SingleNestedAttribute{
 				Description: "RAM details.",
 				Computed:    true,
@@ -94,47 +135,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 						Description: "RAM size",
 						Computed:    true,
 						Validators: []validator.Int64{
-							int64validator.AtLeast(1),
-						},
-					},
-					"unit": schema.StringAttribute{
-						Description: "Unit (GB, MB, etc.)",
-						Computed:    true,
-						Validators: []validator.String{
-							stringvalidator.OneOfCaseInsensitive("GB"),
-						},
-					},
-				},
-			},
-			"storage_config": schema.ListNestedAttribute{
-				Computed:   true,
-				CustomType: customfield.NewNestedObjectListType[VMStorageConfigDataSourceModel](ctx),
-				NestedObject: schema.NestedAttributeObject{
-					Attributes: map[string]schema.Attribute{
-						"size": schema.Int64Attribute{
-							Description: "Storage size",
-							Computed:    true,
-							Validators: []validator.Int64{
-								int64validator.AtLeast(1),
-							},
-						},
-						"type": schema.StringAttribute{
-							Description: "Storage type.",
-							Computed:    true,
-							Validators: []validator.String{
-								stringvalidator.OneOfCaseInsensitive("nvme"),
-							},
-						},
-						"unit": schema.StringAttribute{
-							Description: "Storage unit.",
-							Computed:    true,
-							Validators: []validator.String{
-								stringvalidator.OneOfCaseInsensitive("GB"),
-							},
-						},
-						"disk_name": schema.StringAttribute{
-							Description: "Disk name, used later",
-							Computed:    true,
+							int64validator.Between(1, 128),
 						},
 					},
 				},

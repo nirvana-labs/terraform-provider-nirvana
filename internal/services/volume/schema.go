@@ -5,6 +5,7 @@ package volume
 import (
 	"context"
 
+	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
@@ -28,8 +29,19 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"size": schema.Int64Attribute{
-				Required:      true,
+				Required: true,
+				Validators: []validator.Int64{
+					int64validator.Between(50, 1400),
+				},
 				PlanModifiers: []planmodifier.Int64{int64planmodifier.RequiresReplace()},
+			},
+			"type": schema.StringAttribute{
+				Description: "Storage type.",
+				Optional:    true,
+				Validators: []validator.String{
+					stringvalidator.OneOfCaseInsensitive("nvme"),
+				},
+				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"kind": schema.StringAttribute{
 				Computed: true,
@@ -52,16 +64,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						"RUNNING",
 						"DONE",
 						"FAILED",
-					),
-				},
-			},
-			"type": schema.StringAttribute{
-				Computed: true,
-				Validators: []validator.String{
-					stringvalidator.OneOfCaseInsensitive(
-						"CREATE",
-						"UPDATE",
-						"DELETE",
 					),
 				},
 			},

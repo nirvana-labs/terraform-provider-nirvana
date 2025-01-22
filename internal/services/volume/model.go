@@ -11,10 +11,10 @@ type VolumeModel struct {
 	ID         types.String `tfsdk:"id" json:"id,computed"`
 	VMID       types.String `tfsdk:"vm_id" path:"vm_id,required"`
 	Size       types.Int64  `tfsdk:"size" json:"size,required"`
+	Type       types.String `tfsdk:"type" json:"type,optional"`
 	Kind       types.String `tfsdk:"kind" json:"kind,computed"`
 	ResourceID types.String `tfsdk:"resource_id" json:"resource_id,computed"`
 	Status     types.String `tfsdk:"status" json:"status,computed"`
-	Type       types.String `tfsdk:"type" json:"type,computed"`
 }
 
 func (m VolumeModel) MarshalJSON() (data []byte, err error) {
