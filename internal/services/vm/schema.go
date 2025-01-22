@@ -86,6 +86,18 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Optional:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
+			"boot_volume": schema.SingleNestedAttribute{
+				Description: "Boot volume create request.",
+				Required:    true,
+				Attributes: map[string]schema.Attribute{
+					"size": schema.Int64Attribute{
+						Required: true,
+						Validators: []validator.Int64{
+							int64validator.Between(50, 500),
+						},
+					},
+				},
+			},
 			"cpu": schema.SingleNestedAttribute{
 				Description: "CPU details.",
 				Required:    true,
@@ -106,46 +118,29 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						Description: "RAM size",
 						Required:    true,
 						Validators: []validator.Int64{
-							int64validator.AtLeast(1),
-						},
-					},
-					"unit": schema.StringAttribute{
-						Description: "Unit (GB, MB, etc.)",
-						Required:    true,
-						Validators: []validator.String{
-							stringvalidator.OneOfCaseInsensitive("GB"),
+							int64validator.Between(1, 128),
 						},
 					},
 				},
 			},
-			"storage": schema.ListNestedAttribute{
-				Required: true,
+			"data_volumes": schema.ListNestedAttribute{
+				Computed:   true,
+				Optional:   true,
+				CustomType: customfield.NewNestedObjectListType[VMDataVolumesModel](ctx),
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"size": schema.Int64Attribute{
-							Description: "Storage size",
-							Required:    true,
+							Required: true,
 							Validators: []validator.Int64{
-								int64validator.AtLeast(1),
+								int64validator.Between(50, 1400),
 							},
 						},
 						"type": schema.StringAttribute{
 							Description: "Storage type.",
-							Required:    true,
+							Optional:    true,
 							Validators: []validator.String{
 								stringvalidator.OneOfCaseInsensitive("nvme"),
 							},
-						},
-						"unit": schema.StringAttribute{
-							Description: "Storage unit.",
-							Required:    true,
-							Validators: []validator.String{
-								stringvalidator.OneOfCaseInsensitive("GB"),
-							},
-						},
-						"disk_name": schema.StringAttribute{
-							Description: "Disk name, used later",
-							Optional:    true,
 						},
 					},
 				},
@@ -218,47 +213,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						Description: "RAM size",
 						Computed:    true,
 						Validators: []validator.Int64{
-							int64validator.AtLeast(1),
-						},
-					},
-					"unit": schema.StringAttribute{
-						Description: "Unit (GB, MB, etc.)",
-						Computed:    true,
-						Validators: []validator.String{
-							stringvalidator.OneOfCaseInsensitive("GB"),
-						},
-					},
-				},
-			},
-			"storage_config": schema.ListNestedAttribute{
-				Computed:   true,
-				CustomType: customfield.NewNestedObjectListType[VMStorageConfigModel](ctx),
-				NestedObject: schema.NestedAttributeObject{
-					Attributes: map[string]schema.Attribute{
-						"size": schema.Int64Attribute{
-							Description: "Storage size",
-							Computed:    true,
-							Validators: []validator.Int64{
-								int64validator.AtLeast(1),
-							},
-						},
-						"type": schema.StringAttribute{
-							Description: "Storage type.",
-							Computed:    true,
-							Validators: []validator.String{
-								stringvalidator.OneOfCaseInsensitive("nvme"),
-							},
-						},
-						"unit": schema.StringAttribute{
-							Description: "Storage unit.",
-							Computed:    true,
-							Validators: []validator.String{
-								stringvalidator.OneOfCaseInsensitive("GB"),
-							},
-						},
-						"disk_name": schema.StringAttribute{
-							Description: "Disk name, used later",
-							Computed:    true,
+							int64validator.Between(1, 128),
 						},
 					},
 				},

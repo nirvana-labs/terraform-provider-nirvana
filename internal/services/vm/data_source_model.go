@@ -8,34 +8,39 @@ import (
 )
 
 type VMDataSourceModel struct {
-	VMID          types.String                                                 `tfsdk:"vm_id" path:"vm_id,required"`
-	CreatedAt     types.String                                                 `tfsdk:"created_at" json:"created_at,computed"`
-	ID            types.String                                                 `tfsdk:"id" json:"id,computed"`
-	Name          types.String                                                 `tfsdk:"name" json:"name,computed"`
-	PublicIP      types.String                                                 `tfsdk:"public_ip" json:"public_ip,computed"`
-	Region        types.String                                                 `tfsdk:"region" json:"region,computed"`
-	Status        types.String                                                 `tfsdk:"status" json:"status,computed"`
-	UpdatedAt     types.String                                                 `tfsdk:"updated_at" json:"updated_at,computed"`
-	CPUConfig     customfield.NestedObject[VMCPUConfigDataSourceModel]         `tfsdk:"cpu_config" json:"cpu_config,computed"`
-	MemConfig     customfield.NestedObject[VMMemConfigDataSourceModel]         `tfsdk:"mem_config" json:"mem_config,computed"`
-	StorageConfig customfield.NestedObjectList[VMStorageConfigDataSourceModel] `tfsdk:"storage_config" json:"storage_config,computed"`
-	VPC           customfield.NestedObject[VMVPCDataSourceModel]               `tfsdk:"vpc" json:"vpc,computed"`
+	VMID        types.String                                               `tfsdk:"vm_id" path:"vm_id,required"`
+	CreatedAt   types.String                                               `tfsdk:"created_at" json:"created_at,computed"`
+	ID          types.String                                               `tfsdk:"id" json:"id,computed"`
+	Name        types.String                                               `tfsdk:"name" json:"name,computed"`
+	PublicIP    types.String                                               `tfsdk:"public_ip" json:"public_ip,computed"`
+	Region      types.String                                               `tfsdk:"region" json:"region,computed"`
+	Status      types.String                                               `tfsdk:"status" json:"status,computed"`
+	UpdatedAt   types.String                                               `tfsdk:"updated_at" json:"updated_at,computed"`
+	BootVolume  customfield.NestedObject[VMBootVolumeDataSourceModel]      `tfsdk:"boot_volume" json:"boot_volume,computed"`
+	CPUConfig   customfield.NestedObject[VMCPUConfigDataSourceModel]       `tfsdk:"cpu_config" json:"cpu_config,computed"`
+	DataVolumes customfield.NestedObjectList[VMDataVolumesDataSourceModel] `tfsdk:"data_volumes" json:"data_volumes,computed"`
+	MemConfig   customfield.NestedObject[VMMemConfigDataSourceModel]       `tfsdk:"mem_config" json:"mem_config,computed"`
+	VPC         customfield.NestedObject[VMVPCDataSourceModel]             `tfsdk:"vpc" json:"vpc,computed"`
+}
+
+type VMBootVolumeDataSourceModel struct {
+	ID   types.String `tfsdk:"id" json:"id,computed"`
+	Size types.Int64  `tfsdk:"size" json:"size,computed"`
+	Type types.String `tfsdk:"type" json:"type,computed"`
 }
 
 type VMCPUConfigDataSourceModel struct {
 	Cores types.Int64 `tfsdk:"cores" json:"cores,computed"`
 }
 
-type VMMemConfigDataSourceModel struct {
+type VMDataVolumesDataSourceModel struct {
+	ID   types.String `tfsdk:"id" json:"id,computed"`
 	Size types.Int64  `tfsdk:"size" json:"size,computed"`
-	Unit types.String `tfsdk:"unit" json:"unit,computed"`
+	Type types.String `tfsdk:"type" json:"type,computed"`
 }
 
-type VMStorageConfigDataSourceModel struct {
-	Size     types.Int64  `tfsdk:"size" json:"size,computed"`
-	Type     types.String `tfsdk:"type" json:"type,computed"`
-	Unit     types.String `tfsdk:"unit" json:"unit,computed"`
-	DiskName types.String `tfsdk:"disk_name" json:"disk_name,computed"`
+type VMMemConfigDataSourceModel struct {
+	Size types.Int64 `tfsdk:"size" json:"size,computed"`
 }
 
 type VMVPCDataSourceModel struct {
