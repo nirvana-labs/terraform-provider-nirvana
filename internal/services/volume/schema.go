@@ -48,6 +48,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
 						"VM",
+						"VOLUME",
 						"VPC",
 						"FIREWALL_RULE",
 					),
@@ -64,6 +65,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						"RUNNING",
 						"DONE",
 						"FAILED",
+						"UNKNOWN",
 					),
 				},
 			},
