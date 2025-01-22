@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-package vpc_operation
+package operation
 
 import (
 	"context"
@@ -15,21 +15,21 @@ import (
 	"github.com/stainless-sdks/nirvana-terraform/internal/logging"
 )
 
-type VPCOperationDataSource struct {
+type OperationDataSource struct {
 	client *nirvana.Client
 }
 
-var _ datasource.DataSourceWithConfigure = (*VPCOperationDataSource)(nil)
+var _ datasource.DataSourceWithConfigure = (*OperationDataSource)(nil)
 
-func NewVPCOperationDataSource() datasource.DataSource {
-	return &VPCOperationDataSource{}
+func NewOperationDataSource() datasource.DataSource {
+	return &OperationDataSource{}
 }
 
-func (d *VPCOperationDataSource) Metadata(ctx context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
-	resp.TypeName = req.ProviderTypeName + "_vpc_operation"
+func (d *OperationDataSource) Metadata(ctx context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
+	resp.TypeName = req.ProviderTypeName + "_operation"
 }
 
-func (d *VPCOperationDataSource) Configure(ctx context.Context, req datasource.ConfigureRequest, resp *datasource.ConfigureResponse) {
+func (d *OperationDataSource) Configure(ctx context.Context, req datasource.ConfigureRequest, resp *datasource.ConfigureResponse) {
 	if req.ProviderData == nil {
 		return
 	}
@@ -48,8 +48,8 @@ func (d *VPCOperationDataSource) Configure(ctx context.Context, req datasource.C
 	d.client = client
 }
 
-func (d *VPCOperationDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
-	var data *VPCOperationDataSourceModel
+func (d *OperationDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
+	var data *OperationDataSourceModel
 
 	resp.Diagnostics.Append(req.Config.Get(ctx, &data)...)
 
@@ -58,7 +58,7 @@ func (d *VPCOperationDataSource) Read(ctx context.Context, req datasource.ReadRe
 	}
 
 	res := new(http.Response)
-	_, err := d.client.VPCs.Operations.Get(
+	_, err := d.client.Operations.Get(
 		ctx,
 		data.OperationID.ValueString(),
 		option.WithResponseBodyInto(&res),

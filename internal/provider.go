@@ -14,11 +14,10 @@ import (
 	"github.com/nirvana-labs/nirvana-go"
 	"github.com/nirvana-labs/nirvana-go/option"
 	"github.com/stainless-sdks/nirvana-terraform/internal/services/firewall_rule"
+	"github.com/stainless-sdks/nirvana-terraform/internal/services/operation"
 	"github.com/stainless-sdks/nirvana-terraform/internal/services/vm"
-	"github.com/stainless-sdks/nirvana-terraform/internal/services/vm_operation"
 	"github.com/stainless-sdks/nirvana-terraform/internal/services/volume"
 	"github.com/stainless-sdks/nirvana-terraform/internal/services/vpc"
-	"github.com/stainless-sdks/nirvana-terraform/internal/services/vpc_operation"
 )
 
 var _ provider.ProviderWithConfigValidators = (*NirvanaProvider)(nil)
@@ -102,10 +101,9 @@ func (p *NirvanaProvider) Resources(ctx context.Context) []func() resource.Resou
 func (p *NirvanaProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{
 		vm.NewVMDataSource,
-		vm_operation.NewVMOperationDataSource,
 		vpc.NewVPCDataSource,
-		vpc_operation.NewVPCOperationDataSource,
 		firewall_rule.NewFirewallRuleDataSource,
+		operation.NewOperationDataSource,
 	}
 }
 

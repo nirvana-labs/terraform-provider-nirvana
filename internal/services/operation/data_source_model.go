@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-package vpc_operation
+package operation
 
 import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
-type VPCOperationDataSourceModel struct {
+type OperationDataSourceModel struct {
 	OperationID types.String `tfsdk:"operation_id" path:"operation_id,required"`
 	ID          types.String `tfsdk:"id" json:"id,computed"`
 	Kind        types.String `tfsdk:"kind" json:"kind,computed"`
