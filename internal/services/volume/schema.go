@@ -44,14 +44,10 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Computed: true,
 			},
 			"kind": schema.StringAttribute{
-				Computed: true,
+				Description: "Volume kind.",
+				Computed:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOfCaseInsensitive(
-						"vm",
-						"volume",
-						"vpc",
-						"firewall_rule",
-					),
+					stringvalidator.OneOfCaseInsensitive("boot", "data"),
 				},
 			},
 			"resource_id": schema.StringAttribute{
