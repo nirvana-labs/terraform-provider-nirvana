@@ -16,7 +16,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
 	"github.com/hashicorp/terraform-plugin-go/tftypes"
 
-	"github.com/stainless-sdks/nirvana-terraform/internal/customfield"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
 func P[T any](v T) *T { return &v }

@@ -2,21 +2,25 @@
 
 The Nirvana Labs Terraform provider
 
-The [Nirvana Labs Terraform provider](https://registry.terraform.io/providers/stainless-sdks/nirvana/latest/docs) provides convenient access to
+The [Nirvana Labs Terraform provider](https://registry.terraform.io/providers/nirvana-labs/nirvana/latest/docs) provides convenient access to
 [the Nirvana Labs REST API](https://docs.nirvanalabs.io/) from Terraform.
 
 ## Installation
+
+<!-- x-release-please-start-version -->
 
 ```
 terraform {
   required_providers {
     nirvana = {
-      source  = "stainless-sdks/nirvana"
+      source  = "nirvana-labs/nirvana"
       version = "~> 0.0.1-alpha.0"
     }
   }
 }
 ```
+
+<!-- x-release-please-end -->
 
 And initialize your project by running `terraform init`.
 
@@ -34,4 +38,4 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/nirvana-terraform/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/nirvana-labs/terraform-provider-nirvana/issues) with questions, bugs, or suggestions.
