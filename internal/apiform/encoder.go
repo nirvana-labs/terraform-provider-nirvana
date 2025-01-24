@@ -21,8 +21,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
 
-	"github.com/stainless-sdks/nirvana-terraform/internal/apijson"
-	"github.com/stainless-sdks/nirvana-terraform/internal/customfield"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/apijson"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
 var encoders sync.Map // map[encoderEntry]encoderFunc

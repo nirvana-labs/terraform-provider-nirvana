@@ -1,4 +1,4 @@
-module github.com/stainless-sdks/nirvana-terraform
+module github.com/nirvana-labs/terraform-provider-nirvana
 
 go 1.22.0
 
