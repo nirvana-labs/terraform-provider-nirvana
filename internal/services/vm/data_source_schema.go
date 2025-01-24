@@ -85,6 +85,13 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 					"created_at": schema.StringAttribute{
 						Computed: true,
 					},
+					"kind": schema.StringAttribute{
+						Description: "Volume kind.",
+						Computed:    true,
+						Validators: []validator.String{
+							stringvalidator.OneOfCaseInsensitive("boot", "data"),
+						},
+					},
 					"size": schema.Int64Attribute{
 						Computed: true,
 					},
@@ -123,6 +130,13 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 						},
 						"created_at": schema.StringAttribute{
 							Computed: true,
+						},
+						"kind": schema.StringAttribute{
+							Description: "Volume kind.",
+							Computed:    true,
+							Validators: []validator.String{
+								stringvalidator.OneOfCaseInsensitive("boot", "data"),
+							},
 						},
 						"size": schema.Int64Attribute{
 							Computed: true,

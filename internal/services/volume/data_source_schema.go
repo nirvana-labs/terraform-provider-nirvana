@@ -25,6 +25,13 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 			"id": schema.StringAttribute{
 				Computed: true,
 			},
+			"kind": schema.StringAttribute{
+				Description: "Volume kind.",
+				Computed:    true,
+				Validators: []validator.String{
+					stringvalidator.OneOfCaseInsensitive("boot", "data"),
+				},
+			},
 			"size": schema.Int64Attribute{
 				Computed: true,
 			},
