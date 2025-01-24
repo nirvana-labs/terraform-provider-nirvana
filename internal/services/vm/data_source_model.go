@@ -26,6 +26,7 @@ type VMDataSourceModel struct {
 type VMBootVolumeDataSourceModel struct {
 	ID        types.String `tfsdk:"id" json:"id,computed"`
 	CreatedAt types.String `tfsdk:"created_at" json:"created_at,computed"`
+	Kind      types.String `tfsdk:"kind" json:"kind,computed"`
 	Size      types.Int64  `tfsdk:"size" json:"size,computed"`
 	Type      types.String `tfsdk:"type" json:"type,computed"`
 	UpdatedAt types.String `tfsdk:"updated_at" json:"updated_at,computed"`
@@ -38,6 +39,7 @@ type VMCPUConfigDataSourceModel struct {
 type VMDataVolumesDataSourceModel struct {
 	ID        types.String `tfsdk:"id" json:"id,computed"`
 	CreatedAt types.String `tfsdk:"created_at" json:"created_at,computed"`
+	Kind      types.String `tfsdk:"kind" json:"kind,computed"`
 	Size      types.Int64  `tfsdk:"size" json:"size,computed"`
 	Type      types.String `tfsdk:"type" json:"type,computed"`
 	UpdatedAt types.String `tfsdk:"updated_at" json:"updated_at,computed"`
