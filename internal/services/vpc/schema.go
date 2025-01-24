@@ -61,10 +61,10 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Computed: true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
-						"VM",
-						"VOLUME",
-						"VPC",
-						"FIREWALL_RULE",
+						"vm",
+						"volume",
+						"vpc",
+						"firewall_rule",
 					),
 				},
 			},
@@ -89,9 +89,9 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Computed: true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
-						"CREATE",
-						"UPDATE",
-						"DELETE",
+						"create",
+						"update",
+						"delete",
 					),
 				},
 			},
