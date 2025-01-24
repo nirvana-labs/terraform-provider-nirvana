@@ -13,6 +13,10 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go"
 	"github.com/nirvana-labs/nirvana-go/option"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/firewall_rule"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/vm"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/volume"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/vpc"
 )
 
 var _ provider.ProviderWithConfigValidators = (*NirvanaProvider)(nil)
@@ -85,11 +89,21 @@ func (p *NirvanaProvider) ConfigValidators(_ context.Context) []provider.ConfigV
 }
 
 func (p *NirvanaProvider) Resources(ctx context.Context) []func() resource.Resource {
-	return []func() resource.Resource{}
+	return []func() resource.Resource{
+		vm.NewResource,
+		vpc.NewResource,
+		firewall_rule.NewResource,
+		volume.NewResource,
+	}
 }
 
 func (p *NirvanaProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
-	return []func() datasource.DataSource{}
+	return []func() datasource.DataSource{
+		vm.NewVMDataSource,
+		vpc.NewVPCDataSource,
+		firewall_rule.NewFirewallRuleDataSource,
+		volume.NewVolumeDataSource,
+	}
 }
 
 func NewProvider(version string) func() provider.Provider {
