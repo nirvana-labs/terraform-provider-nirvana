@@ -12,7 +12,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go"
 	"github.com/nirvana-labs/nirvana-go/option"
-	"github.com/nirvana-labs/nirvana-go/vms"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/apijson"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/importpath"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/logging"
@@ -72,7 +71,7 @@ func (r *ComputeVMResource) Create(ctx context.Context, req resource.CreateReque
 	res := new(http.Response)
 	_, err = r.client.Compute.VMs.New(
 		ctx,
-		vms.VMNewParams{},
+		nirvana.ComputeVMNewParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
@@ -117,7 +116,7 @@ func (r *ComputeVMResource) Update(ctx context.Context, req resource.UpdateReque
 	_, err = r.client.Compute.VMs.Update(
 		ctx,
 		data.ID.ValueString(),
-		vms.VMUpdateParams{},
+		nirvana.ComputeVMUpdateParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
