@@ -13,10 +13,10 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go"
 	"github.com/nirvana-labs/nirvana-go/option"
-	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/firewall_rule"
-	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/vm"
-	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/volume"
-	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/vpc"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/compute_vm"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/compute_volume"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_firewall_rule"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_vpc"
 )
 
 var _ provider.ProviderWithConfigValidators = (*NirvanaProvider)(nil)
@@ -90,19 +90,19 @@ func (p *NirvanaProvider) ConfigValidators(_ context.Context) []provider.ConfigV
 
 func (p *NirvanaProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{
-		vm.NewResource,
-		vpc.NewResource,
-		firewall_rule.NewResource,
-		volume.NewResource,
+		compute_vm.NewResource,
+		compute_volume.NewResource,
+		networking_vpc.NewResource,
+		networking_firewall_rule.NewResource,
 	}
 }
 
 func (p *NirvanaProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{
-		vm.NewVMDataSource,
-		vpc.NewVPCDataSource,
-		firewall_rule.NewFirewallRuleDataSource,
-		volume.NewVolumeDataSource,
+		compute_vm.NewComputeVMDataSource,
+		compute_volume.NewComputeVolumeDataSource,
+		networking_vpc.NewNetworkingVPCDataSource,
+		networking_firewall_rule.NewNetworkingFirewallRuleDataSource,
 	}
 }
 
