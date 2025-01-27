@@ -72,7 +72,7 @@ func (r *ComputeVMResource) Create(ctx context.Context, req resource.CreateReque
 	res := new(http.Response)
 	_, err = r.client.Compute.VMs.New(
 		ctx,
-		vms.ComputeVMNewParams{},
+		vms.VMNewParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
@@ -117,7 +117,7 @@ func (r *ComputeVMResource) Update(ctx context.Context, req resource.UpdateReque
 	_, err = r.client.Compute.VMs.Update(
 		ctx,
 		data.ID.ValueString(),
-		vms.ComputeVMUpdateParams{},
+		vms.VMUpdateParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
