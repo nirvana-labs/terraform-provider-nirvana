@@ -11,7 +11,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go"
-	"github.com/nirvana-labs/nirvana-go/firewall_rules"
 	"github.com/nirvana-labs/nirvana-go/option"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/apijson"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/importpath"
@@ -73,7 +72,7 @@ func (r *NetworkingFirewallRuleResource) Create(ctx context.Context, req resourc
 	_, err = r.client.Networking.FirewallRules.New(
 		ctx,
 		data.VPCID.ValueString(),
-		firewall_rules.FirewallRuleNewParams{},
+		nirvana.NetworkingFirewallRuleNewParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
@@ -119,7 +118,7 @@ func (r *NetworkingFirewallRuleResource) Update(ctx context.Context, req resourc
 		ctx,
 		data.VPCID.ValueString(),
 		data.ID.ValueString(),
-		firewall_rules.FirewallRuleUpdateParams{},
+		nirvana.NetworkingFirewallRuleUpdateParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
