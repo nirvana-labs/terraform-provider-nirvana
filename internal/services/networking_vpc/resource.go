@@ -72,7 +72,7 @@ func (r *NetworkingVPCResource) Create(ctx context.Context, req resource.CreateR
 	res := new(http.Response)
 	_, err = r.client.Networking.VPCs.New(
 		ctx,
-		vpcs.NetworkingVPCNewParams{},
+		vpcs.VPCNewParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
@@ -116,7 +116,7 @@ func (r *NetworkingVPCResource) Update(ctx context.Context, req resource.UpdateR
 	res := new(http.Response)
 	_, err = r.client.Networking.VPCs.New(
 		ctx,
-		vpcs.NetworkingVPCNewParams{},
+		vpcs.VPCNewParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),

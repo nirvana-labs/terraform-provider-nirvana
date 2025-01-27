@@ -72,7 +72,7 @@ func (r *ComputeVolumeResource) Create(ctx context.Context, req resource.CreateR
 	res := new(http.Response)
 	_, err = r.client.Compute.Volumes.New(
 		ctx,
-		volumes.ComputeVolumeNewParams{},
+		volumes.VolumeNewParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
@@ -117,7 +117,7 @@ func (r *ComputeVolumeResource) Update(ctx context.Context, req resource.UpdateR
 	_, err = r.client.Compute.Volumes.Update(
 		ctx,
 		data.ID.ValueString(),
-		volumes.ComputeVolumeUpdateParams{},
+		volumes.VolumeUpdateParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
@@ -183,7 +183,7 @@ func (r *ComputeVolumeResource) Delete(ctx context.Context, req resource.DeleteR
 	_, err := r.client.Compute.Volumes.Delete(
 		ctx,
 		data.ID.ValueString(),
-		volumes.ComputeVolumeDeleteParams{},
+		volumes.VolumeDeleteParams{},
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
 	if err != nil {
