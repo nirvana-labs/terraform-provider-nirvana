@@ -12,7 +12,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go"
 	"github.com/nirvana-labs/nirvana-go/option"
-	"github.com/nirvana-labs/nirvana-go/vpcs"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/apijson"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/importpath"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/logging"
@@ -72,7 +71,7 @@ func (r *NetworkingVPCResource) Create(ctx context.Context, req resource.CreateR
 	res := new(http.Response)
 	_, err = r.client.Networking.VPCs.New(
 		ctx,
-		vpcs.VPCNewParams{},
+		nirvana.NetworkingVPCNewParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
@@ -116,7 +115,7 @@ func (r *NetworkingVPCResource) Update(ctx context.Context, req resource.UpdateR
 	res := new(http.Response)
 	_, err = r.client.Networking.VPCs.New(
 		ctx,
-		vpcs.VPCNewParams{},
+		nirvana.NetworkingVPCNewParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
