@@ -11,6 +11,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go"
+	"github.com/nirvana-labs/nirvana-go/compute"
 	"github.com/nirvana-labs/nirvana-go/option"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/apijson"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/importpath"
@@ -71,7 +72,7 @@ func (r *ComputeVolumeResource) Create(ctx context.Context, req resource.CreateR
 	res := new(http.Response)
 	_, err = r.client.Compute.Volumes.New(
 		ctx,
-		nirvana.ComputeVolumeNewParams{},
+		compute.VolumeNewParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
@@ -116,7 +117,7 @@ func (r *ComputeVolumeResource) Update(ctx context.Context, req resource.UpdateR
 	_, err = r.client.Compute.Volumes.Update(
 		ctx,
 		data.ID.ValueString(),
-		nirvana.ComputeVolumeUpdateParams{},
+		compute.VolumeUpdateParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
@@ -182,7 +183,7 @@ func (r *ComputeVolumeResource) Delete(ctx context.Context, req resource.DeleteR
 	_, err := r.client.Compute.Volumes.Delete(
 		ctx,
 		data.ID.ValueString(),
-		nirvana.ComputeVolumeDeleteParams{},
+		compute.VolumeDeleteParams{},
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
 	if err != nil {
