@@ -6,9 +6,9 @@ resource "nirvana_compute_vm" "example_compute_vm" {
     cores = 2
   }
   name = "my-vm"
-  need_public_ip = true
   os_image_name = "noble-2024-12-06"
   ports = ["22", "80", "443"]
+  public_ip_enabled = true
   ram = {
     size = 2
   }
