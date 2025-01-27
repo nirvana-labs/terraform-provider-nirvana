@@ -73,7 +73,7 @@ func (r *NetworkingFirewallRuleResource) Create(ctx context.Context, req resourc
 	_, err = r.client.Networking.FirewallRules.New(
 		ctx,
 		data.VPCID.ValueString(),
-		firewall_rules.FirewallRuleNewParams{},
+		firewall_rules.NetworkingFirewallRuleNewParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
@@ -119,7 +119,7 @@ func (r *NetworkingFirewallRuleResource) Update(ctx context.Context, req resourc
 		ctx,
 		data.VPCID.ValueString(),
 		data.ID.ValueString(),
-		firewall_rules.FirewallRuleUpdateParams{},
+		firewall_rules.NetworkingFirewallRuleUpdateParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
