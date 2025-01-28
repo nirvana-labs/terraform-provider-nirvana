@@ -12,7 +12,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
   ram = {
     size = 2
   }
-  region = "amsterdam"
+  region = "us-sea-1"
   source_address = "0.0.0.0/0"
   ssh_key = {
     public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC1234567890"
