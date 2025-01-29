@@ -10,6 +10,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
+	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
@@ -20,6 +21,9 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 		Attributes: map[string]schema.Attribute{
 			"vm_id": schema.StringAttribute{
 				Required: true,
+			},
+			"boot_volume_id": schema.StringAttribute{
+				Computed: true,
 			},
 			"created_at": schema.StringAttribute{
 				Computed: true,
@@ -70,38 +74,10 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 			"vpc_id": schema.StringAttribute{
 				Computed: true,
 			},
-			"boot_volume": schema.SingleNestedAttribute{
-				Description: "Volume details.",
+			"data_volume_ids": schema.ListAttribute{
 				Computed:    true,
-				CustomType:  customfield.NewNestedObjectType[ComputeVMBootVolumeDataSourceModel](ctx),
-				Attributes: map[string]schema.Attribute{
-					"id": schema.StringAttribute{
-						Computed: true,
-					},
-					"created_at": schema.StringAttribute{
-						Computed: true,
-					},
-					"kind": schema.StringAttribute{
-						Description: "Volume kind.",
-						Computed:    true,
-						Validators: []validator.String{
-							stringvalidator.OneOfCaseInsensitive("boot", "data"),
-						},
-					},
-					"size": schema.Int64Attribute{
-						Computed: true,
-					},
-					"type": schema.StringAttribute{
-						Description: "Storage type.",
-						Computed:    true,
-						Validators: []validator.String{
-							stringvalidator.OneOfCaseInsensitive("nvme"),
-						},
-					},
-					"updated_at": schema.StringAttribute{
-						Computed: true,
-					},
-				},
+				CustomType:  customfield.NewListType[types.String](ctx),
+				ElementType: types.StringType,
 			},
 			"cpu_config": schema.SingleNestedAttribute{
 				Description: "CPU details.",
@@ -112,40 +88,6 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 						Computed: true,
 						Validators: []validator.Int64{
 							int64validator.AtLeast(1),
-						},
-					},
-				},
-			},
-			"data_volumes": schema.ListNestedAttribute{
-				Computed:   true,
-				CustomType: customfield.NewNestedObjectListType[ComputeVMDataVolumesDataSourceModel](ctx),
-				NestedObject: schema.NestedAttributeObject{
-					Attributes: map[string]schema.Attribute{
-						"id": schema.StringAttribute{
-							Computed: true,
-						},
-						"created_at": schema.StringAttribute{
-							Computed: true,
-						},
-						"kind": schema.StringAttribute{
-							Description: "Volume kind.",
-							Computed:    true,
-							Validators: []validator.String{
-								stringvalidator.OneOfCaseInsensitive("boot", "data"),
-							},
-						},
-						"size": schema.Int64Attribute{
-							Computed: true,
-						},
-						"type": schema.StringAttribute{
-							Description: "Storage type.",
-							Computed:    true,
-							Validators: []validator.String{
-								stringvalidator.OneOfCaseInsensitive("nvme"),
-							},
-						},
-						"updated_at": schema.StringAttribute{
-							Computed: true,
 						},
 					},
 				},

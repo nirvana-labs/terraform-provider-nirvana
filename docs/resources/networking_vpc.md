@@ -32,7 +32,7 @@ resource "nirvana_networking_vpc" "example_networking_vpc" {
 ### Read-Only
 
 - `created_at` (String)
-- `firewall_rules` (Attributes List) (see [below for nested schema](#nestedatt--firewall_rules))
+- `firewall_rule_ids` (List of String)
 - `id` (String) The ID of this resource.
 - `kind` (String)
 - `resource_id` (String)
@@ -40,40 +40,6 @@ resource "nirvana_networking_vpc" "example_networking_vpc" {
 - `subnet` (Attributes) Subnet details. (see [below for nested schema](#nestedatt--subnet))
 - `type` (String)
 - `updated_at` (String)
-
-<a id="nestedatt--firewall_rules"></a>
-### Nested Schema for `firewall_rules`
-
-Read-Only:
-
-- `created_at` (String)
-- `destination` (Attributes) Firewall rule endpoint. (see [below for nested schema](#nestedatt--firewall_rules--destination))
-- `id` (String)
-- `name` (String)
-- `protocol` (String)
-- `source` (Attributes) Firewall rule endpoint. (see [below for nested schema](#nestedatt--firewall_rules--source))
-- `status` (String)
-- `updated_at` (String)
-- `vpc_id` (String)
-
-<a id="nestedatt--firewall_rules--destination"></a>
-### Nested Schema for `firewall_rules.destination`
-
-Read-Only:
-
-- `address` (String)
-- `ports` (List of String)
-
-
-<a id="nestedatt--firewall_rules--source"></a>
-### Nested Schema for `firewall_rules.source`
-
-Read-Only:
-
-- `address` (String)
-- `ports` (List of String)
-
-
 
 <a id="nestedatt--subnet"></a>
 ### Nested Schema for `subnet`

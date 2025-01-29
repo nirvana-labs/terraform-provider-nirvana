@@ -63,8 +63,10 @@ resource "nirvana_compute_vm" "example_compute_vm" {
 
 ### Read-Only
 
+- `boot_volume_id` (String)
 - `cpu_config` (Attributes) CPU details. (see [below for nested schema](#nestedatt--cpu_config))
 - `created_at` (String)
+- `data_volume_ids` (List of String)
 - `id` (String) The ID of this resource.
 - `kind` (String)
 - `mem_config` (Attributes) RAM details. (see [below for nested schema](#nestedatt--mem_config))
