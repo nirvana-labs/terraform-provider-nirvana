@@ -22,6 +22,7 @@ type ComputeVMModel struct {
 	CPU             *ComputeVMCPUModel                                      `tfsdk:"cpu" json:"cpu,required"`
 	Ram             *ComputeVMRamModel                                      `tfsdk:"ram" json:"ram,required"`
 	DataVolumes     customfield.NestedObjectList[ComputeVMDataVolumesModel] `tfsdk:"data_volumes" json:"data_volumes,computed_optional"`
+	BootVolumeID    types.String                                            `tfsdk:"boot_volume_id" json:"boot_volume_id,computed"`
 	CreatedAt       types.String                                            `tfsdk:"created_at" json:"created_at,computed"`
 	Kind            types.String                                            `tfsdk:"kind" json:"kind,computed"`
 	PublicIP        types.String                                            `tfsdk:"public_ip" json:"public_ip,computed"`
@@ -30,6 +31,7 @@ type ComputeVMModel struct {
 	Type            types.String                                            `tfsdk:"type" json:"type,computed"`
 	UpdatedAt       types.String                                            `tfsdk:"updated_at" json:"updated_at,computed"`
 	VPCID           types.String                                            `tfsdk:"vpc_id" json:"vpc_id,computed"`
+	DataVolumeIDs   customfield.List[types.String]                          `tfsdk:"data_volume_ids" json:"data_volume_ids,computed"`
 	CPUConfig       customfield.NestedObject[ComputeVMCPUConfigModel]       `tfsdk:"cpu_config" json:"cpu_config,computed"`
 	MemConfig       customfield.NestedObject[ComputeVMMemConfigModel]       `tfsdk:"mem_config" json:"mem_config,computed"`
 }

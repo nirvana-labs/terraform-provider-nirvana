@@ -64,75 +64,10 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 			"updated_at": schema.StringAttribute{
 				Computed: true,
 			},
-			"firewall_rules": schema.ListNestedAttribute{
-				Computed:   true,
-				CustomType: customfield.NewNestedObjectListType[NetworkingVPCFirewallRulesDataSourceModel](ctx),
-				NestedObject: schema.NestedAttributeObject{
-					Attributes: map[string]schema.Attribute{
-						"id": schema.StringAttribute{
-							Computed: true,
-						},
-						"created_at": schema.StringAttribute{
-							Computed: true,
-						},
-						"destination": schema.SingleNestedAttribute{
-							Description: "Firewall rule endpoint.",
-							Computed:    true,
-							CustomType:  customfield.NewNestedObjectType[NetworkingVPCFirewallRulesDestinationDataSourceModel](ctx),
-							Attributes: map[string]schema.Attribute{
-								"address": schema.StringAttribute{
-									Computed: true,
-								},
-								"ports": schema.ListAttribute{
-									Computed:    true,
-									CustomType:  customfield.NewListType[types.String](ctx),
-									ElementType: types.StringType,
-								},
-							},
-						},
-						"name": schema.StringAttribute{
-							Computed: true,
-						},
-						"protocol": schema.StringAttribute{
-							Computed: true,
-						},
-						"source": schema.SingleNestedAttribute{
-							Description: "Firewall rule endpoint.",
-							Computed:    true,
-							CustomType:  customfield.NewNestedObjectType[NetworkingVPCFirewallRulesSourceDataSourceModel](ctx),
-							Attributes: map[string]schema.Attribute{
-								"address": schema.StringAttribute{
-									Computed: true,
-								},
-								"ports": schema.ListAttribute{
-									Computed:    true,
-									CustomType:  customfield.NewListType[types.String](ctx),
-									ElementType: types.StringType,
-								},
-							},
-						},
-						"status": schema.StringAttribute{
-							Computed: true,
-							Validators: []validator.String{
-								stringvalidator.OneOfCaseInsensitive(
-									"pending",
-									"creating",
-									"updating",
-									"ready",
-									"deleting",
-									"deleted",
-									"failed",
-								),
-							},
-						},
-						"updated_at": schema.StringAttribute{
-							Computed: true,
-						},
-						"vpc_id": schema.StringAttribute{
-							Computed: true,
-						},
-					},
-				},
+			"firewall_rule_ids": schema.ListAttribute{
+				Computed:    true,
+				CustomType:  customfield.NewListType[types.String](ctx),
+				ElementType: types.StringType,
 			},
 			"subnet": schema.SingleNestedAttribute{
 				Description: "Subnet details.",

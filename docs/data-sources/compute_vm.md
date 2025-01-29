@@ -27,10 +27,10 @@ data "nirvana_compute_vm" "example_compute_vm" {
 
 ### Read-Only
 
-- `boot_volume` (Attributes) Volume details. (see [below for nested schema](#nestedatt--boot_volume))
+- `boot_volume_id` (String)
 - `cpu_config` (Attributes) CPU details. (see [below for nested schema](#nestedatt--cpu_config))
 - `created_at` (String)
-- `data_volumes` (Attributes List) (see [below for nested schema](#nestedatt--data_volumes))
+- `data_volume_ids` (List of String)
 - `id` (String) The ID of this resource.
 - `mem_config` (Attributes) RAM details. (see [below for nested schema](#nestedatt--mem_config))
 - `name` (String)
@@ -40,38 +40,12 @@ data "nirvana_compute_vm" "example_compute_vm" {
 - `updated_at` (String)
 - `vpc_id` (String)
 
-<a id="nestedatt--boot_volume"></a>
-### Nested Schema for `boot_volume`
-
-Read-Only:
-
-- `created_at` (String)
-- `id` (String)
-- `kind` (String) Volume kind.
-- `size` (Number)
-- `type` (String) Storage type.
-- `updated_at` (String)
-
-
 <a id="nestedatt--cpu_config"></a>
 ### Nested Schema for `cpu_config`
 
 Read-Only:
 
 - `cores` (Number)
-
-
-<a id="nestedatt--data_volumes"></a>
-### Nested Schema for `data_volumes`
-
-Read-Only:
-
-- `created_at` (String)
-- `id` (String)
-- `kind` (String) Volume kind.
-- `size` (Number)
-- `type` (String) Storage type.
-- `updated_at` (String)
 
 
 <a id="nestedatt--mem_config"></a>

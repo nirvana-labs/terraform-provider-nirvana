@@ -140,6 +140,9 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 					},
 				},
 			},
+			"boot_volume_id": schema.StringAttribute{
+				Computed: true,
+			},
 			"created_at": schema.StringAttribute{
 				Computed: true,
 			},
@@ -189,6 +192,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			},
 			"vpc_id": schema.StringAttribute{
 				Computed: true,
+			},
+			"data_volume_ids": schema.ListAttribute{
+				Computed:    true,
+				CustomType:  customfield.NewListType[types.String](ctx),
+				ElementType: types.StringType,
 			},
 			"cpu_config": schema.SingleNestedAttribute{
 				Description: "CPU details.",
