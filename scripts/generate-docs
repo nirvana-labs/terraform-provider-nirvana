@@ -10,4 +10,4 @@ then
   go install github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs
 fi
 
-tfplugindocs generate -rendered-provider-name "Nirvana" -provider-name="nirvana"
+"$(go env GOPATH)/bin/tfplugindocs" generate -rendered-provider-name "Nirvana" -provider-name="nirvana"
