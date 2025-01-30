@@ -1,15 +1,21 @@
 # Nirvana Labs Terraform Provider
 
-The Nirvana Labs Terraform provider
-
 The [Nirvana Labs Terraform provider](https://registry.terraform.io/providers/nirvana-labs/nirvana/latest/docs) provides convenient access to
 [the Nirvana Labs REST API](https://docs.nirvanalabs.io/) from Terraform.
 
-## Installation
+## Requirements
+
+This provider requires Terraform CLI 1.0 or later. You can [install it for your system](https://developer.hashicorp.com/terraform/install)
+on Hashicorp's website.
+
+## Usage
+
+Add the following to your `main.tf` file:
 
 <!-- x-release-please-start-version -->
 
-```
+```hcl
+# Declare the provider and version
 terraform {
   required_providers {
     nirvana = {
@@ -18,16 +24,55 @@ terraform {
     }
   }
 }
+
+# Initialize the provider
+provider "nirvana" {
+  auth_token = "My Auth Token" # or set NIRVANA_LABS_AUTH_TOKEN env variable
+}
+
+# Configure a resource
+resource "nirvana_compute_vm" "example_compute_vm" {
+  boot_volume = {
+    size = 100
+  }
+  cpu = {
+    cores = 2
+  }
+  name = "my-vm"
+  os_image_name = "noble-2024-12-06"
+  ports = ["22", "80", "443"]
+  public_ip_enabled = true
+  ram = {
+    size = 2
+  }
+  region = "us-sea-1"
+  source_address = "0.0.0.0/0"
+  ssh_key = {
+    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC1234567890"
+  }
+  data_volumes = [{
+    size = 100
+    type = "nvme"
+  }]
+  subnet_id = "123e4567-e89b-12d3-a456-426614174000"
+}
 ```
 
 <!-- x-release-please-end -->
 
-And initialize your project by running `terraform init`.
+Initialize your project by running `terraform init` in the directory.
 
-## Requirements
+Additional examples can be found in the [./examples](./examples) folder within this repository, and you can
+refer to the full documentation on [the Terraform Registry](https://registry.terraform.io/providers/nirvana-labs/nirvana/latest/docs).
 
-This library requires Terraform CLI 1.0 or later. You can [install it for your system](https://developer.hashicorp.com/terraform/install)
-on Hashicorp's website.
+### Provider Options
+
+When you initialize the provider, the following options are supported. It is recommended to use environment variables for sensitive values like access tokens.
+If an environment variable is provided, then the option does not need to be set in the terraform source.
+
+| Property   | Environment variable      | Required | Default value |
+| ---------- | ------------------------- | -------- | ------------- |
+| auth_token | `NIRVANA_LABS_AUTH_TOKEN` | true     | —             |
 
 ## Semantic versioning
 
@@ -39,3 +84,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
 We are keen for your feedback; please open an [issue](https://www.github.com/nirvana-labs/terraform-provider-nirvana/issues) with questions, bugs, or suggestions.
+
+## Contributing
+
+See [the contributing documentation](./CONTRIBUTING.md).
