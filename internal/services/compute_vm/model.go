@@ -14,10 +14,10 @@ type ComputeVMModel struct {
 	OSImageName     types.String                                            `tfsdk:"os_image_name" json:"os_image_name,required"`
 	PublicIPEnabled types.Bool                                              `tfsdk:"public_ip_enabled" json:"public_ip_enabled,required"`
 	Region          types.String                                            `tfsdk:"region" json:"region,required"`
-	SourceAddress   types.String                                            `tfsdk:"source_address" json:"source_address,required"`
-	Ports           *[]types.String                                         `tfsdk:"ports" json:"ports,required"`
 	SSHKey          *ComputeVMSSHKeyModel                                   `tfsdk:"ssh_key" json:"ssh_key,required"`
+	SourceAddress   types.String                                            `tfsdk:"source_address" json:"source_address,optional"`
 	SubnetID        types.String                                            `tfsdk:"subnet_id" json:"subnet_id,optional"`
+	Ports           *[]types.String                                         `tfsdk:"ports" json:"ports,optional"`
 	BootVolume      *ComputeVMBootVolumeModel                               `tfsdk:"boot_volume" json:"boot_volume,required"`
 	CPU             *ComputeVMCPUModel                                      `tfsdk:"cpu" json:"cpu,required"`
 	Ram             *ComputeVMRamModel                                      `tfsdk:"ram" json:"ram,required"`
