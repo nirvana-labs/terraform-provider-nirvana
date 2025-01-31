@@ -34,6 +34,9 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 			"name": schema.StringAttribute{
 				Computed: true,
 			},
+			"private_ip": schema.StringAttribute{
+				Computed: true,
+			},
 			"public_ip": schema.StringAttribute{
 				Computed: true,
 			},

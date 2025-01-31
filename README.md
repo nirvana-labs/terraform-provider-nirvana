@@ -52,8 +52,6 @@ resource "nirvana_compute_vm" "example_compute_vm" {
     size = 100
     type = "nvme"
   }]
-  ports = ["22", "80", "443"]
-  source_address = "0.0.0.0/0"
   subnet_id = "123e4567-e89b-12d3-a456-426614174000"
 }
 ```
