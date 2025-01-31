@@ -23,6 +23,10 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Computed:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
 			},
+			"vm_id": schema.StringAttribute{
+				Required:      true,
+				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
+			},
 			"type": schema.StringAttribute{
 				Description: "Storage type.",
 				Optional:    true,
@@ -36,9 +40,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Validators: []validator.Int64{
 					int64validator.Between(50, 1400),
 				},
-			},
-			"vm_id": schema.StringAttribute{
-				Required: true,
 			},
 			"created_at": schema.StringAttribute{
 				Computed: true,

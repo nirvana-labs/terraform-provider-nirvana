@@ -183,7 +183,6 @@ func (r *ComputeVolumeResource) Delete(ctx context.Context, req resource.DeleteR
 	_, err := r.client.Compute.Volumes.Delete(
 		ctx,
 		data.ID.ValueString(),
-		compute.VolumeDeleteParams{},
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
 	if err != nil {
