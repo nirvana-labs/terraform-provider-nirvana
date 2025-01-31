@@ -58,29 +58,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
-			"ssh_key": schema.SingleNestedAttribute{
-				Description: "SSH key details.",
-				Required:    true,
-				Attributes: map[string]schema.Attribute{
-					"public_key": schema.StringAttribute{
-						Required: true,
-					},
-				},
-				PlanModifiers: []planmodifier.Object{objectplanmodifier.RequiresReplace()},
-			},
-			"source_address": schema.StringAttribute{
-				Optional:      true,
-				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
-			},
-			"subnet_id": schema.StringAttribute{
-				Optional:      true,
-				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
-			},
-			"ports": schema.ListAttribute{
-				Optional:      true,
-				ElementType:   types.StringType,
-				PlanModifiers: []planmodifier.List{listplanmodifier.RequiresReplace()},
-			},
 			"boot_volume": schema.SingleNestedAttribute{
 				Description: "Boot volume create request.",
 				Required:    true,
@@ -92,6 +69,44 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						},
 					},
 				},
+				PlanModifiers: []planmodifier.Object{objectplanmodifier.RequiresReplace()},
+			},
+			"ssh_key": schema.SingleNestedAttribute{
+				Description: "SSH key details.",
+				Required:    true,
+				Attributes: map[string]schema.Attribute{
+					"public_key": schema.StringAttribute{
+						Required: true,
+					},
+				},
+				PlanModifiers: []planmodifier.Object{objectplanmodifier.RequiresReplace()},
+			},
+			"subnet_id": schema.StringAttribute{
+				Optional:      true,
+				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
+			},
+			"data_volumes": schema.ListNestedAttribute{
+				Computed:   true,
+				Optional:   true,
+				CustomType: customfield.NewNestedObjectListType[ComputeVMDataVolumesModel](ctx),
+				NestedObject: schema.NestedAttributeObject{
+					Attributes: map[string]schema.Attribute{
+						"size": schema.Int64Attribute{
+							Required: true,
+							Validators: []validator.Int64{
+								int64validator.Between(50, 1400),
+							},
+						},
+						"type": schema.StringAttribute{
+							Description: "Storage type.",
+							Optional:    true,
+							Validators: []validator.String{
+								stringvalidator.OneOfCaseInsensitive("nvme"),
+							},
+						},
+					},
+				},
+				PlanModifiers: []planmodifier.List{listplanmodifier.RequiresReplace()},
 			},
 			"cpu": schema.SingleNestedAttribute{
 				Description: "CPU details.",
@@ -118,28 +133,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 					},
 				},
 			},
-			"data_volumes": schema.ListNestedAttribute{
-				Computed:   true,
-				Optional:   true,
-				CustomType: customfield.NewNestedObjectListType[ComputeVMDataVolumesModel](ctx),
-				NestedObject: schema.NestedAttributeObject{
-					Attributes: map[string]schema.Attribute{
-						"size": schema.Int64Attribute{
-							Required: true,
-							Validators: []validator.Int64{
-								int64validator.Between(50, 1400),
-							},
-						},
-						"type": schema.StringAttribute{
-							Description: "Storage type.",
-							Optional:    true,
-							Validators: []validator.String{
-								stringvalidator.OneOfCaseInsensitive("nvme"),
-							},
-						},
-					},
-				},
-			},
 			"boot_volume_id": schema.StringAttribute{
 				Computed: true,
 			},
@@ -156,6 +149,9 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						"firewall_rule",
 					),
 				},
+			},
+			"private_ip": schema.StringAttribute{
+				Computed: true,
 			},
 			"public_ip": schema.StringAttribute{
 				Computed: true,
