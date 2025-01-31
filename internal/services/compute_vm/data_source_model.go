@@ -13,6 +13,7 @@ type ComputeVMDataSourceModel struct {
 	CreatedAt     types.String                                                `tfsdk:"created_at" json:"created_at,computed"`
 	ID            types.String                                                `tfsdk:"id" json:"id,computed"`
 	Name          types.String                                                `tfsdk:"name" json:"name,computed"`
+	PrivateIP     types.String                                                `tfsdk:"private_ip" json:"private_ip,computed"`
 	PublicIP      types.String                                                `tfsdk:"public_ip" json:"public_ip,computed"`
 	Region        types.String                                                `tfsdk:"region" json:"region,computed"`
 	Status        types.String                                                `tfsdk:"status" json:"status,computed"`
