@@ -34,6 +34,7 @@ data "nirvana_compute_vm" "example_compute_vm" {
 - `id` (String) The ID of this resource.
 - `mem_config` (Attributes) RAM details. (see [below for nested schema](#nestedatt--mem_config))
 - `name` (String)
+- `private_ip` (String)
 - `public_ip` (String)
 - `region` (String)
 - `status` (String)

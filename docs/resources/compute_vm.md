@@ -22,13 +22,11 @@ resource "nirvana_compute_vm" "example_compute_vm" {
   }
   name = "my-vm"
   os_image_name = "noble-2024-12-06"
-  ports = ["22", "80", "443"]
   public_ip_enabled = true
   ram = {
     size = 2
   }
   region = "us-sea-1"
-  source_address = "0.0.0.0/0"
   ssh_key = {
     public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC1234567890"
   }
@@ -49,11 +47,9 @@ resource "nirvana_compute_vm" "example_compute_vm" {
 - `cpu` (Attributes) CPU details. (see [below for nested schema](#nestedatt--cpu))
 - `name` (String)
 - `os_image_name` (String)
-- `ports` (List of String)
 - `public_ip_enabled` (Boolean)
 - `ram` (Attributes) RAM details. (see [below for nested schema](#nestedatt--ram))
 - `region` (String)
-- `source_address` (String)
 - `ssh_key` (Attributes) SSH key details. (see [below for nested schema](#nestedatt--ssh_key))
 
 ### Optional
@@ -70,6 +66,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
 - `id` (String) The ID of this resource.
 - `kind` (String)
 - `mem_config` (Attributes) RAM details. (see [below for nested schema](#nestedatt--mem_config))
+- `private_ip` (String)
 - `public_ip` (String)
 - `resource_id` (String)
 - `status` (String)
