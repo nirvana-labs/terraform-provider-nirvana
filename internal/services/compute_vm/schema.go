@@ -97,13 +97,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 								int64validator.Between(50, 1400),
 							},
 						},
-						"type": schema.StringAttribute{
-							Description: "Storage type.",
-							Optional:    true,
-							Validators: []validator.String{
-								stringvalidator.OneOfCaseInsensitive("nvme"),
-							},
-						},
 					},
 				},
 				PlanModifiers: []planmodifier.List{listplanmodifier.RequiresReplace()},

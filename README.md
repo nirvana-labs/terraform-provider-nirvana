@@ -50,7 +50,6 @@ resource "nirvana_compute_vm" "example_compute_vm" {
   }
   data_volumes = [{
     size = 100
-    type = "nvme"
   }]
   subnet_id = "123e4567-e89b-12d3-a456-426614174000"
 }
