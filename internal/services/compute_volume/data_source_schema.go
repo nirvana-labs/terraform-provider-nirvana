@@ -45,6 +45,9 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 			"updated_at": schema.StringAttribute{
 				Computed: true,
 			},
+			"vm_id": schema.StringAttribute{
+				Computed: true,
+			},
 		},
 	}
 }
