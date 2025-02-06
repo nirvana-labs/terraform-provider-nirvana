@@ -14,4 +14,5 @@ type ComputeVolumeDataSourceModel struct {
 	Size      types.Int64  `tfsdk:"size" json:"size,computed"`
 	Type      types.String `tfsdk:"type" json:"type,computed"`
 	UpdatedAt types.String `tfsdk:"updated_at" json:"updated_at,computed"`
+	VMID      types.String `tfsdk:"vm_id" json:"vm_id,computed"`
 }
