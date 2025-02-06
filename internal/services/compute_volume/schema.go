@@ -27,14 +27,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Required:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
-			"type": schema.StringAttribute{
-				Description: "Storage type.",
-				Optional:    true,
-				Validators: []validator.String{
-					stringvalidator.OneOfCaseInsensitive("nvme"),
-				},
-				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
-			},
 			"size": schema.Int64Attribute{
 				Required: true,
 				Validators: []validator.Int64{
@@ -64,6 +56,13 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						"failed",
 						"unknown",
 					),
+				},
+			},
+			"type": schema.StringAttribute{
+				Description: "Storage type.",
+				Computed:    true,
+				Validators: []validator.String{
+					stringvalidator.OneOfCaseInsensitive("nvme"),
 				},
 			},
 			"updated_at": schema.StringAttribute{
