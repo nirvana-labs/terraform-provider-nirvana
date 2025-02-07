@@ -101,27 +101,28 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 				PlanModifiers: []planmodifier.List{listplanmodifier.RequiresReplace()},
 			},
-			"cpu": schema.SingleNestedAttribute{
-				Description: "CPU details.",
+			"cpu_config": schema.SingleNestedAttribute{
+				Description: "CPU config details.",
 				Required:    true,
 				Attributes: map[string]schema.Attribute{
-					"cores": schema.Int64Attribute{
-						Required: true,
+					"vcpu": schema.Int64Attribute{
+						Description: "virtual CPUs",
+						Required:    true,
 						Validators: []validator.Int64{
-							int64validator.AtLeast(1),
+							int64validator.Between(1, 52),
 						},
 					},
 				},
 			},
-			"ram": schema.SingleNestedAttribute{
-				Description: "RAM details.",
+			"memory_config": schema.SingleNestedAttribute{
+				Description: "Memory config details.",
 				Required:    true,
 				Attributes: map[string]schema.Attribute{
 					"size": schema.Int64Attribute{
-						Description: "RAM size",
+						Description: "memory size",
 						Required:    true,
 						Validators: []validator.Int64{
-							int64validator.Between(1, 128),
+							int64validator.Between(1, 480),
 						},
 					},
 				},
@@ -186,33 +187,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Computed:    true,
 				CustomType:  customfield.NewListType[types.String](ctx),
 				ElementType: types.StringType,
-			},
-			"cpu_config": schema.SingleNestedAttribute{
-				Description: "CPU details.",
-				Computed:    true,
-				CustomType:  customfield.NewNestedObjectType[ComputeVMCPUConfigModel](ctx),
-				Attributes: map[string]schema.Attribute{
-					"cores": schema.Int64Attribute{
-						Computed: true,
-						Validators: []validator.Int64{
-							int64validator.AtLeast(1),
-						},
-					},
-				},
-			},
-			"mem_config": schema.SingleNestedAttribute{
-				Description: "RAM details.",
-				Computed:    true,
-				CustomType:  customfield.NewNestedObjectType[ComputeVMMemConfigModel](ctx),
-				Attributes: map[string]schema.Attribute{
-					"size": schema.Int64Attribute{
-						Description: "RAM size",
-						Computed:    true,
-						Validators: []validator.Int64{
-							int64validator.Between(1, 128),
-						},
-					},
-				},
 			},
 		},
 	}

@@ -83,28 +83,29 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				ElementType: types.StringType,
 			},
 			"cpu_config": schema.SingleNestedAttribute{
-				Description: "CPU details.",
+				Description: "CPU config details.",
 				Computed:    true,
 				CustomType:  customfield.NewNestedObjectType[ComputeVMCPUConfigDataSourceModel](ctx),
 				Attributes: map[string]schema.Attribute{
-					"cores": schema.Int64Attribute{
-						Computed: true,
+					"vcpu": schema.Int64Attribute{
+						Description: "virtual CPUs",
+						Computed:    true,
 						Validators: []validator.Int64{
-							int64validator.AtLeast(1),
+							int64validator.Between(1, 52),
 						},
 					},
 				},
 			},
-			"mem_config": schema.SingleNestedAttribute{
-				Description: "RAM details.",
+			"memory_config": schema.SingleNestedAttribute{
+				Description: "Memory config details.",
 				Computed:    true,
-				CustomType:  customfield.NewNestedObjectType[ComputeVMMemConfigDataSourceModel](ctx),
+				CustomType:  customfield.NewNestedObjectType[ComputeVMMemoryConfigDataSourceModel](ctx),
 				Attributes: map[string]schema.Attribute{
 					"size": schema.Int64Attribute{
-						Description: "RAM size",
+						Description: "memory size",
 						Computed:    true,
 						Validators: []validator.Int64{
-							int64validator.Between(1, 128),
+							int64validator.Between(1, 480),
 						},
 					},
 				},

@@ -18,8 +18,8 @@ type ComputeVMModel struct {
 	SSHKey          *ComputeVMSSHKeyModel                                   `tfsdk:"ssh_key" json:"ssh_key,required"`
 	SubnetID        types.String                                            `tfsdk:"subnet_id" json:"subnet_id,optional"`
 	DataVolumes     customfield.NestedObjectList[ComputeVMDataVolumesModel] `tfsdk:"data_volumes" json:"data_volumes,computed_optional"`
-	CPU             *ComputeVMCPUModel                                      `tfsdk:"cpu" json:"cpu,required"`
-	Ram             *ComputeVMRamModel                                      `tfsdk:"ram" json:"ram,required"`
+	CPUConfig       *ComputeVMCPUConfigModel                                `tfsdk:"cpu_config" json:"cpu_config,required"`
+	MemoryConfig    *ComputeVMMemoryConfigModel                             `tfsdk:"memory_config" json:"memory_config,required"`
 	BootVolumeID    types.String                                            `tfsdk:"boot_volume_id" json:"boot_volume_id,computed"`
 	CreatedAt       types.String                                            `tfsdk:"created_at" json:"created_at,computed"`
 	Kind            types.String                                            `tfsdk:"kind" json:"kind,computed"`
@@ -31,8 +31,6 @@ type ComputeVMModel struct {
 	UpdatedAt       types.String                                            `tfsdk:"updated_at" json:"updated_at,computed"`
 	VPCID           types.String                                            `tfsdk:"vpc_id" json:"vpc_id,computed"`
 	DataVolumeIDs   customfield.List[types.String]                          `tfsdk:"data_volume_ids" json:"data_volume_ids,computed"`
-	CPUConfig       customfield.NestedObject[ComputeVMCPUConfigModel]       `tfsdk:"cpu_config" json:"cpu_config,computed"`
-	MemConfig       customfield.NestedObject[ComputeVMMemConfigModel]       `tfsdk:"mem_config" json:"mem_config,computed"`
 }
 
 func (m ComputeVMModel) MarshalJSON() (data []byte, err error) {
@@ -55,18 +53,10 @@ type ComputeVMDataVolumesModel struct {
 	Size types.Int64 `tfsdk:"size" json:"size,required"`
 }
 
-type ComputeVMCPUModel struct {
-	Cores types.Int64 `tfsdk:"cores" json:"cores,required"`
-}
-
-type ComputeVMRamModel struct {
-	Size types.Int64 `tfsdk:"size" json:"size,required"`
-}
-
 type ComputeVMCPUConfigModel struct {
-	Cores types.Int64 `tfsdk:"cores" json:"cores,computed"`
+	Vcpu types.Int64 `tfsdk:"vcpu" json:"vcpu,required"`
 }
 
-type ComputeVMMemConfigModel struct {
-	Size types.Int64 `tfsdk:"size" json:"size,computed"`
+type ComputeVMMemoryConfigModel struct {
+	Size types.Int64 `tfsdk:"size" json:"size,required"`
 }
