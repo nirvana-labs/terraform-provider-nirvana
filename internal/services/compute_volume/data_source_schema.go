@@ -32,6 +32,9 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 					stringvalidator.OneOfCaseInsensitive("boot", "data"),
 				},
 			},
+			"name": schema.StringAttribute{
+				Computed: true,
+			},
 			"size": schema.Int64Attribute{
 				Computed: true,
 			},
