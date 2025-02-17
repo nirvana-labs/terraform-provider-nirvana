@@ -34,7 +34,11 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Computed: true,
 			},
 			"protocol": schema.StringAttribute{
-				Computed: true,
+				Description: "Supported Firewall Rule protocols.",
+				Computed:    true,
+				Validators: []validator.String{
+					stringvalidator.OneOfCaseInsensitive("tcp", "udp"),
+				},
 			},
 			"status": schema.StringAttribute{
 				Computed: true,
