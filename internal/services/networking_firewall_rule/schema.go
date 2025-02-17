@@ -31,7 +31,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Required: true,
 			},
 			"protocol": schema.StringAttribute{
-				Description: "Supported protocols.",
+				Description: "Supported Firewall Rule protocols.",
 				Required:    true,
 			},
 			"destination": schema.SingleNestedAttribute{
