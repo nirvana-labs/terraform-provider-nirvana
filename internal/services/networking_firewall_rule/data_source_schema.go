@@ -27,6 +27,9 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 			"created_at": schema.StringAttribute{
 				Computed: true,
 			},
+			"destination_address": schema.StringAttribute{
+				Computed: true,
+			},
 			"id": schema.StringAttribute{
 				Computed: true,
 			},
@@ -39,6 +42,9 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive("tcp", "udp"),
 				},
+			},
+			"source_address": schema.StringAttribute{
+				Computed: true,
 			},
 			"status": schema.StringAttribute{
 				Computed: true,
@@ -57,35 +63,15 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 			"updated_at": schema.StringAttribute{
 				Computed: true,
 			},
-			"destination": schema.SingleNestedAttribute{
-				Description: "Firewall rule endpoint.",
+			"destination_ports": schema.ListAttribute{
 				Computed:    true,
-				CustomType:  customfield.NewNestedObjectType[NetworkingFirewallRuleDestinationDataSourceModel](ctx),
-				Attributes: map[string]schema.Attribute{
-					"address": schema.StringAttribute{
-						Computed: true,
-					},
-					"ports": schema.ListAttribute{
-						Computed:    true,
-						CustomType:  customfield.NewListType[types.String](ctx),
-						ElementType: types.StringType,
-					},
-				},
+				CustomType:  customfield.NewListType[types.String](ctx),
+				ElementType: types.StringType,
 			},
-			"source": schema.SingleNestedAttribute{
-				Description: "Firewall rule endpoint.",
+			"source_ports": schema.ListAttribute{
 				Computed:    true,
-				CustomType:  customfield.NewNestedObjectType[NetworkingFirewallRuleSourceDataSourceModel](ctx),
-				Attributes: map[string]schema.Attribute{
-					"address": schema.StringAttribute{
-						Computed: true,
-					},
-					"ports": schema.ListAttribute{
-						Computed:    true,
-						CustomType:  customfield.NewListType[types.String](ctx),
-						ElementType: types.StringType,
-					},
-				},
+				CustomType:  customfield.NewListType[types.String](ctx),
+				ElementType: types.StringType,
 			},
 		},
 	}
