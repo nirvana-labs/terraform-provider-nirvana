@@ -9,7 +9,7 @@ import (
 
 type NetworkingFirewallRuleDataSourceModel struct {
 	FirewallRuleID     types.String                   `tfsdk:"firewall_rule_id" path:"firewall_rule_id,required"`
-	VPCID              types.String                   `tfsdk:"vpc_id" path:"vpc_id,computed"`
+	VPCID              types.String                   `tfsdk:"vpc_id" path:"vpc_id,required"`
 	CreatedAt          types.String                   `tfsdk:"created_at" json:"created_at,computed"`
 	DestinationAddress types.String                   `tfsdk:"destination_address" json:"destination_address,computed"`
 	ID                 types.String                   `tfsdk:"id" json:"id,computed"`
