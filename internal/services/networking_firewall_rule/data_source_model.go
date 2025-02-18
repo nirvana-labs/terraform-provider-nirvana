@@ -8,24 +8,16 @@ import (
 )
 
 type NetworkingFirewallRuleDataSourceModel struct {
-	FirewallRuleID types.String                                                               `tfsdk:"firewall_rule_id" path:"firewall_rule_id,required"`
-	VPCID          types.String                                                               `tfsdk:"vpc_id" path:"vpc_id,computed"`
-	CreatedAt      types.String                                                               `tfsdk:"created_at" json:"created_at,computed"`
-	ID             types.String                                                               `tfsdk:"id" json:"id,computed"`
-	Name           types.String                                                               `tfsdk:"name" json:"name,computed"`
-	Protocol       types.String                                                               `tfsdk:"protocol" json:"protocol,computed"`
-	Status         types.String                                                               `tfsdk:"status" json:"status,computed"`
-	UpdatedAt      types.String                                                               `tfsdk:"updated_at" json:"updated_at,computed"`
-	Destination    customfield.NestedObject[NetworkingFirewallRuleDestinationDataSourceModel] `tfsdk:"destination" json:"destination,computed"`
-	Source         customfield.NestedObject[NetworkingFirewallRuleSourceDataSourceModel]      `tfsdk:"source" json:"source,computed"`
-}
-
-type NetworkingFirewallRuleDestinationDataSourceModel struct {
-	Address types.String                   `tfsdk:"address" json:"address,computed"`
-	Ports   customfield.List[types.String] `tfsdk:"ports" json:"ports,computed"`
-}
-
-type NetworkingFirewallRuleSourceDataSourceModel struct {
-	Address types.String                   `tfsdk:"address" json:"address,computed"`
-	Ports   customfield.List[types.String] `tfsdk:"ports" json:"ports,computed"`
+	FirewallRuleID     types.String                   `tfsdk:"firewall_rule_id" path:"firewall_rule_id,required"`
+	VPCID              types.String                   `tfsdk:"vpc_id" path:"vpc_id,computed"`
+	CreatedAt          types.String                   `tfsdk:"created_at" json:"created_at,computed"`
+	DestinationAddress types.String                   `tfsdk:"destination_address" json:"destination_address,computed"`
+	ID                 types.String                   `tfsdk:"id" json:"id,computed"`
+	Name               types.String                   `tfsdk:"name" json:"name,computed"`
+	Protocol           types.String                   `tfsdk:"protocol" json:"protocol,computed"`
+	SourceAddress      types.String                   `tfsdk:"source_address" json:"source_address,computed"`
+	Status             types.String                   `tfsdk:"status" json:"status,computed"`
+	UpdatedAt          types.String                   `tfsdk:"updated_at" json:"updated_at,computed"`
+	DestinationPorts   customfield.List[types.String] `tfsdk:"destination_ports" json:"destination_ports,computed"`
+	SourcePorts        customfield.List[types.String] `tfsdk:"source_ports" json:"source_ports,computed"`
 }

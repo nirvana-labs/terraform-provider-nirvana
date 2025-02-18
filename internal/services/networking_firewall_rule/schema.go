@@ -27,6 +27,9 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Required:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
+			"destination_address": schema.StringAttribute{
+				Required: true,
+			},
 			"name": schema.StringAttribute{
 				Required: true,
 			},
@@ -34,31 +37,18 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Description: "Supported Firewall Rule protocols.",
 				Required:    true,
 			},
-			"destination": schema.SingleNestedAttribute{
-				Description: "Firewall rule endpoint.",
-				Required:    true,
-				Attributes: map[string]schema.Attribute{
-					"address": schema.StringAttribute{
-						Optional: true,
-					},
-					"ports": schema.ListAttribute{
-						Optional:    true,
-						ElementType: types.StringType,
-					},
-				},
+			"source_address": schema.StringAttribute{
+				Required: true,
 			},
-			"source": schema.SingleNestedAttribute{
-				Description: "Firewall rule endpoint.",
-				Required:    true,
-				Attributes: map[string]schema.Attribute{
-					"address": schema.StringAttribute{
-						Optional: true,
-					},
-					"ports": schema.ListAttribute{
-						Optional:    true,
-						ElementType: types.StringType,
-					},
-				},
+			"destination_ports": schema.ListAttribute{
+				Description: "required for TCP, should not be provided for UDP",
+				Optional:    true,
+				ElementType: types.StringType,
+			},
+			"source_ports": schema.ListAttribute{
+				Description: "required for UDP, should not be provided for TCP",
+				Optional:    true,
+				ElementType: types.StringType,
 			},
 			"created_at": schema.StringAttribute{
 				Computed: true,
