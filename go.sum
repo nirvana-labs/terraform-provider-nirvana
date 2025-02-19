@@ -138,8 +138,8 @@ github.com/mitchellh/go-testing-interface v1.14.1/go.mod h1:gfgS7OtZj6MA4U1UrDRp
 github.com/mitchellh/reflectwalk v1.0.0/go.mod h1:mSTlrgnPZtwu0c4WaC2kGObEpuNDbx0jmZXqmk4esnw=
 github.com/mitchellh/reflectwalk v1.0.2 h1:G2LzWKi524PWgd3mLHV8Y5k7s6XUvT0Gef6zxSIeXaQ=
 github.com/mitchellh/reflectwalk v1.0.2/go.mod h1:mSTlrgnPZtwu0c4WaC2kGObEpuNDbx0jmZXqmk4esnw=
-github.com/nirvana-labs/nirvana-go v0.1.0-alpha.32 h1:5sw2Aknx7Z48FKyU4jmzg6mmNLh0QEDTmI9OeUVPjWM=
-github.com/nirvana-labs/nirvana-go v0.1.0-alpha.32/go.mod h1:BTTyavvVfenAKEOqSVn2EcppI2pfyep4zEDjEdsOofY=
+github.com/nirvana-labs/nirvana-go v0.1.0-alpha.33 h1:e030gcS1FanIu17uoZGjGwnePGh9rwctYzxj2iiuvI4=
+github.com/nirvana-labs/nirvana-go v0.1.0-alpha.33/go.mod h1:BTTyavvVfenAKEOqSVn2EcppI2pfyep4zEDjEdsOofY=
 github.com/oklog/run v1.0.0 h1:Ru7dDtJNOyC66gQ5dQmaCa0qIsAUFY3sFpK1Xk8igrw=
 github.com/oklog/run v1.0.0/go.mod h1:dlhp/R75TPv97u0XWUtDeV/lRKWPKSdTuV0TZvrmrQA=
 github.com/pjbgf/sha1cd v0.3.0 h1:4D5XXmUUBUl/xQ6IjCkEAbqXskkq/4O7LmGn0AqMDs4=
