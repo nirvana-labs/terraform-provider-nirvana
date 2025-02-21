@@ -102,7 +102,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				PlanModifiers: []planmodifier.List{listplanmodifier.RequiresReplace()},
 			},
 			"cpu_config": schema.SingleNestedAttribute{
-				Description: "CPU config details.",
+				Description: "CPU configuration details.",
 				Required:    true,
 				Attributes: map[string]schema.Attribute{
 					"vcpu": schema.Int64Attribute{
@@ -115,7 +115,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"memory_config": schema.SingleNestedAttribute{
-				Description: "Memory config details.",
+				Description: "Memory configuration details.",
 				Required:    true,
 				Attributes: map[string]schema.Attribute{
 					"size": schema.Int64Attribute{

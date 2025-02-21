@@ -83,7 +83,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				ElementType: types.StringType,
 			},
 			"cpu_config": schema.SingleNestedAttribute{
-				Description: "CPU config details.",
+				Description: "CPU configuration details.",
 				Computed:    true,
 				CustomType:  customfield.NewNestedObjectType[ComputeVMCPUConfigDataSourceModel](ctx),
 				Attributes: map[string]schema.Attribute{
@@ -97,7 +97,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"memory_config": schema.SingleNestedAttribute{
-				Description: "Memory config details.",
+				Description: "Memory configuration details.",
 				Computed:    true,
 				CustomType:  customfield.NewNestedObjectType[ComputeVMMemoryConfigDataSourceModel](ctx),
 				Attributes: map[string]schema.Attribute{
