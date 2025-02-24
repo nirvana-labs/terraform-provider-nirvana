@@ -14,8 +14,7 @@ type NetworkingFirewallRuleModel struct {
 	Name               types.String    `tfsdk:"name" json:"name,required"`
 	Protocol           types.String    `tfsdk:"protocol" json:"protocol,required"`
 	SourceAddress      types.String    `tfsdk:"source_address" json:"source_address,required"`
-	DestinationPorts   *[]types.String `tfsdk:"destination_ports" json:"destination_ports,optional"`
-	SourcePorts        *[]types.String `tfsdk:"source_ports" json:"source_ports,optional"`
+	DestinationPorts   *[]types.String `tfsdk:"destination_ports" json:"destination_ports,required"`
 	CreatedAt          types.String    `tfsdk:"created_at" json:"created_at,computed"`
 	Kind               types.String    `tfsdk:"kind" json:"kind,computed"`
 	ResourceID         types.String    `tfsdk:"resource_id" json:"resource_id,computed"`
