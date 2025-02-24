@@ -41,13 +41,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Required: true,
 			},
 			"destination_ports": schema.ListAttribute{
-				Description: "required for TCP, should not be provided for UDP",
-				Optional:    true,
-				ElementType: types.StringType,
-			},
-			"source_ports": schema.ListAttribute{
-				Description: "required for UDP, should not be provided for TCP",
-				Optional:    true,
+				Required:    true,
 				ElementType: types.StringType,
 			},
 			"created_at": schema.StringAttribute{
