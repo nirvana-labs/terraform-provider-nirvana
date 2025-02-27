@@ -41,7 +41,8 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				PlanModifiers: []planmodifier.Bool{boolplanmodifier.RequiresReplace()},
 			},
 			"region": schema.StringAttribute{
-				Required: true,
+				Description: "available values: \"us-sea-1\", \"us-sva-1\", \"us-chi-1\", \"us-wdc-1\", \"eu-lon-1\", \"eu-ams-1\", \"eu-frk-1\", \"ap-mum-1\", \"ap-sin-1\", \"ap-tyo-1\"",
+				Required:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
 						"us-sea-1",
@@ -134,7 +135,8 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Computed: true,
 			},
 			"kind": schema.StringAttribute{
-				Computed: true,
+				Description: "available values: \"vm\", \"volume\", \"vpc\", \"firewall_rule\"",
+				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
 						"vm",
@@ -154,7 +156,8 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Computed: true,
 			},
 			"status": schema.StringAttribute{
-				Computed: true,
+				Description: "available values: \"pending\", \"creating\", \"updating\", \"ready\", \"deleting\", \"deleted\", \"failed\"",
+				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
 						"pending",
@@ -168,7 +171,8 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"type": schema.StringAttribute{
-				Computed: true,
+				Description: "available values: \"create\", \"update\", \"delete\"",
+				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
 						"create",
