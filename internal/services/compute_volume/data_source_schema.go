@@ -26,7 +26,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Computed: true,
 			},
 			"kind": schema.StringAttribute{
-				Description: "Volume kind.",
+				Description: "Volume kind.\navailable values: \"boot\", \"data\"",
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive("boot", "data"),
@@ -39,7 +39,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Computed: true,
 			},
 			"type": schema.StringAttribute{
-				Description: "Storage type.",
+				Description: "Storage type.\navailable values: \"nvme\"",
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive("nvme"),
