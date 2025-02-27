@@ -37,7 +37,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Computed: true,
 			},
 			"kind": schema.StringAttribute{
-				Description: "Volume kind.\navailable values: \"boot\", \"data\"",
+				Description: "Volume kind.\nAvailable values: \"boot\", \"data\".",
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive("boot", "data"),
@@ -50,7 +50,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Computed: true,
 			},
 			"status": schema.StringAttribute{
-				Description: "available values: \"pending\", \"running\", \"done\", \"failed\", \"unknown\"",
+				Description: "Available values: \"pending\", \"running\", \"done\", \"failed\", \"unknown\".",
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
@@ -63,7 +63,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"type": schema.StringAttribute{
-				Description: "Storage type.\navailable values: \"nvme\"",
+				Description: "Storage type.\nAvailable values: \"nvme\".",
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive("nvme"),

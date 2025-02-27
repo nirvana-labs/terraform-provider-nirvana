@@ -37,7 +37,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Computed: true,
 			},
 			"protocol": schema.StringAttribute{
-				Description: "Supported Firewall Rule protocols.\navailable values: \"tcp\", \"udp\"",
+				Description: "Supported Firewall Rule protocols.\nAvailable values: \"tcp\", \"udp\".",
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive("tcp", "udp"),
@@ -47,7 +47,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Computed: true,
 			},
 			"status": schema.StringAttribute{
-				Description: "available values: \"pending\", \"creating\", \"updating\", \"ready\", \"deleting\", \"deleted\", \"failed\"",
+				Description: "Available values: \"pending\", \"creating\", \"updating\", \"ready\", \"deleting\", \"deleted\", \"failed\".",
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
