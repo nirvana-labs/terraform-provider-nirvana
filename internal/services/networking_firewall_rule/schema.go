@@ -48,7 +48,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Computed: true,
 			},
 			"kind": schema.StringAttribute{
-				Description: "Available values: \"vm\", \"volume\", \"vpc\", \"firewall_rule\".",
+				Description: `Available values: "vm", "volume", "vpc", "firewall_rule".`,
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
@@ -63,7 +63,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Computed: true,
 			},
 			"status": schema.StringAttribute{
-				Description: "Available values: \"pending\", \"creating\", \"updating\", \"ready\", \"deleting\", \"deleted\", \"failed\".",
+				Description: `Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "failed".`,
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
@@ -78,7 +78,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"type": schema.StringAttribute{
-				Description: "Available values: \"create\", \"update\", \"delete\".",
+				Description: `Available values: "create", "update", "delete".`,
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
