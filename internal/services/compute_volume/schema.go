@@ -30,7 +30,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			"size": schema.Int64Attribute{
 				Required: true,
 				Validators: []validator.Int64{
-					int64validator.Between(50, 1400),
+					int64validator.Between(32, 10240),
 				},
 			},
 			"created_at": schema.StringAttribute{

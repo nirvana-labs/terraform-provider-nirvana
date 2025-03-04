@@ -70,7 +70,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 					"size": schema.Int64Attribute{
 						Required: true,
 						Validators: []validator.Int64{
-							int64validator.Between(50, 500),
+							int64validator.Between(64, 512),
 						},
 					},
 				},
@@ -95,7 +95,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						"size": schema.Int64Attribute{
 							Required: true,
 							Validators: []validator.Int64{
-								int64validator.Between(50, 1400),
+								int64validator.Between(32, 10240),
 							},
 						},
 					},
