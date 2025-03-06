@@ -38,6 +38,21 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 			"size": schema.Int64Attribute{
 				Computed: true,
 			},
+			"status": schema.StringAttribute{
+				Description: `Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "failed".`,
+				Computed:    true,
+				Validators: []validator.String{
+					stringvalidator.OneOfCaseInsensitive(
+						"pending",
+						"creating",
+						"updating",
+						"ready",
+						"deleting",
+						"deleted",
+						"failed",
+					),
+				},
+			},
 			"type": schema.StringAttribute{
 				Description: "Storage type.\nAvailable values: \"nvme\".",
 				Computed:    true,

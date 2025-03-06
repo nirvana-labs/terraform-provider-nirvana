@@ -13,6 +13,7 @@ type ComputeVolumeDataSourceModel struct {
 	Kind      types.String `tfsdk:"kind" json:"kind,computed"`
 	Name      types.String `tfsdk:"name" json:"name,computed"`
 	Size      types.Int64  `tfsdk:"size" json:"size,computed"`
+	Status    types.String `tfsdk:"status" json:"status,computed"`
 	Type      types.String `tfsdk:"type" json:"type,computed"`
 	UpdatedAt types.String `tfsdk:"updated_at" json:"updated_at,computed"`
 	VMID      types.String `tfsdk:"vm_id" json:"vm_id,computed"`
