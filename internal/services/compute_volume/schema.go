@@ -50,15 +50,17 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Computed: true,
 			},
 			"status": schema.StringAttribute{
-				Description: `Available values: "pending", "running", "done", "failed", "unknown".`,
+				Description: `Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "failed".`,
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
 						"pending",
-						"running",
-						"done",
+						"creating",
+						"updating",
+						"ready",
+						"deleting",
+						"deleted",
 						"failed",
-						"unknown",
 					),
 				},
 			},
