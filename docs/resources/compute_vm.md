@@ -17,24 +17,23 @@ resource "nirvana_compute_vm" "example_compute_vm" {
   boot_volume = {
     size = 100
   }
-  cpu = {
-    cores = 2
+  cpu_config = {
+    vcpu = 2
+  }
+  memory_config = {
+    size = 2
   }
   name = "my-vm"
   os_image_name = "noble-2024-12-06"
   public_ip_enabled = true
-  ram = {
-    size = 2
-  }
   region = "us-sea-1"
   ssh_key = {
     public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC1234567890"
   }
+  subnet_id = "123e4567-e89b-12d3-a456-426614174000"
   data_volumes = [{
     size = 100
-    type = "nvme"
   }]
-  subnet_id = "123e4567-e89b-12d3-a456-426614174000"
 }
 ```
 
@@ -44,33 +43,31 @@ resource "nirvana_compute_vm" "example_compute_vm" {
 ### Required
 
 - `boot_volume` (Attributes) Boot volume create request. (see [below for nested schema](#nestedatt--boot_volume))
-- `cpu` (Attributes) CPU details. (see [below for nested schema](#nestedatt--cpu))
+- `cpu_config` (Attributes) CPU configuration details. (see [below for nested schema](#nestedatt--cpu_config))
+- `memory_config` (Attributes) Memory configuration details. (see [below for nested schema](#nestedatt--memory_config))
 - `name` (String)
 - `os_image_name` (String)
 - `public_ip_enabled` (Boolean)
-- `ram` (Attributes) RAM details. (see [below for nested schema](#nestedatt--ram))
-- `region` (String)
+- `region` (String) Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-lon-1", "eu-ams-1", "eu-frk-1", "ap-mum-1", "ap-sin-1", "ap-tyo-1".
 - `ssh_key` (Attributes) SSH key details. (see [below for nested schema](#nestedatt--ssh_key))
+- `subnet_id` (String)
 
 ### Optional
 
 - `data_volumes` (Attributes List) (see [below for nested schema](#nestedatt--data_volumes))
-- `subnet_id` (String)
 
 ### Read-Only
 
 - `boot_volume_id` (String)
-- `cpu_config` (Attributes) CPU details. (see [below for nested schema](#nestedatt--cpu_config))
 - `created_at` (String)
 - `data_volume_ids` (List of String)
 - `id` (String) The ID of this resource.
-- `kind` (String)
-- `mem_config` (Attributes) RAM details. (see [below for nested schema](#nestedatt--mem_config))
+- `kind` (String) Available values: "vm", "volume", "vpc", "firewall_rule".
 - `private_ip` (String)
 - `public_ip` (String)
 - `resource_id` (String)
-- `status` (String)
-- `type` (String)
+- `status` (String) Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "failed".
+- `type` (String) Available values: "create", "update", "delete".
 - `updated_at` (String)
 - `vpc_id` (String)
 
@@ -82,20 +79,20 @@ Required:
 - `size` (Number)
 
 
-<a id="nestedatt--cpu"></a>
-### Nested Schema for `cpu`
+<a id="nestedatt--cpu_config"></a>
+### Nested Schema for `cpu_config`
 
 Required:
 
-- `cores` (Number)
+- `vcpu` (Number) virtual CPUs
 
 
-<a id="nestedatt--ram"></a>
-### Nested Schema for `ram`
+<a id="nestedatt--memory_config"></a>
+### Nested Schema for `memory_config`
 
 Required:
 
-- `size` (Number) RAM size
+- `size` (Number) memory size
 
 
 <a id="nestedatt--ssh_key"></a>
@@ -112,26 +109,6 @@ Required:
 Required:
 
 - `size` (Number)
-
-Optional:
-
-- `type` (String) Storage type.
-
-
-<a id="nestedatt--cpu_config"></a>
-### Nested Schema for `cpu_config`
-
-Read-Only:
-
-- `cores` (Number)
-
-
-<a id="nestedatt--mem_config"></a>
-### Nested Schema for `mem_config`
-
-Read-Only:
-
-- `size` (Number) RAM size
 
 ## Import
 

@@ -28,16 +28,16 @@ data "nirvana_compute_vm" "example_compute_vm" {
 ### Read-Only
 
 - `boot_volume_id` (String)
-- `cpu_config` (Attributes) CPU details. (see [below for nested schema](#nestedatt--cpu_config))
+- `cpu_config` (Attributes) CPU configuration details. (see [below for nested schema](#nestedatt--cpu_config))
 - `created_at` (String)
 - `data_volume_ids` (List of String)
 - `id` (String) The ID of this resource.
-- `mem_config` (Attributes) RAM details. (see [below for nested schema](#nestedatt--mem_config))
+- `memory_config` (Attributes) Memory configuration details. (see [below for nested schema](#nestedatt--memory_config))
 - `name` (String)
 - `private_ip` (String)
 - `public_ip` (String)
-- `region` (String)
-- `status` (String)
+- `region` (String) Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-lon-1", "eu-ams-1", "eu-frk-1", "ap-mum-1", "ap-sin-1", "ap-tyo-1".
+- `status` (String) Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "failed".
 - `updated_at` (String)
 - `vpc_id` (String)
 
@@ -46,12 +46,12 @@ data "nirvana_compute_vm" "example_compute_vm" {
 
 Read-Only:
 
-- `cores` (Number)
+- `vcpu` (Number) virtual CPUs
 
 
-<a id="nestedatt--mem_config"></a>
-### Nested Schema for `mem_config`
+<a id="nestedatt--memory_config"></a>
+### Nested Schema for `memory_config`
 
 Read-Only:
 
-- `size` (Number) RAM size
+- `size` (Number) memory size
