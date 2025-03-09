@@ -196,13 +196,18 @@ func (r *NetworkingVPCResource) Delete(ctx context.Context, req resource.DeleteR
 		return
 	}
 
-	_, err := r.client.Networking.VPCs.Delete(
+	operation, err := r.client.Networking.VPCs.Delete(
 		ctx,
 		data.ID.ValueString(),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
 	if err != nil {
 		resp.Diagnostics.AddError("failed to make http request", err.Error())
+		return
+	}
+
+	if errWaitForOperation := lib.Wait(ctx, r.client, operation.ID); errWaitForOperation != nil {
+		resp.Diagnostics.AddError("failed to wait for operation", errWaitForOperation.Error())
 		return
 	}
 
