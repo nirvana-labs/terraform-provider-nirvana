@@ -25,32 +25,17 @@ data "nirvana_networking_firewall_rule" "example_networking_firewall_rule" {
 ### Required
 
 - `firewall_rule_id` (String)
+- `vpc_id` (String)
 
 ### Read-Only
 
 - `created_at` (String)
-- `destination` (Attributes) Firewall rule endpoint. (see [below for nested schema](#nestedatt--destination))
+- `destination_address` (String)
+- `destination_ports` (List of String)
 - `id` (String) The ID of this resource.
 - `name` (String)
-- `protocol` (String)
-- `source` (Attributes) Firewall rule endpoint. (see [below for nested schema](#nestedatt--source))
-- `status` (String)
+- `protocol` (String) Supported Firewall Rule protocols.
+Available values: "tcp", "udp".
+- `source_address` (String)
+- `status` (String) Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "failed".
 - `updated_at` (String)
-- `vpc_id` (String)
-
-<a id="nestedatt--destination"></a>
-### Nested Schema for `destination`
-
-Read-Only:
-
-- `address` (String)
-- `ports` (List of String)
-
-
-<a id="nestedatt--source"></a>
-### Nested Schema for `source`
-
-Read-Only:
-
-- `address` (String)
-- `ports` (List of String)

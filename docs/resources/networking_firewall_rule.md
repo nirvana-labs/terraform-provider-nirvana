@@ -15,16 +15,11 @@ description: |-
 ```terraform
 resource "nirvana_networking_firewall_rule" "example_networking_firewall_rule" {
   vpc_id = "vpc_id"
-  destination = {
-    address = "0.0.0.0/0"
-    ports = ["22", "80", "443"]
-  }
+  destination_address = "0.0.0.0/0"
+  destination_ports = ["22", "80", "443"]
   name = "my-firewall-rule"
   protocol = "tcp"
-  source = {
-    address = "0.0.0.0/0"
-    ports = ["22", "80", "443"]
-  }
+  source_address = "0.0.0.0/0"
 }
 ```
 
@@ -33,38 +28,22 @@ resource "nirvana_networking_firewall_rule" "example_networking_firewall_rule" {
 
 ### Required
 
-- `destination` (Attributes) Firewall rule endpoint. (see [below for nested schema](#nestedatt--destination))
+- `destination_address` (String)
+- `destination_ports` (List of String)
 - `name` (String)
-- `protocol` (String) Supported protocols.
-- `source` (Attributes) Firewall rule endpoint. (see [below for nested schema](#nestedatt--source))
+- `protocol` (String) Supported Firewall Rule protocols.
+- `source_address` (String)
 - `vpc_id` (String)
 
 ### Read-Only
 
 - `created_at` (String)
 - `id` (String) The ID of this resource.
-- `kind` (String)
+- `kind` (String) Available values: "vm", "volume", "vpc", "firewall_rule".
 - `resource_id` (String)
-- `status` (String)
-- `type` (String)
+- `status` (String) Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "failed".
+- `type` (String) Available values: "create", "update", "delete".
 - `updated_at` (String)
-
-<a id="nestedatt--destination"></a>
-### Nested Schema for `destination`
-
-Optional:
-
-- `address` (String)
-- `ports` (List of String)
-
-
-<a id="nestedatt--source"></a>
-### Nested Schema for `source`
-
-Optional:
-
-- `address` (String)
-- `ports` (List of String)
 
 ## Import
 

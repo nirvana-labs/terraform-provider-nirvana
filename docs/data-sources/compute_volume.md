@@ -30,6 +30,11 @@ data "nirvana_compute_volume" "example_compute_volume" {
 - `created_at` (String)
 - `id` (String) The ID of this resource.
 - `kind` (String) Volume kind.
+Available values: "boot", "data".
+- `name` (String)
 - `size` (Number)
+- `status` (String) Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "failed".
 - `type` (String) Storage type.
+Available values: "nvme".
 - `updated_at` (String)
+- `vm_id` (String)

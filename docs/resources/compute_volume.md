@@ -16,7 +16,6 @@ description: |-
 resource "nirvana_compute_volume" "example_compute_volume" {
   size = 100
   vm_id = "vm_id"
-  type = "nvme"
 }
 ```
 
@@ -28,17 +27,17 @@ resource "nirvana_compute_volume" "example_compute_volume" {
 - `size` (Number)
 - `vm_id` (String)
 
-### Optional
-
-- `type` (String) Storage type.
-
 ### Read-Only
 
 - `created_at` (String)
 - `id` (String) The ID of this resource.
 - `kind` (String) Volume kind.
+Available values: "boot", "data".
+- `name` (String)
 - `resource_id` (String)
-- `status` (String)
+- `status` (String) Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "failed".
+- `type` (String) Storage type.
+Available values: "nvme".
 - `updated_at` (String)
 
 ## Import
