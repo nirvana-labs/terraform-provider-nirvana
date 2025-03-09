@@ -11,6 +11,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go"
+	"github.com/nirvana-labs/nirvana-go/lib"
 	"github.com/nirvana-labs/nirvana-go/networking"
 	"github.com/nirvana-labs/nirvana-go/option"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/apijson"
@@ -183,7 +184,7 @@ func (r *NetworkingFirewallRuleResource) Delete(ctx context.Context, req resourc
 		return
 	}
 
-	_, err := r.client.Networking.FirewallRules.Delete(
+	operation, err := r.client.Networking.FirewallRules.Delete(
 		ctx,
 		data.VPCID.ValueString(),
 		data.ID.ValueString(),
@@ -191,6 +192,10 @@ func (r *NetworkingFirewallRuleResource) Delete(ctx context.Context, req resourc
 	)
 	if err != nil {
 		resp.Diagnostics.AddError("failed to make http request", err.Error())
+		return
+	}
+	if errWaitForOperation := lib.Wait(ctx, r.client, operation.ID); errWaitForOperation != nil {
+		resp.Diagnostics.AddError("failed to wait for operation", errWaitForOperation.Error())
 		return
 	}
 
