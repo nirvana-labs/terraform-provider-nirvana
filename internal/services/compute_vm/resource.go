@@ -12,6 +12,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go"
 	"github.com/nirvana-labs/nirvana-go/compute"
+	"github.com/nirvana-labs/nirvana-go/lib"
 	"github.com/nirvana-labs/nirvana-go/option"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/apijson"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/importpath"
@@ -180,13 +181,17 @@ func (r *ComputeVMResource) Delete(ctx context.Context, req resource.DeleteReque
 		return
 	}
 
-	_, err := r.client.Compute.VMs.Delete(
+	operation, err := r.client.Compute.VMs.Delete(
 		ctx,
 		data.ID.ValueString(),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
 	if err != nil {
 		resp.Diagnostics.AddError("failed to make http request", err.Error())
+		return
+	}
+	if errWaitForOperation := lib.Wait(ctx, r.client, operation.ID); errWaitForOperation != nil {
+		resp.Diagnostics.AddError("failed to wait for operation", errWaitForOperation.Error())
 		return
 	}
 
