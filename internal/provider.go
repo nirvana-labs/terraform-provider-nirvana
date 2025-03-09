@@ -98,12 +98,7 @@ func (p *NirvanaProvider) Resources(ctx context.Context) []func() resource.Resou
 }
 
 func (p *NirvanaProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
-	return []func() datasource.DataSource{
-		compute_vm.NewComputeVMDataSource,
-		compute_volume.NewComputeVolumeDataSource,
-		networking_vpc.NewNetworkingVPCDataSource,
-		networking_firewall_rule.NewNetworkingFirewallRuleDataSource,
-	}
+	return []func() datasource.DataSource{}
 }
 
 func NewProvider(version string) func() provider.Provider {
