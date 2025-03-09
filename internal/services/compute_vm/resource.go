@@ -127,12 +127,25 @@ func (r *ComputeVMResource) Update(ctx context.Context, req resource.UpdateReque
 		resp.Diagnostics.AddError("failed to serialize http request", err.Error())
 		return
 	}
-	res := new(http.Response)
-	_, err = r.client.Compute.VMs.Update(
+	operation, err := r.client.Compute.VMs.Update(
 		ctx,
 		data.ID.ValueString(),
 		compute.VMUpdateParams{},
 		option.WithRequestBody("application/json", dataBytes),
+		option.WithMiddleware(logging.Middleware(ctx)),
+	)
+	if err != nil {
+		resp.Diagnostics.AddError("failed to make http request", err.Error())
+		return
+	}
+	if errWaitForOperation := lib.Wait(ctx, r.client, operation.ID); errWaitForOperation != nil {
+		resp.Diagnostics.AddError("failed to wait for operation", errWaitForOperation.Error())
+		return
+	}
+	res := new(http.Response)
+	_, err = r.client.Compute.VMs.Get(
+		ctx,
+		operation.ResourceID,
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
