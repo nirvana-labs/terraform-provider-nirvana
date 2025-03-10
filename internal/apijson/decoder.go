@@ -19,7 +19,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
 	"github.com/tidwall/gjson"
 
-	"github.com/stainless-sdks/nirvana-terraform/internal/customfield"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
 // decoders is a synchronized map with roughly the following type:

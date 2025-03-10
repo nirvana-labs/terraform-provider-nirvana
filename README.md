@@ -1,29 +1,75 @@
 # Nirvana Labs Terraform Provider
 
-The Nirvana Labs Terraform provider
-
-The [Nirvana Labs Terraform provider](https://registry.terraform.io/providers/stainless-sdks/nirvana/latest/docs) provides convenient access to
+The [Nirvana Labs Terraform provider](https://registry.terraform.io/providers/nirvana-labs/nirvana/latest/docs) provides convenient access to
 [the Nirvana Labs REST API](https://docs.nirvanalabs.io/) from Terraform.
 
-## Installation
+## Requirements
 
-```
+This provider requires Terraform CLI 1.0 or later. You can [install it for your system](https://developer.hashicorp.com/terraform/install)
+on Hashicorp's website.
+
+## Usage
+
+Add the following to your `main.tf` file:
+
+<!-- x-release-please-start-version -->
+
+```hcl
+# Declare the provider and version
 terraform {
   required_providers {
     nirvana = {
-      source  = "stainless-sdks/nirvana"
+      source  = "nirvana-labs/nirvana"
       version = "~> 0.0.1-alpha.0"
     }
   }
 }
+
+# Initialize the provider
+provider "nirvana" {
+  auth_token = "My Auth Token" # or set NIRVANA_LABS_AUTH_TOKEN env variable
+}
+
+# Configure a resource
+resource "nirvana_compute_vm" "example_compute_vm" {
+  boot_volume = {
+    size = 100
+  }
+  cpu_config = {
+    vcpu = 2
+  }
+  memory_config = {
+    size = 2
+  }
+  name = "my-vm"
+  os_image_name = "noble-2024-12-06"
+  public_ip_enabled = true
+  region = "us-sea-1"
+  ssh_key = {
+    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDJiJabIUkXw7VrQG+yBohvhEsyoKEYvejZc4RFzV5maybqQei1punVsoe4r6gJttMM1Gr3cNr3OfepikCQAhAchw5ww94ZWqDsDYIqMrlDFbqhGTXDNzFAjeVIKptCOlz9k+7aM69YtLXJ6gFUCq1fbK9PjY+AK28UpMfKYUcyHQ== noname"
+  }
+  subnet_id = "123e4567-e89b-12d3-a456-426614174000"
+  data_volumes = [{
+    size = 100
+  }]
+}
 ```
 
-And initialize your project by running `terraform init`.
+<!-- x-release-please-end -->
 
-## Requirements
+Initialize your project by running `terraform init` in the directory.
 
-This library requires Terraform CLI 1.0 or later. You can [install it for your system](https://developer.hashicorp.com/terraform/install)
-on Hashicorp's website.
+Additional examples can be found in the [./examples](./examples) folder within this repository, and you can
+refer to the full documentation on [the Terraform Registry](https://registry.terraform.io/providers/nirvana-labs/nirvana/latest/docs).
+
+### Provider Options
+
+When you initialize the provider, the following options are supported. It is recommended to use environment variables for sensitive values like access tokens.
+If an environment variable is provided, then the option does not need to be set in the terraform source.
+
+| Property   | Environment variable      | Required | Default value |
+| ---------- | ------------------------- | -------- | ------------- |
+| auth_token | `NIRVANA_LABS_AUTH_TOKEN` | true     | —             |
 
 ## Semantic versioning
 
@@ -34,4 +80,8 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/nirvana-terraform/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/nirvana-labs/terraform-provider-nirvana/issues) with questions, bugs, or suggestions.
+
+## Contributing
+
+See [the contributing documentation](./CONTRIBUTING.md).

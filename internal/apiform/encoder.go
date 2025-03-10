@@ -21,8 +21,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
 
-	"github.com/stainless-sdks/nirvana-terraform/internal/apijson"
-	"github.com/stainless-sdks/nirvana-terraform/internal/customfield"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/apijson"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
 var encoders sync.Map // map[encoderEntry]encoderFunc
@@ -402,7 +402,7 @@ func (e *encoder) newReaderTypeEncoder() encoderFunc {
 			filename = path.Base(named.Name())
 		}
 		if typed, ok := reader.(interface{ ContentType() string }); ok {
-			contentType = path.Base(typed.ContentType())
+			contentType = typed.ContentType()
 		}
 
 		// Below is taken almost 1-for-1 from [multipart.CreateFormFile]

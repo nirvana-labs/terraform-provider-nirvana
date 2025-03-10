@@ -8,7 +8,7 @@ import (
 	"log"
 
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
-	"github.com/stainless-sdks/nirvana-terraform/internal"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal"
 )
 
 var (
@@ -22,7 +22,7 @@ func main() {
 	flag.Parse()
 
 	opts := providerserver.ServeOpts{
-		Address: "registry.terraform.io/stainless-sdks/nirvana",
+		Address: "registry.terraform.io/nirvana-labs/nirvana",
 		Debug:   debug,
 	}
 

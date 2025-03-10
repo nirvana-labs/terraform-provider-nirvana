@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/stainless-sdks/nirvana-terraform/internal/importpath"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/importpath"
 )
 
 func TestParseID(t *testing.T) {
