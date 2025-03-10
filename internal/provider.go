@@ -14,7 +14,6 @@ import (
 	"github.com/nirvana-labs/nirvana-go"
 	"github.com/nirvana-labs/nirvana-go/option"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/compute_vm"
-	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/compute_vm_os_image"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/compute_volume"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_firewall_rule"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_vpc"
@@ -99,9 +98,7 @@ func (p *NirvanaProvider) Resources(ctx context.Context) []func() resource.Resou
 }
 
 func (p *NirvanaProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
-	return []func() datasource.DataSource{
-		compute_vm_os_image.NewComputeVMOSImageDataSource,
-	}
+	return []func() datasource.DataSource{}
 }
 
 func NewProvider(version string) func() provider.Provider {
