@@ -128,9 +128,10 @@ func (r *NetworkingVPCResource) Update(ctx context.Context, req resource.UpdateR
 		return
 	}
 	res := new(http.Response)
-	_, err = r.client.Networking.VPCs.New(
+	_, err = r.client.Networking.VPCs.Update(
 		ctx,
-		networking.VPCNewParams{},
+		data.ID.ValueString(),
+		networking.VPCUpdateParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),

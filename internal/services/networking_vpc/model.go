@@ -11,8 +11,8 @@ import (
 
 type NetworkingVPCModel struct {
 	ID              types.String                                       `tfsdk:"id" json:"id,computed"`
-	Name            types.String                                       `tfsdk:"name" json:"name,required"`
 	Region          types.String                                       `tfsdk:"region" json:"region,required"`
+	Name            types.String                                       `tfsdk:"name" json:"name,required"`
 	SubnetName      types.String                                       `tfsdk:"subnet_name" json:"subnet_name,required"`
 	CreatedAt       timetypes.RFC3339                                  `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
 	Kind            types.String                                       `tfsdk:"kind" json:"kind,computed"`
@@ -29,7 +29,7 @@ func (m NetworkingVPCModel) MarshalJSON() (data []byte, err error) {
 }
 
 func (m NetworkingVPCModel) MarshalJSONForUpdate(state NetworkingVPCModel) (data []byte, err error) {
-	return apijson.MarshalForUpdate(m, state)
+	return apijson.MarshalForPatch(m, state)
 }
 
 type NetworkingVPCSubnetModel struct {
