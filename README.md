@@ -1,7 +1,7 @@
 # Nirvana Labs Terraform Provider
 
 The [Nirvana Labs Terraform provider](https://registry.terraform.io/providers/nirvana-labs/nirvana/latest/docs) provides convenient access to
-[the Nirvana Labs REST API](https://docs.nirvanalabs.io) from Terraform.
+[the Nirvana Labs REST API](https://docs.nirvanalabs.io/) from Terraform.
 
 ## Requirements
 
@@ -50,6 +50,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
   }
   subnet_id = "123e4567-e89b-12d3-a456-426614174000"
   data_volumes = [{
+    name = "my-data-volume"
     size = 100
   }]
 }

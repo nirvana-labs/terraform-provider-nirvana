@@ -93,6 +93,9 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				CustomType: customfield.NewNestedObjectListType[ComputeVMDataVolumesModel](ctx),
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
+						"name": schema.StringAttribute{
+							Required: true,
+						},
 						"size": schema.Int64Attribute{
 							Required: true,
 							Validators: []validator.Int64{
