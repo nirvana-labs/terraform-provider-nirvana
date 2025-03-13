@@ -26,7 +26,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
 			},
 			"region": schema.StringAttribute{
-				Description: `Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-lon-1", "eu-ams-1", "eu-frk-1", "ap-mum-1", "ap-sin-1", "ap-tyo-1".`,
+				Description: `Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-lon-1", "eu-ams-1", "eu-frk-1", "ap-mum-1", "ap-sin-1", "ap-seo-1", "ap-tyo-1".`,
 				Required:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
@@ -39,6 +39,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						"eu-frk-1",
 						"ap-mum-1",
 						"ap-sin-1",
+						"ap-seo-1",
 						"ap-tyo-1",
 					),
 				},
