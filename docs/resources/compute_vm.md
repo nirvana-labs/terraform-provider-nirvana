@@ -28,7 +28,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
   public_ip_enabled = true
   region = "us-sea-1"
   ssh_key = {
-    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC1234567890"
+    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDJiJabIUkXw7VrQG+yBohvhEsyoKEYvejZc4RFzV5maybqQei1punVsoe4r6gJttMM1Gr3cNr3OfepikCQAhAchw5ww94ZWqDsDYIqMrlDFbqhGTXDNzFAjeVIKptCOlz9k+7aM69YtLXJ6gFUCq1fbK9PjY+AK28UpMfKYUcyHQ== noname"
   }
   subnet_id = "123e4567-e89b-12d3-a456-426614174000"
   data_volumes = [{
