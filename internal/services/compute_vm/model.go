@@ -51,7 +51,8 @@ type ComputeVMSSHKeyModel struct {
 }
 
 type ComputeVMDataVolumesModel struct {
-	Size types.Int64 `tfsdk:"size" json:"size,required"`
+	Name types.String `tfsdk:"name" json:"name,required"`
+	Size types.Int64  `tfsdk:"size" json:"size,required"`
 }
 
 type ComputeVMCPUConfigModel struct {
