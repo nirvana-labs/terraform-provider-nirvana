@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2025-03-13)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Features
+
+* add docs generation to format script ([#80](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/80)) ([859a18e](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/859a18ea52c6da609b0b61378208bffdcc69630e))
+* add SKIP_BREW env var to ./scripts/bootstrap ([#79](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/79)) ([d518a4c](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/d518a4c00b03a361417c4a30e5d0a726ac83ef4c))
+* add support for wait for an operation after create/update/delete ([#71](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/71)) ([380c6cc](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/380c6cc1708853681347b1f84e63eaa87c86416c))
+* **api:** api update ([#83](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/83)) ([c5e1dcb](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/c5e1dcb3b0fef13de3038ff33c33725e2c8303f8))
+* **api:** enable doc generation ([#84](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/84)) ([8274111](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/8274111318681edd625050456ef0279181e4cde5))
+* **api:** manual updates ([#72](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/72)) ([8eb7edf](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/8eb7edfccf70bbb944fd5aa0a57677657886f558))
+* **api:** manual updates ([#74](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/74)) ([032eff1](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/032eff19b70fdca60d3f8d9577f7de1561066b76))
+* **api:** manual updates ([#75](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/75)) ([5db684f](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/5db684fd1a6bc9c8663e2e0685db1b794a6bea78))
+* **api:** manual updates ([#76](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/76)) ([d6da4c9](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/d6da4c981d5b9828f259f9b16439cc029ca2f915))
+* **api:** manual updates ([#78](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/78)) ([1893abb](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/1893abbc52170e22c447764d22e144bf816cbd86))
+
+
+### Chores
+
+* **internal:** codegen related update ([#82](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/82)) ([de5b1e7](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/de5b1e77aaceec0eb6b442721df4e991304f6799))
+* **internal:** codegen related update ([#86](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/86)) ([1d1e036](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/1d1e036ecbf9ea6fc06ad3e8181c5052884e9647))
+
 ## 0.1.0-alpha.1 (2025-03-10)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)

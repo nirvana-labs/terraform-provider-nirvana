@@ -3,6 +3,7 @@
 package compute_vm
 
 import (
+	"github.com/hashicorp/terraform-plugin-framework-timetypes/timetypes"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/apijson"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
@@ -21,14 +22,14 @@ type ComputeVMModel struct {
 	CPUConfig       *ComputeVMCPUConfigModel                                `tfsdk:"cpu_config" json:"cpu_config,required"`
 	MemoryConfig    *ComputeVMMemoryConfigModel                             `tfsdk:"memory_config" json:"memory_config,required"`
 	BootVolumeID    types.String                                            `tfsdk:"boot_volume_id" json:"boot_volume_id,computed"`
-	CreatedAt       types.String                                            `tfsdk:"created_at" json:"created_at,computed"`
+	CreatedAt       timetypes.RFC3339                                       `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
 	Kind            types.String                                            `tfsdk:"kind" json:"kind,computed"`
 	PrivateIP       types.String                                            `tfsdk:"private_ip" json:"private_ip,computed"`
 	PublicIP        types.String                                            `tfsdk:"public_ip" json:"public_ip,computed"`
 	ResourceID      types.String                                            `tfsdk:"resource_id" json:"resource_id,computed"`
 	Status          types.String                                            `tfsdk:"status" json:"status,computed"`
 	Type            types.String                                            `tfsdk:"type" json:"type,computed"`
-	UpdatedAt       types.String                                            `tfsdk:"updated_at" json:"updated_at,computed"`
+	UpdatedAt       timetypes.RFC3339                                       `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
 	VPCID           types.String                                            `tfsdk:"vpc_id" json:"vpc_id,computed"`
 	DataVolumeIDs   customfield.List[types.String]                          `tfsdk:"data_volume_ids" json:"data_volume_ids,computed"`
 }
