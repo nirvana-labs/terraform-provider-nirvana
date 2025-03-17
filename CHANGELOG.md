@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.9 (2025-03-17)
+
+Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
+
+### Chores
+
+* trigger rebuild of terraform ([#106](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/106)) ([5dc6454](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/5dc645433201c4db62f4e40d23c6ea25438cbb2f))
+
 ## 0.1.0-alpha.8 (2025-03-17)
 
 Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
