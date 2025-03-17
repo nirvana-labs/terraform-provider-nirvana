@@ -1,0 +1,191 @@
+# Changelog
+
+## 0.1.0-alpha.8 (2025-03-17)
+
+Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
+
+### Features
+
+* **api:** api update ([#104](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/104)) ([8f7d601](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/8f7d60146cb20c2fdf159e08e5758129b085a40a))
+
+
+### Chores
+
+* **internal:** version bump ([#102](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/102)) ([05dd5e9](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/05dd5e9bc49d375697cbc7bd183e61ead158cd43))
+
+## 0.1.0-alpha.7 (2025-03-17)
+
+Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
+
+### Features
+
+* **api:** api update ([#101](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/101)) ([5bd326d](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/5bd326d3be40862944d7e86b98d9e31e4039bee3))
+
+
+### Chores
+
+* **internal:** codegen related update ([#99](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/99)) ([03fd206](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/03fd2068d91c125c5d896a33b401eb74de4e2c3c))
+
+## 0.1.0-alpha.6 (2025-03-14)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### Features
+
+* **api:** api update ([#98](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/98)) ([44932a4](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/44932a41d7e2bbeeef94724b21cdc9a036516ef4))
+
+
+### Chores
+
+* **internal:** version bump ([#96](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/96)) ([bfefda1](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/bfefda1cb5c406ee4c4da051c988277fee815b47))
+
+## 0.1.0-alpha.5 (2025-03-13)
+
+Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
+
+### Features
+
+* **api:** api update ([#94](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/94)) ([8afd114](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/8afd114d6dca106e55df3fb111fcb1017c781919))
+* **api:** api update ([#95](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/95)) ([65491fb](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/65491fb388ec7116aa0de940bff12af56ccd64de))
+* **api:** manual updates ([#92](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/92)) ([a84db6d](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/a84db6d9f293a240faf94b2a15eb66a39a6cd06d))
+
+## 0.1.0-alpha.4 (2025-03-13)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Chores
+
+* **internal:** version bump ([#90](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/90)) ([38e5e3d](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/38e5e3d850ab3e0bac055d5dcea6ec4195558dda))
+
+## 0.1.0-alpha.3 (2025-03-13)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Features
+
+* **api:** api update ([#87](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/87)) ([f31f7a8](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/f31f7a8839624d2bd81e3130a29e37bd462eab0d))
+* **resource/networking_vpc:** update Update method to use operation ([#89](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/89)) ([44f16bd](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/44f16bd2c77796bcda7efe2acc60b9b61f974fde))
+
+## 0.1.0-alpha.2 (2025-03-13)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Features
+
+* add docs generation to format script ([#80](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/80)) ([859a18e](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/859a18ea52c6da609b0b61378208bffdcc69630e))
+* add SKIP_BREW env var to ./scripts/bootstrap ([#79](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/79)) ([d518a4c](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/d518a4c00b03a361417c4a30e5d0a726ac83ef4c))
+* add support for wait for an operation after create/update/delete ([#71](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/71)) ([380c6cc](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/380c6cc1708853681347b1f84e63eaa87c86416c))
+* **api:** api update ([#83](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/83)) ([c5e1dcb](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/c5e1dcb3b0fef13de3038ff33c33725e2c8303f8))
+* **api:** enable doc generation ([#84](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/84)) ([8274111](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/8274111318681edd625050456ef0279181e4cde5))
+* **api:** manual updates ([#72](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/72)) ([8eb7edf](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/8eb7edfccf70bbb944fd5aa0a57677657886f558))
+* **api:** manual updates ([#74](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/74)) ([032eff1](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/032eff19b70fdca60d3f8d9577f7de1561066b76))
+* **api:** manual updates ([#75](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/75)) ([5db684f](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/5db684fd1a6bc9c8663e2e0685db1b794a6bea78))
+* **api:** manual updates ([#76](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/76)) ([d6da4c9](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/d6da4c981d5b9828f259f9b16439cc029ca2f915))
+* **api:** manual updates ([#78](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/78)) ([1893abb](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/1893abbc52170e22c447764d22e144bf816cbd86))
+
+
+### Chores
+
+* **internal:** codegen related update ([#82](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/82)) ([de5b1e7](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/de5b1e77aaceec0eb6b442721df4e991304f6799))
+* **internal:** codegen related update ([#86](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/86)) ([1d1e036](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/1d1e036ecbf9ea6fc06ad3e8181c5052884e9647))
+
+## 0.1.0-alpha.1 (2025-03-10)
+
+Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)
+
+### Features
+
+* add doc string to specify what legal terraform values are for enums ([#56](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/56)) ([e0c2d79](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/e0c2d79e36c32a9e9c9ee1a2a04348825e8aa997))
+* **api:** api update ([85c74cd](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/85c74cd6143e91762f53db4468232aefaa827d32))
+* **api:** api update ([d1bac0c](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/d1bac0cff85a825a65dac1dab82cc61e638f174a))
+* **api:** api update ([326a6f5](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/326a6f51a7e2de05021acdea5338aa43a6809e82))
+* **api:** api update ([b98cd84](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/b98cd84e2aab7de6ed954d2d7c0e71643567a8fe))
+* **api:** api update ([1b922d2](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/1b922d26dfeb77220e49cd4b22a1a2123a087129))
+* **api:** api update ([6c7e85b](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/6c7e85b4373bf1115d76fa72a0360b7e8db770a2))
+* **api:** api update ([c8f7c2e](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/c8f7c2e6f89d6397a02d746bc4dc47982517f3a8))
+* **api:** api update ([57085f1](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/57085f13b59aa30827f95909d2b0cad6a545b4f6))
+* **api:** api update ([e065f8a](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/e065f8aa938f78d8df8c9cd209994e85248beacc))
+* **api:** api update ([8c913cc](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/8c913cc87765b4e818e0829c95ede77d791a87f3))
+* **api:** api update ([#1](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/1)) ([5a2aadf](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/5a2aadf386d7242aa1b20d6b83a59241b2454f2a))
+* **api:** api update ([#10](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/10)) ([00a6f90](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/00a6f90a059dd79cf2c39a403015cfa552a05c54))
+* **api:** api update ([#12](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/12)) ([cd87f0b](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/cd87f0be395b5d7b78792c203cffe44463603308))
+* **api:** api update ([#13](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/13)) ([4f02052](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/4f02052f5c77af4a848a9c1bddba2d49b4e9f503))
+* **api:** api update ([#14](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/14)) ([6c589b9](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/6c589b975ba71d9ddc9765cfb35bcf1fd2c6d1be))
+* **api:** api update ([#17](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/17)) ([1a8c5e5](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/1a8c5e5888c0124cac07874e1eb88c60d1adc183))
+* **api:** api update ([#2](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/2)) ([cfb4f2a](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/cfb4f2a101167dc4c273476bbdbe7ad32454092b))
+* **api:** api update ([#20](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/20)) ([ab4225a](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/ab4225a6a8314f40be8b9eee5c74c14a93bbdc28))
+* **api:** api update ([#21](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/21)) ([01f562f](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/01f562f9f1653dd253e71771740d8fd0abfd916e))
+* **api:** api update ([#3](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/3)) ([34103f1](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/34103f1f3a9353dee7566dfcb54a18df628500f5))
+* **api:** api update ([#32](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/32)) ([e27f158](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/e27f15833a742a966c893ba7381f5973efb24a3b))
+* **api:** api update ([#34](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/34)) ([9c59f47](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/9c59f4738b8cfa9d2d37e9dffb936c4d434d5bac))
+* **api:** api update ([#37](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/37)) ([d481deb](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/d481deb3598409f28b4a7a3d29346d45b0a753fc))
+* **api:** api update ([#38](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/38)) ([28f73c1](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/28f73c1f3162d17a541426685177bc5d0ca5b88d))
+* **api:** api update ([#39](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/39)) ([4386cb7](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/4386cb7bbb79b482611720b721f0fda27af14442))
+* **api:** api update ([#4](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/4)) ([5ed2e8c](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/5ed2e8c03d75dd239fe145797d5372ad5ccc3b6c))
+* **api:** api update ([#43](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/43)) ([00dfa77](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/00dfa77468e2735bdb290e222e03e008e6c158b7))
+* **api:** api update ([#44](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/44)) ([664139f](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/664139f822d13286daf6d4e35bcc76bf122a5afb))
+* **api:** api update ([#46](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/46)) ([8b13b5b](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/8b13b5b84a2beb329eb80ff2ddc9023265db6f48))
+* **api:** api update ([#49](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/49)) ([4723c5a](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/4723c5a75db11786cea8cb95e12f39a6815f32cf))
+* **api:** api update ([#5](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/5)) ([b657551](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/b657551b38b587c4459f6a88da70754fa0f11352))
+* **api:** api update ([#6](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/6)) ([c9fcef9](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/c9fcef95830a27d5acb7c0a88f6dfea5077ba151))
+* **api:** api update ([#61](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/61)) ([8dcc651](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/8dcc651f37d86fd346d409b48cb79061554f3efd))
+* **api:** api update ([#62](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/62)) ([90781b6](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/90781b6a1a35b65fb2e46c9d2eb21812a28e70b9))
+* **api:** api update ([#64](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/64)) ([3017d9e](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/3017d9e2633b4109673d50f895b41292890400e5))
+* **api:** api update ([#65](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/65)) ([351a323](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/351a323139f39e4e264880678403fdfd98926502))
+* **api:** api update ([#7](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/7)) ([ba06c9d](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/ba06c9d45561c2a901952283231cae381fb5fe80))
+* **api:** api update ([#8](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/8)) ([739dd01](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/739dd012d9129679565eb3c6ebd707cc6db70bf5))
+* **api:** api update ([#9](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/9)) ([9b29291](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/9b2929142c489528fd91291703d3e58ca770d077))
+* **api:** manual updates ([#22](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/22)) ([c6d953f](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/c6d953f5882b133a93878157d0615d784ea66087))
+* **api:** manual updates ([#31](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/31)) ([d09a9f3](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/d09a9f35bf90aa69952c1572628f6e463519fe61))
+* **api:** manual updates ([#35](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/35)) ([5312d98](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/5312d98a22e91290dd9a3d0b0ea6c3c6f42586ca))
+* **api:** manual updates ([#50](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/50)) ([5eb18fc](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/5eb18fcc2a5d68cd54a613837f4323004f4d2c0b))
+* **api:** manual updates ([#52](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/52)) ([14e8bf3](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/14e8bf30e90e8dba7c00b78d428176ee59a9812a))
+* **api:** manual updates ([#67](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/67)) ([2506d57](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/2506d572120278d2b93d7c159d2c9e360c249943))
+* **api:** manual updates ([#68](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/68)) ([6b54a7a](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/6b54a7af928dd891e0296d96488fbf94dfc15608))
+* **api:** update via SDK Studio ([1750182](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/1750182636ca15bad92c452eac69c65b98ed9e45))
+* **build:** allow for building against private go repos ([#29](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/29)) ([4ee8a62](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/4ee8a62c794cff4668e755d4c6a589779e2a10fd))
+* **docs:** improve readme ([#19](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/19)) ([a513344](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/a513344b40c23c352888f60b6578b0f56a0d136d))
+* support using environment variables as provider attributes ([f5cd506](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/f5cd506918de8cc5a47e0687d4b54b565e4e9d98))
+
+
+### Bug Fixes
+
+* **api:** improve drift detection for resources ([#26](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/26)) ([a8a6797](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/a8a6797a502f80a7d6c5a512d58ea44cfea2569d))
+* **api:** improve drift detection for resources ([#48](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/48)) ([a3eb4af](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/a3eb4af641f18294861109195a530ba44561adf7))
+* **build:** ensure scripts/generate-docs works regardless of PATH ([#16](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/16)) ([584a779](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/584a779082afcf7a7bde8cb6c3e50a31ab3a053d))
+* **build:** improve release process ([#15](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/15)) ([82d79cf](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/82d79cf6dd550f2c9e3e1a0e0969e8f4510ff887))
+* **datasource:** improve configurability of path parameters on data sources ([#45](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/45)) ([96d5ce7](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/96d5ce732a6f28e1373652401a59b0ee9af316c6))
+* do not call path.Base on ContentType ([#41](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/41)) ([605027e](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/605027ea14774913937542ccfeb42cbb6fa10002))
+* **docs:** skip tfplugindocs generation if `generate_docs` is false ([#25](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/25)) ([00ff134](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/00ff134ee8cecb45f61e02d810350bae5cda0a97))
+
+
+### Chores
+
+* casing change in doc string ([#57](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/57)) ([7f1f51d](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/7f1f51d5551e3f6265b06fb3646aa2ed5b55aa92))
+* **internal:** bumps go dependencies ([0b382bd](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/0b382bd0d619f2c9b56711eebacd0f7a7196ad99))
+* **internal:** codegen related update ([52c7920](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/52c79205ddb57620c66b405e3947d617a01691b7))
+* **internal:** codegen related update ([#23](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/23)) ([a3de893](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/a3de8933276859d5cd230d89d5baf960ede8b5d6))
+* **internal:** codegen related update ([#24](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/24)) ([54a2fa6](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/54a2fa69a9a96c0846ea007b767669036083c7a9))
+* **internal:** codegen related update ([#27](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/27)) ([bd81db4](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/bd81db43653ed9531c4a78856e38fffe61cc15b1))
+* **internal:** codegen related update ([#28](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/28)) ([b045b92](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/b045b926300f5552baf068cf921f1f312fd45bd6))
+* **internal:** codegen related update ([#30](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/30)) ([fc77254](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/fc77254e1520006ce40758e59a7ce9b5e4e14d8b))
+* **internal:** codegen related update ([#33](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/33)) ([23762d1](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/23762d1aa4b8121c95e232c6c03f7abfa3709329))
+* **internal:** codegen related update ([#36](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/36)) ([415c1d7](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/415c1d7bd9ff77c1127c7fe643d6ae100d155bd7))
+* **internal:** codegen related update ([#40](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/40)) ([c2170c1](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/c2170c1e8fe6dd399650dba861e3f8dd9c00ec95))
+* **internal:** codegen related update ([#42](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/42)) ([eabc5be](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/eabc5be00e9af79427e86ff71b570cdde62a7e85))
+* **internal:** codegen related update ([#47](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/47)) ([4b6651e](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/4b6651e249749a7dce745189b7d3c82a6bf34d6f))
+* **internal:** codegen related update ([#51](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/51)) ([afddd65](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/afddd65a2b79e23752d9f665386392d9b9e99d41))
+* **internal:** codegen related update ([#53](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/53)) ([f939587](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/f939587130fedd0026ef2c3d78c826b5e88e6807))
+* **internal:** codegen related update ([#54](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/54)) ([17d3239](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/17d32397660d02d553ac25f2c2f5dc93ea52a45b))
+* **internal:** codegen related update ([#55](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/55)) ([7f14f52](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/7f14f52acd65acd5be25d6de289af7d8e2191f7b))
+* **internal:** codegen related update ([#60](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/60)) ([8f07eda](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/8f07eda7aca3874bc1eceada160733f8a53b87fa))
+* **internal:** codegen related update ([#63](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/63)) ([85a60db](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/85a60db611841e1b576517c02b56f0d9b380f010))
+* simplify string literals ([#59](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/59)) ([336fbb1](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/336fbb1f35a7d6502e8899f0a39e7371a6e1d27c))
+* update SDK settings ([db42895](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/db42895e99d0b3ef621bb16b9041d23c2a56beb9))
+* update SDK settings ([#11](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/11)) ([ad145b3](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/ad145b3ab3aded3a2df2c70f60c35dcbdb21e37e))
+* update SDK settings ([#18](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/18)) ([7b0bbaf](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/7b0bbaf49c0e9c25ed0ef91f9ca9c440fd0e91c9))
+
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#58](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/58)) ([6cf5270](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/6cf5270c714f0f941555371c4116ac900633b334))
