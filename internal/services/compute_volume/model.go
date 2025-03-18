@@ -9,12 +9,11 @@ import (
 )
 
 type ComputeVolumeModel struct {
-	VolumeID  types.String      `tfsdk:"volume_id" path:"volume_id,optional"`
+	ID        types.String      `tfsdk:"id" json:"id,computed"`
 	VMID      types.String      `tfsdk:"vm_id" json:"vm_id,required"`
 	Name      types.String      `tfsdk:"name" json:"name,required"`
 	Size      types.Int64       `tfsdk:"size" json:"size,required"`
 	CreatedAt timetypes.RFC3339 `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
-	ID        types.String      `tfsdk:"id" json:"id,computed"`
 	Kind      types.String      `tfsdk:"kind" json:"kind,computed"`
 	Status    types.String      `tfsdk:"status" json:"status,computed"`
 	Type      types.String      `tfsdk:"type" json:"type,computed"`

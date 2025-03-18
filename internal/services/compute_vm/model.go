@@ -10,7 +10,7 @@ import (
 )
 
 type ComputeVMModel struct {
-	VMID            types.String                                            `tfsdk:"vm_id" path:"vm_id,optional"`
+	ID              types.String                                            `tfsdk:"id" json:"id,computed"`
 	OSImageName     types.String                                            `tfsdk:"os_image_name" json:"os_image_name,required"`
 	PublicIPEnabled types.Bool                                              `tfsdk:"public_ip_enabled" json:"public_ip_enabled,required"`
 	Region          types.String                                            `tfsdk:"region" json:"region,required"`
@@ -23,7 +23,6 @@ type ComputeVMModel struct {
 	MemoryConfig    *ComputeVMMemoryConfigModel                             `tfsdk:"memory_config" json:"memory_config,required"`
 	BootVolumeID    types.String                                            `tfsdk:"boot_volume_id" json:"boot_volume_id,computed"`
 	CreatedAt       timetypes.RFC3339                                       `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
-	ID              types.String                                            `tfsdk:"id" json:"id,computed"`
 	PrivateIP       types.String                                            `tfsdk:"private_ip" json:"private_ip,computed"`
 	PublicIP        types.String                                            `tfsdk:"public_ip" json:"public_ip,computed"`
 	Status          types.String                                            `tfsdk:"status" json:"status,computed"`
