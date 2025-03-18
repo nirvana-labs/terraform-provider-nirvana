@@ -20,9 +20,9 @@ var _ resource.ResourceWithConfigValidators = (*ComputeVolumeResource)(nil)
 func ResourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
-			"id": schema.StringAttribute{
-				Computed:      true,
-				PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
+			"volume_id": schema.StringAttribute{
+				Optional:      true,
+				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"vm_id": schema.StringAttribute{
 				Required:      true,
@@ -41,15 +41,15 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Computed:   true,
 				CustomType: timetypes.RFC3339Type{},
 			},
+			"id": schema.StringAttribute{
+				Computed: true,
+			},
 			"kind": schema.StringAttribute{
 				Description: "Volume kind.\nAvailable values: \"boot\", \"data\".",
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive("boot", "data"),
 				},
-			},
-			"resource_id": schema.StringAttribute{
-				Computed: true,
 			},
 			"status": schema.StringAttribute{
 				Description: `Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "failed".`,

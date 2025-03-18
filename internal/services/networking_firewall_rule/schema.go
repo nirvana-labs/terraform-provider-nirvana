@@ -20,12 +20,12 @@ var _ resource.ResourceWithConfigValidators = (*NetworkingFirewallRuleResource)(
 func ResourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
-			"id": schema.StringAttribute{
-				Computed:      true,
-				PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
-			},
 			"vpc_id": schema.StringAttribute{
 				Required:      true,
+				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
+			},
+			"firewall_rule_id": schema.StringAttribute{
+				Optional:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"destination_address": schema.StringAttribute{
@@ -49,19 +49,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Computed:   true,
 				CustomType: timetypes.RFC3339Type{},
 			},
-			"kind": schema.StringAttribute{
-				Description: `Available values: "vm", "volume", "vpc", "firewall_rule".`,
-				Computed:    true,
-				Validators: []validator.String{
-					stringvalidator.OneOfCaseInsensitive(
-						"vm",
-						"volume",
-						"vpc",
-						"firewall_rule",
-					),
-				},
-			},
-			"resource_id": schema.StringAttribute{
+			"id": schema.StringAttribute{
 				Computed: true,
 			},
 			"status": schema.StringAttribute{
@@ -76,17 +64,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						"deleting",
 						"deleted",
 						"failed",
-					),
-				},
-			},
-			"type": schema.StringAttribute{
-				Description: `Available values: "create", "update", "delete".`,
-				Computed:    true,
-				Validators: []validator.String{
-					stringvalidator.OneOfCaseInsensitive(
-						"create",
-						"update",
-						"delete",
 					),
 				},
 			},

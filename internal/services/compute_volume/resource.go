@@ -9,20 +9,17 @@ import (
 	"net/http"
 
 	"github.com/hashicorp/terraform-plugin-framework/resource"
-	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go"
 	"github.com/nirvana-labs/nirvana-go/compute"
 	"github.com/nirvana-labs/nirvana-go/lib"
 	"github.com/nirvana-labs/nirvana-go/option"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/apijson"
-	"github.com/nirvana-labs/terraform-provider-nirvana/internal/importpath"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/logging"
 )
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.ResourceWithConfigure = (*ComputeVolumeResource)(nil)
 var _ resource.ResourceWithModifyPlan = (*ComputeVolumeResource)(nil)
-var _ resource.ResourceWithImportState = (*ComputeVolumeResource)(nil)
 
 func NewResource() resource.Resource {
 	return &ComputeVolumeResource{}
@@ -129,7 +126,7 @@ func (r *ComputeVolumeResource) Update(ctx context.Context, req resource.UpdateR
 	}
 	operation, err := r.client.Compute.Volumes.Update(
 		ctx,
-		data.ID.ValueString(),
+		data.VolumeID.ValueString(),
 		compute.VolumeUpdateParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithMiddleware(logging.Middleware(ctx)),
@@ -175,7 +172,7 @@ func (r *ComputeVolumeResource) Read(ctx context.Context, req resource.ReadReque
 	res := new(http.Response)
 	_, err := r.client.Compute.Volumes.Get(
 		ctx,
-		data.ID.ValueString(),
+		data.VolumeID.ValueString(),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
@@ -209,7 +206,7 @@ func (r *ComputeVolumeResource) Delete(ctx context.Context, req resource.DeleteR
 
 	operation, err := r.client.Compute.Volumes.Delete(
 		ctx,
-		data.ID.ValueString(),
+		data.VolumeID.ValueString(),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
 	if err != nil {
@@ -218,43 +215,6 @@ func (r *ComputeVolumeResource) Delete(ctx context.Context, req resource.DeleteR
 	}
 	if errWaitForOperation := lib.Wait(ctx, r.client, operation.ID); errWaitForOperation != nil {
 		resp.Diagnostics.AddError("failed to wait for operation", errWaitForOperation.Error())
-		return
-	}
-
-	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
-}
-
-func (r *ComputeVolumeResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
-	var data *ComputeVolumeModel = new(ComputeVolumeModel)
-
-	path := ""
-	diags := importpath.ParseImportID(
-		req.ID,
-		"<volume_id>",
-		&path,
-	)
-	resp.Diagnostics.Append(diags...)
-	if resp.Diagnostics.HasError() {
-		return
-	}
-
-	data.ID = types.StringValue(path)
-
-	res := new(http.Response)
-	_, err := r.client.Compute.Volumes.Get(
-		ctx,
-		path,
-		option.WithResponseBodyInto(&res),
-		option.WithMiddleware(logging.Middleware(ctx)),
-	)
-	if err != nil {
-		resp.Diagnostics.AddError("failed to make http request", err.Error())
-		return
-	}
-	bytes, _ := io.ReadAll(res.Body)
-	err = apijson.Unmarshal(bytes, &data)
-	if err != nil {
-		resp.Diagnostics.AddError("failed to deserialize http request", err.Error())
 		return
 	}
 
