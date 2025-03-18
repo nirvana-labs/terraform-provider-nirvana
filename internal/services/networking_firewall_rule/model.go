@@ -9,18 +9,16 @@ import (
 )
 
 type NetworkingFirewallRuleModel struct {
-	ID                 types.String      `tfsdk:"id" json:"id,computed"`
 	VPCID              types.String      `tfsdk:"vpc_id" path:"vpc_id,required"`
+	FirewallRuleID     types.String      `tfsdk:"firewall_rule_id" path:"firewall_rule_id,optional"`
 	DestinationAddress types.String      `tfsdk:"destination_address" json:"destination_address,required"`
 	Name               types.String      `tfsdk:"name" json:"name,required"`
 	Protocol           types.String      `tfsdk:"protocol" json:"protocol,required"`
 	SourceAddress      types.String      `tfsdk:"source_address" json:"source_address,required"`
 	DestinationPorts   *[]types.String   `tfsdk:"destination_ports" json:"destination_ports,required"`
 	CreatedAt          timetypes.RFC3339 `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
-	Kind               types.String      `tfsdk:"kind" json:"kind,computed"`
-	ResourceID         types.String      `tfsdk:"resource_id" json:"resource_id,computed"`
+	ID                 types.String      `tfsdk:"id" json:"id,computed"`
 	Status             types.String      `tfsdk:"status" json:"status,computed"`
-	Type               types.String      `tfsdk:"type" json:"type,computed"`
 	UpdatedAt          timetypes.RFC3339 `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
 }
 

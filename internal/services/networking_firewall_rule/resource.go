@@ -9,19 +9,16 @@ import (
 	"net/http"
 
 	"github.com/hashicorp/terraform-plugin-framework/resource"
-	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go"
 	"github.com/nirvana-labs/nirvana-go/networking"
 	"github.com/nirvana-labs/nirvana-go/option"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/apijson"
-	"github.com/nirvana-labs/terraform-provider-nirvana/internal/importpath"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/logging"
 )
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.ResourceWithConfigure = (*NetworkingFirewallRuleResource)(nil)
 var _ resource.ResourceWithModifyPlan = (*NetworkingFirewallRuleResource)(nil)
-var _ resource.ResourceWithImportState = (*NetworkingFirewallRuleResource)(nil)
 
 func NewResource() resource.Resource {
 	return &NetworkingFirewallRuleResource{}
@@ -118,7 +115,7 @@ func (r *NetworkingFirewallRuleResource) Update(ctx context.Context, req resourc
 	_, err = r.client.Networking.FirewallRules.Update(
 		ctx,
 		data.VPCID.ValueString(),
-		data.ID.ValueString(),
+		data.FirewallRuleID.ValueString(),
 		networking.FirewallRuleUpdateParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
@@ -151,7 +148,7 @@ func (r *NetworkingFirewallRuleResource) Read(ctx context.Context, req resource.
 	_, err := r.client.Networking.FirewallRules.Get(
 		ctx,
 		data.VPCID.ValueString(),
-		data.ID.ValueString(),
+		data.FirewallRuleID.ValueString(),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
@@ -186,52 +183,11 @@ func (r *NetworkingFirewallRuleResource) Delete(ctx context.Context, req resourc
 	_, err := r.client.Networking.FirewallRules.Delete(
 		ctx,
 		data.VPCID.ValueString(),
-		data.ID.ValueString(),
+		data.FirewallRuleID.ValueString(),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
 	if err != nil {
 		resp.Diagnostics.AddError("failed to make http request", err.Error())
-		return
-	}
-
-	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
-}
-
-func (r *NetworkingFirewallRuleResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
-	var data *NetworkingFirewallRuleModel = new(NetworkingFirewallRuleModel)
-
-	path_vpc_id := ""
-	path_firewall_rule_id := ""
-	diags := importpath.ParseImportID(
-		req.ID,
-		"<vpc_id>/<firewall_rule_id>",
-		&path_vpc_id,
-		&path_firewall_rule_id,
-	)
-	resp.Diagnostics.Append(diags...)
-	if resp.Diagnostics.HasError() {
-		return
-	}
-
-	data.VPCID = types.StringValue(path_vpc_id)
-	data.ID = types.StringValue(path_firewall_rule_id)
-
-	res := new(http.Response)
-	_, err := r.client.Networking.FirewallRules.Get(
-		ctx,
-		path_vpc_id,
-		path_firewall_rule_id,
-		option.WithResponseBodyInto(&res),
-		option.WithMiddleware(logging.Middleware(ctx)),
-	)
-	if err != nil {
-		resp.Diagnostics.AddError("failed to make http request", err.Error())
-		return
-	}
-	bytes, _ := io.ReadAll(res.Body)
-	err = apijson.Unmarshal(bytes, &data)
-	if err != nil {
-		resp.Diagnostics.AddError("failed to deserialize http request", err.Error())
 		return
 	}
 
