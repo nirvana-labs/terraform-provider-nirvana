@@ -20,12 +20,12 @@ var _ resource.ResourceWithConfigValidators = (*NetworkingFirewallRuleResource)(
 func ResourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
+			"id": schema.StringAttribute{
+				Computed:      true,
+				PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
+			},
 			"vpc_id": schema.StringAttribute{
 				Required:      true,
-				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
-			},
-			"firewall_rule_id": schema.StringAttribute{
-				Optional:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"destination_address": schema.StringAttribute{
@@ -48,9 +48,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			"created_at": schema.StringAttribute{
 				Computed:   true,
 				CustomType: timetypes.RFC3339Type{},
-			},
-			"id": schema.StringAttribute{
-				Computed: true,
 			},
 			"status": schema.StringAttribute{
 				Description: `Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "failed".`,
