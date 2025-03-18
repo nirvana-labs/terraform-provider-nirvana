@@ -15,10 +15,7 @@ type NetworkingVPCModel struct {
 	Name            types.String                                       `tfsdk:"name" json:"name,required"`
 	SubnetName      types.String                                       `tfsdk:"subnet_name" json:"subnet_name,required"`
 	CreatedAt       timetypes.RFC3339                                  `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
-	Kind            types.String                                       `tfsdk:"kind" json:"kind,computed"`
-	ResourceID      types.String                                       `tfsdk:"resource_id" json:"resource_id,computed"`
 	Status          types.String                                       `tfsdk:"status" json:"status,computed"`
-	Type            types.String                                       `tfsdk:"type" json:"type,computed"`
 	UpdatedAt       timetypes.RFC3339                                  `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
 	FirewallRuleIDs customfield.List[types.String]                     `tfsdk:"firewall_rule_ids" json:"firewall_rule_ids,computed"`
 	Subnet          customfield.NestedObject[NetworkingVPCSubnetModel] `tfsdk:"subnet" json:"subnet,computed"`

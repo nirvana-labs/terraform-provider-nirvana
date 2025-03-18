@@ -29,10 +29,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Computed:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
 			},
-			"name": schema.StringAttribute{
-				Required:      true,
-				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
-			},
 			"os_image_name": schema.StringAttribute{
 				Required:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
@@ -107,6 +103,9 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 				PlanModifiers: []planmodifier.List{listplanmodifier.RequiresReplace()},
 			},
+			"name": schema.StringAttribute{
+				Required: true,
+			},
 			"cpu_config": schema.SingleNestedAttribute{
 				Description: "CPU configuration details.",
 				Required:    true,
@@ -140,25 +139,10 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Computed:   true,
 				CustomType: timetypes.RFC3339Type{},
 			},
-			"kind": schema.StringAttribute{
-				Description: `Available values: "vm", "volume", "vpc", "firewall_rule".`,
-				Computed:    true,
-				Validators: []validator.String{
-					stringvalidator.OneOfCaseInsensitive(
-						"vm",
-						"volume",
-						"vpc",
-						"firewall_rule",
-					),
-				},
-			},
 			"private_ip": schema.StringAttribute{
 				Computed: true,
 			},
 			"public_ip": schema.StringAttribute{
-				Computed: true,
-			},
-			"resource_id": schema.StringAttribute{
 				Computed: true,
 			},
 			"status": schema.StringAttribute{
@@ -173,17 +157,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						"deleting",
 						"deleted",
 						"failed",
-					),
-				},
-			},
-			"type": schema.StringAttribute{
-				Description: `Available values: "create", "update", "delete".`,
-				Computed:    true,
-				Validators: []validator.String{
-					stringvalidator.OneOfCaseInsensitive(
-						"create",
-						"update",
-						"delete",
 					),
 				},
 			},

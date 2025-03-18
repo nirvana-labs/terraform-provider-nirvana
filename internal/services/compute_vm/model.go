@@ -11,7 +11,6 @@ import (
 
 type ComputeVMModel struct {
 	ID              types.String                                            `tfsdk:"id" json:"id,computed"`
-	Name            types.String                                            `tfsdk:"name" json:"name,required"`
 	OSImageName     types.String                                            `tfsdk:"os_image_name" json:"os_image_name,required"`
 	PublicIPEnabled types.Bool                                              `tfsdk:"public_ip_enabled" json:"public_ip_enabled,required"`
 	Region          types.String                                            `tfsdk:"region" json:"region,required"`
@@ -19,16 +18,14 @@ type ComputeVMModel struct {
 	BootVolume      *ComputeVMBootVolumeModel                               `tfsdk:"boot_volume" json:"boot_volume,required"`
 	SSHKey          *ComputeVMSSHKeyModel                                   `tfsdk:"ssh_key" json:"ssh_key,required"`
 	DataVolumes     customfield.NestedObjectList[ComputeVMDataVolumesModel] `tfsdk:"data_volumes" json:"data_volumes,computed_optional"`
+	Name            types.String                                            `tfsdk:"name" json:"name,required"`
 	CPUConfig       *ComputeVMCPUConfigModel                                `tfsdk:"cpu_config" json:"cpu_config,required"`
 	MemoryConfig    *ComputeVMMemoryConfigModel                             `tfsdk:"memory_config" json:"memory_config,required"`
 	BootVolumeID    types.String                                            `tfsdk:"boot_volume_id" json:"boot_volume_id,computed"`
 	CreatedAt       timetypes.RFC3339                                       `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
-	Kind            types.String                                            `tfsdk:"kind" json:"kind,computed"`
 	PrivateIP       types.String                                            `tfsdk:"private_ip" json:"private_ip,computed"`
 	PublicIP        types.String                                            `tfsdk:"public_ip" json:"public_ip,computed"`
-	ResourceID      types.String                                            `tfsdk:"resource_id" json:"resource_id,computed"`
 	Status          types.String                                            `tfsdk:"status" json:"status,computed"`
-	Type            types.String                                            `tfsdk:"type" json:"type,computed"`
 	UpdatedAt       timetypes.RFC3339                                       `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
 	VPCID           types.String                                            `tfsdk:"vpc_id" json:"vpc_id,computed"`
 	DataVolumeIDs   customfield.List[types.String]                          `tfsdk:"data_volume_ids" json:"data_volume_ids,computed"`

@@ -48,9 +48,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 					stringvalidator.OneOfCaseInsensitive("boot", "data"),
 				},
 			},
-			"resource_id": schema.StringAttribute{
-				Computed: true,
-			},
 			"status": schema.StringAttribute{
 				Description: `Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "failed".`,
 				Computed:    true,

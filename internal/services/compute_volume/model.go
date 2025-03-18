@@ -9,17 +9,16 @@ import (
 )
 
 type ComputeVolumeModel struct {
-	ID         types.String      `tfsdk:"id" json:"id,computed"`
-	VMID       types.String      `tfsdk:"vm_id" json:"vm_id,required"`
-	Name       types.String      `tfsdk:"name" json:"name,required"`
-	Size       types.Int64       `tfsdk:"size" json:"size,required"`
-	CreatedAt  timetypes.RFC3339 `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
-	Kind       types.String      `tfsdk:"kind" json:"kind,computed"`
-	ResourceID types.String      `tfsdk:"resource_id" json:"resource_id,computed"`
-	Status     types.String      `tfsdk:"status" json:"status,computed"`
-	Type       types.String      `tfsdk:"type" json:"type,computed"`
-	UpdatedAt  timetypes.RFC3339 `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
-	VMName     types.String      `tfsdk:"vm_name" json:"vm_name,computed"`
+	ID        types.String      `tfsdk:"id" json:"id,computed"`
+	VMID      types.String      `tfsdk:"vm_id" json:"vm_id,required"`
+	Name      types.String      `tfsdk:"name" json:"name,required"`
+	Size      types.Int64       `tfsdk:"size" json:"size,required"`
+	CreatedAt timetypes.RFC3339 `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
+	Kind      types.String      `tfsdk:"kind" json:"kind,computed"`
+	Status    types.String      `tfsdk:"status" json:"status,computed"`
+	Type      types.String      `tfsdk:"type" json:"type,computed"`
+	UpdatedAt timetypes.RFC3339 `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
+	VMName    types.String      `tfsdk:"vm_name" json:"vm_name,computed"`
 }
 
 func (m ComputeVolumeModel) MarshalJSON() (data []byte, err error) {

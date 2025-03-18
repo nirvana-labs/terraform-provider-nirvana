@@ -55,21 +55,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Computed:   true,
 				CustomType: timetypes.RFC3339Type{},
 			},
-			"kind": schema.StringAttribute{
-				Description: `Available values: "vm", "volume", "vpc", "firewall_rule".`,
-				Computed:    true,
-				Validators: []validator.String{
-					stringvalidator.OneOfCaseInsensitive(
-						"vm",
-						"volume",
-						"vpc",
-						"firewall_rule",
-					),
-				},
-			},
-			"resource_id": schema.StringAttribute{
-				Computed: true,
-			},
 			"status": schema.StringAttribute{
 				Description: `Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "failed".`,
 				Computed:    true,
@@ -82,17 +67,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						"deleting",
 						"deleted",
 						"failed",
-					),
-				},
-			},
-			"type": schema.StringAttribute{
-				Description: `Available values: "create", "update", "delete".`,
-				Computed:    true,
-				Validators: []validator.String{
-					stringvalidator.OneOfCaseInsensitive(
-						"create",
-						"update",
-						"delete",
 					),
 				},
 			},
