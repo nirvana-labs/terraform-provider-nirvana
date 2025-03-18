@@ -25,9 +25,9 @@ var _ resource.ResourceWithConfigValidators = (*ComputeVMResource)(nil)
 func ResourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
-			"vm_id": schema.StringAttribute{
-				Optional:      true,
-				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
+			"id": schema.StringAttribute{
+				Computed:      true,
+				PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
 			},
 			"os_image_name": schema.StringAttribute{
 				Required:      true,
@@ -138,9 +138,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			"created_at": schema.StringAttribute{
 				Computed:   true,
 				CustomType: timetypes.RFC3339Type{},
-			},
-			"id": schema.StringAttribute{
-				Computed: true,
 			},
 			"private_ip": schema.StringAttribute{
 				Computed: true,
