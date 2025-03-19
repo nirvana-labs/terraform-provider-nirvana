@@ -24,7 +24,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
     size = 2
   }
   name = "my-vm"
-  os_image_name = "noble-2024-12-06"
+  os_image_name = "noble-2025-03-04"
   public_ip_enabled = true
   region = "us-sea-1"
   ssh_key = {
@@ -32,6 +32,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
   }
   subnet_id = "123e4567-e89b-12d3-a456-426614174000"
   data_volumes = [{
+    name = "my-data-volume"
     size = 100
   }]
 }
@@ -48,7 +49,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
 - `name` (String)
 - `os_image_name` (String)
 - `public_ip_enabled` (Boolean)
-- `region` (String) Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-lon-1", "eu-ams-1", "eu-frk-1", "ap-mum-1", "ap-sin-1", "ap-tyo-1".
+- `region` (String) Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-lon-1", "eu-ams-1", "eu-frk-1", "ap-mum-1", "ap-sin-1", "ap-seo-1", "ap-tyo-1".
 - `ssh_key` (Attributes) SSH key details. (see [below for nested schema](#nestedatt--ssh_key))
 - `subnet_id` (String)
 
@@ -62,12 +63,9 @@ resource "nirvana_compute_vm" "example_compute_vm" {
 - `created_at` (String)
 - `data_volume_ids` (List of String)
 - `id` (String) The ID of this resource.
-- `kind` (String) Available values: "vm", "volume", "vpc", "firewall_rule".
 - `private_ip` (String)
 - `public_ip` (String)
-- `resource_id` (String)
-- `status` (String) Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "failed".
-- `type` (String) Available values: "create", "update", "delete".
+- `status` (String) Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `updated_at` (String)
 - `vpc_id` (String)
 
@@ -108,6 +106,7 @@ Required:
 
 Required:
 
+- `name` (String)
 - `size` (Number)
 
 ## Import
