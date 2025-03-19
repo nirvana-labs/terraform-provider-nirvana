@@ -39,10 +39,7 @@ resource "nirvana_networking_firewall_rule" "example_networking_firewall_rule" {
 
 - `created_at` (String)
 - `id` (String) The ID of this resource.
-- `kind` (String) Available values: "vm", "volume", "vpc", "firewall_rule".
-- `resource_id` (String)
-- `status` (String) Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "failed".
-- `type` (String) Available values: "create", "update", "delete".
+- `status` (String) Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `updated_at` (String)
 
 ## Import

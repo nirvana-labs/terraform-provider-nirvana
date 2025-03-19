@@ -14,6 +14,7 @@ description: |-
 
 ```terraform
 resource "nirvana_compute_volume" "example_compute_volume" {
+  name = "my-data-volume"
   size = 100
   vm_id = "vm_id"
 }
@@ -24,6 +25,7 @@ resource "nirvana_compute_volume" "example_compute_volume" {
 
 ### Required
 
+- `name` (String)
 - `size` (Number)
 - `vm_id` (String)
 
@@ -33,12 +35,11 @@ resource "nirvana_compute_volume" "example_compute_volume" {
 - `id` (String) The ID of this resource.
 - `kind` (String) Volume kind.
 Available values: "boot", "data".
-- `name` (String)
-- `resource_id` (String)
-- `status` (String) Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "failed".
+- `status` (String) Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `type` (String) Storage type.
 Available values: "nvme".
 - `updated_at` (String)
+- `vm_name` (String)
 
 ## Import
 
