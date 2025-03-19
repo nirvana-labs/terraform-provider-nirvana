@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.1.0-alpha.11 (2025-03-19)
+
+Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
+
+### Features
+
+* **api:** api update ([#115](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/115)) ([393aa9f](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/393aa9f552c7c036426f77199d9a84f8cfa499c8))
+* **api:** api update ([#117](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/117)) ([fd7b63c](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/fd7b63c0604de24119e08c2f8094f8a11e57560b))
+* handle responses that differ from request shape ([#114](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/114)) ([4868e39](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/4868e399d2bcdc26a8d924f093eb5e2449fd8adc))
+
+
+### Bug Fixes
+
+* **docs:** generate docs by default ([#116](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/116)) ([2b65a60](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/2b65a60aef7e8b83329641f3a91694508857401d))
+
+
+### Chores
+
+* **internal:** version bump ([#112](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/112)) ([dd2a80e](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/dd2a80edf3566b06be72cc20c4ac4539916ce52d))
+
 ## 0.1.0-alpha.10 (2025-03-18)
 
 Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)

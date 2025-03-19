@@ -10,7 +10,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
@@ -32,10 +31,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			"os_image_name": schema.StringAttribute{
 				Required:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
-			},
-			"public_ip_enabled": schema.BoolAttribute{
-				Required:      true,
-				PlanModifiers: []planmodifier.Bool{boolplanmodifier.RequiresReplace()},
 			},
 			"region": schema.StringAttribute{
 				Description: `Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-lon-1", "eu-ams-1", "eu-frk-1", "ap-mum-1", "ap-sin-1", "ap-seo-1", "ap-tyo-1".`,
@@ -106,6 +101,9 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			"name": schema.StringAttribute{
 				Required: true,
 			},
+			"public_ip_enabled": schema.BoolAttribute{
+				Required: true,
+			},
 			"cpu_config": schema.SingleNestedAttribute{
 				Description: "CPU configuration details.",
 				Required:    true,
@@ -146,7 +144,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Computed: true,
 			},
 			"status": schema.StringAttribute{
-				Description: `Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "failed".`,
+				Description: `Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".`,
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
@@ -156,7 +154,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						"ready",
 						"deleting",
 						"deleted",
-						"failed",
+						"error",
 					),
 				},
 			},

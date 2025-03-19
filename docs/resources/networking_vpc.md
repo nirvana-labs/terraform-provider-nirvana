@@ -26,7 +26,7 @@ resource "nirvana_networking_vpc" "example_networking_vpc" {
 ### Required
 
 - `name` (String)
-- `region` (String) Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-lon-1", "eu-ams-1", "eu-frk-1", "ap-mum-1", "ap-sin-1", "ap-tyo-1".
+- `region` (String) Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-lon-1", "eu-ams-1", "eu-frk-1", "ap-mum-1", "ap-sin-1", "ap-seo-1", "ap-tyo-1".
 - `subnet_name` (String)
 
 ### Read-Only
@@ -34,11 +34,8 @@ resource "nirvana_networking_vpc" "example_networking_vpc" {
 - `created_at` (String)
 - `firewall_rule_ids` (List of String)
 - `id` (String) The ID of this resource.
-- `kind` (String) Available values: "vm", "volume", "vpc", "firewall_rule".
-- `resource_id` (String)
-- `status` (String) Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "failed".
+- `status` (String) Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `subnet` (Attributes) Subnet details. (see [below for nested schema](#nestedatt--subnet))
-- `type` (String) Available values: "create", "update", "delete".
 - `updated_at` (String)
 
 <a id="nestedatt--subnet"></a>
