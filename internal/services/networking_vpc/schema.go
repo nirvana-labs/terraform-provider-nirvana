@@ -56,7 +56,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				CustomType: timetypes.RFC3339Type{},
 			},
 			"status": schema.StringAttribute{
-				Description: `Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "failed".`,
+				Description: `Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".`,
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
@@ -66,7 +66,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						"ready",
 						"deleting",
 						"deleted",
-						"failed",
+						"error",
 					),
 				},
 			},
