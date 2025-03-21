@@ -24,7 +24,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
     size = 2
   }
   name = "my-vm"
-  os_image_name = "noble-2025-03-04"
+  os_image_name = "ubuntu-noble-2025-03-04"
   public_ip_enabled = true
   region = "us-sea-1"
   ssh_key = {
@@ -68,6 +68,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
 - `status` (String) Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `updated_at` (String)
 - `vpc_id` (String)
+- `vpc_name` (String)
 
 <a id="nestedatt--boot_volume"></a>
 ### Nested Schema for `boot_volume`
