@@ -27,7 +27,7 @@ terraform {
 
 # Initialize the provider
 provider "nirvana" {
-  auth_token = "My Auth Token" # or set NIRVANA_LABS_AUTH_TOKEN env variable
+  api_key = "My API Key" # or set NIRVANA_LABS_API_KEY env variable
 }
 
 # Configure a resource
@@ -42,7 +42,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
     size = 2
   }
   name = "my-vm"
-  os_image_name = "noble-2025-03-04"
+  os_image_name = "ubuntu-noble-2025-03-04"
   public_ip_enabled = true
   region = "us-sea-1"
   ssh_key = {
@@ -68,9 +68,9 @@ refer to the full documentation on [the Terraform Registry](https://registry.ter
 When you initialize the provider, the following options are supported. It is recommended to use environment variables for sensitive values like access tokens.
 If an environment variable is provided, then the option does not need to be set in the terraform source.
 
-| Property   | Environment variable      | Required | Default value |
-| ---------- | ------------------------- | -------- | ------------- |
-| auth_token | `NIRVANA_LABS_AUTH_TOKEN` | true     | —             |
+| Property | Environment variable   | Required | Default value |
+| -------- | ---------------------- | -------- | ------------- |
+| api_key  | `NIRVANA_LABS_API_KEY` | true     | —             |
 
 ## Semantic versioning
 

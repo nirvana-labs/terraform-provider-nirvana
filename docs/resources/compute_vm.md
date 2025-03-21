@@ -24,7 +24,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
     size = 2
   }
   name = "my-vm"
-  os_image_name = "noble-2025-03-04"
+  os_image_name = "ubuntu-noble-2025-03-04"
   public_ip_enabled = true
   region = "us-sea-1"
   ssh_key = {

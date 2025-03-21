@@ -14,7 +14,7 @@ description: |-
 
 ```terraform
 provider "nirvana" {
-  auth_token = "My Auth Token"
+  api_key = "My API Key"
 }
 ```
 
@@ -23,7 +23,7 @@ provider "nirvana" {
 
 ### Required
 
-- `auth_token` (String)
+- `api_key` (String)
 
 ### Optional
 
