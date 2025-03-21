@@ -68,6 +68,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
 - `status` (String) Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `updated_at` (String)
 - `vpc_id` (String)
+- `vpc_name` (String)
 
 <a id="nestedatt--boot_volume"></a>
 ### Nested Schema for `boot_volume`
