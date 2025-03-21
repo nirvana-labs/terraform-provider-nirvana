@@ -31,8 +31,8 @@ type NirvanaProvider struct {
 
 // NirvanaProviderModel describes the provider data model.
 type NirvanaProviderModel struct {
-	BaseURL   types.String `tfsdk:"base_url" json:"base_url,optional"`
-	AuthToken types.String `tfsdk:"auth_token" json:"auth_token,required"`
+	BaseURL types.String `tfsdk:"base_url" json:"base_url,optional"`
+	APIKey  types.String `tfsdk:"api_key" json:"api_key,required"`
 }
 
 func (p *NirvanaProvider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
@@ -47,7 +47,7 @@ func ProviderSchema(ctx context.Context) schema.Schema {
 				Description: "Set the base url that the provider connects to. This can be used for testing in other environments.",
 				Optional:    true,
 			},
-			"auth_token": schema.StringAttribute{
+			"api_key": schema.StringAttribute{
 				Required: true,
 			},
 		},
@@ -69,11 +69,11 @@ func (p *NirvanaProvider) Configure(ctx context.Context, req provider.ConfigureR
 	if !data.BaseURL.IsNull() {
 		opts = append(opts, option.WithBaseURL(data.BaseURL.ValueString()))
 	}
-	if o, ok := os.LookupEnv("NIRVANA_LABS_AUTH_TOKEN"); ok {
-		opts = append(opts, option.WithAuthToken(o))
+	if o, ok := os.LookupEnv("NIRVANA_LABS_API_KEY"); ok {
+		opts = append(opts, option.WithAPIKey(o))
 	}
-	if !data.AuthToken.IsNull() {
-		opts = append(opts, option.WithAuthToken(data.AuthToken.ValueString()))
+	if !data.APIKey.IsNull() {
+		opts = append(opts, option.WithAPIKey(data.APIKey.ValueString()))
 	}
 
 	client := nirvana.NewClient(
