@@ -154,7 +154,7 @@ func (r *ComputeVMResource) Update(ctx context.Context, req resource.UpdateReque
 		return
 	}
 	bytes, _ := io.ReadAll(res.Body)
-	err = apijson.UnmarshalComputed(bytes, &data)
+	err = apijson.Unmarshal(bytes, &data)
 	if err != nil {
 		resp.Diagnostics.AddError("failed to deserialize http request", err.Error())
 		return
@@ -165,8 +165,11 @@ func (r *ComputeVMResource) Update(ctx context.Context, req resource.UpdateReque
 
 func (r *ComputeVMResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
 	var data *ComputeVMModel
+	var oldState *ComputeVMModel // Store original state
 
+	// Get the current state
 	resp.Diagnostics.Append(req.State.Get(ctx, &data)...)
+	resp.Diagnostics.Append(req.State.Get(ctx, &oldState)...) // Save copy of original state
 
 	if resp.Diagnostics.HasError() {
 		return
@@ -194,6 +197,33 @@ func (r *ComputeVMResource) Read(ctx context.Context, req resource.ReadRequest, 
 		resp.Diagnostics.AddError("failed to deserialize http request", err.Error())
 		return
 	}
+
+	// Get Boot Volume - we'll always have a boot volume ID
+	bootVolumeRes := new(http.Response)
+	_, err = r.client.Compute.Volumes.Get(
+		ctx,
+		data.BootVolumeID.ValueString(),
+		option.WithResponseBodyInto(&bootVolumeRes),
+		option.WithMiddleware(logging.Middleware(ctx)),
+	)
+	if err != nil {
+		resp.Diagnostics.AddError("failed to get boot volume", err.Error())
+	} else {
+		bootVolumeBytes, _ := io.ReadAll(bootVolumeRes.Body)
+		var bootVolume compute.Volume
+		if jsonErr := apijson.Unmarshal(bootVolumeBytes, &bootVolume); jsonErr != nil {
+			resp.Diagnostics.AddError("failed to deserialize boot volume", jsonErr.Error())
+		} else {
+			data.BootVolume.Size = types.Int64Value(bootVolume.Size)
+		}
+	}
+
+	// Preserve values that aren't returned by the API
+	data.OSImageName = oldState.OSImageName
+	data.SSHKey.PublicKey = oldState.SSHKey.PublicKey
+
+	// If the public IP is not set, set the public IP enabled to false
+	data.PublicIPEnabled = types.BoolValue(data.PublicIP.ValueString() != "")
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
