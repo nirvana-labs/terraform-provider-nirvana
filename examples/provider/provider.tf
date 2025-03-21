@@ -1,3 +1,3 @@
 provider "nirvana" {
-  auth_token = "My Auth Token"
+  api_key = "My API Key"
 }
