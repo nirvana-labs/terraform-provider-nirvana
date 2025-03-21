@@ -6,29 +6,27 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework-timetypes/timetypes"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/apijson"
-	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
 type ComputeVMModel struct {
-	ID              types.String                   `tfsdk:"id" json:"id,computed"`
-	OSImageName     types.String                   `tfsdk:"os_image_name" json:"os_image_name,required"`
-	Region          types.String                   `tfsdk:"region" json:"region,required"`
-	SubnetID        types.String                   `tfsdk:"subnet_id" json:"subnet_id,required"`
-	BootVolume      *ComputeVMBootVolumeModel      `tfsdk:"boot_volume" json:"boot_volume,required"`
-	SSHKey          *ComputeVMSSHKeyModel          `tfsdk:"ssh_key" json:"ssh_key,required"`
-	Name            types.String                   `tfsdk:"name" json:"name,required"`
-	PublicIPEnabled types.Bool                     `tfsdk:"public_ip_enabled" json:"public_ip_enabled,required"`
-	CPUConfig       *ComputeVMCPUConfigModel       `tfsdk:"cpu_config" json:"cpu_config,required"`
-	MemoryConfig    *ComputeVMMemoryConfigModel    `tfsdk:"memory_config" json:"memory_config,required"`
-	BootVolumeID    types.String                   `tfsdk:"boot_volume_id" json:"boot_volume_id,computed"`
-	CreatedAt       timetypes.RFC3339              `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
-	PrivateIP       types.String                   `tfsdk:"private_ip" json:"private_ip,computed"`
-	PublicIP        types.String                   `tfsdk:"public_ip" json:"public_ip,computed"`
-	Status          types.String                   `tfsdk:"status" json:"status,computed"`
-	UpdatedAt       timetypes.RFC3339              `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
-	VPCID           types.String                   `tfsdk:"vpc_id" json:"vpc_id,computed"`
-	VPCName         types.String                   `tfsdk:"vpc_name" json:"vpc_name,computed"`
-	DataVolumeIDs   customfield.List[types.String] `tfsdk:"data_volume_ids" json:"data_volume_ids,computed"`
+	ID              types.String                `tfsdk:"id" json:"id,computed"`
+	OSImageName     types.String                `tfsdk:"os_image_name" json:"os_image_name,required"`
+	Region          types.String                `tfsdk:"region" json:"region,required"`
+	SubnetID        types.String                `tfsdk:"subnet_id" json:"subnet_id,required"`
+	BootVolume      *ComputeVMBootVolumeModel   `tfsdk:"boot_volume" json:"boot_volume,required"`
+	SSHKey          *ComputeVMSSHKeyModel       `tfsdk:"ssh_key" json:"ssh_key,required"`
+	Name            types.String                `tfsdk:"name" json:"name,required"`
+	PublicIPEnabled types.Bool                  `tfsdk:"public_ip_enabled" json:"public_ip_enabled,required"`
+	CPUConfig       *ComputeVMCPUConfigModel    `tfsdk:"cpu_config" json:"cpu_config,required"`
+	MemoryConfig    *ComputeVMMemoryConfigModel `tfsdk:"memory_config" json:"memory_config,required"`
+	BootVolumeID    types.String                `tfsdk:"boot_volume_id" json:"boot_volume_id,computed"`
+	CreatedAt       timetypes.RFC3339           `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
+	PrivateIP       types.String                `tfsdk:"private_ip" json:"private_ip,computed"`
+	PublicIP        types.String                `tfsdk:"public_ip" json:"public_ip,computed"`
+	Status          types.String                `tfsdk:"status" json:"status,computed"`
+	UpdatedAt       timetypes.RFC3339           `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
+	VPCID           types.String                `tfsdk:"vpc_id" json:"vpc_id,computed"`
+	VPCName         types.String                `tfsdk:"vpc_name" json:"vpc_name,computed"`
 }
 
 func (m ComputeVMModel) MarshalJSON() (data []byte, err error) {
