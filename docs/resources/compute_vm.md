@@ -31,10 +31,6 @@ resource "nirvana_compute_vm" "example_compute_vm" {
     public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDJiJabIUkXw7VrQG+yBohvhEsyoKEYvejZc4RFzV5maybqQei1punVsoe4r6gJttMM1Gr3cNr3OfepikCQAhAchw5ww94ZWqDsDYIqMrlDFbqhGTXDNzFAjeVIKptCOlz9k+7aM69YtLXJ6gFUCq1fbK9PjY+AK28UpMfKYUcyHQ== noname"
   }
   subnet_id = "123e4567-e89b-12d3-a456-426614174000"
-  data_volumes = [{
-    name = "my-data-volume"
-    size = 100
-  }]
 }
 ```
 
@@ -52,10 +48,6 @@ resource "nirvana_compute_vm" "example_compute_vm" {
 - `region` (String) Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-lon-1", "eu-ams-1", "eu-frk-1", "ap-mum-1", "ap-sin-1", "ap-seo-1", "ap-tyo-1".
 - `ssh_key` (Attributes) SSH key details. (see [below for nested schema](#nestedatt--ssh_key))
 - `subnet_id` (String)
-
-### Optional
-
-- `data_volumes` (Attributes List) (see [below for nested schema](#nestedatt--data_volumes))
 
 ### Read-Only
 
@@ -100,15 +92,6 @@ Required:
 Required:
 
 - `public_key` (String)
-
-
-<a id="nestedatt--data_volumes"></a>
-### Nested Schema for `data_volumes`
-
-Required:
-
-- `name` (String)
-- `size` (Number)
 
 ## Import
 
