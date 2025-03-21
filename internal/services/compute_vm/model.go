@@ -28,6 +28,7 @@ type ComputeVMModel struct {
 	Status          types.String                                            `tfsdk:"status" json:"status,computed"`
 	UpdatedAt       timetypes.RFC3339                                       `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
 	VPCID           types.String                                            `tfsdk:"vpc_id" json:"vpc_id,computed"`
+	VPCName         types.String                                            `tfsdk:"vpc_name" json:"vpc_name,computed"`
 	DataVolumeIDs   customfield.List[types.String]                          `tfsdk:"data_volume_ids" json:"data_volume_ids,computed"`
 }
 
