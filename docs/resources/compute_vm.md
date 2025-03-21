@@ -53,7 +53,6 @@ resource "nirvana_compute_vm" "example_compute_vm" {
 
 - `boot_volume_id` (String)
 - `created_at` (String)
-- `data_volume_ids` (List of String)
 - `id` (String) The ID of this resource.
 - `private_ip` (String)
 - `public_ip` (String)
