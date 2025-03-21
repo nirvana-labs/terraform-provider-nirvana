@@ -165,6 +165,9 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			"vpc_id": schema.StringAttribute{
 				Computed: true,
 			},
+			"vpc_name": schema.StringAttribute{
+				Computed: true,
+			},
 			"data_volume_ids": schema.ListAttribute{
 				Computed:    true,
 				CustomType:  customfield.NewListType[types.String](ctx),
