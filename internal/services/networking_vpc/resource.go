@@ -195,18 +195,11 @@ func (r *NetworkingVPCResource) Read(ctx context.Context, req resource.ReadReque
 		return
 	}
 
-	// Handle returned values that differ from the request values
+	// Get subnet name from response
 	subnet, diags := data.Subnet.Value(ctx)
 	resp.Diagnostics.Append(diags...)
-	if diags.HasError() {
-		return
-	}
-	if subnet == nil {
-		resp.Diagnostics.AddError("invalid subnet", "subnet object is nil")
-		return
-	}
-	if subnet.Name.IsNull() || subnet.Name.IsUnknown() || subnet.Name.ValueString() == "" {
-		resp.Diagnostics.AddError("invalid subnet name", "subnet name is required but was not provided")
+	if diags.HasError() || subnet == nil || subnet.Name.IsNull() || subnet.Name.ValueString() == "" {
+		resp.Diagnostics.AddError("invalid subnet", "subnet name is required but was not provided")
 		return
 	}
 	data.SubnetName = subnet.Name
