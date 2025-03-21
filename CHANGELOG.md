@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0 (2025-03-21)
+
+Full Changelog: [v0.1.0-alpha.15...v0.1.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.1.0-alpha.15...v0.1.0)
+
+### Bug Fixes
+
+* **resource/compute_vm:** fetch boot volume size and preserve values which are not returned by the API response for os_image_name and ssh_key ([#128](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/128)) ([3d47908](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/3d479084d3eabd6305ddbc59b133b71bd0b9c680))
+* simplify error checking ([#130](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/130)) ([d7681ac](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/d7681acffb0bc629461874fceac167ebb40f0c64))
+
 ## 0.1.0-alpha.15 (2025-03-21)
 
 Full Changelog: [v0.1.0-alpha.14...v0.1.0-alpha.15](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.1.0-alpha.14...v0.1.0-alpha.15)
