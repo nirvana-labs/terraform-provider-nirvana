@@ -14,8 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
-	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
 var _ resource.ResourceWithConfigValidators = (*ComputeVMResource)(nil)
@@ -147,11 +145,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			},
 			"vpc_name": schema.StringAttribute{
 				Computed: true,
-			},
-			"data_volume_ids": schema.ListAttribute{
-				Computed:    true,
-				CustomType:  customfield.NewListType[types.String](ctx),
-				ElementType: types.StringType,
 			},
 		},
 	}
