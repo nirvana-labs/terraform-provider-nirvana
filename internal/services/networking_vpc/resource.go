@@ -195,7 +195,7 @@ func (r *NetworkingVPCResource) Read(ctx context.Context, req resource.ReadReque
 		return
 	}
 
-	// Get subnet name from response
+	// Get subnet name from nested response
 	subnet, diags := data.Subnet.Value(ctx)
 	resp.Diagnostics.Append(diags...)
 	if diags.HasError() || subnet == nil || subnet.Name.IsNull() || subnet.Name.ValueString() == "" {
