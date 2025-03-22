@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.2 (2025-03-22)
+
+Full Changelog: [v0.1.1...v0.1.2](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.1.1...v0.1.2)
+
+### Bug Fixes
+
+* **api:** better support for environment variables as provider properties ([#133](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/133)) ([109aad9](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/109aad94377f0a9bf89724a514bf782277207332))
+
 ## 0.1.1 (2025-03-22)
 
 Full Changelog: [v0.1.0...v0.1.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.1.0...v0.1.1)
