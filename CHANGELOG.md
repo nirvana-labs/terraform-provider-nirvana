@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.3 (2025-03-25)
+
+Full Changelog: [v0.1.2...v0.1.3](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.1.2...v0.1.3)
+
+### Chores
+
+* **internal:** codegen related update ([#135](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/135)) ([815a783](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/815a783655d41534335e9eac1253d1c4ace61b44))
+* update dependencies ([#137](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/137)) ([6db17d9](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/6db17d9a75c8a976fc7114d13897149e261f8abb))
+
 ## 0.1.2 (2025-03-22)
 
 Full Changelog: [v0.1.1...v0.1.2](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.1.1...v0.1.2)
