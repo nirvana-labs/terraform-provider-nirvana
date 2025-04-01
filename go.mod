@@ -2,7 +2,7 @@ module github.com/nirvana-labs/terraform-provider-nirvana
 
 go 1.23.0
 
-toolchain go1.23.7
+toolchain go1.23.8
 
 require (
 	github.com/davecgh/go-spew v1.1.1
