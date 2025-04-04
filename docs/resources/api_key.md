@@ -36,7 +36,7 @@ resource "nirvana_api_key" "example_api_key" {
 
 - `created_at` (String) Time on which the API key was created.
 - `id` (String) API key ID.
-- `key` (String) API key.
+- `key` (String, Sensitive) API key.
 - `status` (String) Status of the API key.
 Available values: "active", "inactive", "expired".
 - `user_id` (String) User ID that owns the API key.
