@@ -48,6 +48,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			"key": schema.StringAttribute{
 				Description: "API key.",
 				Computed:    true,
+				Sensitive:   true,
 			},
 			"status": schema.StringAttribute{
 				Description: "Status of the API key.\nAvailable values: \"active\", \"inactive\", \"expired\".",
