@@ -14,6 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go"
 	"github.com/nirvana-labs/nirvana-go/option"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/api_key"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/compute_vm"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/compute_volume"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_firewall_rule"
@@ -100,6 +101,7 @@ func (p *NirvanaProvider) ConfigValidators(_ context.Context) []provider.ConfigV
 
 func (p *NirvanaProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{
+		api_key.NewResource,
 		compute_vm.NewResource,
 		compute_volume.NewResource,
 		networking_vpc.NewResource,
