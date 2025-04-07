@@ -26,7 +26,7 @@ resource "nirvana_networking_vpc" "example_networking_vpc" {
 ### Required
 
 - `name` (String)
-- `region` (String) Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-lon-1", "eu-ams-1", "eu-frk-1", "ap-mum-1", "ap-sin-1", "ap-seo-1", "ap-tyo-1".
+- `region` (String) Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-lon-1", "eu-ams-1", "eu-frk-1", "ap-sin-1", "ap-seo-1", "ap-tyo-1".
 - `subnet_name` (String)
 
 ### Read-Only
