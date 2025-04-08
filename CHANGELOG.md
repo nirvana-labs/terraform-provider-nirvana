@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.4 (2025-04-08)
+
+Full Changelog: [v0.4.3...v0.4.4](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.4.3...v0.4.4)
+
+### Chores
+
+* **build:** scripts/format should not fail if generate-docs fails ([#158](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/158)) ([7bcdac2](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/7bcdac20e73f9a5dc4dd8dfc0c8efef346e8c1f8))
+
 ## 0.4.3 (2025-04-07)
 
 Full Changelog: [v0.4.2...v0.4.3](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.4.2...v0.4.3)
