@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.5 (2025-04-09)
+
+Full Changelog: [v0.4.4...v0.4.5](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.4.4...v0.4.5)
+
+### Chores
+
+* **tests:** improve enum examples ([#160](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/160)) ([1d93015](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/1d930158a897c32a53bf54db6597e0168fd628cc))
+
 ## 0.4.4 (2025-04-08)
 
 Full Changelog: [v0.4.3...v0.4.4](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.4.3...v0.4.4)
