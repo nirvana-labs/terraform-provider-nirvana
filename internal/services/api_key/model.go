@@ -11,11 +11,12 @@ import (
 type APIKeyModel struct {
 	ID        types.String      `tfsdk:"id" json:"id,computed"`
 	ExpiresAt timetypes.RFC3339 `tfsdk:"expires_at" json:"expires_at,required" format:"date-time"`
-	NotBefore timetypes.RFC3339 `tfsdk:"not_before" json:"not_before,optional" format:"date-time"`
+	StartsAt  timetypes.RFC3339 `tfsdk:"starts_at" json:"starts_at,optional" format:"date-time"`
 	Name      types.String      `tfsdk:"name" json:"name,required"`
 	CreatedAt timetypes.RFC3339 `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
 	Key       types.String      `tfsdk:"key" json:"key,computed"`
 	Status    types.String      `tfsdk:"status" json:"status,computed"`
+	UpdatedAt timetypes.RFC3339 `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
 	UserID    types.String      `tfsdk:"user_id" json:"user_id,computed"`
 }
 

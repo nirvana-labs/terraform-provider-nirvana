@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.6.0 (2025-04-10)
+
+Full Changelog: [v0.5.0...v0.6.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.5.0...v0.6.0)
+
+### Features
+
+* **api:** api update ([200b2c4](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/200b2c4d9559c7eac1c4f1171c5053d09dc89034))
+* **api:** api update ([b65702c](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/b65702caabe77362e02b9c93de597959bef5e58f))
+
+
+### Chores
+
+* configure new SDK language ([002bf8c](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/002bf8c49d2e9b8e96beb0dfa237d286be04a311))
+
 ## 0.5.0 (2025-04-09)
 
 Full Changelog: [v0.4.6...v0.5.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v0.4.6...v0.5.0)

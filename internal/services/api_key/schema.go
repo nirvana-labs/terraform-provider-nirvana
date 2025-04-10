@@ -30,7 +30,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				CustomType:    timetypes.RFC3339Type{},
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
-			"not_before": schema.StringAttribute{
+			"starts_at": schema.StringAttribute{
 				Description:   "Time before which the API key is not valid.",
 				Optional:      true,
 				CustomType:    timetypes.RFC3339Type{},
@@ -60,6 +60,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						"expired",
 					),
 				},
+			},
+			"updated_at": schema.StringAttribute{
+				Description: "Time on which the API key was updated.",
+				Computed:    true,
+				CustomType:  timetypes.RFC3339Type{},
 			},
 			"user_id": schema.StringAttribute{
 				Description: "User ID that owns the API key.",

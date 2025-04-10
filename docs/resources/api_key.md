@@ -16,7 +16,7 @@ description: |-
 resource "nirvana_api_key" "example_api_key" {
   expires_at = "2025-12-31T23:59:59Z"
   name = "my-api-key"
-  not_before = "2025-01-01T00:00:00Z"
+  starts_at = "2025-01-01T00:00:00Z"
 }
 ```
 
@@ -30,7 +30,7 @@ resource "nirvana_api_key" "example_api_key" {
 
 ### Optional
 
-- `not_before` (String) Time before which the API key is not valid.
+- `starts_at` (String) Time before which the API key is not valid.
 
 ### Read-Only
 
@@ -39,6 +39,7 @@ resource "nirvana_api_key" "example_api_key" {
 - `key` (String, Sensitive) API key.
 - `status` (String) Status of the API key.
 Available values: "active", "inactive", "expired".
+- `updated_at` (String) Time on which the API key was updated.
 - `user_id` (String) User ID that owns the API key.
 
 ## Import
