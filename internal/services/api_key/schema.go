@@ -30,7 +30,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				CustomType:    timetypes.RFC3339Type{},
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
-			"not_before": schema.StringAttribute{
+			"starts_at": schema.StringAttribute{
 				Description:   "Time before which the API key is not valid.",
 				Optional:      true,
 				CustomType:    timetypes.RFC3339Type{},
