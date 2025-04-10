@@ -61,6 +61,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 					),
 				},
 			},
+			"updated_at": schema.StringAttribute{
+				Description: "Time on which the API key was updated.",
+				Computed:    true,
+				CustomType:  timetypes.RFC3339Type{},
+			},
 			"user_id": schema.StringAttribute{
 				Description: "User ID that owns the API key.",
 				Computed:    true,
