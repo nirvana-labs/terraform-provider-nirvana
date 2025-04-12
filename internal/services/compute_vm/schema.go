@@ -27,7 +27,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
 			},
 			"os_image_name": schema.StringAttribute{
-				Description:   "Name of the OS image to use for the VM.",
+				Description:   "Name of the OS Image to use for the VM.",
 				Required:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
