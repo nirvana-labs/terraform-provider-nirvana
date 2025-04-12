@@ -39,24 +39,26 @@ resource "nirvana_compute_vm" "example_compute_vm" {
 
 ### Required
 
-- `boot_volume` (Attributes) Boot volume create request. (see [below for nested schema](#nestedatt--boot_volume))
-- `cpu_config` (Attributes) CPU configuration details. (see [below for nested schema](#nestedatt--cpu_config))
-- `memory_config` (Attributes) Memory configuration details. (see [below for nested schema](#nestedatt--memory_config))
-- `name` (String)
-- `os_image_name` (String)
-- `public_ip_enabled` (Boolean)
-- `region` (String) Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-lon-1", "eu-ams-1", "eu-frk-1", "ap-sin-1", "ap-seo-1", "ap-tyo-1".
-- `ssh_key` (Attributes) SSH key details. (see [below for nested schema](#nestedatt--ssh_key))
-- `subnet_id` (String)
+- `boot_volume` (Attributes) Boot volume for the VM. (see [below for nested schema](#nestedatt--boot_volume))
+- `cpu_config` (Attributes) CPU configuration for the VM. (see [below for nested schema](#nestedatt--cpu_config))
+- `memory_config` (Attributes) Memory configuration for the VM. (see [below for nested schema](#nestedatt--memory_config))
+- `name` (String) Name of the VM.
+- `os_image_name` (String) Name of the OS image to use for the VM.
+- `public_ip_enabled` (Boolean) Whether to enable public IP for the VM.
+- `region` (String) Region of the VPC.
+Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-lon-1", "eu-ams-1", "eu-frk-1", "ap-sin-1", "ap-seo-1", "ap-tyo-1".
+- `ssh_key` (Attributes) Public SSH key to and and use to access the VM. (see [below for nested schema](#nestedatt--ssh_key))
+- `subnet_id` (String) ID of the subnet to use for the VM.
 
 ### Read-Only
 
 - `boot_volume_id` (String)
 - `created_at` (String)
-- `id` (String) The ID of this resource.
+- `id` (String) Unique identifier for the operation.
 - `private_ip` (String)
 - `public_ip` (String)
-- `status` (String) Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
+- `status` (String) Status of the VPC.
+Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `updated_at` (String)
 - `vpc_id` (String)
 - `vpc_name` (String)
@@ -66,7 +68,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
 
 Required:
 
-- `size` (Number)
+- `size` (Number) Size of the volume in GB.
 
 
 <a id="nestedatt--cpu_config"></a>
@@ -74,7 +76,7 @@ Required:
 
 Required:
 
-- `vcpu` (Number) virtual CPUs
+- `vcpu` (Number) Number of virtual CPUs.
 
 
 <a id="nestedatt--memory_config"></a>
@@ -82,7 +84,7 @@ Required:
 
 Required:
 
-- `size` (Number) memory size
+- `size` (Number) Size of the memory in GB.
 
 
 <a id="nestedatt--ssh_key"></a>
@@ -90,7 +92,7 @@ Required:
 
 Required:
 
-- `public_key` (String)
+- `public_key` (String) Public key to and and use to access the VM.
 
 ## Import
 

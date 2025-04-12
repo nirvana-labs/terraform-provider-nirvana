@@ -21,35 +21,40 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{
+				Description:   "Unique identifier for the operation.",
 				Computed:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
 			},
 			"vm_id": schema.StringAttribute{
+				Description:   "ID of the VM the volume is attached to.",
 				Required:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"name": schema.StringAttribute{
-				Required: true,
+				Description: "Name of the volume.",
+				Required:    true,
 			},
 			"size": schema.Int64Attribute{
-				Required: true,
+				Description: "Size of the volume in GB.",
+				Required:    true,
 				Validators: []validator.Int64{
 					int64validator.Between(32, 10240),
 				},
 			},
 			"created_at": schema.StringAttribute{
-				Computed:   true,
-				CustomType: timetypes.RFC3339Type{},
+				Description: "Time the volume was created.",
+				Computed:    true,
+				CustomType:  timetypes.RFC3339Type{},
 			},
 			"kind": schema.StringAttribute{
-				Description: "Volume kind.\nAvailable values: \"boot\", \"data\".",
+				Description: "Kind of the volume.\nAvailable values: \"boot\", \"data\".",
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive("boot", "data"),
 				},
 			},
 			"status": schema.StringAttribute{
-				Description: `Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".`,
+				Description: "Status of the VPC.\nAvailable values: \"pending\", \"creating\", \"updating\", \"ready\", \"deleting\", \"deleted\", \"error\".",
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
@@ -64,18 +69,20 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"type": schema.StringAttribute{
-				Description: "Storage type.\nAvailable values: \"nvme\".",
+				Description: "Type of the volume.\nAvailable values: \"nvme\".",
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive("nvme"),
 				},
 			},
 			"updated_at": schema.StringAttribute{
-				Computed:   true,
-				CustomType: timetypes.RFC3339Type{},
+				Description: "Time the volume was updated.",
+				Computed:    true,
+				CustomType:  timetypes.RFC3339Type{},
 			},
 			"vm_name": schema.StringAttribute{
-				Computed: true,
+				Description: "Name of the VM the volume is attached to.",
+				Computed:    true,
 			},
 		},
 	}
