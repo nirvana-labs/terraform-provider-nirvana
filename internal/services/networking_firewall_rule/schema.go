@@ -51,7 +51,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				ElementType: types.StringType,
 			},
 			"created_at": schema.StringAttribute{
-				Description: "Time the firewall rule was created.",
+				Description: "When the firewall rule was created.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},
@@ -71,7 +71,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"updated_at": schema.StringAttribute{
-				Description: "Time the firewall rule was updated.",
+				Description: "When the firewall rule was updated.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},

@@ -47,19 +47,19 @@ resource "nirvana_compute_vm" "example_compute_vm" {
 - `public_ip_enabled` (Boolean) Whether to enable public IP for the VM.
 - `region` (String) Region the resource is in.
 Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-lon-1", "eu-ams-1", "eu-frk-1", "ap-sin-1", "ap-seo-1", "ap-tyo-1".
-- `ssh_key` (Attributes) Public SSH key to and and use to access the VM. (see [below for nested schema](#nestedatt--ssh_key))
+- `ssh_key` (Attributes) Public SSH key configuration for the VM. (see [below for nested schema](#nestedatt--ssh_key))
 - `subnet_id` (String) ID of the subnet to use for the VM.
 
 ### Read-Only
 
 - `boot_volume_id` (String) ID of the boot volume for the VM.
-- `created_at` (String) Time the VM was created.
+- `created_at` (String) When the VM was created.
 - `id` (String) Unique identifier for the operation.
 - `private_ip` (String) Private IP of the VM.
 - `public_ip` (String) Public IP of the VM.
 - `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
-- `updated_at` (String) Time the VM was updated.
+- `updated_at` (String) When the VM was updated.
 - `vpc_id` (String) ID of the VPC for the VM.
 - `vpc_name` (String) Name of the VPC for the VM.
 

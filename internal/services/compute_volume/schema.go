@@ -42,12 +42,12 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"created_at": schema.StringAttribute{
-				Description: "Time the volume was created.",
+				Description: "When the volume was created.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},
 			"kind": schema.StringAttribute{
-				Description: "Kind of the volume.\nAvailable values: \"boot\", \"data\".",
+				Description: "Volume kind.\nAvailable values: \"boot\", \"data\".",
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive("boot", "data"),
@@ -69,14 +69,14 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"type": schema.StringAttribute{
-				Description: "Type of the volume.\nAvailable values: \"nvme\".",
+				Description: "Storage type the volume is using.\nAvailable values: \"nvme\".",
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive("nvme"),
 				},
 			},
 			"updated_at": schema.StringAttribute{
-				Description: "Time the volume was updated.",
+				Description: "When the volume was updated.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},
