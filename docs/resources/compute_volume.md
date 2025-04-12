@@ -35,7 +35,7 @@ resource "nirvana_compute_volume" "example_compute_volume" {
 - `id` (String) Unique identifier for the operation.
 - `kind` (String) Kind of the volume.
 Available values: "boot", "data".
-- `status` (String) Status of the VPC.
+- `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `type` (String) Type of the volume.
 Available values: "nvme".
