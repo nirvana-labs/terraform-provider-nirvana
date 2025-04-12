@@ -32,13 +32,13 @@ Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-lon-1", "e
 
 ### Read-Only
 
-- `created_at` (String) Time the VPC was created.
+- `created_at` (String) When the VPC was created.
 - `firewall_rule_ids` (List of String) IDs of the firewall rules associated with the VPC.
 - `id` (String) Unique identifier for the operation.
 - `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `subnet` (Attributes) Subnet of the VPC. (see [below for nested schema](#nestedatt--subnet))
-- `updated_at` (String) Time the VPC was updated.
+- `updated_at` (String) When the VPC was updated.
 
 <a id="nestedatt--subnet"></a>
 ### Nested Schema for `subnet`
@@ -46,10 +46,10 @@ Available values: "pending", "creating", "updating", "ready", "deleting", "delet
 Read-Only:
 
 - `cidr` (String) CIDR block for the subnet.
-- `created_at` (String) Time the subnet was created.
+- `created_at` (String) When the subnet was created.
 - `id` (String) Unique identifier for the subnet.
 - `name` (String) Name of the subnet.
-- `updated_at` (String) Time the subnet was updated.
+- `updated_at` (String) When the subnet was updated.
 
 ## Import
 

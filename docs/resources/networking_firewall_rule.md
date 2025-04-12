@@ -37,11 +37,11 @@ resource "nirvana_networking_firewall_rule" "example_networking_firewall_rule" {
 
 ### Read-Only
 
-- `created_at` (String) Time the firewall rule was created.
+- `created_at` (String) When the firewall rule was created.
 - `id` (String) Unique identifier for the operation.
 - `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
-- `updated_at` (String) Time the firewall rule was updated.
+- `updated_at` (String) When the firewall rule was updated.
 
 ## Import
 

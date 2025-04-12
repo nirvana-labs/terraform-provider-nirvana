@@ -54,7 +54,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Required:    true,
 			},
 			"created_at": schema.StringAttribute{
-				Description: "Time the VPC was created.",
+				Description: "When the VPC was created.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},
@@ -74,7 +74,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"updated_at": schema.StringAttribute{
-				Description: "Time the VPC was updated.",
+				Description: "When the VPC was updated.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},
@@ -98,7 +98,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						Computed:    true,
 					},
 					"created_at": schema.StringAttribute{
-						Description: "Time the subnet was created.",
+						Description: "When the subnet was created.",
 						Computed:    true,
 						CustomType:  timetypes.RFC3339Type{},
 					},
@@ -107,7 +107,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						Computed:    true,
 					},
 					"updated_at": schema.StringAttribute{
-						Description: "Time the subnet was updated.",
+						Description: "When the subnet was updated.",
 						Computed:    true,
 						CustomType:  timetypes.RFC3339Type{},
 					},

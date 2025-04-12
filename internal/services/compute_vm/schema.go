@@ -70,7 +70,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				PlanModifiers: []planmodifier.Object{objectplanmodifier.RequiresReplace()},
 			},
 			"ssh_key": schema.SingleNestedAttribute{
-				Description: "Public SSH key to and and use to access the VM.",
+				Description: "Public SSH key configuration for the VM.",
 				Required:    true,
 				Attributes: map[string]schema.Attribute{
 					"public_key": schema.StringAttribute{
@@ -119,7 +119,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Computed:    true,
 			},
 			"created_at": schema.StringAttribute{
-				Description: "Time the VM was created.",
+				Description: "When the VM was created.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},
@@ -147,7 +147,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"updated_at": schema.StringAttribute{
-				Description: "Time the VM was updated.",
+				Description: "When the VM was updated.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},

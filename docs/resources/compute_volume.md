@@ -31,15 +31,15 @@ resource "nirvana_compute_volume" "example_compute_volume" {
 
 ### Read-Only
 
-- `created_at` (String) Time the volume was created.
+- `created_at` (String) When the volume was created.
 - `id` (String) Unique identifier for the operation.
-- `kind` (String) Kind of the volume.
+- `kind` (String) Volume kind.
 Available values: "boot", "data".
 - `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
-- `type` (String) Type of the volume.
+- `type` (String) Storage type the volume is using.
 Available values: "nvme".
-- `updated_at` (String) Time the volume was updated.
+- `updated_at` (String) When the volume was updated.
 - `vm_name` (String) Name of the VM the volume is attached to.
 
 ## Import
