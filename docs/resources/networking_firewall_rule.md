@@ -28,19 +28,20 @@ resource "nirvana_networking_firewall_rule" "example_networking_firewall_rule" {
 
 ### Required
 
-- `destination_address` (String)
-- `destination_ports` (List of String)
-- `name` (String)
-- `protocol` (String) Supported Firewall Rule protocols.
-- `source_address` (String)
+- `destination_address` (String) Destination address of the firewall rule.
+- `destination_ports` (List of String) Destination ports of the firewall rule.
+- `name` (String) Name of the firewall rule.
+- `protocol` (String) Protocol of the firewall rule.
+- `source_address` (String) Source address of the firewall rule.
 - `vpc_id` (String)
 
 ### Read-Only
 
-- `created_at` (String)
-- `id` (String) The ID of this resource.
-- `status` (String) Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
-- `updated_at` (String)
+- `created_at` (String) When the firewall rule was created.
+- `id` (String) Unique identifier for the operation.
+- `status` (String) Status of the resource.
+Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
+- `updated_at` (String) When the firewall rule was updated.
 
 ## Import
 

@@ -22,15 +22,17 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{
+				Description:   "Unique identifier for the operation.",
 				Computed:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
 			},
 			"os_image_name": schema.StringAttribute{
+				Description:   "Name of the OS Image to use for the VM.",
 				Required:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"region": schema.StringAttribute{
-				Description: `Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-lon-1", "eu-ams-1", "eu-frk-1", "ap-sin-1", "ap-seo-1", "ap-tyo-1".`,
+				Description: "Region the resource is in.\nAvailable values: \"us-sea-1\", \"us-sva-1\", \"us-chi-1\", \"us-wdc-1\", \"eu-lon-1\", \"eu-ams-1\", \"eu-frk-1\", \"ap-sin-1\", \"ap-seo-1\", \"ap-tyo-1\".",
 				Required:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
@@ -49,15 +51,17 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"subnet_id": schema.StringAttribute{
+				Description:   "ID of the subnet to use for the VM.",
 				Required:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"boot_volume": schema.SingleNestedAttribute{
-				Description: "Boot volume create request.",
+				Description: "Boot volume for the VM.",
 				Required:    true,
 				Attributes: map[string]schema.Attribute{
 					"size": schema.Int64Attribute{
-						Required: true,
+						Description: "Size of the volume in GB.",
+						Required:    true,
 						Validators: []validator.Int64{
 							int64validator.Between(64, 512),
 						},
@@ -66,27 +70,30 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				PlanModifiers: []planmodifier.Object{objectplanmodifier.RequiresReplace()},
 			},
 			"ssh_key": schema.SingleNestedAttribute{
-				Description: "SSH key details.",
+				Description: "Public SSH key configuration for the VM.",
 				Required:    true,
 				Attributes: map[string]schema.Attribute{
 					"public_key": schema.StringAttribute{
-						Required: true,
+						Description: "Public key to and and use to access the VM.",
+						Required:    true,
 					},
 				},
 				PlanModifiers: []planmodifier.Object{objectplanmodifier.RequiresReplace()},
 			},
 			"name": schema.StringAttribute{
-				Required: true,
+				Description: "Name of the VM.",
+				Required:    true,
 			},
 			"public_ip_enabled": schema.BoolAttribute{
-				Required: true,
+				Description: "Whether to enable public IP for the VM.",
+				Required:    true,
 			},
 			"cpu_config": schema.SingleNestedAttribute{
-				Description: "CPU configuration details.",
+				Description: "CPU configuration for the VM.",
 				Required:    true,
 				Attributes: map[string]schema.Attribute{
 					"vcpu": schema.Int64Attribute{
-						Description: "virtual CPUs",
+						Description: "Number of virtual CPUs.",
 						Required:    true,
 						Validators: []validator.Int64{
 							int64validator.Between(1, 52),
@@ -95,11 +102,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"memory_config": schema.SingleNestedAttribute{
-				Description: "Memory configuration details.",
+				Description: "Memory configuration for the VM.",
 				Required:    true,
 				Attributes: map[string]schema.Attribute{
 					"size": schema.Int64Attribute{
-						Description: "memory size",
+						Description: "Size of the memory in GB.",
 						Required:    true,
 						Validators: []validator.Int64{
 							int64validator.Between(1, 480),
@@ -108,20 +115,24 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"boot_volume_id": schema.StringAttribute{
-				Computed: true,
+				Description: "ID of the boot volume for the VM.",
+				Computed:    true,
 			},
 			"created_at": schema.StringAttribute{
-				Computed:   true,
-				CustomType: timetypes.RFC3339Type{},
+				Description: "When the VM was created.",
+				Computed:    true,
+				CustomType:  timetypes.RFC3339Type{},
 			},
 			"private_ip": schema.StringAttribute{
-				Computed: true,
+				Description: "Private IP of the VM.",
+				Computed:    true,
 			},
 			"public_ip": schema.StringAttribute{
-				Computed: true,
+				Description: "Public IP of the VM.",
+				Computed:    true,
 			},
 			"status": schema.StringAttribute{
-				Description: `Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".`,
+				Description: "Status of the resource.\nAvailable values: \"pending\", \"creating\", \"updating\", \"ready\", \"deleting\", \"deleted\", \"error\".",
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
@@ -136,14 +147,17 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"updated_at": schema.StringAttribute{
-				Computed:   true,
-				CustomType: timetypes.RFC3339Type{},
+				Description: "When the VM was updated.",
+				Computed:    true,
+				CustomType:  timetypes.RFC3339Type{},
 			},
 			"vpc_id": schema.StringAttribute{
-				Computed: true,
+				Description: "ID of the VPC for the VM.",
+				Computed:    true,
 			},
 			"vpc_name": schema.StringAttribute{
-				Computed: true,
+				Description: "Name of the VPC for the VM.",
+				Computed:    true,
 			},
 		},
 	}

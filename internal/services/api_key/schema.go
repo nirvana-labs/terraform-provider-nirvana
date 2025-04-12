@@ -25,13 +25,13 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
 			},
 			"expires_at": schema.StringAttribute{
-				Description:   "Time after which the API key is not valid.",
+				Description:   "When the API key expires and is no longer valid.",
 				Required:      true,
 				CustomType:    timetypes.RFC3339Type{},
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"starts_at": schema.StringAttribute{
-				Description:   "Time before which the API key is not valid.",
+				Description:   "When the API key starts to be valid.",
 				Optional:      true,
 				CustomType:    timetypes.RFC3339Type{},
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
@@ -41,7 +41,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Required:    true,
 			},
 			"created_at": schema.StringAttribute{
-				Description: "Time on which the API key was created.",
+				Description: "When the API key was created.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},
@@ -62,7 +62,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"updated_at": schema.StringAttribute{
-				Description: "Time on which the API key was updated.",
+				Description: "When the API key was updated.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},

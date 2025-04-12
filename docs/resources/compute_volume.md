@@ -25,21 +25,22 @@ resource "nirvana_compute_volume" "example_compute_volume" {
 
 ### Required
 
-- `name` (String)
-- `size` (Number)
-- `vm_id` (String)
+- `name` (String) Name of the volume.
+- `size` (Number) Size of the volume in GB.
+- `vm_id` (String) ID of the VM the volume is attached to.
 
 ### Read-Only
 
-- `created_at` (String)
-- `id` (String) The ID of this resource.
+- `created_at` (String) When the volume was created.
+- `id` (String) Unique identifier for the operation.
 - `kind` (String) Volume kind.
 Available values: "boot", "data".
-- `status` (String) Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
-- `type` (String) Storage type.
+- `status` (String) Status of the resource.
+Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
+- `type` (String) Storage type the volume is using.
 Available values: "nvme".
-- `updated_at` (String)
-- `vm_name` (String)
+- `updated_at` (String) When the volume was updated.
+- `vm_name` (String) Name of the VM the volume is attached to.
 
 ## Import
 

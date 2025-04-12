@@ -21,6 +21,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{
+				Description:   "Unique identifier for the operation.",
 				Computed:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
 			},
@@ -29,28 +30,33 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"destination_address": schema.StringAttribute{
-				Required: true,
+				Description: "Destination address of the firewall rule.",
+				Required:    true,
 			},
 			"name": schema.StringAttribute{
-				Required: true,
+				Description: "Name of the firewall rule.",
+				Required:    true,
 			},
 			"protocol": schema.StringAttribute{
-				Description: "Supported Firewall Rule protocols.",
+				Description: "Protocol of the firewall rule.",
 				Required:    true,
 			},
 			"source_address": schema.StringAttribute{
-				Required: true,
+				Description: "Source address of the firewall rule.",
+				Required:    true,
 			},
 			"destination_ports": schema.ListAttribute{
+				Description: "Destination ports of the firewall rule.",
 				Required:    true,
 				ElementType: types.StringType,
 			},
 			"created_at": schema.StringAttribute{
-				Computed:   true,
-				CustomType: timetypes.RFC3339Type{},
+				Description: "When the firewall rule was created.",
+				Computed:    true,
+				CustomType:  timetypes.RFC3339Type{},
 			},
 			"status": schema.StringAttribute{
-				Description: `Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".`,
+				Description: "Status of the resource.\nAvailable values: \"pending\", \"creating\", \"updating\", \"ready\", \"deleting\", \"deleted\", \"error\".",
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
@@ -65,8 +71,9 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"updated_at": schema.StringAttribute{
-				Computed:   true,
-				CustomType: timetypes.RFC3339Type{},
+				Description: "When the firewall rule was updated.",
+				Computed:    true,
+				CustomType:  timetypes.RFC3339Type{},
 			},
 		},
 	}

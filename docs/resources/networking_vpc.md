@@ -25,29 +25,31 @@ resource "nirvana_networking_vpc" "example_networking_vpc" {
 
 ### Required
 
-- `name` (String)
-- `region` (String) Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-lon-1", "eu-ams-1", "eu-frk-1", "ap-sin-1", "ap-seo-1", "ap-tyo-1".
-- `subnet_name` (String)
+- `name` (String) Name of the VPC.
+- `region` (String) Region the resource is in.
+Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-lon-1", "eu-ams-1", "eu-frk-1", "ap-sin-1", "ap-seo-1", "ap-tyo-1".
+- `subnet_name` (String) Name of the subnet to create.
 
 ### Read-Only
 
-- `created_at` (String)
-- `firewall_rule_ids` (List of String)
-- `id` (String) The ID of this resource.
-- `status` (String) Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
-- `subnet` (Attributes) Subnet details. (see [below for nested schema](#nestedatt--subnet))
-- `updated_at` (String)
+- `created_at` (String) When the VPC was created.
+- `firewall_rule_ids` (List of String) IDs of the firewall rules associated with the VPC.
+- `id` (String) Unique identifier for the operation.
+- `status` (String) Status of the resource.
+Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
+- `subnet` (Attributes) Subnet of the VPC. (see [below for nested schema](#nestedatt--subnet))
+- `updated_at` (String) When the VPC was updated.
 
 <a id="nestedatt--subnet"></a>
 ### Nested Schema for `subnet`
 
 Read-Only:
 
-- `cidr` (String)
-- `created_at` (String)
-- `id` (String)
-- `name` (String)
-- `updated_at` (String)
+- `cidr` (String) CIDR block for the subnet.
+- `created_at` (String) When the subnet was created.
+- `id` (String) Unique identifier for the subnet.
+- `name` (String) Name of the subnet.
+- `updated_at` (String) When the subnet was updated.
 
 ## Import
 

@@ -25,21 +25,21 @@ resource "nirvana_api_key" "example_api_key" {
 
 ### Required
 
-- `expires_at` (String) Time after which the API key is not valid.
+- `expires_at` (String) When the API key expires and is no longer valid.
 - `name` (String) API key name.
 
 ### Optional
 
-- `starts_at` (String) Time before which the API key is not valid.
+- `starts_at` (String) When the API key starts to be valid.
 
 ### Read-Only
 
-- `created_at` (String) Time on which the API key was created.
+- `created_at` (String) When the API key was created.
 - `id` (String) API key ID.
 - `key` (String, Sensitive) API key.
 - `status` (String) Status of the API key.
 Available values: "active", "inactive", "expired".
-- `updated_at` (String) Time on which the API key was updated.
+- `updated_at` (String) When the API key was updated.
 - `user_id` (String) User ID that owns the API key.
 
 ## Import

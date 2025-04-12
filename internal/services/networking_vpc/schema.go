@@ -22,11 +22,12 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{
+				Description:   "Unique identifier for the operation.",
 				Computed:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
 			},
 			"region": schema.StringAttribute{
-				Description: `Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-lon-1", "eu-ams-1", "eu-frk-1", "ap-sin-1", "ap-seo-1", "ap-tyo-1".`,
+				Description: "Region the resource is in.\nAvailable values: \"us-sea-1\", \"us-sva-1\", \"us-chi-1\", \"us-wdc-1\", \"eu-lon-1\", \"eu-ams-1\", \"eu-frk-1\", \"ap-sin-1\", \"ap-seo-1\", \"ap-tyo-1\".",
 				Required:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
@@ -45,17 +46,20 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"name": schema.StringAttribute{
-				Required: true,
+				Description: "Name of the VPC.",
+				Required:    true,
 			},
 			"subnet_name": schema.StringAttribute{
-				Required: true,
+				Description: "Name of the subnet to create.",
+				Required:    true,
 			},
 			"created_at": schema.StringAttribute{
-				Computed:   true,
-				CustomType: timetypes.RFC3339Type{},
+				Description: "When the VPC was created.",
+				Computed:    true,
+				CustomType:  timetypes.RFC3339Type{},
 			},
 			"status": schema.StringAttribute{
-				Description: `Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".`,
+				Description: "Status of the resource.\nAvailable values: \"pending\", \"creating\", \"updating\", \"ready\", \"deleting\", \"deleted\", \"error\".",
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
@@ -70,35 +74,42 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"updated_at": schema.StringAttribute{
-				Computed:   true,
-				CustomType: timetypes.RFC3339Type{},
+				Description: "When the VPC was updated.",
+				Computed:    true,
+				CustomType:  timetypes.RFC3339Type{},
 			},
 			"firewall_rule_ids": schema.ListAttribute{
+				Description: "IDs of the firewall rules associated with the VPC.",
 				Computed:    true,
 				CustomType:  customfield.NewListType[types.String](ctx),
 				ElementType: types.StringType,
 			},
 			"subnet": schema.SingleNestedAttribute{
-				Description: "Subnet details.",
+				Description: "Subnet of the VPC.",
 				Computed:    true,
 				CustomType:  customfield.NewNestedObjectType[NetworkingVPCSubnetModel](ctx),
 				Attributes: map[string]schema.Attribute{
 					"id": schema.StringAttribute{
-						Computed: true,
+						Description: "Unique identifier for the subnet.",
+						Computed:    true,
 					},
 					"cidr": schema.StringAttribute{
-						Computed: true,
+						Description: "CIDR block for the subnet.",
+						Computed:    true,
 					},
 					"created_at": schema.StringAttribute{
-						Computed:   true,
-						CustomType: timetypes.RFC3339Type{},
+						Description: "When the subnet was created.",
+						Computed:    true,
+						CustomType:  timetypes.RFC3339Type{},
 					},
 					"name": schema.StringAttribute{
-						Computed: true,
+						Description: "Name of the subnet.",
+						Computed:    true,
 					},
 					"updated_at": schema.StringAttribute{
-						Computed:   true,
-						CustomType: timetypes.RFC3339Type{},
+						Description: "When the subnet was updated.",
+						Computed:    true,
+						CustomType:  timetypes.RFC3339Type{},
 					},
 				},
 			},
