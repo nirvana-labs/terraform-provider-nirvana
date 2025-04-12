@@ -39,7 +39,7 @@ resource "nirvana_networking_firewall_rule" "example_networking_firewall_rule" {
 
 - `created_at` (String) Time the firewall rule was created.
 - `id` (String) Unique identifier for the operation.
-- `status` (String) Status of the VPC.
+- `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `updated_at` (String) Time the firewall rule was updated.
 

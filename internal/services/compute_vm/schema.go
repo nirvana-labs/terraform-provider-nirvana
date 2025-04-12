@@ -32,7 +32,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"region": schema.StringAttribute{
-				Description: "Region of the VPC.\nAvailable values: \"us-sea-1\", \"us-sva-1\", \"us-chi-1\", \"us-wdc-1\", \"eu-lon-1\", \"eu-ams-1\", \"eu-frk-1\", \"ap-sin-1\", \"ap-seo-1\", \"ap-tyo-1\".",
+				Description: "Region the resource is in.\nAvailable values: \"us-sea-1\", \"us-sva-1\", \"us-chi-1\", \"us-wdc-1\", \"eu-lon-1\", \"eu-ams-1\", \"eu-frk-1\", \"ap-sin-1\", \"ap-seo-1\", \"ap-tyo-1\".",
 				Required:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
@@ -115,20 +115,24 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"boot_volume_id": schema.StringAttribute{
-				Computed: true,
+				Description: "ID of the boot volume for the VM.",
+				Computed:    true,
 			},
 			"created_at": schema.StringAttribute{
-				Computed:   true,
-				CustomType: timetypes.RFC3339Type{},
+				Description: "Time the VM was created.",
+				Computed:    true,
+				CustomType:  timetypes.RFC3339Type{},
 			},
 			"private_ip": schema.StringAttribute{
-				Computed: true,
+				Description: "Private IP of the VM.",
+				Computed:    true,
 			},
 			"public_ip": schema.StringAttribute{
-				Computed: true,
+				Description: "Public IP of the VM.",
+				Computed:    true,
 			},
 			"status": schema.StringAttribute{
-				Description: "Status of the VPC.\nAvailable values: \"pending\", \"creating\", \"updating\", \"ready\", \"deleting\", \"deleted\", \"error\".",
+				Description: "Status of the resource.\nAvailable values: \"pending\", \"creating\", \"updating\", \"ready\", \"deleting\", \"deleted\", \"error\".",
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
@@ -143,14 +147,17 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"updated_at": schema.StringAttribute{
-				Computed:   true,
-				CustomType: timetypes.RFC3339Type{},
+				Description: "Time the VM was updated.",
+				Computed:    true,
+				CustomType:  timetypes.RFC3339Type{},
 			},
 			"vpc_id": schema.StringAttribute{
-				Computed: true,
+				Description: "ID of the VPC for the VM.",
+				Computed:    true,
 			},
 			"vpc_name": schema.StringAttribute{
-				Computed: true,
+				Description: "Name of the VPC for the VM.",
+				Computed:    true,
 			},
 		},
 	}
