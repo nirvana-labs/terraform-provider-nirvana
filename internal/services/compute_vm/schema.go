@@ -115,7 +115,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"boot_volume_id": schema.StringAttribute{
-				Description: "ID of the boot volume for the VM.",
+				Description: "ID of the boot volume attached to the VM.",
 				Computed:    true,
 			},
 			"created_at": schema.StringAttribute{
@@ -152,11 +152,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				CustomType:  timetypes.RFC3339Type{},
 			},
 			"vpc_id": schema.StringAttribute{
-				Description: "ID of the VPC for the VM.",
+				Description: "ID of the VPC the VM is in.",
 				Computed:    true,
 			},
 			"vpc_name": schema.StringAttribute{
-				Description: "Name of the VPC for the VM.",
+				Description: "Name of the VPC the VM is in.",
 				Computed:    true,
 			},
 		},
