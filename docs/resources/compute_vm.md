@@ -52,7 +52,7 @@ Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-lon-1", "e
 
 ### Read-Only
 
-- `boot_volume_id` (String) ID of the boot volume for the VM.
+- `boot_volume_id` (String) ID of the boot volume attached to the VM.
 - `created_at` (String) When the VM was created.
 - `id` (String) Unique identifier for the operation.
 - `private_ip` (String) Private IP of the VM.
@@ -60,8 +60,8 @@ Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-lon-1", "e
 - `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `updated_at` (String) When the VM was updated.
-- `vpc_id` (String) ID of the VPC for the VM.
-- `vpc_name` (String) Name of the VPC for the VM.
+- `vpc_id` (String) ID of the VPC the VM is in.
+- `vpc_name` (String) Name of the VPC the VM is in.
 
 <a id="nestedatt--boot_volume"></a>
 ### Nested Schema for `boot_volume`
