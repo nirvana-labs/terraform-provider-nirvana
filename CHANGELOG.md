@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.0.2 (2025-04-15)
+
+Full Changelog: [v1.0.1...v1.0.2](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.0.1...v1.0.2)
+
+### Features
+
+* **api:** api update ([dc0d3d3](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/dc0d3d3676e1bfb78697f1c2720538c2dcf3733a))
+
+
+### Documentation
+
+* update documentation links to be more uniform ([bbf40d2](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/bbf40d2af4e13fd4b5d6d258f8a47dc80b668851))
+
 ## 1.0.1 (2025-04-13)
 
 Full Changelog: [v1.0.0...v1.0.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.0.0...v1.0.1)
