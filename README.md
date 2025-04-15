@@ -1,7 +1,7 @@
 # Nirvana Labs Terraform Provider
 
 The [Nirvana Labs Terraform provider](https://registry.terraform.io/providers/nirvana-labs/nirvana/latest/docs) provides convenient access to
-[the Nirvana Labs REST API](https://docs.nirvanalabs.io) from Terraform.
+the [Nirvana Labs REST API](https://docs.nirvanalabs.io) from Terraform.
 
 ## Requirements
 
