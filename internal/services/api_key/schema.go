@@ -46,7 +46,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				CustomType:  timetypes.RFC3339Type{},
 			},
 			"key": schema.StringAttribute{
-				Description: "API key.",
+				Description: "API key. Only returned on creation.",
 				Computed:    true,
 				Sensitive:   true,
 			},
