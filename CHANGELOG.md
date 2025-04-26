@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.0.5 (2025-04-26)
+
+Full Changelog: [v1.0.4...v1.0.5](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.0.4...v1.0.5)
+
+### Bug Fixes
+
+* **build:** do not fail if go mod tidy fails during bootstrapping ([30f4051](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/30f4051ebe54bf3933d1bd9e1f1fcfcc6161f1e2))
+
+
+### Chores
+
+* **internal:** codegen related update ([de4991c](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/de4991cfc6f6e9b4d9c07f08a96f5665c5d1eb9b))
+
 ## 1.0.4 (2025-04-25)
 
 Full Changelog: [v1.0.3...v1.0.4](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.0.3...v1.0.4)
