@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.7 (2025-05-06)
+
+Full Changelog: [v1.0.6...v1.0.7](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.0.6...v1.0.7)
+
+### Bug Fixes
+
+* fix caching issue between Unmarshal and UnmarshalComputed ([fea1c6f](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/fea1c6f541df3fef170fa7a9db861db5a6a3e6e2))
+
 ## 1.0.6 (2025-05-01)
 
 Full Changelog: [v1.0.5...v1.0.6](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.0.5...v1.0.6)
