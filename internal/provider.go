@@ -91,8 +91,8 @@ func (p *NirvanaProvider) Configure(ctx context.Context, req provider.ConfigureR
 		opts...,
 	)
 
-	resp.DataSourceData = &client
-	resp.ResourceData = &client
+	resp.DataSourceData = client
+	resp.ResourceData = client
 }
 
 func (p *NirvanaProvider) ConfigValidators(_ context.Context) []provider.ConfigValidator {
