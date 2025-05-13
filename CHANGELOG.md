@@ -1,5 +1,26 @@
 # Changelog
 
+## 1.1.0 (2025-05-13)
+
+Full Changelog: [v1.0.7...v1.1.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.0.7...v1.1.0)
+
+### Features
+
+* **api:** api update ([c481bf6](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/c481bf66d94006993f1c7ea36ce79d21de8b472c))
+* **api:** manual updates ([2ba3d0f](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/2ba3d0f6698827b13e1e1befb20edd7f8feacba0))
+* **api:** manual updates ([4701ea6](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/4701ea6279454dbb5026c770136bcf3d2711b1b2))
+
+
+### Bug Fixes
+
+* only unmarshal attributes that exist on the read response schema during refresh ([f420da5](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/f420da566b4bab48174dcb9b94b3232d773ec60d))
+
+
+### Chores
+
+* **build:** update go.mod indirect dependencies ([9e31d01](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/9e31d013a74a5252db5e6321717f0eda198e78d8))
+* **internal:** codegen related update ([64d2ac6](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/64d2ac66434398b485fd8b0fdb93cd11f0b9250a))
+
 ## 1.0.7 (2025-05-06)
 
 Full Changelog: [v1.0.6...v1.0.7](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.0.6...v1.0.7)
