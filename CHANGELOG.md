@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.2.1 (2025-05-23)
+
+Full Changelog: [v1.2.0...v1.2.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.2.0...v1.2.1)
+
+### Features
+
+* **api:** add availability resources for VM and Volumes ([9285abc](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/9285abca1792182f940478f1aeb9f77498c8dc1b))
+* **api:** api update ([25f3eb3](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/25f3eb31c02719b36617e21293103a0b3f717443))
+
+
+### Bug Fixes
+
+* **build:** enable building against private Go production repos ([b0440fd](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/b0440fd06918b959a2844c0b4eacef5f3219ec2f))
+
+
+### Chores
+
+* **docs:** grammar improvements ([f7528ae](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/f7528ae7bd895c51fe073cc76de94c9dd4b376fc))
+
 ## 1.2.0 (2025-05-16)
 
 Full Changelog: [v1.1.0...v1.2.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.1.0...v1.2.0)
