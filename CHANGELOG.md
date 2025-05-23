@@ -2,6 +2,14 @@
 
 ## 1.2.1 (2025-05-23)
 
+Full Changelog: [v1.2.1...v1.2.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.2.1...v1.2.1)
+
+### Features
+
+* **docs:** update base path ([c1312d3](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/c1312d38dcdeb0e6e827919f7892bab7ad6fe184))
+
+## 1.2.1 (2025-05-23)
+
 Full Changelog: [v1.2.0...v1.2.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.2.0...v1.2.1)
 
 ### Features
