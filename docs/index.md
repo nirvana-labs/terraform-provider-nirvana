@@ -24,4 +24,4 @@ provider "nirvana" {
 ### Optional
 
 - `api_key` (String)
-- `base_url` (String) Set the base url that the provider connects to. This can be used for testing in other environments.
+- `base_url` (String) Set the base url that the provider connects to.
