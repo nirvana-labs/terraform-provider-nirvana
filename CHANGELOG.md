@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.3.0 (2025-05-29)
+
+Full Changelog: [v1.2.1...v1.3.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.2.1...v1.3.0)
+
+### Features
+
+* **client:** support environments property from Stainless config ([9509b09](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/9509b09ac5d5120672c02258181713a759e52c01))
+
 ## 1.2.1 (2025-05-23)
 
 Full Changelog: [v1.2.1...v1.2.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.2.1...v1.2.1)
