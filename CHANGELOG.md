@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.3.1 (2025-05-30)
+
+Full Changelog: [v1.3.0...v1.3.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.3.0...v1.3.1)
+
+### Chores
+
+* bump deps to avoid GetResourceIdentitySchemas errors for Terraform CLI v1.12+ ([849dc18](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/849dc18bdb0ab2e14f8905504ab3ce0e18af3f39))
+
 ## 1.3.0 (2025-05-29)
 
 Full Changelog: [v1.2.1...v1.3.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.2.1...v1.3.0)
