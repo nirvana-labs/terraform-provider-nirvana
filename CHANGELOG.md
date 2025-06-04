@@ -1,5 +1,26 @@
 # Changelog
 
+## 1.4.0 (2025-06-04)
+
+Full Changelog: [v1.3.2...v1.4.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.3.2...v1.4.0)
+
+### Features
+
+* **api:** api update ([66ec9df](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/66ec9df1d9b9afe7643c43059469dec7a739edf4))
+* **api:** api update ([4da6373](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/4da6373c22fbd38532dd0948f0eaccdff6b77c7f))
+
+
+### Bug Fixes
+
+* **resource/vm:** remove check on public_ip_enabled since it's not returned by API ([#187](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/187)) ([0c337a0](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/0c337a07f99565e5d98834f323b0194af6efdebf))
+
+
+### Chores
+
+* **internal:** codegen related update ([33225f3](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/33225f31df972579f2761398763b47620de1ba79))
+* **internal:** codegen related update ([83c7a1f](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/83c7a1f12f08b847f8e0a526b92241a2785a350d))
+* **internal:** codegen related update ([7a46906](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/7a46906b6c43de86dc75d5ef559c63cbfb00f194))
+
 ## 1.3.2 (2025-05-30)
 
 Full Changelog: [v1.3.1...v1.3.2](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.3.1...v1.3.2)
