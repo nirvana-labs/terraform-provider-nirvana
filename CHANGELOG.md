@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.1 (2025-06-04)
+
+Full Changelog: [v1.4.0...v1.4.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.4.0...v1.4.1)
+
+### Chores
+
+* **internal:** version bump ([b6d18cd](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/b6d18cd5186fa5afd44ec485bfa935df84331fa0))
+
 ## 1.4.0 (2025-06-04)
 
 Full Changelog: [v1.3.2...v1.4.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.3.2...v1.4.0)
