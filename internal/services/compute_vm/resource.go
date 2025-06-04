@@ -222,9 +222,6 @@ func (r *ComputeVMResource) Read(ctx context.Context, req resource.ReadRequest, 
 	data.OSImageName = oldState.OSImageName
 	data.SSHKey.PublicKey = oldState.SSHKey.PublicKey
 
-	// If the public IP is not set, set the public IP enabled to false
-	data.PublicIPEnabled = types.BoolValue(data.PublicIP.ValueString() != "")
-
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
