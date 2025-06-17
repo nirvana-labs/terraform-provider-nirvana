@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.2 (2025-06-17)
+
+Full Changelog: [v1.4.1...v1.4.2](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.4.1...v1.4.2)
+
+### Chores
+
+* **ci:** enable for pull requests ([3ca9943](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/3ca9943dae47474444d10886e7208548df5a165f))
+
 ## 1.4.1 (2025-06-04)
 
 Full Changelog: [v1.4.0...v1.4.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.4.0...v1.4.1)
