@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.4.4 (2025-06-28)
+
+Full Changelog: [v1.4.3...v1.4.4](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.4.3...v1.4.4)
+
+### Bug Fixes
+
+* **ci:** release-doctor — report correct token name ([a2fc9e3](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/a2fc9e3cf36c645f7ad3013a1f42c0b1b9300646))
+* null nested attribute decoding ([51df8c7](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/51df8c753c1906bfac73349e8061274387d8b5b1))
+
+
+### Chores
+
+* **ci:** only run for pushes and fork pull requests ([5a4afa7](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/5a4afa7b1d77385dd5f095f64296d2becac1096f))
+
 ## 1.4.3 (2025-06-18)
 
 Full Changelog: [v1.4.2...v1.4.3](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.4.2...v1.4.3)
