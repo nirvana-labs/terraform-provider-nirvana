@@ -31,6 +31,10 @@ resource "nirvana_compute_vm" "example_compute_vm" {
     public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDBIASkmwNiLcdlW6927Zjt1Hf7Kw/PpEZ4Zm+wU9wn2"
   }
   subnet_id = "123e4567-e89b-12d3-a456-426614174000"
+  data_volumes = [{
+    name = "my-data-volume"
+    size = 100
+  }]
 }
 ```
 
@@ -50,10 +54,15 @@ Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-lon-1", "e
 - `ssh_key` (Attributes) Public SSH key configuration for the VM. (see [below for nested schema](#nestedatt--ssh_key))
 - `subnet_id` (String) ID of the subnet to use for the VM.
 
+### Optional
+
+- `data_volumes` (Attributes List) Data volumes for the VM. (see [below for nested schema](#nestedatt--data_volumes))
+
 ### Read-Only
 
 - `boot_volume_id` (String) ID of the boot volume attached to the VM.
 - `created_at` (String) When the VM was created.
+- `data_volume_ids` (List of String) IDs of the data volumes attached to the VM.
 - `id` (String) Unique identifier for the operation.
 - `private_ip` (String) Private IP of the VM.
 - `public_ip` (String) Public IP of the VM.
@@ -93,6 +102,15 @@ Required:
 Required:
 
 - `public_key` (String) Public key to and and use to access the VM.
+
+
+<a id="nestedatt--data_volumes"></a>
+### Nested Schema for `data_volumes`
+
+Required:
+
+- `name` (String) Name of the volume.
+- `size` (Number) Size of the volume in GB.
 
 ## Import
 
