@@ -8,6 +8,7 @@ import (
 	"io"
 	"net/http"
 
+	"github.com/hashicorp/terraform-plugin-framework/attr"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go"
@@ -15,6 +16,7 @@ import (
 	"github.com/nirvana-labs/nirvana-go/lib"
 	"github.com/nirvana-labs/nirvana-go/option"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/apijson"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/importpath"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/logging"
 )
@@ -198,23 +200,92 @@ func (r *ComputeVMResource) Read(ctx context.Context, req resource.ReadRequest, 
 		return
 	}
 
-	// Get Boot Volume - we'll always have a boot volume ID
-	bootVolumeRes := new(http.Response)
-	_, err = r.client.Compute.Volumes.Get(
+	// Get all volumes for the VM using VMs.Volumes.List
+	volumesRes := new(http.Response)
+	_, err = r.client.Compute.VMs.Volumes.List(
 		ctx,
-		data.BootVolumeID.ValueString(),
-		option.WithResponseBodyInto(&bootVolumeRes),
+		data.ID.ValueString(),
+		option.WithResponseBodyInto(&volumesRes),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
 	if err != nil {
-		resp.Diagnostics.AddError("failed to get boot volume", err.Error())
+		resp.Diagnostics.AddError("failed to get volumes", err.Error())
 	} else {
-		bootVolumeBytes, _ := io.ReadAll(bootVolumeRes.Body)
-		var bootVolume compute.Volume
-		if jsonErr := apijson.Unmarshal(bootVolumeBytes, &bootVolume); jsonErr != nil {
-			resp.Diagnostics.AddError("failed to deserialize boot volume", jsonErr.Error())
+		volumesBytes, _ := io.ReadAll(volumesRes.Body)
+
+		var volumeList compute.VolumeList
+		if jsonErr := apijson.Unmarshal(volumesBytes, &volumeList); jsonErr != nil {
+			resp.Diagnostics.AddError("failed to deserialize volumes", jsonErr.Error())
 		} else {
-			data.BootVolume.Size = types.Int64Value(bootVolume.Size)
+			var bootVolume *ComputeVMBootVolumeModel
+			var bootVolumeID types.String
+
+			// Only collect volumes that match the original configuration
+			var configuredVolumeIDs []types.String
+			var configuredDataVolumes []*ComputeVMDataVolumesModel
+
+			for _, volume := range volumeList.Items {
+				switch volume.Kind {
+				case compute.VolumeKindBoot:
+					bootVolumeID = types.StringValue(volume.ID)
+					bootVolume = &ComputeVMBootVolumeModel{
+						Size: types.Int64Value(volume.Size),
+					}
+				case compute.VolumeKindData:
+					// Only include this volume if it matches something in the original configuration
+					if oldState.DataVolumes != nil {
+						for _, configuredVolume := range *oldState.DataVolumes {
+							if volume.Name == configuredVolume.Name.ValueString() &&
+								volume.Size == configuredVolume.Size.ValueInt64() {
+								configuredVolumeIDs = append(configuredVolumeIDs, types.StringValue(volume.ID))
+								configuredDataVolumes = append(configuredDataVolumes, &ComputeVMDataVolumesModel{
+									Name: types.StringValue(volume.Name),
+									Size: types.Int64Value(volume.Size),
+								})
+								break
+							}
+						}
+					}
+				default:
+					continue
+				}
+			}
+
+			if bootVolume != nil {
+				data.BootVolume = bootVolume
+				data.BootVolumeID = bootVolumeID
+			} else {
+				data.BootVolume = nil
+				data.BootVolumeID = types.StringNull()
+			}
+
+			// Set data_volume_ids with only the IDs of volumes that match the configuration
+			if len(configuredVolumeIDs) > 0 {
+				attrValues := make([]attr.Value, len(configuredVolumeIDs))
+				for i, id := range configuredVolumeIDs {
+					attrValues[i] = id
+				}
+				data.DataVolumeIDs = customfield.NewListMust[types.String](ctx, attrValues)
+			} else {
+				data.DataVolumeIDs = customfield.NewListMust[types.String](ctx, []attr.Value{})
+			}
+
+			// Set data_volumes with only the volumes that match the configuration
+			if oldState.DataVolumes != nil {
+				// DataVolumes was configured in Terraform, so we should update it with matching volumes
+				if len(configuredDataVolumes) > 0 {
+					data.DataVolumes = &configuredDataVolumes
+				} else {
+					// Configuration had data_volumes but none are attached now
+					// Keep the field as configured (empty slice) rather than nil
+					emptyDataVolumes := []*ComputeVMDataVolumesModel{}
+					data.DataVolumes = &emptyDataVolumes
+				}
+			} else {
+				// DataVolumes was never configured in Terraform, so volumes are managed externally
+				// Keep it nil to indicate this resource doesn't manage data volumes
+				data.DataVolumes = nil
+			}
 		}
 	}
 
@@ -283,6 +354,62 @@ func (r *ComputeVMResource) ImportState(ctx context.Context, req resource.Import
 	if err != nil {
 		resp.Diagnostics.AddError("failed to deserialize http request", err.Error())
 		return
+	}
+
+	// Get all volumes for the VM during import to populate state correctly
+	volumesRes := new(http.Response)
+	_, err = r.client.Compute.VMs.Volumes.List(
+		ctx,
+		path,
+		option.WithResponseBodyInto(&volumesRes),
+		option.WithMiddleware(logging.Middleware(ctx)),
+	)
+	if err != nil {
+		resp.Diagnostics.AddError("failed to get volumes during import", err.Error())
+	} else {
+		volumesBytes, _ := io.ReadAll(volumesRes.Body)
+
+		var volumeList compute.VolumeList
+		if jsonErr := apijson.Unmarshal(volumesBytes, &volumeList); jsonErr != nil {
+			resp.Diagnostics.AddError("failed to deserialize volumes during import", jsonErr.Error())
+		} else {
+			var bootVolume *ComputeVMBootVolumeModel
+			var bootVolumeID types.String
+
+			for _, volume := range volumeList.Items {
+				switch volume.Kind {
+				case compute.VolumeKindBoot:
+					bootVolumeID = types.StringValue(volume.ID)
+					bootVolume = &ComputeVMBootVolumeModel{
+						Size: types.Int64Value(volume.Size),
+					}
+				case compute.VolumeKindData:
+					// During import, we don't collect data volume IDs since we don't know
+					// which ones were configured in Terraform vs added externally
+					continue
+				default:
+					continue
+				}
+			}
+
+			if bootVolume != nil {
+				data.BootVolume = bootVolume
+				data.BootVolumeID = bootVolumeID
+			} else {
+				data.BootVolume = nil
+				data.BootVolumeID = types.StringNull()
+			}
+
+			// For import, don't populate data_volume_ids since we don't know which volumes
+			// were configured in Terraform vs added externally. This will be populated
+			// correctly on the first refresh after import when the user has their configuration.
+			data.DataVolumeIDs = customfield.NewListMust[types.String](ctx, []attr.Value{})
+
+			// For import, we don't populate data_volumes since we don't know if they
+			// were originally configured in Terraform. The user will need to add them
+			// to their configuration if they want to manage them through this resource.
+			data.DataVolumes = nil
+		}
 	}
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
