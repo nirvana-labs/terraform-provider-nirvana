@@ -10,10 +10,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
 var _ resource.ResourceWithConfigValidators = (*ComputeVMResource)(nil)
@@ -79,6 +82,26 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 					},
 				},
 				PlanModifiers: []planmodifier.Object{objectplanmodifier.RequiresReplace()},
+			},
+			"data_volumes": schema.ListNestedAttribute{
+				Description: "Data volumes for the VM.",
+				Optional:    true,
+				NestedObject: schema.NestedAttributeObject{
+					Attributes: map[string]schema.Attribute{
+						"name": schema.StringAttribute{
+							Description: "Name of the volume.",
+							Required:    true,
+						},
+						"size": schema.Int64Attribute{
+							Description: "Size of the volume in GB.",
+							Required:    true,
+							Validators: []validator.Int64{
+								int64validator.Between(32, 10240),
+							},
+						},
+					},
+				},
+				PlanModifiers: []planmodifier.List{listplanmodifier.RequiresReplace()},
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of the VM.",
@@ -158,6 +181,12 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			"vpc_name": schema.StringAttribute{
 				Description: "Name of the VPC the VM is in.",
 				Computed:    true,
+			},
+			"data_volume_ids": schema.ListAttribute{
+				Description: "IDs of the data volumes attached to the VM.",
+				Computed:    true,
+				CustomType:  customfield.NewListType[types.String](ctx),
+				ElementType: types.StringType,
 			},
 		},
 	}

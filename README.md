@@ -20,7 +20,7 @@ terraform {
   required_providers {
     nirvana = {
       source  = "nirvana-labs/nirvana"
-      version = "~> 1.4.5"
+      version = "~> 1.5.0"
     }
   }
 }
@@ -49,6 +49,10 @@ resource "nirvana_compute_vm" "example_compute_vm" {
     public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDBIASkmwNiLcdlW6927Zjt1Hf7Kw/PpEZ4Zm+wU9wn2"
   }
   subnet_id = "123e4567-e89b-12d3-a456-426614174000"
+  data_volumes = [{
+    name = "my-data-volume"
+    size = 100
+  }]
 }
 ```
 
