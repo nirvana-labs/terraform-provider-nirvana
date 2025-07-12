@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.5.0 (2025-07-12)
+
+Full Changelog: [v1.4.5...v1.5.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.4.5...v1.5.0)
+
+### Features
+
+* **api:** api update ([da9c939](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/da9c939ddbed232d000f50e9a660bab6a7c0f78b))
+* **compute/vm:** update ComputeVMResource.Read for handling enablement of data_volumes to be set ([#195](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/195)) ([4f579ac](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/4f579acbbda200f018927440d828e1d550ad6d72))
+* new option to send computed values back to server ([8694743](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/86947437959b68aca081c0536645083d5ff46148))
+
 ## 1.4.5 (2025-07-04)
 
 Full Changelog: [v1.4.4...v1.4.5](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.4.4...v1.4.5)
