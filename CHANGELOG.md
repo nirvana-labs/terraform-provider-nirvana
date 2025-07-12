@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.0 (2025-07-12)
+
+Full Changelog: [v1.5.0...v1.6.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.5.0...v1.6.0)
+
+### Features
+
+* **feat(data_sources):** add data sources for VM, Volume, VPC, Firewall Rule ad API Key ([d9db714](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/d9db714aec1e6577353e6f03b0b7d5301fbd9b9e))
+
 ## 1.5.0 (2025-07-12)
 
 Full Changelog: [v1.4.5...v1.5.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.4.5...v1.5.0)
