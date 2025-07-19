@@ -32,6 +32,7 @@ resource "nirvana_networking_firewall_rule" "example_networking_firewall_rule" {
 - `destination_ports` (List of String) Destination ports of the firewall rule.
 - `name` (String) Name of the firewall rule.
 - `protocol` (String) Protocol of the firewall rule.
+Available values: "tcp", "udp".
 - `source_address` (String) Source address of the firewall rule.
 - `vpc_id` (String)
 
