@@ -38,8 +38,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Required:    true,
 			},
 			"protocol": schema.StringAttribute{
-				Description: "Protocol of the firewall rule.",
+				Description: "Protocol of the firewall rule.\nAvailable values: \"tcp\", \"udp\".",
 				Required:    true,
+				Validators: []validator.String{
+					stringvalidator.OneOfCaseInsensitive("tcp", "udp"),
+				},
 			},
 			"source_address": schema.StringAttribute{
 				Description: "Source address of the firewall rule.",
