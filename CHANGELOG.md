@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.8.4 (2025-08-01)
+
+Full Changelog: [v1.8.3...v1.8.4](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.8.3...v1.8.4)
+
+### Chores
+
+* **internal:** codegen related update ([321794e](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/321794ec809874a6acca5169fc98c251aa5c34ae))
+
 ## 1.8.3 (2025-08-01)
 
 Full Changelog: [v1.8.2...v1.8.3](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.8.2...v1.8.3)
