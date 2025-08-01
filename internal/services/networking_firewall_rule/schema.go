@@ -30,7 +30,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"destination_address": schema.StringAttribute{
-				Description: "Destination address of the firewall rule.",
+				Description: "Destination address of the firewall rule. Either VPC CIDR or VM in VPC.",
 				Required:    true,
 			},
 			"name": schema.StringAttribute{
@@ -45,7 +45,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"source_address": schema.StringAttribute{
-				Description: "Source address of the firewall rule.",
+				Description: "Source address of the firewall rule. Address of 0.0.0.0 requires a CIDR mask of 0.",
 				Required:    true,
 			},
 			"destination_ports": schema.ListAttribute{
