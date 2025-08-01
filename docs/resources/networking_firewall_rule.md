@@ -15,7 +15,7 @@ description: |-
 ```terraform
 resource "nirvana_networking_firewall_rule" "example_networking_firewall_rule" {
   vpc_id = "vpc_id"
-  destination_address = "0.0.0.0/0"
+  destination_address = "10.0.0.0/25"
   destination_ports = ["22", "80", "443"]
   name = "my-firewall-rule"
   protocol = "tcp"
@@ -28,12 +28,12 @@ resource "nirvana_networking_firewall_rule" "example_networking_firewall_rule" {
 
 ### Required
 
-- `destination_address` (String) Destination address of the firewall rule.
+- `destination_address` (String) Destination address of the firewall rule. Either VPC CIDR or VM in VPC.
 - `destination_ports` (List of String) Destination ports of the firewall rule.
 - `name` (String) Name of the firewall rule.
 - `protocol` (String) Protocol of the firewall rule.
 Available values: "tcp", "udp".
-- `source_address` (String) Source address of the firewall rule.
+- `source_address` (String) Source address of the firewall rule. Address of 0.0.0.0 requires a CIDR mask of 0.
 - `vpc_id` (String)
 
 ### Read-Only
