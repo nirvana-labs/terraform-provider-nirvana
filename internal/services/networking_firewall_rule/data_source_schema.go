@@ -31,7 +31,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				CustomType:  timetypes.RFC3339Type{},
 			},
 			"destination_address": schema.StringAttribute{
-				Description: "Destination address of the firewall rule.",
+				Description: "Destination address of the firewall rule. Either VPC CIDR or VM in VPC.",
 				Computed:    true,
 			},
 			"id": schema.StringAttribute{
@@ -50,7 +50,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"source_address": schema.StringAttribute{
-				Description: "Source address of the firewall rule.",
+				Description: "Source address of the firewall rule. Address of 0.0.0.0 requires a CIDR mask of 0.",
 				Computed:    true,
 			},
 			"status": schema.StringAttribute{
