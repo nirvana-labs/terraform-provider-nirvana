@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.8.4 (2025-08-14)
+
+Full Changelog: [v1.8.3...v1.8.4](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.8.3...v1.8.4)
+
+### Bug Fixes
+
+* **api:** handle mismatched dynamic array types in state and plan during serialization ([fb43db5](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/fb43db5e5e225fa60933dfcdf51e043a105a8bef))
+
+
+### Chores
+
+* **internal:** codegen related update ([1283b18](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/1283b18fa668048dc19111ebcad06b7e3cb7fa7d))
+* **internal:** codegen related update ([321794e](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/321794ec809874a6acca5169fc98c251aa5c34ae))
+* **internal:** upgrade cloudflare/circl ([7ba95b8](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/7ba95b87817c32e9f5e9d60d88883375189c10b5))
+* update @stainless-api/prism-cli to v5.15.0 ([62a65fa](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/62a65fae1129bf479910381fb3b5c35b8db1a35d))
+
 ## 1.8.3 (2025-08-01)
 
 Full Changelog: [v1.8.2...v1.8.3](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.8.2...v1.8.3)
