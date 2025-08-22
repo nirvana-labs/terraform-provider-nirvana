@@ -36,7 +36,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Computed:    true,
 			},
 			"region": schema.StringAttribute{
-				Description: "Region the resource is in.\nAvailable values: \"us-sea-1\", \"us-sva-1\", \"us-chi-1\", \"us-wdc-1\", \"eu-lon-1\", \"eu-ams-1\", \"eu-frk-1\", \"ap-sin-1\", \"ap-seo-1\", \"ap-tyo-1\".",
+				Description: "Region the resource is in.\nAvailable values: \"us-sea-1\", \"us-sva-1\", \"us-chi-1\", \"us-wdc-1\", \"eu-frk-1\", \"ap-sin-1\", \"ap-seo-1\", \"ap-tyo-1\".",
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
@@ -44,8 +44,6 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 						"us-sva-1",
 						"us-chi-1",
 						"us-wdc-1",
-						"eu-lon-1",
-						"eu-ams-1",
 						"eu-frk-1",
 						"ap-sin-1",
 						"ap-seo-1",
