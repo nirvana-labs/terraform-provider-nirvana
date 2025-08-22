@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.8.5 (2025-08-22)
+
+Full Changelog: [v1.8.4...v1.8.5](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.8.4...v1.8.5)
+
+### Bug Fixes
+
+* dynamic type validators should handle int and floats correctly ([128cfc1](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/128cfc187cbd509c1a2c281cef43e0faadd8d93f))
+
 ## 1.8.4 (2025-08-14)
 
 Full Changelog: [v1.8.3...v1.8.4](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.8.3...v1.8.4)
