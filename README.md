@@ -20,7 +20,7 @@ terraform {
   required_providers {
     nirvana = {
       source  = "nirvana-labs/nirvana"
-      version = "~> 1.8.4"
+      version = "~> 1.8.5"
     }
   }
 }
