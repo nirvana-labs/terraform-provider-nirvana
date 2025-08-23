@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"time"
 
 	"github.com/hashicorp/terraform-plugin-framework/attr"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -27,12 +28,15 @@ var _ resource.ResourceWithModifyPlan = (*ComputeVMResource)(nil)
 var _ resource.ResourceWithImportState = (*ComputeVMResource)(nil)
 
 func NewResource() resource.Resource {
-	return &ComputeVMResource{}
+	return &ComputeVMResource{
+		waiter: lib.NewOperationWaiter().WithLinearBackoff(1*time.Second, 500*time.Millisecond, 10*time.Second),
+	}
 }
 
 // ComputeVMResource defines the resource implementation.
 type ComputeVMResource struct {
 	client *nirvana.Client
+	waiter *lib.OperationWaiter
 }
 
 func (r *ComputeVMResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
@@ -82,7 +86,7 @@ func (r *ComputeVMResource) Create(ctx context.Context, req resource.CreateReque
 		resp.Diagnostics.AddError("failed to make http request", err.Error())
 		return
 	}
-	if errWaitForOperation := lib.Wait(ctx, r.client, operation.ID); errWaitForOperation != nil {
+	if errWaitForOperation := r.waiter.Wait(ctx, r.client, operation.ID); errWaitForOperation != nil {
 		resp.Diagnostics.AddError("failed to wait for operation", errWaitForOperation.Error())
 		return
 	}
@@ -140,7 +144,7 @@ func (r *ComputeVMResource) Update(ctx context.Context, req resource.UpdateReque
 		resp.Diagnostics.AddError("failed to make http request", err.Error())
 		return
 	}
-	if errWaitForOperation := lib.Wait(ctx, r.client, operation.ID); errWaitForOperation != nil {
+	if errWaitForOperation := r.waiter.Wait(ctx, r.client, operation.ID); errWaitForOperation != nil {
 		resp.Diagnostics.AddError("failed to wait for operation", errWaitForOperation.Error())
 		return
 	}
@@ -314,7 +318,7 @@ func (r *ComputeVMResource) Delete(ctx context.Context, req resource.DeleteReque
 		resp.Diagnostics.AddError("failed to make http request", err.Error())
 		return
 	}
-	if errWaitForOperation := lib.Wait(ctx, r.client, operation.ID); errWaitForOperation != nil {
+	if errWaitForOperation := r.waiter.Wait(ctx, r.client, operation.ID); errWaitForOperation != nil {
 		resp.Diagnostics.AddError("failed to wait for operation", errWaitForOperation.Error())
 		return
 	}
