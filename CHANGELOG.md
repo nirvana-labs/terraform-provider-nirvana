@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.9.1 (2025-08-23)
+
+Full Changelog: [v1.9.0...v1.9.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.9.0...v1.9.1)
+
+### Bug Fixes
+
+* encoder crash for nested nils in dynamic types ([32cc7ed](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/32cc7ed6c03c543ca80a0dc039ccc6cea614f958))
+* populate computed_optional collections from API responses ([b26ec8b](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/b26ec8b9301c397cfd22d78f8329fdf3e65fec96))
+
+
+### Chores
+
+* **internal:** add test rule to lint for dynamic attributes that do not have planmodifier ([9409dd4](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/9409dd47746c0a07c3c764cf4b8e457a0db1bd22))
+* **internal:** codegen related update ([968b816](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/968b816495dcfb764336997268021e919e211d2b))
+
 ## 1.9.0 (2025-08-23)
 
 Full Changelog: [v1.8.5...v1.9.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.8.5...v1.9.0)
