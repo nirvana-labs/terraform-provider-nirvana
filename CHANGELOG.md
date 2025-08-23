@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.10.0 (2025-08-23)
+
+Full Changelog: [v1.9.1...v1.10.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.9.1...v1.10.0)
+
+### Features
+
+* **operation:** use OperationWaiter with LinearBackoff strategy ([#207](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/207)) ([e4f0990](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/e4f099023d2ce62c06f89cb8b0dcc9372a4f4c39))
+
 ## 1.9.1 (2025-08-23)
 
 Full Changelog: [v1.9.0...v1.9.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.9.0...v1.9.1)
