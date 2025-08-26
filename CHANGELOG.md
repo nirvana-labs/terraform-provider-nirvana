@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.10.1 (2025-08-26)
+
+Full Changelog: [v1.10.0...v1.10.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.10.0...v1.10.1)
+
+### Chores
+
+* improve integrity test error messages ([92ca2de](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/92ca2de2a1a8bb6e13b7943ec02af9ebfbd668c1))
+
 ## 1.10.0 (2025-08-23)
 
 Full Changelog: [v1.9.1...v1.10.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.9.1...v1.10.0)
