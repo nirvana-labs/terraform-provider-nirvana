@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.10.2 (2025-08-27)
+
+Full Changelog: [v1.10.1...v1.10.2](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.10.1...v1.10.2)
+
+### Bug Fixes
+
+* properly handle null nested objects in customfield marshaling ([1ebaddf](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/1ebaddfa01746109f29269133945b5bbbbd2cf3b))
+
+
+### Chores
+
+* **internal:** codegen related update ([be4c190](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/be4c19073795aa1232d7d4703e08539f5cf34a7e))
+
 ## 1.10.1 (2025-08-26)
 
 Full Changelog: [v1.10.0...v1.10.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.10.0...v1.10.1)
