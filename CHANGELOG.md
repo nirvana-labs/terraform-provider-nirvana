@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.12.0 (2025-09-06)
+
+Full Changelog: [v1.11.0...v1.12.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.11.0...v1.12.0)
+
+### Features
+
+* **internal:** support CustomMarshaler interface for encoding types ([acfe937](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/acfe937313a58a95c01b68e3b14e972f499027b4))
+
+
+### Chores
+
+* **internal:** codegen related update ([c09635a](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/c09635a0a74eddb2687079b065c887da277d5abd))
+
 ## 1.11.0 (2025-08-29)
 
 Full Changelog: [v1.10.2...v1.11.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.10.2...v1.11.0)
