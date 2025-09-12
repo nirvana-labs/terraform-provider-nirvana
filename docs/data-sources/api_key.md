@@ -36,4 +36,3 @@ data "nirvana_api_key" "example_api_key" {
 - `status` (String) Status of the API key.
 Available values: "active", "inactive", "expired".
 - `updated_at` (String) When the API key was updated.
-- `user_id` (String) User ID that owns the API key.

@@ -17,5 +17,4 @@ type APIKeyDataSourceModel struct {
 	StartsAt  timetypes.RFC3339 `tfsdk:"starts_at" json:"starts_at,computed" format:"date-time"`
 	Status    types.String      `tfsdk:"status" json:"status,computed"`
 	UpdatedAt timetypes.RFC3339 `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
-	UserID    types.String      `tfsdk:"user_id" json:"user_id,computed"`
 }

@@ -64,10 +64,6 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},
-			"user_id": schema.StringAttribute{
-				Description: "User ID that owns the API key.",
-				Computed:    true,
-			},
 		},
 	}
 }

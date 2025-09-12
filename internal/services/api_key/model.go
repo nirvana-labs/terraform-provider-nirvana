@@ -17,7 +17,6 @@ type APIKeyModel struct {
 	Key       types.String      `tfsdk:"key" json:"key,computed"`
 	Status    types.String      `tfsdk:"status" json:"status,computed"`
 	UpdatedAt timetypes.RFC3339 `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
-	UserID    types.String      `tfsdk:"user_id" json:"user_id,computed"`
 }
 
 func (m APIKeyModel) MarshalJSON() (data []byte, err error) {
