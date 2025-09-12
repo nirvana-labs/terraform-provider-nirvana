@@ -88,7 +88,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				CustomType:  customfield.NewNestedObjectType[NetworkingVPCSubnetModel](ctx),
 				Attributes: map[string]schema.Attribute{
 					"id": schema.StringAttribute{
-						Description: "Unique identifier for the subnet.",
+						Description: "Unique identifier for the Subnet.",
 						Computed:    true,
 					},
 					"cidr": schema.StringAttribute{
