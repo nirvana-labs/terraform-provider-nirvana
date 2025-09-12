@@ -45,6 +45,6 @@ Read-Only:
 
 - `cidr` (String) CIDR block for the subnet.
 - `created_at` (String) When the subnet was created.
-- `id` (String) Unique identifier for the subnet.
+- `id` (String) Unique identifier for the Subnet.
 - `name` (String) Name of the subnet.
 - `updated_at` (String) When the subnet was updated.
