@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.14.2 (2025-09-19)
+
+Full Changelog: [v1.14.1...v1.14.2](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.14.1...v1.14.2)
+
+### Chores
+
+* ensure `tfplugindocs` always use `/var/tmp` for compilation on linux ([12aed23](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/12aed23db6d91d37b25de2f537faecd9e7460312))
+
 ## 1.14.1 (2025-09-17)
 
 Full Changelog: [v1.14.0...v1.14.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.14.0...v1.14.1)
