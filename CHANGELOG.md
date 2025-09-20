@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.14.3 (2025-09-20)
+
+Full Changelog: [v1.14.2...v1.14.3](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.14.2...v1.14.3)
+
+### Features
+
+* **api:** api update ([daade1e](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/daade1e389259fcd0c39773b12adb416ddb0d291))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([4678faa](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/4678faa23a25bec58834db2ab5303dd79ae11479))
+
 ## 1.14.2 (2025-09-19)
 
 Full Changelog: [v1.14.1...v1.14.2](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.14.1...v1.14.2)
