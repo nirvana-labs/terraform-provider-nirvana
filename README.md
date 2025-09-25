@@ -53,6 +53,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
     name = "my-data-volume"
     size = 100
   }]
+  tags = ["production", "api", "access"]
 }
 ```
 

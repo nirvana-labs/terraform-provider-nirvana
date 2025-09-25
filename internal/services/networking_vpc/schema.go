@@ -22,7 +22,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{
-				Description:   "Unique identifier for the operation.",
+				Description:   "Unique identifier for the Operation.",
 				Computed:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
 			},
@@ -51,6 +51,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Description: "Name of the subnet to create.",
 				Required:    true,
 			},
+			"tags": schema.ListAttribute{
+				Description: "Tags to attach to the VPC.",
+				Optional:    true,
+				ElementType: types.StringType,
+			},
 			"created_at": schema.StringAttribute{
 				Description: "When the VPC was created.",
 				Computed:    true,
@@ -77,7 +82,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				CustomType:  timetypes.RFC3339Type{},
 			},
 			"firewall_rule_ids": schema.ListAttribute{
-				Description: "IDs of the firewall rules associated with the VPC.",
+				Description: "IDs of the Firewall Rules associated with the VPC.",
 				Computed:    true,
 				CustomType:  customfield.NewListType[types.String](ctx),
 				ElementType: types.StringType,
@@ -92,20 +97,20 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						Computed:    true,
 					},
 					"cidr": schema.StringAttribute{
-						Description: "CIDR block for the subnet.",
+						Description: "CIDR block for the Subnet.",
 						Computed:    true,
 					},
 					"created_at": schema.StringAttribute{
-						Description: "When the subnet was created.",
+						Description: "When the Subnet was created.",
 						Computed:    true,
 						CustomType:  timetypes.RFC3339Type{},
 					},
 					"name": schema.StringAttribute{
-						Description: "Name of the subnet.",
+						Description: "Name of the Subnet.",
 						Computed:    true,
 					},
 					"updated_at": schema.StringAttribute{
-						Description: "When the subnet was updated.",
+						Description: "When the Subnet was updated.",
 						Computed:    true,
 						CustomType:  timetypes.RFC3339Type{},
 					},

@@ -25,7 +25,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{
-				Description:   "Unique identifier for the operation.",
+				Description:   "Unique identifier for the Operation.",
 				Computed:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
 			},
@@ -61,7 +61,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Required:    true,
 				Attributes: map[string]schema.Attribute{
 					"size": schema.Int64Attribute{
-						Description: "Size of the volume in GB.",
+						Description: "Size of the Volume in GB.",
 						Required:    true,
 						Validators: []validator.Int64{
 							int64validator.Between(64, 512),
@@ -87,11 +87,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"name": schema.StringAttribute{
-							Description: "Name of the volume.",
+							Description: "Name of the Volume.",
 							Required:    true,
 						},
 						"size": schema.Int64Attribute{
-							Description: "Size of the volume in GB.",
+							Description: "Size of the Volume in GB.",
 							Required:    true,
 							Validators: []validator.Int64{
 								int64validator.Between(32, 10240),
@@ -134,6 +134,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						},
 					},
 				},
+			},
+			"tags": schema.ListAttribute{
+				Description: "Tags to attach to the VM.",
+				Optional:    true,
+				ElementType: types.StringType,
 			},
 			"boot_volume_id": schema.StringAttribute{
 				Description: "ID of the boot volume attached to the VM.",
