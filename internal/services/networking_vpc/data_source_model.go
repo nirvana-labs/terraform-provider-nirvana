@@ -22,7 +22,7 @@ type NetworkingVPCDataSourceModel struct {
 
 type NetworkingVPCSubnetDataSourceModel struct {
 	ID        types.String      `tfsdk:"id" json:"id,computed"`
-	Cidr      types.String      `tfsdk:"cidr" json:"cidr,computed"`
+	CIDR      types.String      `tfsdk:"cidr" json:"cidr,computed"`
 	CreatedAt timetypes.RFC3339 `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
 	Name      types.String      `tfsdk:"name" json:"name,computed"`
 	UpdatedAt timetypes.RFC3339 `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
