@@ -14,6 +14,7 @@ type NetworkingVPCModel struct {
 	Region          types.String                                       `tfsdk:"region" json:"region,required"`
 	Name            types.String                                       `tfsdk:"name" json:"name,required"`
 	SubnetName      types.String                                       `tfsdk:"subnet_name" json:"subnet_name,required,no_refresh"`
+	Tags            *[]types.String                                    `tfsdk:"tags" json:"tags,optional"`
 	CreatedAt       timetypes.RFC3339                                  `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
 	Status          types.String                                       `tfsdk:"status" json:"status,computed"`
 	UpdatedAt       timetypes.RFC3339                                  `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`

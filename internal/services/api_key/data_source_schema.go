@@ -10,6 +10,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
 var _ datasource.DataSourceWithConfigValidators = (*APIKeyDataSource)(nil)
@@ -21,35 +23,35 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Required: true,
 			},
 			"created_at": schema.StringAttribute{
-				Description: "When the API key was created.",
+				Description: "When the API Key was created.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},
 			"expires_at": schema.StringAttribute{
-				Description: "When the API key expires and is no longer valid.",
+				Description: "When the API Key expires and is no longer valid.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},
 			"id": schema.StringAttribute{
-				Description: "API key ID.",
+				Description: "API Key ID.",
 				Computed:    true,
 			},
 			"key": schema.StringAttribute{
-				Description: "API key. Only returned on creation.",
+				Description: "API Key. Only returned on creation.",
 				Computed:    true,
 				Sensitive:   true,
 			},
 			"name": schema.StringAttribute{
-				Description: "API key name.",
+				Description: "API Key name.",
 				Computed:    true,
 			},
 			"starts_at": schema.StringAttribute{
-				Description: "When the API key starts to be valid.",
+				Description: "When the API Key starts to be valid.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},
 			"status": schema.StringAttribute{
-				Description: "Status of the API key.\nAvailable values: \"active\", \"inactive\", \"expired\".",
+				Description: "Status of the API Key.\nAvailable values: \"active\", \"inactive\", \"expired\".",
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
@@ -60,9 +62,15 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"updated_at": schema.StringAttribute{
-				Description: "When the API key was updated.",
+				Description: "When the API Key was updated.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
+			},
+			"tags": schema.ListAttribute{
+				Description: "Tags to attach to the API Key.",
+				Computed:    true,
+				CustomType:  customfield.NewListType[types.String](ctx),
+				ElementType: types.StringType,
 			},
 		},
 	}

@@ -13,6 +13,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
+	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
 var _ resource.ResourceWithConfigValidators = (*ComputeVolumeResource)(nil)
@@ -21,28 +22,33 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{
-				Description:   "Unique identifier for the operation.",
+				Description:   "Unique identifier for the Operation.",
 				Computed:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
 			},
 			"vm_id": schema.StringAttribute{
-				Description:   "ID of the VM the volume is attached to.",
+				Description:   "ID of the VM the Volume is attached to.",
 				Required:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"name": schema.StringAttribute{
-				Description: "Name of the volume.",
+				Description: "Name of the Volume.",
 				Required:    true,
 			},
 			"size": schema.Int64Attribute{
-				Description: "Size of the volume in GB.",
+				Description: "Size of the Volume in GB.",
 				Required:    true,
 				Validators: []validator.Int64{
 					int64validator.Between(32, 10240),
 				},
 			},
+			"tags": schema.ListAttribute{
+				Description: "Tags to attach to the Volume.",
+				Optional:    true,
+				ElementType: types.StringType,
+			},
 			"created_at": schema.StringAttribute{
-				Description: "When the volume was created.",
+				Description: "When the Volume was created.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},
@@ -69,19 +75,19 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"type": schema.StringAttribute{
-				Description: "Storage type the volume is using.\nAvailable values: \"nvme\".",
+				Description: "Storage type the Volume is using.\nAvailable values: \"nvme\".",
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive("nvme"),
 				},
 			},
 			"updated_at": schema.StringAttribute{
-				Description: "When the volume was updated.",
+				Description: "When the Volume was updated.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},
 			"vm_name": schema.StringAttribute{
-				Description: "Name of the VM the volume is attached to.",
+				Description: "Name of the VM the Volume is attached to.",
 				Computed:    true,
 			},
 		},

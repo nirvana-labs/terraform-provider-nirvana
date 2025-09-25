@@ -35,6 +35,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
     name = "my-data-volume"
     size = 100
   }]
+  tags = ["production", "api", "access"]
 }
 ```
 
@@ -57,13 +58,14 @@ Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-frk-1", "a
 ### Optional
 
 - `data_volumes` (Attributes List) Data volumes for the VM. (see [below for nested schema](#nestedatt--data_volumes))
+- `tags` (List of String) Tags to attach to the VM.
 
 ### Read-Only
 
 - `boot_volume_id` (String) ID of the boot volume attached to the VM.
 - `created_at` (String) When the VM was created.
 - `data_volume_ids` (List of String) IDs of the data volumes attached to the VM.
-- `id` (String) Unique identifier for the operation.
+- `id` (String) Unique identifier for the Operation.
 - `private_ip` (String) Private IP of the VM.
 - `public_ip` (String) Public IP of the VM.
 - `status` (String) Status of the resource.
@@ -77,7 +79,7 @@ Available values: "pending", "creating", "updating", "ready", "deleting", "delet
 
 Required:
 
-- `size` (Number) Size of the volume in GB.
+- `size` (Number) Size of the Volume in GB.
 
 
 <a id="nestedatt--cpu_config"></a>
@@ -109,8 +111,8 @@ Required:
 
 Required:
 
-- `name` (String) Name of the volume.
-- `size` (Number) Size of the volume in GB.
+- `name` (String) Name of the Volume.
+- `size` (Number) Size of the Volume in GB.
 
 ## Import
 

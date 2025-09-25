@@ -10,6 +10,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
 var _ datasource.DataSourceWithConfigValidators = (*ComputeVolumeDataSource)(nil)
@@ -21,12 +23,12 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Required: true,
 			},
 			"created_at": schema.StringAttribute{
-				Description: "When the volume was created.",
+				Description: "When the Volume was created.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},
 			"id": schema.StringAttribute{
-				Description: "Unique identifier for the volume.",
+				Description: "Unique identifier for the Volume.",
 				Computed:    true,
 			},
 			"kind": schema.StringAttribute{
@@ -37,11 +39,11 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"name": schema.StringAttribute{
-				Description: "Name of the volume.",
+				Description: "Name of the Volume.",
 				Computed:    true,
 			},
 			"size": schema.Int64Attribute{
-				Description: "Size of the volume in GB.",
+				Description: "Size of the Volume in GB.",
 				Computed:    true,
 			},
 			"status": schema.StringAttribute{
@@ -60,24 +62,30 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"type": schema.StringAttribute{
-				Description: "Storage type the volume is using.\nAvailable values: \"nvme\".",
+				Description: "Storage type the Volume is using.\nAvailable values: \"nvme\".",
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive("nvme"),
 				},
 			},
 			"updated_at": schema.StringAttribute{
-				Description: "When the volume was updated.",
+				Description: "When the Volume was updated.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},
 			"vm_id": schema.StringAttribute{
-				Description: "ID of the VM the volume is attached to.",
+				Description: "ID of the VM the Volume is attached to.",
 				Computed:    true,
 			},
 			"vm_name": schema.StringAttribute{
-				Description: "Name of the VM the volume is attached to.",
+				Description: "Name of the VM the Volume is attached to.",
 				Computed:    true,
+			},
+			"tags": schema.ListAttribute{
+				Description: "Tags to attach to the Volume.",
+				Computed:    true,
+				CustomType:  customfield.NewListType[types.String](ctx),
+				ElementType: types.StringType,
 			},
 		},
 	}

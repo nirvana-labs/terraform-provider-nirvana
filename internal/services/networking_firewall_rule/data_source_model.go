@@ -20,4 +20,5 @@ type NetworkingFirewallRuleDataSourceModel struct {
 	Status             types.String                   `tfsdk:"status" json:"status,computed"`
 	UpdatedAt          timetypes.RFC3339              `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
 	DestinationPorts   customfield.List[types.String] `tfsdk:"destination_ports" json:"destination_ports,computed"`
+	Tags               customfield.List[types.String] `tfsdk:"tags" json:"tags,computed"`
 }
