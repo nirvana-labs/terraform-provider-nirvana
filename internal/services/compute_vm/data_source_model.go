@@ -24,7 +24,6 @@ type ComputeVMDataSourceModel struct {
 	VPCID           types.String                                                   `tfsdk:"vpc_id" json:"vpc_id,computed"`
 	VPCName         types.String                                                   `tfsdk:"vpc_name" json:"vpc_name,computed"`
 	DataVolumeIDs   customfield.List[types.String]                                 `tfsdk:"data_volume_ids" json:"data_volume_ids,computed"`
-	Tags            customfield.List[types.String]                                 `tfsdk:"tags" json:"tags,computed"`
 	CPUConfig       customfield.NestedObject[ComputeVMCPUConfigDataSourceModel]    `tfsdk:"cpu_config" json:"cpu_config,computed"`
 	MemoryConfig    customfield.NestedObject[ComputeVMMemoryConfigDataSourceModel] `tfsdk:"memory_config" json:"memory_config,computed"`
 }

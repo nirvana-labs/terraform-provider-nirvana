@@ -17,7 +17,6 @@ type NetworkingVPCDataSourceModel struct {
 	Status          types.String                                                 `tfsdk:"status" json:"status,computed"`
 	UpdatedAt       timetypes.RFC3339                                            `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
 	FirewallRuleIDs customfield.List[types.String]                               `tfsdk:"firewall_rule_ids" json:"firewall_rule_ids,computed"`
-	Tags            customfield.List[types.String]                               `tfsdk:"tags" json:"tags,computed"`
 	Subnet          customfield.NestedObject[NetworkingVPCSubnetDataSourceModel] `tfsdk:"subnet" json:"subnet,computed"`
 }
 

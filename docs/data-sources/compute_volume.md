@@ -35,7 +35,6 @@ Available values: "boot", "data".
 - `size` (Number) Size of the Volume in GB.
 - `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
-- `tags` (List of String) Tags to attach to the Volume.
 - `type` (String) Storage type the Volume is using.
 Available values: "nvme".
 - `updated_at` (String) When the Volume was updated.

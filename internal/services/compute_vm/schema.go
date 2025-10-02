@@ -135,11 +135,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 					},
 				},
 			},
-			"tags": schema.ListAttribute{
-				Description: "Tags to attach to the VM.",
-				Optional:    true,
-				ElementType: types.StringType,
-			},
 			"boot_volume_id": schema.StringAttribute{
 				Description: "ID of the boot volume attached to the VM.",
 				Computed:    true,
