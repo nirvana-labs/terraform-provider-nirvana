@@ -26,31 +26,31 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Required: true,
 			},
 			"created_at": schema.StringAttribute{
-				Description: "When the firewall rule was created.",
+				Description: "When the Firewall Rule was created.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},
 			"destination_address": schema.StringAttribute{
-				Description: "Destination address of the firewall rule. Either VPC CIDR or VM in VPC.",
+				Description: "Destination address of the Firewall Rule. Either VPC CIDR or VM in VPC.",
 				Computed:    true,
 			},
 			"id": schema.StringAttribute{
-				Description: "Unique identifier for the firewall rule.",
+				Description: "Unique identifier for the Firewall Rule.",
 				Computed:    true,
 			},
 			"name": schema.StringAttribute{
-				Description: "Name of the firewall rule.",
+				Description: "Name of the Firewall Rule.",
 				Computed:    true,
 			},
 			"protocol": schema.StringAttribute{
-				Description: "Protocol of the firewall rule.\nAvailable values: \"tcp\", \"udp\".",
+				Description: "Protocol of the Firewall Rule.\nAvailable values: \"tcp\", \"udp\".",
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive("tcp", "udp"),
 				},
 			},
 			"source_address": schema.StringAttribute{
-				Description: "Source address of the firewall rule. Address of 0.0.0.0 requires a CIDR mask of 0.",
+				Description: "Source address of the Firewall Rule. Address of 0.0.0.0 requires a CIDR mask of 0.",
 				Computed:    true,
 			},
 			"status": schema.StringAttribute{
@@ -69,12 +69,12 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"updated_at": schema.StringAttribute{
-				Description: "When the firewall rule was updated.",
+				Description: "When the Firewall Rule was updated.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},
 			"destination_ports": schema.ListAttribute{
-				Description: "Destination ports of the firewall rule.",
+				Description: "Destination ports of the Firewall Rule.",
 				Computed:    true,
 				CustomType:  customfield.NewListType[types.String](ctx),
 				ElementType: types.StringType,

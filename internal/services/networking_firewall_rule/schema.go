@@ -21,7 +21,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{
-				Description:   "Unique identifier for the operation.",
+				Description:   "Unique identifier for the Operation.",
 				Computed:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
 			},
@@ -30,31 +30,31 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"destination_address": schema.StringAttribute{
-				Description: "Destination address of the firewall rule. Either VPC CIDR or VM in VPC.",
+				Description: "Destination address of the Firewall Rule. Either VPC CIDR or VM in VPC.",
 				Required:    true,
 			},
 			"name": schema.StringAttribute{
-				Description: "Name of the firewall rule.",
+				Description: "Name of the Firewall Rule.",
 				Required:    true,
 			},
 			"protocol": schema.StringAttribute{
-				Description: "Protocol of the firewall rule.\nAvailable values: \"tcp\", \"udp\".",
+				Description: "Protocol of the Firewall Rule.\nAvailable values: \"tcp\", \"udp\".",
 				Required:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive("tcp", "udp"),
 				},
 			},
 			"source_address": schema.StringAttribute{
-				Description: "Source address of the firewall rule. Address of 0.0.0.0 requires a CIDR mask of 0.",
+				Description: "Source address of the Firewall Rule. Address of 0.0.0.0 requires a CIDR mask of 0.",
 				Required:    true,
 			},
 			"destination_ports": schema.ListAttribute{
-				Description: "Destination ports of the firewall rule.",
+				Description: "Destination ports of the Firewall Rule.",
 				Required:    true,
 				ElementType: types.StringType,
 			},
 			"created_at": schema.StringAttribute{
-				Description: "When the firewall rule was created.",
+				Description: "When the Firewall Rule was created.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},
@@ -74,7 +74,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"updated_at": schema.StringAttribute{
-				Description: "When the firewall rule was updated.",
+				Description: "When the Firewall Rule was updated.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},

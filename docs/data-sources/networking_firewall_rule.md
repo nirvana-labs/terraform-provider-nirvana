@@ -29,14 +29,14 @@ data "nirvana_networking_firewall_rule" "example_networking_firewall_rule" {
 
 ### Read-Only
 
-- `created_at` (String) When the firewall rule was created.
-- `destination_address` (String) Destination address of the firewall rule. Either VPC CIDR or VM in VPC.
-- `destination_ports` (List of String) Destination ports of the firewall rule.
-- `id` (String) Unique identifier for the firewall rule.
-- `name` (String) Name of the firewall rule.
-- `protocol` (String) Protocol of the firewall rule.
+- `created_at` (String) When the Firewall Rule was created.
+- `destination_address` (String) Destination address of the Firewall Rule. Either VPC CIDR or VM in VPC.
+- `destination_ports` (List of String) Destination ports of the Firewall Rule.
+- `id` (String) Unique identifier for the Firewall Rule.
+- `name` (String) Name of the Firewall Rule.
+- `protocol` (String) Protocol of the Firewall Rule.
 Available values: "tcp", "udp".
-- `source_address` (String) Source address of the firewall rule. Address of 0.0.0.0 requires a CIDR mask of 0.
+- `source_address` (String) Source address of the Firewall Rule. Address of 0.0.0.0 requires a CIDR mask of 0.
 - `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
-- `updated_at` (String) When the firewall rule was updated.
+- `updated_at` (String) When the Firewall Rule was updated.

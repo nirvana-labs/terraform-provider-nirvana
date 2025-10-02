@@ -17,6 +17,7 @@ resource "nirvana_api_key" "example_api_key" {
   expires_at = "2025-12-31T23:59:59Z"
   name = "my-api-key"
   starts_at = "2025-01-01T00:00:00Z"
+  tags = ["production", "ethereum"]
 }
 ```
 
@@ -25,21 +26,22 @@ resource "nirvana_api_key" "example_api_key" {
 
 ### Required
 
-- `expires_at` (String) When the API key expires and is no longer valid.
-- `name` (String) API key name.
+- `expires_at` (String) When the API Key expires and is no longer valid.
+- `name` (String) API Key name.
 
 ### Optional
 
-- `starts_at` (String) When the API key starts to be valid.
+- `starts_at` (String) When the API Key starts to be valid.
+- `tags` (List of String) Tags to attach to the API Key.
 
 ### Read-Only
 
-- `created_at` (String) When the API key was created.
-- `id` (String) API key ID.
-- `key` (String, Sensitive) API key. Only returned on creation.
-- `status` (String) Status of the API key.
+- `created_at` (String) When the API Key was created.
+- `id` (String) API Key ID.
+- `key` (String, Sensitive) API Key. Only returned on creation.
+- `status` (String) Status of the API Key.
 Available values: "active", "inactive", "expired".
-- `updated_at` (String) When the API key was updated.
+- `updated_at` (String) When the API Key was updated.
 
 ## Import
 

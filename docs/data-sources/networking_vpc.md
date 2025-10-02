@@ -28,7 +28,7 @@ data "nirvana_networking_vpc" "example_networking_vpc" {
 ### Read-Only
 
 - `created_at` (String) When the VPC was created.
-- `firewall_rule_ids` (List of String) IDs of the firewall rules associated with the VPC.
+- `firewall_rule_ids` (List of String) IDs of the Firewall Rules associated with the VPC.
 - `id` (String) Unique identifier for the VPC.
 - `name` (String) Name of the VPC.
 - `region` (String) Region the resource is in.
@@ -43,8 +43,8 @@ Available values: "pending", "creating", "updating", "ready", "deleting", "delet
 
 Read-Only:
 
-- `cidr` (String) CIDR block for the subnet.
-- `created_at` (String) When the subnet was created.
+- `cidr` (String) CIDR block for the Subnet.
+- `created_at` (String) When the Subnet was created.
 - `id` (String) Unique identifier for the Subnet.
-- `name` (String) Name of the subnet.
-- `updated_at` (String) When the subnet was updated.
+- `name` (String) Name of the Subnet.
+- `updated_at` (String) When the Subnet was updated.

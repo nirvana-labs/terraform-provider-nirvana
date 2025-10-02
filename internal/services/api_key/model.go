@@ -13,6 +13,7 @@ type APIKeyModel struct {
 	ExpiresAt timetypes.RFC3339 `tfsdk:"expires_at" json:"expires_at,required" format:"date-time"`
 	StartsAt  timetypes.RFC3339 `tfsdk:"starts_at" json:"starts_at,optional" format:"date-time"`
 	Name      types.String      `tfsdk:"name" json:"name,required"`
+	Tags      *[]types.String   `tfsdk:"tags" json:"tags,optional"`
 	CreatedAt timetypes.RFC3339 `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
 	Key       types.String      `tfsdk:"key" json:"key,computed"`
 	Status    types.String      `tfsdk:"status" json:"status,computed"`
