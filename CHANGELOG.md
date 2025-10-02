@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.15.0 (2025-10-02)
+
+Full Changelog: [v1.14.4...v1.15.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.14.4...v1.15.0)
+
+### Features
+
+* added capability for `dynamicvalidator` to do arbitrary semantic equivalence check ([cbd951b](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/cbd951b2831605277f6bce01d90bb458ba3c9870))
+* **api:** api update ([56e2aa2](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/56e2aa2254c6902601510b7b93fbde1909824a27))
+* **api:** api update ([3002a7d](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/3002a7d5ef774f514471fb5879106d510e7e6190))
+* **api:** api update ([3e04a51](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/3e04a51879a048810ec79ed02cefd59d81d910c9))
+
+
+### Bug Fixes
+
+* bugfix for setting JSON keys with special characters ([dcf6111](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/dcf61111fe47cd84263ed55790c41e227a74915b))
+
 ## 1.14.4 (2025-09-25)
 
 Full Changelog: [v1.14.3...v1.14.4](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.14.3...v1.14.4)
