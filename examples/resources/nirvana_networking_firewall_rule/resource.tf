@@ -5,5 +5,4 @@ resource "nirvana_networking_firewall_rule" "example_networking_firewall_rule" {
   name = "my-firewall-rule"
   protocol = "tcp"
   source_address = "0.0.0.0/0"
-  tags = ["production", "ethereum"]
 }

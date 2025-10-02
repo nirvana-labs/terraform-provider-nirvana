@@ -35,7 +35,6 @@ resource "nirvana_compute_vm" "example_compute_vm" {
     name = "my-data-volume"
     size = 100
   }]
-  tags = ["production", "ethereum"]
 }
 ```
 
@@ -58,7 +57,6 @@ Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-frk-1", "a
 ### Optional
 
 - `data_volumes` (Attributes List) Data volumes for the VM. (see [below for nested schema](#nestedatt--data_volumes))
-- `tags` (List of String) Tags to attach to the VM.
 
 ### Read-Only
 

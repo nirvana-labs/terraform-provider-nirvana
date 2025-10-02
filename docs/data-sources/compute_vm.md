@@ -42,7 +42,6 @@ Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-frk-1", "a
 - `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `subnet_id` (String) ID of the subnet the VM is in.
-- `tags` (List of String) Tags to attach to the VM.
 - `updated_at` (String) When the VM was updated.
 - `vpc_id` (String) ID of the VPC the VM is in.
 - `vpc_name` (String) Name of the VPC the VM is in.
