@@ -28,7 +28,7 @@ data "nirvana_compute_volume" "example_compute_volume" {
 ### Read-Only
 
 - `created_at` (String) When the Volume was created.
-- `id` (String) Unique identifier for the Volume.
+- `id` (String) The ID of this resource.
 - `kind` (String) Volume kind.
 Available values: "boot", "data".
 - `name` (String) Name of the Volume.

@@ -74,6 +74,7 @@ func (d *APIKeyDataSource) Read(ctx context.Context, req datasource.ReadRequest,
 		resp.Diagnostics.AddError("failed to deserialize http request", err.Error())
 		return
 	}
+	data.ID = data.APIKeyID
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }

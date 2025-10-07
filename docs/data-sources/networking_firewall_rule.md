@@ -32,7 +32,7 @@ data "nirvana_networking_firewall_rule" "example_networking_firewall_rule" {
 - `created_at` (String) When the Firewall Rule was created.
 - `destination_address` (String) Destination address of the Firewall Rule. Either VPC CIDR or VM in VPC.
 - `destination_ports` (List of String) Destination ports of the Firewall Rule.
-- `id` (String) Unique identifier for the Firewall Rule.
+- `id` (String) The ID of this resource.
 - `name` (String) Name of the Firewall Rule.
 - `protocol` (String) Protocol of the Firewall Rule.
 Available values: "tcp", "udp".

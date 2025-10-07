@@ -17,6 +17,9 @@ var _ datasource.DataSourceWithConfigValidators = (*ComputeVolumeDataSource)(nil
 func DataSourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
+			"id": schema.StringAttribute{
+				Computed: true,
+			},
 			"volume_id": schema.StringAttribute{
 				Required: true,
 			},
@@ -24,10 +27,6 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Description: "When the Volume was created.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
-			},
-			"id": schema.StringAttribute{
-				Description: "Unique identifier for the Volume.",
-				Computed:    true,
 			},
 			"kind": schema.StringAttribute{
 				Description: "Volume kind.\nAvailable values: \"boot\", \"data\".",
