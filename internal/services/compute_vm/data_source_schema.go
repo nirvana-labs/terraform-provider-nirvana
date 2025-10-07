@@ -20,6 +20,9 @@ var _ datasource.DataSourceWithConfigValidators = (*ComputeVMDataSource)(nil)
 func DataSourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
+			"id": schema.StringAttribute{
+				Computed: true,
+			},
 			"vm_id": schema.StringAttribute{
 				Required: true,
 			},
@@ -31,10 +34,6 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Description: "When the VM was created.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
-			},
-			"id": schema.StringAttribute{
-				Description: "Unique identifier for the VM.",
-				Computed:    true,
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of the VM.",

@@ -29,7 +29,7 @@ data "nirvana_networking_vpc" "example_networking_vpc" {
 
 - `created_at` (String) When the VPC was created.
 - `firewall_rule_ids` (List of String) IDs of the Firewall Rules associated with the VPC.
-- `id` (String) Unique identifier for the VPC.
+- `id` (String) The ID of this resource.
 - `name` (String) Name of the VPC.
 - `region` (String) Region the resource is in.
 Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-frk-1", "ap-sin-1", "ap-seo-1", "ap-tyo-1".

@@ -19,6 +19,9 @@ var _ datasource.DataSourceWithConfigValidators = (*NetworkingVPCDataSource)(nil
 func DataSourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
+			"id": schema.StringAttribute{
+				Computed: true,
+			},
 			"vpc_id": schema.StringAttribute{
 				Required: true,
 			},
@@ -26,10 +29,6 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Description: "When the VPC was created.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
-			},
-			"id": schema.StringAttribute{
-				Description: "Unique identifier for the VPC.",
-				Computed:    true,
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of the VPC.",

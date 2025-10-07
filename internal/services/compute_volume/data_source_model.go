@@ -8,9 +8,9 @@ import (
 )
 
 type ComputeVolumeDataSourceModel struct {
+	ID        types.String      `tfsdk:"id" path:"volume_id,computed"`
 	VolumeID  types.String      `tfsdk:"volume_id" path:"volume_id,required"`
 	CreatedAt timetypes.RFC3339 `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
-	ID        types.String      `tfsdk:"id" json:"id,computed"`
 	Kind      types.String      `tfsdk:"kind" json:"kind,computed"`
 	Name      types.String      `tfsdk:"name" json:"name,computed"`
 	Size      types.Int64       `tfsdk:"size" json:"size,computed"`

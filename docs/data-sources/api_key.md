@@ -29,7 +29,7 @@ data "nirvana_api_key" "example_api_key" {
 
 - `created_at` (String) When the API Key was created.
 - `expires_at` (String) When the API Key expires and is no longer valid.
-- `id` (String) API Key ID.
+- `id` (String) The ID of this resource.
 - `key` (String, Sensitive) API Key. Only returned on creation.
 - `name` (String) API Key name.
 - `starts_at` (String) When the API Key starts to be valid.
