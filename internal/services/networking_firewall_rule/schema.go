@@ -53,6 +53,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Required:    true,
 				ElementType: types.StringType,
 			},
+			"tags": schema.ListAttribute{
+				Description: "Tags to attach to the Firewall Rule.",
+				Optional:    true,
+				ElementType: types.StringType,
+			},
 			"created_at": schema.StringAttribute{
 				Description: "When the Firewall Rule was created.",
 				Computed:    true,

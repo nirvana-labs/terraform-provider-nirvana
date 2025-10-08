@@ -17,6 +17,7 @@ resource "nirvana_networking_vpc" "example_networking_vpc" {
   name = "my-vpc"
   region = "us-wdc-1"
   subnet_name = "my-subnet"
+  tags = ["production", "ethereum"]
 }
 ```
 
@@ -29,6 +30,10 @@ resource "nirvana_networking_vpc" "example_networking_vpc" {
 - `region` (String) Region the resource is in.
 Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-frk-1", "ap-sin-1", "ap-seo-1", "ap-tyo-1".
 - `subnet_name` (String) Name of the subnet to create.
+
+### Optional
+
+- `tags` (List of String) Tags to attach to the VPC.
 
 ### Read-Only
 

@@ -17,6 +17,7 @@ resource "nirvana_compute_volume" "example_compute_volume" {
   name = "my-data-volume"
   size = 100
   vm_id = "vm_id"
+  tags = ["production", "ethereum"]
 }
 ```
 
@@ -28,6 +29,10 @@ resource "nirvana_compute_volume" "example_compute_volume" {
 - `name` (String) Name of the Volume.
 - `size` (Number) Size of the Volume in GB.
 - `vm_id` (String) ID of the VM the Volume is attached to.
+
+### Optional
+
+- `tags` (List of String) Tags to attach to the Volume.
 
 ### Read-Only
 

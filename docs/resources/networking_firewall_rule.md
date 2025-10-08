@@ -20,6 +20,7 @@ resource "nirvana_networking_firewall_rule" "example_networking_firewall_rule" {
   name = "my-firewall-rule"
   protocol = "tcp"
   source_address = "0.0.0.0/0"
+  tags = ["production", "ethereum"]
 }
 ```
 
@@ -35,6 +36,10 @@ resource "nirvana_networking_firewall_rule" "example_networking_firewall_rule" {
 Available values: "tcp", "udp".
 - `source_address` (String) Source address of the Firewall Rule. Address of 0.0.0.0 requires a CIDR mask of 0.
 - `vpc_id` (String)
+
+### Optional
+
+- `tags` (List of String) Tags to attach to the Firewall Rule.
 
 ### Read-Only
 
