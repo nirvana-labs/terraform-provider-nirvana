@@ -78,6 +78,12 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				CustomType:  customfield.NewListType[types.String](ctx),
 				ElementType: types.StringType,
 			},
+			"tags": schema.ListAttribute{
+				Description: "Tags to attach to the Firewall Rule.",
+				Computed:    true,
+				CustomType:  customfield.NewListType[types.String](ctx),
+				ElementType: types.StringType,
+			},
 		},
 	}
 }

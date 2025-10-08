@@ -21,6 +21,7 @@ type ComputeVMModel struct {
 	PublicIPEnabled types.Bool                     `tfsdk:"public_ip_enabled" json:"public_ip_enabled,required"`
 	CPUConfig       *ComputeVMCPUConfigModel       `tfsdk:"cpu_config" json:"cpu_config,required"`
 	MemoryConfig    *ComputeVMMemoryConfigModel    `tfsdk:"memory_config" json:"memory_config,required"`
+	Tags            *[]types.String                `tfsdk:"tags" json:"tags,optional"`
 	BootVolumeID    types.String                   `tfsdk:"boot_volume_id" json:"boot_volume_id,computed"`
 	CreatedAt       timetypes.RFC3339              `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
 	PrivateIP       types.String                   `tfsdk:"private_ip" json:"private_ip,computed"`
@@ -41,7 +42,8 @@ func (m ComputeVMModel) MarshalJSONForUpdate(state ComputeVMModel) (data []byte,
 }
 
 type ComputeVMBootVolumeModel struct {
-	Size types.Int64 `tfsdk:"size" json:"size,required"`
+	Size types.Int64     `tfsdk:"size" json:"size,required"`
+	Tags *[]types.String `tfsdk:"tags" json:"tags,optional"`
 }
 
 type ComputeVMSSHKeyModel struct {
@@ -49,8 +51,9 @@ type ComputeVMSSHKeyModel struct {
 }
 
 type ComputeVMDataVolumesModel struct {
-	Name types.String `tfsdk:"name" json:"name,required"`
-	Size types.Int64  `tfsdk:"size" json:"size,required"`
+	Name types.String    `tfsdk:"name" json:"name,required"`
+	Size types.Int64     `tfsdk:"size" json:"size,required"`
+	Tags *[]types.String `tfsdk:"tags" json:"tags,optional"`
 }
 
 type ComputeVMCPUConfigModel struct {

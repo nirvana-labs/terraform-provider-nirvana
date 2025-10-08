@@ -13,6 +13,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
+	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
 var _ resource.ResourceWithConfigValidators = (*ComputeVolumeResource)(nil)
@@ -40,6 +41,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Validators: []validator.Int64{
 					int64validator.Between(32, 10240),
 				},
+			},
+			"tags": schema.ListAttribute{
+				Description: "Tags to attach to the Volume.",
+				Optional:    true,
+				ElementType: types.StringType,
 			},
 			"created_at": schema.StringAttribute{
 				Description: "When the Volume was created.",

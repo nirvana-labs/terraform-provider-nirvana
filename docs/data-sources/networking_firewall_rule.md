@@ -39,4 +39,5 @@ Available values: "tcp", "udp".
 - `source_address` (String) Source address of the Firewall Rule. Address of 0.0.0.0 requires a CIDR mask of 0.
 - `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
+- `tags` (List of String) Tags to attach to the Firewall Rule.
 - `updated_at` (String) When the Firewall Rule was updated.

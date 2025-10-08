@@ -76,6 +76,12 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				CustomType:  customfield.NewListType[types.String](ctx),
 				ElementType: types.StringType,
 			},
+			"tags": schema.ListAttribute{
+				Description: "Tags to attach to the VPC.",
+				Computed:    true,
+				CustomType:  customfield.NewListType[types.String](ctx),
+				ElementType: types.StringType,
+			},
 			"subnet": schema.SingleNestedAttribute{
 				Description: "Subnet of the VPC.",
 				Computed:    true,

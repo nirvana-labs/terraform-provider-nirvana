@@ -36,6 +36,7 @@ Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-frk-1", "a
 - `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `subnet` (Attributes) Subnet of the VPC. (see [below for nested schema](#nestedatt--subnet))
+- `tags` (List of String) Tags to attach to the VPC.
 - `updated_at` (String) When the VPC was updated.
 
 <a id="nestedatt--subnet"></a>

@@ -105,6 +105,12 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				CustomType:  customfield.NewListType[types.String](ctx),
 				ElementType: types.StringType,
 			},
+			"tags": schema.ListAttribute{
+				Description: "Tags to attach to the VM.",
+				Computed:    true,
+				CustomType:  customfield.NewListType[types.String](ctx),
+				ElementType: types.StringType,
+			},
 			"cpu_config": schema.SingleNestedAttribute{
 				Description: "CPU configuration for the VM.",
 				Computed:    true,
