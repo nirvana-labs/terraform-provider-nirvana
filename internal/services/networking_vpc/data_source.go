@@ -74,6 +74,7 @@ func (d *NetworkingVPCDataSource) Read(ctx context.Context, req datasource.ReadR
 		resp.Diagnostics.AddError("failed to deserialize http request", err.Error())
 		return
 	}
+	data.ID = data.VPCID
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }

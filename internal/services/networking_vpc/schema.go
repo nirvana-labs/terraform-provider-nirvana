@@ -51,6 +51,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Description: "Name of the subnet to create.",
 				Required:    true,
 			},
+			"tags": schema.ListAttribute{
+				Description: "Tags to attach to the VPC.",
+				Optional:    true,
+				ElementType: types.StringType,
+			},
 			"created_at": schema.StringAttribute{
 				Description: "When the VPC was created.",
 				Computed:    true,

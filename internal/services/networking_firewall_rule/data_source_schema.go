@@ -19,6 +19,9 @@ var _ datasource.DataSourceWithConfigValidators = (*NetworkingFirewallRuleDataSo
 func DataSourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
+			"id": schema.StringAttribute{
+				Computed: true,
+			},
 			"firewall_rule_id": schema.StringAttribute{
 				Required: true,
 			},
@@ -32,10 +35,6 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 			},
 			"destination_address": schema.StringAttribute{
 				Description: "Destination address of the Firewall Rule. Either VPC CIDR or VM in VPC.",
-				Computed:    true,
-			},
-			"id": schema.StringAttribute{
-				Description: "Unique identifier for the Firewall Rule.",
 				Computed:    true,
 			},
 			"name": schema.StringAttribute{
@@ -75,6 +74,12 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 			},
 			"destination_ports": schema.ListAttribute{
 				Description: "Destination ports of the Firewall Rule.",
+				Computed:    true,
+				CustomType:  customfield.NewListType[types.String](ctx),
+				ElementType: types.StringType,
+			},
+			"tags": schema.ListAttribute{
+				Description: "Tags to attach to the Firewall Rule.",
 				Computed:    true,
 				CustomType:  customfield.NewListType[types.String](ctx),
 				ElementType: types.StringType,

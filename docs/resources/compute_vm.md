@@ -16,6 +16,7 @@ description: |-
 resource "nirvana_compute_vm" "example_compute_vm" {
   boot_volume = {
     size = 100
+    tags = ["production", "ethereum"]
   }
   cpu_config = {
     vcpu = 2
@@ -24,7 +25,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
     size = 2
   }
   name = "my-vm"
-  os_image_name = "ubuntu-noble-2025-04-03"
+  os_image_name = "ubuntu-noble-2025-10-01"
   public_ip_enabled = true
   region = "us-wdc-1"
   ssh_key = {
@@ -34,7 +35,9 @@ resource "nirvana_compute_vm" "example_compute_vm" {
   data_volumes = [{
     name = "my-data-volume"
     size = 100
+    tags = ["production", "ethereum"]
   }]
+  tags = ["production", "ethereum"]
 }
 ```
 
@@ -57,6 +60,7 @@ Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-frk-1", "a
 ### Optional
 
 - `data_volumes` (Attributes List) Data volumes for the VM. (see [below for nested schema](#nestedatt--data_volumes))
+- `tags` (List of String) Tags to attach to the VM.
 
 ### Read-Only
 
@@ -78,6 +82,10 @@ Available values: "pending", "creating", "updating", "ready", "deleting", "delet
 Required:
 
 - `size` (Number) Size of the Volume in GB.
+
+Optional:
+
+- `tags` (List of String) Tags to attach to the Volume.
 
 
 <a id="nestedatt--cpu_config"></a>
@@ -111,6 +119,10 @@ Required:
 
 - `name` (String) Name of the Volume.
 - `size` (Number) Size of the Volume in GB.
+
+Optional:
+
+- `tags` (List of String) Tags to attach to the Volume.
 
 ## Import
 

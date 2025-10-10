@@ -9,14 +9,15 @@ import (
 )
 
 type NetworkingVPCDataSourceModel struct {
+	ID              types.String                                                 `tfsdk:"id" path:"vpc_id,computed"`
 	VPCID           types.String                                                 `tfsdk:"vpc_id" path:"vpc_id,required"`
 	CreatedAt       timetypes.RFC3339                                            `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
-	ID              types.String                                                 `tfsdk:"id" json:"id,computed"`
 	Name            types.String                                                 `tfsdk:"name" json:"name,computed"`
 	Region          types.String                                                 `tfsdk:"region" json:"region,computed"`
 	Status          types.String                                                 `tfsdk:"status" json:"status,computed"`
 	UpdatedAt       timetypes.RFC3339                                            `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
 	FirewallRuleIDs customfield.List[types.String]                               `tfsdk:"firewall_rule_ids" json:"firewall_rule_ids,computed"`
+	Tags            customfield.List[types.String]                               `tfsdk:"tags" json:"tags,computed"`
 	Subnet          customfield.NestedObject[NetworkingVPCSubnetDataSourceModel] `tfsdk:"subnet" json:"subnet,computed"`
 }
 

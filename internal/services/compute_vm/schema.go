@@ -67,6 +67,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 							int64validator.Between(64, 512),
 						},
 					},
+					"tags": schema.ListAttribute{
+						Description: "Tags to attach to the Volume.",
+						Optional:    true,
+						ElementType: types.StringType,
+					},
 				},
 				PlanModifiers: []planmodifier.Object{objectplanmodifier.RequiresReplace()},
 			},
@@ -96,6 +101,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 							Validators: []validator.Int64{
 								int64validator.Between(32, 10240),
 							},
+						},
+						"tags": schema.ListAttribute{
+							Description: "Tags to attach to the Volume.",
+							Optional:    true,
+							ElementType: types.StringType,
 						},
 					},
 				},
@@ -134,6 +144,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						},
 					},
 				},
+			},
+			"tags": schema.ListAttribute{
+				Description: "Tags to attach to the VM.",
+				Optional:    true,
+				ElementType: types.StringType,
 			},
 			"boot_volume_id": schema.StringAttribute{
 				Description: "ID of the boot volume attached to the VM.",

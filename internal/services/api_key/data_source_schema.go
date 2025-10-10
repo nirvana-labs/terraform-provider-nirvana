@@ -19,6 +19,9 @@ var _ datasource.DataSourceWithConfigValidators = (*APIKeyDataSource)(nil)
 func DataSourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
+			"id": schema.StringAttribute{
+				Computed: true,
+			},
 			"api_key_id": schema.StringAttribute{
 				Required: true,
 			},
@@ -31,10 +34,6 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Description: "When the API Key expires and is no longer valid.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
-			},
-			"id": schema.StringAttribute{
-				Description: "API Key ID.",
-				Computed:    true,
 			},
 			"key": schema.StringAttribute{
 				Description: "API Key. Only returned on creation.",

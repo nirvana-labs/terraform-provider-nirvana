@@ -75,6 +75,7 @@ func (d *NetworkingFirewallRuleDataSource) Read(ctx context.Context, req datasou
 		resp.Diagnostics.AddError("failed to deserialize http request", err.Error())
 		return
 	}
+	data.ID = data.FirewallRuleID
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }

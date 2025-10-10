@@ -9,10 +9,10 @@ import (
 )
 
 type ComputeVMDataSourceModel struct {
+	ID              types.String                                                   `tfsdk:"id" path:"vm_id,computed"`
 	VMID            types.String                                                   `tfsdk:"vm_id" path:"vm_id,required"`
 	BootVolumeID    types.String                                                   `tfsdk:"boot_volume_id" json:"boot_volume_id,computed"`
 	CreatedAt       timetypes.RFC3339                                              `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
-	ID              types.String                                                   `tfsdk:"id" json:"id,computed"`
 	Name            types.String                                                   `tfsdk:"name" json:"name,computed"`
 	PrivateIP       types.String                                                   `tfsdk:"private_ip" json:"private_ip,computed"`
 	PublicIP        types.String                                                   `tfsdk:"public_ip" json:"public_ip,computed"`
@@ -24,6 +24,7 @@ type ComputeVMDataSourceModel struct {
 	VPCID           types.String                                                   `tfsdk:"vpc_id" json:"vpc_id,computed"`
 	VPCName         types.String                                                   `tfsdk:"vpc_name" json:"vpc_name,computed"`
 	DataVolumeIDs   customfield.List[types.String]                                 `tfsdk:"data_volume_ids" json:"data_volume_ids,computed"`
+	Tags            customfield.List[types.String]                                 `tfsdk:"tags" json:"tags,computed"`
 	CPUConfig       customfield.NestedObject[ComputeVMCPUConfigDataSourceModel]    `tfsdk:"cpu_config" json:"cpu_config,computed"`
 	MemoryConfig    customfield.NestedObject[ComputeVMMemoryConfigDataSourceModel] `tfsdk:"memory_config" json:"memory_config,computed"`
 }

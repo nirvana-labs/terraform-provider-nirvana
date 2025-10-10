@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.16.0 (2025-10-08)
+
+Full Changelog: [v1.15.1...v1.16.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.15.1...v1.16.0)
+
+### Features
+
+* **api:** api update ([2a98d76](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/2a98d76da50a0cd6a7288356b3e3e10a7452333d))
+* **api:** api update ([0e78455](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/0e784559f2ccb9897a67bf7e53fba964c3e5a259))
+
+
+### Bug Fixes
+
+* correctly detect more ID attributes for data sources ([a2aa143](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/a2aa143c2135a143b5a16bc9c2a71f0b3c14a976))
+
+
+### Chores
+
+* **internal:** codegen related update ([32d35b5](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/32d35b5c591105b53be3d057569b08f5eb238210))
+
 ## 1.15.1 (2025-10-03)
 
 Full Changelog: [v1.15.0...v1.15.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.15.0...v1.15.1)

@@ -9,10 +9,10 @@ import (
 )
 
 type APIKeyDataSourceModel struct {
+	ID        types.String                   `tfsdk:"id" path:"api_key_id,computed"`
 	APIKeyID  types.String                   `tfsdk:"api_key_id" path:"api_key_id,required"`
 	CreatedAt timetypes.RFC3339              `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
 	ExpiresAt timetypes.RFC3339              `tfsdk:"expires_at" json:"expires_at,computed" format:"date-time"`
-	ID        types.String                   `tfsdk:"id" json:"id,computed"`
 	Key       types.String                   `tfsdk:"key" json:"key,computed"`
 	Name      types.String                   `tfsdk:"name" json:"name,computed"`
 	StartsAt  timetypes.RFC3339              `tfsdk:"starts_at" json:"starts_at,computed" format:"date-time"`
