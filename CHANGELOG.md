@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.17.0 (2025-10-18)
+
+Full Changelog: [v1.16.0...v1.17.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.16.0...v1.17.0)
+
+### Features
+
+* **api:** api update ([c53ac3e](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/c53ac3e05168b4674cb381d8ba5bcc505784a522))
+* **api:** api update ([99b6dcc](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/99b6dcc4562baccb78aa2a99df905bfd8ae96d4d))
+* **api:** api update ([dc92bfe](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/dc92bfedb1353ea00bbed7cae2df4d84ef0b76cd))
+* **api:** api update ([f67c1bc](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/f67c1bc1482a5b0489f43e1082300d2b6d58402f))
+* **api:** api update ([d675c4e](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/d675c4eb358d758b1876431c06b16981e338abdb))
+* **api:** api update ([e5d59bc](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/e5d59bc28845eddb234c26a11a5f1f8381e7b3cb))
+* **networking/connect:** add Nirvana Connect TF resources and data sources ([#46](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/46)) ([0f92c74](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/0f92c74afbc7a6b1fd3105725bba0a063718e03d))
+* **networking/connect:** add Nirvana Connect TF resources and data sources ([#46](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/46)) ([aa9ada0](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/aa9ada059f3388c84bc7c0149cc783c2a37e24df))
+
+
+### Build System
+
+* **customcode:** restore go.sum and go.mod changes ([d0930ac](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/d0930acbeae31471832e6ad110cbfae36c634327))
+
 ## 1.16.0 (2025-10-08)
 
 Full Changelog: [v1.15.1...v1.16.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.15.1...v1.16.0)
