@@ -17,6 +17,7 @@ import (
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/api_key"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/compute_vm"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/compute_volume"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_connect_connection"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_firewall_rule"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_vpc"
 )
@@ -106,6 +107,7 @@ func (p *NirvanaProvider) Resources(ctx context.Context) []func() resource.Resou
 		compute_volume.NewResource,
 		networking_vpc.NewResource,
 		networking_firewall_rule.NewResource,
+		networking_connect_connection.NewResource,
 	}
 }
 
@@ -116,6 +118,7 @@ func (p *NirvanaProvider) DataSources(ctx context.Context) []func() datasource.D
 		compute_volume.NewComputeVolumeDataSource,
 		networking_vpc.NewNetworkingVPCDataSource,
 		networking_firewall_rule.NewNetworkingFirewallRuleDataSource,
+		networking_connect_connection.NewNetworkingConnectConnectionDataSource,
 	}
 }
 
