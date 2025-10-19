@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.18.0 (2025-10-19)
+
+Full Changelog: [v1.17.1...v1.18.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.17.1...v1.18.0)
+
+### Features
+
+* **rpcnodes/flex:** enable Terraform for RPCNodeFlex ([#48](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/48)) ([467319f](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/467319f1b3fea109c93553327310ea7a911520bd))
+
 ## 1.17.1 (2025-10-19)
 
 Full Changelog: [v1.17.0...v1.17.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.17.0...v1.17.1)
