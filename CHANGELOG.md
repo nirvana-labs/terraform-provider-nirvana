@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.17.1 (2025-10-19)
+
+Full Changelog: [v1.17.0...v1.17.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.17.0...v1.17.1)
+
+### Bug Fixes
+
+* **networking/connect:** add Operation wait support to Create, Update and Delete for Nirvana Connect ([#223](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/223)) ([dd59b34](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/dd59b3406016eec445e259502edd3f296742166e))
+
 ## 1.17.0 (2025-10-18)
 
 Full Changelog: [v1.16.0...v1.17.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.16.0...v1.17.0)
