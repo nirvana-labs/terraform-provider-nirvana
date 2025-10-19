@@ -7,10 +7,12 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"time"
 
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go"
+	"github.com/nirvana-labs/nirvana-go/lib"
 	"github.com/nirvana-labs/nirvana-go/networking"
 	"github.com/nirvana-labs/nirvana-go/option"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/apijson"
@@ -24,12 +26,15 @@ var _ resource.ResourceWithModifyPlan = (*NetworkingConnectConnectionResource)(n
 var _ resource.ResourceWithImportState = (*NetworkingConnectConnectionResource)(nil)
 
 func NewResource() resource.Resource {
-	return &NetworkingConnectConnectionResource{}
+	return &NetworkingConnectConnectionResource{
+		waiter: lib.NewOperationWaiter().WithLinearBackoff(1*time.Second, 500*time.Millisecond, 10*time.Second),
+	}
 }
 
 // NetworkingConnectConnectionResource defines the resource implementation.
 type NetworkingConnectConnectionResource struct {
 	client *nirvana.Client
+	waiter *lib.OperationWaiter
 }
 
 func (r *NetworkingConnectConnectionResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
@@ -69,11 +74,24 @@ func (r *NetworkingConnectConnectionResource) Create(ctx context.Context, req re
 		resp.Diagnostics.AddError("failed to serialize http request", err.Error())
 		return
 	}
-	res := new(http.Response)
-	_, err = r.client.Networking.Connect.Connections.New(
+	operation, err := r.client.Networking.Connect.Connections.New(
 		ctx,
 		networking.ConnectConnectionNewParams{},
 		option.WithRequestBody("application/json", dataBytes),
+		option.WithMiddleware(logging.Middleware(ctx)),
+	)
+	if err != nil {
+		resp.Diagnostics.AddError("failed to make http request", err.Error())
+		return
+	}
+	if errWaitForOperation := r.waiter.Wait(ctx, r.client, operation.ID); errWaitForOperation != nil {
+		resp.Diagnostics.AddError("failed to wait for operation", errWaitForOperation.Error())
+		return
+	}
+	res := new(http.Response)
+	_, err = r.client.Networking.Connect.Connections.Get(
+		ctx,
+		operation.ResourceID,
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
