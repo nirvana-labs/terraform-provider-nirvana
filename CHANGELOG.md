@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.17.0 (2025-10-18)
+
+Full Changelog: [v1.16.0...v1.17.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.16.0...v1.17.0)
+
+### Features
+
+* **networking/connect:** add Nirvana Connect TF resources and data sources ([#46](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/46)) ([0f92c74](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/0f92c74afbc7a6b1fd3105725bba0a063718e03d))
+
+
+### Build System
+
+* **customcode:** restore go.sum and go.mod changes ([d0930ac](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/d0930acbeae31471832e6ad110cbfae36c634327))
+
 ## 1.16.0 (2025-10-08)
 
 Full Changelog: [v1.15.1...v1.16.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.15.1...v1.16.0)
