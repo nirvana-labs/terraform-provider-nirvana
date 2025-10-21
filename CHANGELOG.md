@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.19.0 (2025-10-21)
+
+Full Changelog: [v1.18.0...v1.19.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.18.0...v1.19.0)
+
+### Features
+
+* **api:** api update ([a0029e7](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/a0029e7480759d63a81f5630399b6c79a4c40486))
+* **api:** api update ([b3e0d4d](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/b3e0d4d2e11149852cca19e2b2ef153271eba11f))
+* Revert "chore(terraform): use terraform: true" ([0dc0109](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/0dc010967c2135b3dc92c17201f63bbbdf452381))
+
+
+### Bug Fixes
+
+* revert custom code on go.mod and go.sum ([4424687](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/44246873d838f485af0eb845f186fffbb16e2685))
+
+
+### Chores
+
+* **internal:** fix metadata ([795c121](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/795c121689e8fea57d01ee323d6023083ce3a5d8))
+
 ## 1.18.0 (2025-10-19)
 
 Full Changelog: [v1.17.1...v1.18.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.17.1...v1.18.0)
