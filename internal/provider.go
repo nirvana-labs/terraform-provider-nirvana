@@ -116,6 +116,7 @@ func (p *NirvanaProvider) Resources(ctx context.Context) []func() resource.Resou
 func (p *NirvanaProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{
 		api_key.NewAPIKeyDataSource,
+		api_key.NewAPIKeysDataSource,
 		compute_vm.NewComputeVMDataSource,
 		compute_volume.NewComputeVolumeDataSource,
 		networking_vpc.NewNetworkingVPCDataSource,
