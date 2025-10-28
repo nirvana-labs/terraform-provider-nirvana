@@ -121,7 +121,9 @@ func (p *NirvanaProvider) DataSources(ctx context.Context) []func() datasource.D
 		compute_volume.NewComputeVolumeDataSource,
 		networking_vpc.NewNetworkingVPCDataSource,
 		networking_firewall_rule.NewNetworkingFirewallRuleDataSource,
+		networking_firewall_rule.NewNetworkingFirewallRulesDataSource,
 		networking_connect_connection.NewNetworkingConnectConnectionDataSource,
+		networking_connect_connection.NewNetworkingConnectConnectionsDataSource,
 		rpc_node_flex.NewRPCNodeFlexDataSource,
 	}
 }
