@@ -116,11 +116,14 @@ func (p *NirvanaProvider) Resources(ctx context.Context) []func() resource.Resou
 func (p *NirvanaProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{
 		api_key.NewAPIKeyDataSource,
+		api_key.NewAPIKeysDataSource,
 		compute_vm.NewComputeVMDataSource,
 		compute_volume.NewComputeVolumeDataSource,
 		networking_vpc.NewNetworkingVPCDataSource,
 		networking_firewall_rule.NewNetworkingFirewallRuleDataSource,
+		networking_firewall_rule.NewNetworkingFirewallRulesDataSource,
 		networking_connect_connection.NewNetworkingConnectConnectionDataSource,
+		networking_connect_connection.NewNetworkingConnectConnectionsDataSource,
 		rpc_node_flex.NewRPCNodeFlexDataSource,
 	}
 }
