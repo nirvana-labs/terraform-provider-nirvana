@@ -125,6 +125,7 @@ func (p *NirvanaProvider) DataSources(ctx context.Context) []func() datasource.D
 		networking_connect_connection.NewNetworkingConnectConnectionDataSource,
 		networking_connect_connection.NewNetworkingConnectConnectionsDataSource,
 		rpc_node_flex.NewRPCNodeFlexDataSource,
+		rpc_node_flex.NewRPCNodeFlexesDataSource,
 	}
 }
 
