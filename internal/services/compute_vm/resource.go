@@ -209,6 +209,7 @@ func (r *ComputeVMResource) Read(ctx context.Context, req resource.ReadRequest, 
 	_, err = r.client.Compute.VMs.Volumes.List(
 		ctx,
 		data.ID.ValueString(),
+		compute.VMVolumeListParams{},
 		option.WithResponseBodyInto(&volumesRes),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
@@ -365,6 +366,7 @@ func (r *ComputeVMResource) ImportState(ctx context.Context, req resource.Import
 	_, err = r.client.Compute.VMs.Volumes.List(
 		ctx,
 		path,
+		compute.VMVolumeListParams{},
 		option.WithResponseBodyInto(&volumesRes),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
