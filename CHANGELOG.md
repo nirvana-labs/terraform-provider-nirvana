@@ -1,5 +1,27 @@
 # Changelog
 
+## 1.19.0 (2025-11-06)
+
+Full Changelog: [v1.18.0...v1.19.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.18.0...v1.19.0)
+
+### Features
+
+* **feat:** add data sources support for all resources
+
+### Bug Fixes
+
+* **client:** correctly encode map patches ([2747f05](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/2747f054caec011bf1022c4a0f9f8497a2aa0fad))
+* **client:** correctly patch `null` -&gt; zero value ([262c841](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/262c841828568fa11c38c783aabfd22488f18f03))
+* **resource/compute_vm:** update List queries for pagination ([4f5cee4](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/4f5cee4d99a9a1ae2ebf395ee0f87c797bd3de27))
+* revert custom code on go.mod and go.sum ([4424687](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/44246873d838f485af0eb845f186fffbb16e2685))
+
+
+### Chores
+
+* **internal:** fix metadata ([795c121](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/795c121689e8fea57d01ee323d6023083ce3a5d8))
+* **internal:** refactor the apijson encoder ([7765662](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/77656629a3e1fb4d695014e74e66b0033f0f82d7))
+* **internal:** update `interface{}` to `any` ([bcfce71](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/bcfce71134aba9e8a098de4a98e76b296dff67a1))
+
 ## 1.18.0 (2025-10-19)
 
 Full Changelog: [v1.17.1...v1.18.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.17.1...v1.18.0)
