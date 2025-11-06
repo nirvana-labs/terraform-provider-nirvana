@@ -6,17 +6,7 @@ Full Changelog: [v1.18.0...v1.19.0](https://github.com/nirvana-labs/terraform-pr
 
 ### Features
 
-* **api:** api update ([53007ee](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/53007eee79b0f2e74504a9c6a59a19170cc26498))
-* **api:** api update ([90a127c](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/90a127cd198132ceb207360442ebdb6711ec4fcf))
-* **api:** api update ([58db9ec](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/58db9ecd75a41caf531d164674b238ef19e0b7f7))
-* **api:** api update ([0a42eaf](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/0a42eafe7c74765ebe216bfb0122fbca9dc7825d))
-* **api:** api update ([d8992cb](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/d8992cb01b23a55fabad8869fc78275a76579682))
-* **api:** api update ([720ea6b](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/720ea6b2bf4424dd4e433cd269371f4f25eb5623))
-* **api:** api update ([a0029e7](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/a0029e7480759d63a81f5630399b6c79a4c40486))
-* **api:** api update ([b3e0d4d](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/b3e0d4d2e11149852cca19e2b2ef153271eba11f))
-* **api:** manual updates ([921e387](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/921e387899e2b5f74c38c05d1a478e795ef977be))
-* Revert "chore(terraform): use terraform: true" ([0dc0109](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/0dc010967c2135b3dc92c17201f63bbbdf452381))
-
+* **feat:** add data sources support for all resources
 
 ### Bug Fixes
 
