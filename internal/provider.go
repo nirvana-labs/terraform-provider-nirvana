@@ -16,6 +16,7 @@ import (
 	"github.com/nirvana-labs/nirvana-go/option"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/api_key"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/compute_vm"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/compute_vm_os_image"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/compute_volume"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_connect_connection"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_firewall_rule"
@@ -119,6 +120,7 @@ func (p *NirvanaProvider) DataSources(ctx context.Context) []func() datasource.D
 		api_key.NewAPIKeysDataSource,
 		compute_vm.NewComputeVMDataSource,
 		compute_vm.NewComputeVMsDataSource,
+		compute_vm_os_image.NewComputeVMOSImagesDataSource,
 		compute_volume.NewComputeVolumeDataSource,
 		compute_volume.NewComputeVolumesDataSource,
 		networking_vpc.NewNetworkingVPCDataSource,
