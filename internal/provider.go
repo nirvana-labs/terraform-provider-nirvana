@@ -21,7 +21,6 @@ import (
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_connect_connection"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_firewall_rule"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_vpc"
-	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/project"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/rpc_node_flex"
 )
 
@@ -106,7 +105,6 @@ func (p *NirvanaProvider) ConfigValidators(_ context.Context) []provider.ConfigV
 func (p *NirvanaProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{
 		api_key.NewResource,
-		project.NewResource,
 		compute_vm.NewResource,
 		compute_volume.NewResource,
 		networking_vpc.NewResource,
@@ -120,8 +118,6 @@ func (p *NirvanaProvider) DataSources(ctx context.Context) []func() datasource.D
 	return []func() datasource.DataSource{
 		api_key.NewAPIKeyDataSource,
 		api_key.NewAPIKeysDataSource,
-		project.NewProjectDataSource,
-		project.NewProjectsDataSource,
 		compute_vm.NewComputeVMDataSource,
 		compute_vm.NewComputeVMsDataSource,
 		compute_vm_os_image.NewComputeVMOSImagesDataSource,
