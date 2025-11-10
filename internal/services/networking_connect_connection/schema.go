@@ -61,13 +61,13 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"cidrs": schema.ListAttribute{
-				Description:   "CIDRs for the Connect Connection",
+				Description:   "CIDRs for the Connect Connection. Must be in network-aligned/canonical form.",
 				Required:      true,
 				ElementType:   types.StringType,
 				PlanModifiers: []planmodifier.List{listplanmodifier.RequiresReplace()},
 			},
 			"provider_cidrs": schema.ListAttribute{
-				Description:   "Provider CIDRs",
+				Description:   "Provider CIDRs. Must be in network-aligned/canonical form.",
 				Required:      true,
 				ElementType:   types.StringType,
 				PlanModifiers: []planmodifier.List{listplanmodifier.RequiresReplace()},
