@@ -16,6 +16,7 @@ type RPCNodeFlexModel struct {
 	Tags       *[]types.String   `tfsdk:"tags" json:"tags,optional"`
 	CreatedAt  timetypes.RFC3339 `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
 	Endpoint   types.String      `tfsdk:"endpoint" json:"endpoint,computed"`
+	ProjectID  types.String      `tfsdk:"project_id" json:"project_id,computed"`
 	UpdatedAt  timetypes.RFC3339 `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
 }
 

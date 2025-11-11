@@ -52,6 +52,10 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Computed:    true,
 				Sensitive:   true,
 			},
+			"project_id": schema.StringAttribute{
+				Description: "Project identifier associated with the RPC Node Flex.",
+				Computed:    true,
+			},
 			"updated_at": schema.StringAttribute{
 				Description: "When the RPC Node Flex was updated.",
 				Computed:    true,
