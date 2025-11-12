@@ -6,8 +6,10 @@ import (
 	"context"
 
 	"github.com/hashicorp/terraform-plugin-framework-timetypes/timetypes"
+	"github.com/hashicorp/terraform-plugin-framework-validators/datasourcevalidator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
@@ -21,7 +23,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Computed: true,
 			},
 			"node_id": schema.StringAttribute{
-				Required: true,
+				Optional: true,
 			},
 			"blockchain": schema.StringAttribute{
 				Description: "Blockchain type.",
@@ -45,6 +47,10 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Description: "Network type (e.g., mainnet, testnet).",
 				Computed:    true,
 			},
+			"project_id": schema.StringAttribute{
+				Description: "Project identifier associated with the RPC Node Flex.",
+				Computed:    true,
+			},
 			"updated_at": schema.StringAttribute{
 				Description: "When the RPC Node Flex was updated.",
 				Computed:    true,
@@ -56,6 +62,15 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				CustomType:  customfield.NewListType[types.String](ctx),
 				ElementType: types.StringType,
 			},
+			"find_one_by": schema.SingleNestedAttribute{
+				Optional: true,
+				Attributes: map[string]schema.Attribute{
+					"project_id": schema.StringAttribute{
+						Description: "Project ID of resources to request",
+						Optional:    true,
+					},
+				},
+			},
 		},
 	}
 }
@@ -65,5 +80,7 @@ func (d *RPCNodeFlexDataSource) Schema(ctx context.Context, req datasource.Schem
 }
 
 func (d *RPCNodeFlexDataSource) ConfigValidators(_ context.Context) []datasource.ConfigValidator {
-	return []datasource.ConfigValidator{}
+	return []datasource.ConfigValidator{
+		datasourcevalidator.ExactlyOneOf(path.MatchRoot("node_id"), path.MatchRoot("find_one_by")),
+	}
 }

@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.21.0 (2025-11-12)
+
+Full Changelog: [v1.20.1...v1.21.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.20.1...v1.21.0)
+
+### Features
+
+* **api:** api update ([8400133](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/84001332815faad4b073ab317da06d817ae1f5b1))
+
+
+### Bug Fixes
+
+* ensure dynamic values always yield valid container inner values ([0337287](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/0337287f28dc8e340d3720716803796de5505de1))
+
 ## 1.20.1 (2025-11-10)
 
 Full Changelog: [v1.20.0...v1.20.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.20.0...v1.20.1)
