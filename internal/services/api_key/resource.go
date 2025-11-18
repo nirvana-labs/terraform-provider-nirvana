@@ -194,7 +194,7 @@ func (r *APIKeyResource) Delete(ctx context.Context, req resource.DeleteRequest,
 }
 
 func (r *APIKeyResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
-	var data *APIKeyModel = new(APIKeyModel)
+	var data = new(APIKeyModel)
 
 	path := ""
 	diags := importpath.ParseImportID(

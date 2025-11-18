@@ -194,7 +194,7 @@ func (r *NetworkingConnectConnectionResource) Delete(ctx context.Context, req re
 }
 
 func (r *NetworkingConnectConnectionResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
-	var data *NetworkingConnectConnectionModel = new(NetworkingConnectConnectionModel)
+	var data = new(NetworkingConnectConnectionModel)
 
 	path := ""
 	diags := importpath.ParseImportID(

@@ -194,7 +194,7 @@ func (r *ComputeVolumeResource) Delete(ctx context.Context, req resource.DeleteR
 }
 
 func (r *ComputeVolumeResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
-	var data *ComputeVolumeModel = new(ComputeVolumeModel)
+	var data = new(ComputeVolumeModel)
 
 	path := ""
 	diags := importpath.ParseImportID(
