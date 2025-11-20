@@ -35,7 +35,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of the RPC Node Flex.",
-				Required:    true,
+				Optional:    true,
 			},
 			"tags": schema.ListAttribute{
 				Description: "Tags to attach to the RPC Node Flex (optional, max 50).",
