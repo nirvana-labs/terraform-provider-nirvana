@@ -33,11 +33,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of the Volume.",
-				Required:    true,
+				Optional:    true,
 			},
 			"size": schema.Int64Attribute{
 				Description: "Size of the Volume in GB.",
-				Required:    true,
+				Optional:    true,
 				Validators: []validator.Int64{
 					int64validator.Between(32, 10240),
 				},
