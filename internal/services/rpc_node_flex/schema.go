@@ -33,6 +33,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Required:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
+			"project_id": schema.StringAttribute{
+				Description:   "Project ID to associate with the RPC Node Flex.",
+				Required:      true,
+				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
+			},
 			"name": schema.StringAttribute{
 				Description: "Name of the RPC Node Flex.",
 				Optional:    true,
@@ -51,10 +56,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Description: "RPC endpoint URL.",
 				Computed:    true,
 				Sensitive:   true,
-			},
-			"project_id": schema.StringAttribute{
-				Description: "Project identifier associated with the RPC Node Flex.",
-				Computed:    true,
 			},
 			"updated_at": schema.StringAttribute{
 				Description: "When the RPC Node Flex was updated.",
