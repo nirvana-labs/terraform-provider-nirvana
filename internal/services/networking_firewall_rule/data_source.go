@@ -57,11 +57,17 @@ func (d *NetworkingFirewallRuleDataSource) Read(ctx context.Context, req datasou
 		return
 	}
 
+	params, diags := data.toReadParams(ctx)
+	resp.Diagnostics.Append(diags...)
+	if resp.Diagnostics.HasError() {
+		return
+	}
+
 	res := new(http.Response)
 	_, err := d.client.Networking.FirewallRules.Get(
 		ctx,
-		data.VPCID.ValueString(),
 		data.FirewallRuleID.ValueString(),
+		params,
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
