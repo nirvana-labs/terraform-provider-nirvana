@@ -117,9 +117,10 @@ func (r *NetworkingFirewallRuleResource) Update(ctx context.Context, req resourc
 	res := new(http.Response)
 	_, err = r.client.Networking.FirewallRules.Update(
 		ctx,
-		data.VPCID.ValueString(),
 		data.ID.ValueString(),
-		networking.FirewallRuleUpdateParams{},
+		networking.FirewallRuleUpdateParams{
+			VPCID: data.VPCID.ValueString(),
+		},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
@@ -150,8 +151,10 @@ func (r *NetworkingFirewallRuleResource) Read(ctx context.Context, req resource.
 	res := new(http.Response)
 	_, err := r.client.Networking.FirewallRules.Get(
 		ctx,
-		data.VPCID.ValueString(),
 		data.ID.ValueString(),
+		networking.FirewallRuleGetParams{
+			VPCID: data.VPCID.ValueString(),
+		},
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
@@ -185,8 +188,10 @@ func (r *NetworkingFirewallRuleResource) Delete(ctx context.Context, req resourc
 
 	_, err := r.client.Networking.FirewallRules.Delete(
 		ctx,
-		data.VPCID.ValueString(),
 		data.ID.ValueString(),
+		networking.FirewallRuleDeleteParams{
+			VPCID: data.VPCID.ValueString(),
+		},
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
 	if err != nil {
@@ -219,8 +224,10 @@ func (r *NetworkingFirewallRuleResource) ImportState(ctx context.Context, req re
 	res := new(http.Response)
 	_, err := r.client.Networking.FirewallRules.Get(
 		ctx,
-		path_vpc_id,
 		path_firewall_rule_id,
+		networking.FirewallRuleGetParams{
+			VPCID: path_vpc_id,
+		},
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
