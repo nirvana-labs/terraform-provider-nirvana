@@ -47,11 +47,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
 ### Required
 
 - `boot_volume` (Attributes) Boot volume for the VM. (see [below for nested schema](#nestedatt--boot_volume))
-- `cpu_config` (Attributes) CPU configuration for the VM. (see [below for nested schema](#nestedatt--cpu_config))
-- `memory_config` (Attributes) Memory configuration for the VM. (see [below for nested schema](#nestedatt--memory_config))
-- `name` (String) Name of the VM.
 - `os_image_name` (String) Name of the OS Image to use for the VM.
-- `public_ip_enabled` (Boolean) Whether to enable public IP for the VM.
 - `region` (String) Region the resource is in.
 Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-frk-1", "ap-sin-1", "ap-seo-1", "ap-tyo-1".
 - `ssh_key` (Attributes) Public SSH key configuration for the VM. (see [below for nested schema](#nestedatt--ssh_key))
@@ -59,7 +55,11 @@ Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-frk-1", "a
 
 ### Optional
 
+- `cpu_config` (Attributes) CPU configuration for the VM. (see [below for nested schema](#nestedatt--cpu_config))
 - `data_volumes` (Attributes List) Data volumes for the VM. (see [below for nested schema](#nestedatt--data_volumes))
+- `memory_config` (Attributes) Memory configuration for the VM. (see [below for nested schema](#nestedatt--memory_config))
+- `name` (String) Name of the VM.
+- `public_ip_enabled` (Boolean) Whether to enable public IP for the VM.
 - `tags` (List of String) Tags to attach to the VM.
 
 ### Read-Only
@@ -88,28 +88,20 @@ Optional:
 - `tags` (List of String) Tags to attach to the Volume.
 
 
-<a id="nestedatt--cpu_config"></a>
-### Nested Schema for `cpu_config`
-
-Required:
-
-- `vcpu` (Number) Number of virtual CPUs.
-
-
-<a id="nestedatt--memory_config"></a>
-### Nested Schema for `memory_config`
-
-Required:
-
-- `size` (Number) Size of the memory in GB.
-
-
 <a id="nestedatt--ssh_key"></a>
 ### Nested Schema for `ssh_key`
 
 Required:
 
 - `public_key` (String) Public key to and and use to access the VM.
+
+
+<a id="nestedatt--cpu_config"></a>
+### Nested Schema for `cpu_config`
+
+Required:
+
+- `vcpu` (Number) Number of virtual CPUs.
 
 
 <a id="nestedatt--data_volumes"></a>
@@ -123,6 +115,14 @@ Required:
 Optional:
 
 - `tags` (List of String) Tags to attach to the Volume.
+
+
+<a id="nestedatt--memory_config"></a>
+### Nested Schema for `memory_config`
+
+Required:
+
+- `size` (Number) Size of the memory in GB.
 
 ## Import
 

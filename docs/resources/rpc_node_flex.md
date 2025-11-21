@@ -27,11 +27,11 @@ resource "nirvana_rpc_node_flex" "example_rpc_node_flex" {
 ### Required
 
 - `blockchain` (String) Blockchain.
-- `name` (String) Name of the RPC Node Flex.
 - `network` (String) Network type (e.g., mainnet, testnet).
 
 ### Optional
 
+- `name` (String) Name of the RPC Node Flex.
 - `tags` (List of String) Tags to attach to the RPC Node Flex (optional, max 50).
 
 ### Read-Only
@@ -39,6 +39,7 @@ resource "nirvana_rpc_node_flex" "example_rpc_node_flex" {
 - `created_at` (String) When the RPC Node Flex was created.
 - `endpoint` (String, Sensitive) RPC endpoint URL.
 - `id` (String) Unique identifier for the RPC Node Flex.
+- `project_id` (String) Project identifier associated with the RPC Node Flex.
 - `updated_at` (String) When the RPC Node Flex was updated.
 
 ## Import
