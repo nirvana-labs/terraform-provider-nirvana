@@ -12,11 +12,11 @@ type RPCNodeFlexModel struct {
 	ID         types.String      `tfsdk:"id" json:"id,computed"`
 	Blockchain types.String      `tfsdk:"blockchain" json:"blockchain,required"`
 	Network    types.String      `tfsdk:"network" json:"network,required"`
+	ProjectID  types.String      `tfsdk:"project_id" json:"project_id,required"`
 	Name       types.String      `tfsdk:"name" json:"name,optional"`
 	Tags       *[]types.String   `tfsdk:"tags" json:"tags,optional"`
 	CreatedAt  timetypes.RFC3339 `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
 	Endpoint   types.String      `tfsdk:"endpoint" json:"endpoint,computed"`
-	ProjectID  types.String      `tfsdk:"project_id" json:"project_id,computed"`
 	UpdatedAt  timetypes.RFC3339 `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
 }
 
