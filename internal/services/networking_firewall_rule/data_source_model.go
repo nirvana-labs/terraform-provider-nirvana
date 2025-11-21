@@ -3,12 +3,8 @@
 package networking_firewall_rule
 
 import (
-	"context"
-
 	"github.com/hashicorp/terraform-plugin-framework-timetypes/timetypes"
-	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/nirvana-labs/nirvana-go/networking"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
@@ -25,12 +21,4 @@ type NetworkingFirewallRuleDataSourceModel struct {
 	UpdatedAt          timetypes.RFC3339              `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
 	DestinationPorts   customfield.List[types.String] `tfsdk:"destination_ports" json:"destination_ports,computed"`
 	Tags               customfield.List[types.String] `tfsdk:"tags" json:"tags,computed"`
-}
-
-func (m *NetworkingFirewallRuleDataSourceModel) toReadParams(_ context.Context) (params networking.FirewallRuleGetParams, diags diag.Diagnostics) {
-	params = networking.FirewallRuleGetParams{
-		VPCID: m.VPCID.ValueString(),
-	}
-
-	return
 }
