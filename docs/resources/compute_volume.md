@@ -26,12 +26,12 @@ resource "nirvana_compute_volume" "example_compute_volume" {
 
 ### Required
 
-- `name` (String) Name of the Volume.
-- `size` (Number) Size of the Volume in GB.
 - `vm_id` (String) ID of the VM the Volume is attached to.
 
 ### Optional
 
+- `name` (String) Name of the Volume.
+- `size` (Number) Size of the Volume in GB.
 - `tags` (List of String) Tags to attach to the Volume.
 
 ### Read-Only
