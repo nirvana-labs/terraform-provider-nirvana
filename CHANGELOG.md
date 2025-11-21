@@ -1,5 +1,31 @@
 # Changelog
 
+## 1.21.0 (2025-11-21)
+
+Full Changelog: [v1.20.1...v1.21.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.20.1...v1.21.0)
+
+### Features
+
+* **api:** api update ([edb6dd4](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/edb6dd406f529d735db4b44f9517d4710f2fbd47))
+* **api:** api update ([8f63e83](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/8f63e83de9954c5bf3743a1e982fa9b076d8c9a4))
+* **api:** api update ([8400133](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/84001332815faad4b073ab317da06d817ae1f5b1))
+* **api:** manual updates ([e11d9fa](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/e11d9fa32a7fa7003e9ef89794d4b743a440344b))
+* **api:** manual updates ([1680280](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/1680280f65627ea15341ee763749b56433c81753))
+* **api:** manual updates ([d20acf5](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/d20acf5e4830c12510edde796a22a1f891d5bd3a))
+* **api:** remove migration for typescript ([ea884ad](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/ea884ad47e8f30830ba893bc32764dc44f315325))
+
+
+### Bug Fixes
+
+* ensure derived request attribute schemas conform to the upstream configurability overrides ([8569f5c](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/8569f5c1d875df3a6ce34e5f2175645bb42306ed))
+* ensure dynamic values always yield valid container inner values ([0337287](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/0337287f28dc8e340d3720716803796de5505de1))
+* list style data sources should always have id value populated ([2054ce8](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/2054ce8eff686aed0392d5fa5782a353431d2901))
+
+
+### Chores
+
+* **internal:** address linter warnings ([f989271](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/f98927124e01cf96763a5e6f854357087996b733))
+
 ## 1.20.1 (2025-11-10)
 
 Full Changelog: [v1.20.0...v1.20.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.20.0...v1.20.1)
