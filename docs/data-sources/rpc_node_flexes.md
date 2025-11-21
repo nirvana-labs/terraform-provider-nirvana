@@ -14,7 +14,7 @@ description: |-
 
 ```terraform
 data "nirvana_rpc_node_flexes" "example_rpc_node_flexes" {
-
+  project_id = "project_id"
 }
 ```
 
@@ -24,6 +24,7 @@ data "nirvana_rpc_node_flexes" "example_rpc_node_flexes" {
 ### Optional
 
 - `max_items` (Number) Max items to fetch, default: 1000
+- `project_id` (String) Project ID of resources to request
 
 ### Read-Only
 
@@ -40,5 +41,6 @@ Read-Only:
 - `id` (String) Unique identifier for the RPC Node Flex.
 - `name` (String) Name of the RPC Node Flex.
 - `network` (String) Network type (e.g., mainnet, testnet).
+- `project_id` (String) Project identifier associated with the RPC Node Flex.
 - `tags` (List of String) Tags to attach to the RPC Node Flex.
 - `updated_at` (String) When the RPC Node Flex was updated.

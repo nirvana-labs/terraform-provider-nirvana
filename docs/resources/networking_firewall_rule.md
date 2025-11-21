@@ -29,16 +29,16 @@ resource "nirvana_networking_firewall_rule" "example_networking_firewall_rule" {
 
 ### Required
 
+- `vpc_id` (String)
+
+### Optional
+
 - `destination_address` (String) Destination address of the Firewall Rule. Either VPC CIDR or VM in VPC. Must be in network-aligned/canonical form.
 - `destination_ports` (List of String) Destination ports of the Firewall Rule.
 - `name` (String) Name of the Firewall Rule.
 - `protocol` (String) Protocol of the Firewall Rule.
 Available values: "tcp", "udp".
 - `source_address` (String) Source address of the Firewall Rule. Address of 0.0.0.0 requires a CIDR mask of 0. Must be in network-aligned/canonical form.
-- `vpc_id` (String)
-
-### Optional
-
 - `tags` (List of String) Tags to attach to the Firewall Rule.
 
 ### Read-Only

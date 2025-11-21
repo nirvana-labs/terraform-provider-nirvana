@@ -35,7 +35,6 @@ resource "nirvana_networking_connect_connection" "example_networking_connect_con
 - `bandwidth_mbps` (Number) Connect Connection speed in Mbps
 Available values: 50, 200, 500, 1000, 2000.
 - `cidrs` (List of String) CIDRs for the Connect Connection. Must be in network-aligned/canonical form.
-- `name` (String) Name of the Connect Connection
 - `provider_cidrs` (List of String) Provider CIDRs. Must be in network-aligned/canonical form.
 - `region` (String) Region the resource is in.
 Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-frk-1", "ap-sin-1", "ap-seo-1", "ap-tyo-1".
@@ -43,6 +42,7 @@ Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-frk-1", "a
 ### Optional
 
 - `aws` (Attributes) AWS provider configuration (see [below for nested schema](#nestedatt--aws))
+- `name` (String) Name of the Connect Connection.
 - `tags` (List of String) Tags to attach to the Connect Connection
 
 ### Read-Only

@@ -17,6 +17,7 @@ resource "nirvana_rpc_node_flex" "example_rpc_node_flex" {
   blockchain = "ethereum"
   name = "my-ethereum-node"
   network = "mainnet"
+  project_id = "123e4567-e89b-12d3-a456-426614174000"
   tags = ["production", "ethereum"]
 }
 ```
@@ -27,11 +28,12 @@ resource "nirvana_rpc_node_flex" "example_rpc_node_flex" {
 ### Required
 
 - `blockchain` (String) Blockchain.
-- `name` (String) Name of the RPC Node Flex.
 - `network` (String) Network type (e.g., mainnet, testnet).
+- `project_id` (String) Project ID to associate with the RPC Node Flex.
 
 ### Optional
 
+- `name` (String) Name of the RPC Node Flex.
 - `tags` (List of String) Tags to attach to the RPC Node Flex (optional, max 50).
 
 ### Read-Only

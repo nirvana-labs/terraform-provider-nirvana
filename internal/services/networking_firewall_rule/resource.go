@@ -235,7 +235,7 @@ func (r *NetworkingFirewallRuleResource) Delete(ctx context.Context, req resourc
 }
 
 func (r *NetworkingFirewallRuleResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
-	var data *NetworkingFirewallRuleModel = new(NetworkingFirewallRuleModel)
+	var data = new(NetworkingFirewallRuleModel)
 
 	path_vpc_id := ""
 	path_firewall_rule_id := ""

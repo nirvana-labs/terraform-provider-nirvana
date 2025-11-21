@@ -238,7 +238,7 @@ func (r *NetworkingVPCResource) Delete(ctx context.Context, req resource.DeleteR
 }
 
 func (r *NetworkingVPCResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
-	var data *NetworkingVPCModel = new(NetworkingVPCModel)
+	var data = new(NetworkingVPCModel)
 
 	path := ""
 	diags := importpath.ParseImportID(
