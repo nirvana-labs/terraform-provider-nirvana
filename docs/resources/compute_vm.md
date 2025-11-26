@@ -17,6 +17,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
   boot_volume = {
     size = 100
     tags = ["production", "ethereum"]
+    type = "nvme"
   }
   cpu_config = {
     vcpu = 2
@@ -36,6 +37,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
     name = "my-data-volume"
     size = 100
     tags = ["production", "ethereum"]
+    type = "nvme"
   }]
   tags = ["production", "ethereum"]
 }
@@ -49,7 +51,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
 - `boot_volume` (Attributes) Boot volume for the VM. (see [below for nested schema](#nestedatt--boot_volume))
 - `os_image_name` (String) Name of the OS Image to use for the VM.
 - `region` (String) Region the resource is in.
-Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-frk-1", "ap-sin-1", "ap-seo-1", "ap-tyo-1".
+Available values: "us-sea-1", "us-sva-1", "us-sva-2", "us-chi-1", "us-wdc-1", "eu-frk-1", "ap-sin-1", "ap-seo-1", "ap-tyo-1".
 - `ssh_key` (Attributes) Public SSH key configuration for the VM. (see [below for nested schema](#nestedatt--ssh_key))
 - `subnet_id` (String) ID of the subnet to use for the VM.
 
@@ -86,6 +88,8 @@ Required:
 Optional:
 
 - `tags` (List of String) Tags to attach to the Volume.
+- `type` (String) Type of the Volume. Defaults to nvme if not provided.
+Available values: "nvme", "abs".
 
 
 <a id="nestedatt--ssh_key"></a>
@@ -115,6 +119,8 @@ Required:
 Optional:
 
 - `tags` (List of String) Tags to attach to the Volume.
+- `type` (String) Type of the Volume. Defaults to nvme if not provided.
+Available values: "nvme", "abs".
 
 
 <a id="nestedatt--memory_config"></a>
