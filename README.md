@@ -35,6 +35,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
   boot_volume = {
     size = 100
     tags = ["production", "ethereum"]
+    type = "nvme"
   }
   cpu_config = {
     vcpu = 2
@@ -54,6 +55,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
     name = "my-data-volume"
     size = 100
     tags = ["production", "ethereum"]
+    type = "nvme"
   }]
   tags = ["production", "ethereum"]
 }

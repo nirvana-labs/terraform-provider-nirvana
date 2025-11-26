@@ -11,6 +11,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -30,6 +31,16 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Description:   "ID of the VM the Volume is attached to.",
 				Required:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
+			},
+			"type": schema.StringAttribute{
+				Description: "Type of the Volume. Defaults to nvme if not provided.\nAvailable values: \"nvme\", \"abs\".",
+				Computed:    true,
+				Optional:    true,
+				Validators: []validator.String{
+					stringvalidator.OneOfCaseInsensitive("nvme", "abs"),
+				},
+				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplaceIfConfigured()},
+				Default:       stringdefault.StaticString("nvme"),
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of the Volume.",
@@ -72,13 +83,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						"deleted",
 						"error",
 					),
-				},
-			},
-			"type": schema.StringAttribute{
-				Description: "Storage type the Volume is using.\nAvailable values: \"nvme\".",
-				Computed:    true,
-				Validators: []validator.String{
-					stringvalidator.OneOfCaseInsensitive("nvme"),
 				},
 			},
 			"updated_at": schema.StringAttribute{

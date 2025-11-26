@@ -13,6 +13,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -35,12 +36,13 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"region": schema.StringAttribute{
-				Description: "Region the resource is in.\nAvailable values: \"us-sea-1\", \"us-sva-1\", \"us-chi-1\", \"us-wdc-1\", \"eu-frk-1\", \"ap-sin-1\", \"ap-seo-1\", \"ap-tyo-1\".",
+				Description: "Region the resource is in.\nAvailable values: \"us-sea-1\", \"us-sva-1\", \"us-sva-2\", \"us-chi-1\", \"us-wdc-1\", \"eu-frk-1\", \"ap-sin-1\", \"ap-seo-1\", \"ap-tyo-1\".",
 				Required:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
 						"us-sea-1",
 						"us-sva-1",
+						"us-sva-2",
 						"us-chi-1",
 						"us-wdc-1",
 						"eu-frk-1",
@@ -72,6 +74,15 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						Optional:    true,
 						ElementType: types.StringType,
 					},
+					"type": schema.StringAttribute{
+						Description: "Type of the Volume. Defaults to nvme if not provided.\nAvailable values: \"nvme\", \"abs\".",
+						Computed:    true,
+						Optional:    true,
+						Validators: []validator.String{
+							stringvalidator.OneOfCaseInsensitive("nvme", "abs"),
+						},
+						Default: stringdefault.StaticString("nvme"),
+					},
 				},
 				PlanModifiers: []planmodifier.Object{objectplanmodifier.RequiresReplace()},
 			},
@@ -88,7 +99,9 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			},
 			"data_volumes": schema.ListNestedAttribute{
 				Description: "Data volumes for the VM.",
+				Computed:    true,
 				Optional:    true,
+				CustomType:  customfield.NewNestedObjectListType[ComputeVMDataVolumesModel](ctx),
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"name": schema.StringAttribute{
@@ -107,9 +120,18 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 							Optional:    true,
 							ElementType: types.StringType,
 						},
+						"type": schema.StringAttribute{
+							Description: "Type of the Volume. Defaults to nvme if not provided.\nAvailable values: \"nvme\", \"abs\".",
+							Computed:    true,
+							Optional:    true,
+							Validators: []validator.String{
+								stringvalidator.OneOfCaseInsensitive("nvme", "abs"),
+							},
+							Default: stringdefault.StaticString("nvme"),
+						},
 					},
 				},
-				PlanModifiers: []planmodifier.List{listplanmodifier.RequiresReplace()},
+				PlanModifiers: []planmodifier.List{listplanmodifier.RequiresReplaceIfConfigured()},
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of the VM.",

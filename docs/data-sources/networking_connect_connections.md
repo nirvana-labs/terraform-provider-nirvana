@@ -46,7 +46,7 @@ Available values: 50, 200, 500, 1000, 2000.
 - `provider_cidrs` (List of String) Provider CIDRs for the Connect Connection
 - `provider_router_ip` (String) Provider Router IP for the Connect Connection
 - `region` (String) Region the resource is in.
-Available values: "us-sea-1", "us-sva-1", "us-chi-1", "us-wdc-1", "eu-frk-1", "ap-sin-1", "ap-seo-1", "ap-tyo-1".
+Available values: "us-sea-1", "us-sva-1", "us-sva-2", "us-chi-1", "us-wdc-1", "eu-frk-1", "ap-sin-1", "ap-seo-1", "ap-tyo-1".
 - `router_ip` (String) Router IP
 - `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
