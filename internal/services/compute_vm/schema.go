@@ -66,11 +66,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						Description: "Size of the Volume in GB.",
 						Required:    true,
 					},
-					"tags": schema.ListAttribute{
-						Description: "Tags to attach to the Volume.",
-						Optional:    true,
-						ElementType: types.StringType,
-					},
 					"type": schema.StringAttribute{
 						Description: "Type of the Volume.\nAvailable values: \"nvme\", \"abs\".",
 						Computed:    true,
@@ -79,6 +74,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 							stringvalidator.OneOfCaseInsensitive("nvme", "abs"),
 						},
 						Default: stringdefault.StaticString("nvme"),
+					},
+					"tags": schema.ListAttribute{
+						Description: "Tags to attach to the Volume.",
+						Optional:    true,
+						ElementType: types.StringType,
 					},
 				},
 				PlanModifiers: []planmodifier.Object{objectplanmodifier.RequiresReplace()},
@@ -109,11 +109,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 							Description: "Size of the Volume in GB.",
 							Required:    true,
 						},
-						"tags": schema.ListAttribute{
-							Description: "Tags to attach to the Volume.",
-							Optional:    true,
-							ElementType: types.StringType,
-						},
 						"type": schema.StringAttribute{
 							Description: "Type of the Volume.\nAvailable values: \"nvme\", \"abs\".",
 							Computed:    true,
@@ -122,6 +117,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 								stringvalidator.OneOfCaseInsensitive("nvme", "abs"),
 							},
 							Default: stringdefault.StaticString("nvme"),
+						},
+						"tags": schema.ListAttribute{
+							Description: "Tags to attach to the Volume.",
+							Optional:    true,
+							ElementType: types.StringType,
 						},
 					},
 				},
