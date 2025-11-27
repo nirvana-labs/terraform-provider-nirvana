@@ -65,9 +65,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 					"size": schema.Int64Attribute{
 						Description: "Size of the Volume in GB.",
 						Required:    true,
-						Validators: []validator.Int64{
-							int64validator.Between(64, 512),
-						},
 					},
 					"tags": schema.ListAttribute{
 						Description: "Tags to attach to the Volume.",
@@ -111,9 +108,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						"size": schema.Int64Attribute{
 							Description: "Size of the Volume in GB.",
 							Required:    true,
-							Validators: []validator.Int64{
-								int64validator.Between(32, 10240),
-							},
 						},
 						"tags": schema.ListAttribute{
 							Description: "Tags to attach to the Volume.",

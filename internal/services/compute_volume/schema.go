@@ -6,7 +6,6 @@ import (
 	"context"
 
 	"github.com/hashicorp/terraform-plugin-framework-timetypes/timetypes"
-	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
@@ -49,9 +48,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			"size": schema.Int64Attribute{
 				Description: "Size of the Volume in GB.",
 				Optional:    true,
-				Validators: []validator.Int64{
-					int64validator.Between(32, 10240),
-				},
 			},
 			"tags": schema.ListAttribute{
 				Description: "Tags to attach to the Volume.",
