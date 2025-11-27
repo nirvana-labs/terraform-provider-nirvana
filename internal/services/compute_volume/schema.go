@@ -32,7 +32,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"type": schema.StringAttribute{
-				Description: "Type of the Volume. Defaults to nvme if not provided.\nAvailable values: \"nvme\", \"abs\".",
+				Description: "Type of the Volume.\nAvailable values: \"nvme\", \"abs\".",
 				Computed:    true,
 				Optional:    true,
 				Validators: []validator.String{
