@@ -43,8 +43,8 @@ func (m ComputeVMModel) MarshalJSONForUpdate(state ComputeVMModel) (data []byte,
 
 type ComputeVMBootVolumeModel struct {
 	Size types.Int64     `tfsdk:"size" json:"size,required"`
-	Tags *[]types.String `tfsdk:"tags" json:"tags,optional"`
 	Type types.String    `tfsdk:"type" json:"type,computed_optional"`
+	Tags *[]types.String `tfsdk:"tags" json:"tags,optional"`
 }
 
 type ComputeVMSSHKeyModel struct {
@@ -54,8 +54,8 @@ type ComputeVMSSHKeyModel struct {
 type ComputeVMDataVolumesModel struct {
 	Name types.String    `tfsdk:"name" json:"name,required"`
 	Size types.Int64     `tfsdk:"size" json:"size,required"`
-	Tags *[]types.String `tfsdk:"tags" json:"tags,optional"`
 	Type types.String    `tfsdk:"type" json:"type,computed_optional"`
+	Tags *[]types.String `tfsdk:"tags" json:"tags,optional"`
 }
 
 type ComputeVMCPUConfigModel struct {
