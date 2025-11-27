@@ -43,7 +43,7 @@ Available values: "boot", "data".
 - `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `tags` (List of String) Tags to attach to the Volume.
-- `type` (String) Type of the Volume. Defaults to nvme if not provided.
+- `type` (String) Type of the Volume.
 Available values: "nvme", "abs".
 - `updated_at` (String) When the Volume was updated.
 - `vm_id` (String) ID of the VM the Volume is attached to.

@@ -34,7 +34,7 @@ resource "nirvana_compute_volume" "example_compute_volume" {
 - `name` (String) Name of the Volume.
 - `size` (Number) Size of the Volume in GB.
 - `tags` (List of String) Tags to attach to the Volume.
-- `type` (String) Type of the Volume. Defaults to nvme if not provided.
+- `type` (String) Type of the Volume.
 Available values: "nvme", "abs".
 
 ### Read-Only

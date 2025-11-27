@@ -61,7 +61,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"type": schema.StringAttribute{
-				Description: "Type of the Volume. Defaults to nvme if not provided.\nAvailable values: \"nvme\", \"abs\".",
+				Description: "Type of the Volume.\nAvailable values: \"nvme\", \"abs\".",
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive("nvme", "abs"),

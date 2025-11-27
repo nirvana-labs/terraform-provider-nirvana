@@ -72,7 +72,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						ElementType: types.StringType,
 					},
 					"type": schema.StringAttribute{
-						Description: "Type of the Volume. Defaults to nvme if not provided.\nAvailable values: \"nvme\", \"abs\".",
+						Description: "Type of the Volume.\nAvailable values: \"nvme\", \"abs\".",
 						Computed:    true,
 						Optional:    true,
 						Validators: []validator.String{
@@ -115,7 +115,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 							ElementType: types.StringType,
 						},
 						"type": schema.StringAttribute{
-							Description: "Type of the Volume. Defaults to nvme if not provided.\nAvailable values: \"nvme\", \"abs\".",
+							Description: "Type of the Volume.\nAvailable values: \"nvme\", \"abs\".",
 							Computed:    true,
 							Optional:    true,
 							Validators: []validator.String{

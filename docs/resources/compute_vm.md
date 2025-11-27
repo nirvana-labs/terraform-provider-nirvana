@@ -88,7 +88,7 @@ Required:
 Optional:
 
 - `tags` (List of String) Tags to attach to the Volume.
-- `type` (String) Type of the Volume. Defaults to nvme if not provided.
+- `type` (String) Type of the Volume.
 Available values: "nvme", "abs".
 
 
@@ -119,7 +119,7 @@ Required:
 Optional:
 
 - `tags` (List of String) Tags to attach to the Volume.
-- `type` (String) Type of the Volume. Defaults to nvme if not provided.
+- `type` (String) Type of the Volume.
 Available values: "nvme", "abs".
 
 
