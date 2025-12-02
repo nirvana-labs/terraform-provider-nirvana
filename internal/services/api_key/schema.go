@@ -39,7 +39,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			},
 			"name": schema.StringAttribute{
 				Description: "API Key name.",
-				Optional:    true,
+				Required:    true,
 			},
 			"tags": schema.ListAttribute{
 				Description: "Tags to attach to the API Key.",

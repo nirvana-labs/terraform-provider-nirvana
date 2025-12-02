@@ -31,26 +31,26 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			},
 			"destination_address": schema.StringAttribute{
 				Description: "Destination address of the Firewall Rule. Either VPC CIDR or VM in VPC. Must be in network-aligned/canonical form.",
-				Optional:    true,
+				Required:    true,
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of the Firewall Rule.",
-				Optional:    true,
+				Required:    true,
 			},
 			"protocol": schema.StringAttribute{
 				Description: "Protocol of the Firewall Rule.\nAvailable values: \"tcp\", \"udp\".",
-				Optional:    true,
+				Required:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive("tcp", "udp"),
 				},
 			},
 			"source_address": schema.StringAttribute{
 				Description: "Source address of the Firewall Rule. Address of 0.0.0.0 requires a CIDR mask of 0. Must be in network-aligned/canonical form.",
-				Optional:    true,
+				Required:    true,
 			},
 			"destination_ports": schema.ListAttribute{
 				Description: "Destination ports of the Firewall Rule.",
-				Optional:    true,
+				Required:    true,
 				ElementType: types.StringType,
 			},
 			"tags": schema.ListAttribute{

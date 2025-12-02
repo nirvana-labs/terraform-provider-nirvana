@@ -11,11 +11,11 @@ import (
 type NetworkingFirewallRuleModel struct {
 	ID                 types.String      `tfsdk:"id" json:"id,computed"`
 	VPCID              types.String      `tfsdk:"vpc_id" path:"vpc_id,required"`
-	DestinationAddress types.String      `tfsdk:"destination_address" json:"destination_address,optional"`
-	Name               types.String      `tfsdk:"name" json:"name,optional"`
-	Protocol           types.String      `tfsdk:"protocol" json:"protocol,optional"`
-	SourceAddress      types.String      `tfsdk:"source_address" json:"source_address,optional"`
-	DestinationPorts   *[]types.String   `tfsdk:"destination_ports" json:"destination_ports,optional"`
+	DestinationAddress types.String      `tfsdk:"destination_address" json:"destination_address,required"`
+	Name               types.String      `tfsdk:"name" json:"name,required"`
+	Protocol           types.String      `tfsdk:"protocol" json:"protocol,required"`
+	SourceAddress      types.String      `tfsdk:"source_address" json:"source_address,required"`
+	DestinationPorts   *[]types.String   `tfsdk:"destination_ports" json:"destination_ports,required"`
 	Tags               *[]types.String   `tfsdk:"tags" json:"tags,optional"`
 	CreatedAt          timetypes.RFC3339 `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
 	Status             types.String      `tfsdk:"status" json:"status,computed"`

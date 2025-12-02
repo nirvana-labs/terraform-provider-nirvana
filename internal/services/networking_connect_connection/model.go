@@ -15,7 +15,7 @@ type NetworkingConnectConnectionModel struct {
 	CIDRs            *[]types.String                      `tfsdk:"cidrs" json:"cidrs,required"`
 	ProviderCIDRs    *[]types.String                      `tfsdk:"provider_cidrs" json:"provider_cidrs,required"`
 	AWS              *NetworkingConnectConnectionAWSModel `tfsdk:"aws" json:"aws,optional"`
-	Name             types.String                         `tfsdk:"name" json:"name,optional"`
+	Name             types.String                         `tfsdk:"name" json:"name,required"`
 	Tags             *[]types.String                      `tfsdk:"tags" json:"tags,optional"`
 	ASN              types.Int64                          `tfsdk:"asn" json:"asn,computed"`
 	CreatedAt        timetypes.RFC3339                    `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`

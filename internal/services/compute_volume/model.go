@@ -12,8 +12,8 @@ type ComputeVolumeModel struct {
 	ID        types.String      `tfsdk:"id" json:"id,computed"`
 	VMID      types.String      `tfsdk:"vm_id" json:"vm_id,required"`
 	Type      types.String      `tfsdk:"type" json:"type,computed_optional"`
-	Name      types.String      `tfsdk:"name" json:"name,optional"`
-	Size      types.Int64       `tfsdk:"size" json:"size,optional"`
+	Name      types.String      `tfsdk:"name" json:"name,required"`
+	Size      types.Int64       `tfsdk:"size" json:"size,required"`
 	Tags      *[]types.String   `tfsdk:"tags" json:"tags,optional"`
 	CreatedAt timetypes.RFC3339 `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
 	Kind      types.String      `tfsdk:"kind" json:"kind,computed"`
