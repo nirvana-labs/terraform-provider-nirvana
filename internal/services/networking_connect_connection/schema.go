@@ -89,8 +89,8 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				PlanModifiers: []planmodifier.Object{objectplanmodifier.RequiresReplace()},
 			},
 			"name": schema.StringAttribute{
-				Description: "Name of the Connect Connection.",
-				Optional:    true,
+				Description: "Name of the Connect Connection",
+				Required:    true,
 			},
 			"tags": schema.ListAttribute{
 				Description: "Tags to attach to the Connect Connection",

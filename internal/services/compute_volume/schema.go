@@ -43,11 +43,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of the Volume.",
-				Optional:    true,
+				Required:    true,
 			},
 			"size": schema.Int64Attribute{
 				Description: "Size of the Volume in GB.",
-				Optional:    true,
+				Required:    true,
 			},
 			"tags": schema.ListAttribute{
 				Description: "Tags to attach to the Volume.",

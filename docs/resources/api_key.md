@@ -27,10 +27,10 @@ resource "nirvana_api_key" "example_api_key" {
 ### Required
 
 - `expires_at` (String) When the API Key expires and is no longer valid.
+- `name` (String) API Key name.
 
 ### Optional
 
-- `name` (String) API Key name.
 - `starts_at` (String) When the API Key starts to be valid.
 - `tags` (List of String) Tags to attach to the API Key.
 
