@@ -33,6 +33,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Required:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
+			"project_id": schema.StringAttribute{
+				Description:   "Project ID to associate with the RPC Node Flex.",
+				Required:      true,
+				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
+			},
 			"name": schema.StringAttribute{
 				Description: "Name of the RPC Node Flex.",
 				Required:    true,

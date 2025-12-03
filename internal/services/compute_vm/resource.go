@@ -227,7 +227,7 @@ func (r *ComputeVMResource) Read(ctx context.Context, req resource.ReadRequest, 
 
 			// Only collect volumes that match the original configuration
 			var configuredVolumeIDs []types.String
-			var configuredDataVolumes []*ComputeVMDataVolumesModel
+			var configuredDataVolumes []ComputeVMDataVolumesModel
 
 			for _, volume := range volumeList.Items {
 				switch volume.Kind {
@@ -243,7 +243,7 @@ func (r *ComputeVMResource) Read(ctx context.Context, req resource.ReadRequest, 
 							if volume.Name == configuredVolume.Name.ValueString() &&
 								volume.Size == configuredVolume.Size.ValueInt64() {
 								configuredVolumeIDs = append(configuredVolumeIDs, types.StringValue(volume.ID))
-								configuredDataVolumes = append(configuredDataVolumes, &ComputeVMDataVolumesModel{
+								configuredDataVolumes = append(configuredDataVolumes, ComputeVMDataVolumesModel{
 									Name: types.StringValue(volume.Name),
 									Size: types.Int64Value(volume.Size),
 								})
@@ -279,12 +279,16 @@ func (r *ComputeVMResource) Read(ctx context.Context, req resource.ReadRequest, 
 			if oldState.DataVolumes != nil {
 				// DataVolumes was configured in Terraform, so we should update it with matching volumes
 				if len(configuredDataVolumes) > 0 {
-					data.DataVolumes = &configuredDataVolumes
+					dataVolumePtrs := make([]*ComputeVMDataVolumesModel, len(configuredDataVolumes))
+					for i := range configuredDataVolumes {
+						dataVolumePtrs[i] = &configuredDataVolumes[i]
+					}
+					data.DataVolumes = &dataVolumePtrs
 				} else {
 					// Configuration had data_volumes but none are attached now
 					// Keep the field as configured (empty slice) rather than nil
-					emptyDataVolumes := []*ComputeVMDataVolumesModel{}
-					data.DataVolumes = &emptyDataVolumes
+					emptySlice := []*ComputeVMDataVolumesModel{}
+					data.DataVolumes = &emptySlice
 				}
 			} else {
 				// DataVolumes was never configured in Terraform, so volumes are managed externally
@@ -328,7 +332,7 @@ func (r *ComputeVMResource) Delete(ctx context.Context, req resource.DeleteReque
 }
 
 func (r *ComputeVMResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
-	var data *ComputeVMModel = new(ComputeVMModel)
+	var data = new(ComputeVMModel)
 
 	path := ""
 	diags := importpath.ParseImportID(

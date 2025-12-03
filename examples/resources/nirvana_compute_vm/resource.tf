@@ -1,6 +1,7 @@
 resource "nirvana_compute_vm" "example_compute_vm" {
   boot_volume = {
     size = 100
+    type = "nvme"
     tags = ["production", "ethereum"]
   }
   cpu_config = {
@@ -20,6 +21,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
   data_volumes = [{
     name = "my-data-volume"
     size = 100
+    type = "nvme"
     tags = ["production", "ethereum"]
   }]
   tags = ["production", "ethereum"]

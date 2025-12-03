@@ -35,12 +35,13 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"region": schema.StringAttribute{
-				Description: "Region the resource is in.\nAvailable values: \"us-sea-1\", \"us-sva-1\", \"us-chi-1\", \"us-wdc-1\", \"eu-frk-1\", \"ap-sin-1\", \"ap-seo-1\", \"ap-tyo-1\".",
+				Description: "Region the resource is in.\nAvailable values: \"us-sea-1\", \"us-sva-1\", \"us-sva-2\", \"us-chi-1\", \"us-wdc-1\", \"eu-frk-1\", \"ap-sin-1\", \"ap-seo-1\", \"ap-tyo-1\".",
 				Required:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
 						"us-sea-1",
 						"us-sva-1",
+						"us-sva-2",
 						"us-chi-1",
 						"us-wdc-1",
 						"eu-frk-1",
@@ -63,8 +64,12 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 					"size": schema.Int64Attribute{
 						Description: "Size of the Volume in GB.",
 						Required:    true,
-						Validators: []validator.Int64{
-							int64validator.Between(64, 512),
+					},
+					"type": schema.StringAttribute{
+						Description: "Type of the Volume.\nAvailable values: \"nvme\", \"abs\".",
+						Required:    true,
+						Validators: []validator.String{
+							stringvalidator.OneOfCaseInsensitive("nvme", "abs"),
 						},
 					},
 					"tags": schema.ListAttribute{
@@ -98,8 +103,12 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						"size": schema.Int64Attribute{
 							Description: "Size of the Volume in GB.",
 							Required:    true,
-							Validators: []validator.Int64{
-								int64validator.Between(32, 10240),
+						},
+						"type": schema.StringAttribute{
+							Description: "Type of the Volume.\nAvailable values: \"nvme\", \"abs\".",
+							Required:    true,
+							Validators: []validator.String{
+								stringvalidator.OneOfCaseInsensitive("nvme", "abs"),
 							},
 						},
 						"tags": schema.ListAttribute{

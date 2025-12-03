@@ -194,7 +194,7 @@ func (r *RPCNodeFlexResource) Delete(ctx context.Context, req resource.DeleteReq
 }
 
 func (r *RPCNodeFlexResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
-	var data *RPCNodeFlexModel = new(RPCNodeFlexModel)
+	var data = new(RPCNodeFlexModel)
 
 	path := ""
 	diags := importpath.ParseImportID(

@@ -79,10 +79,10 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 							ElementType: types.StringType,
 						},
 						"type": schema.StringAttribute{
-							Description: "Storage type the Volume is using.\nAvailable values: \"nvme\".",
+							Description: "Type of the Volume.\nAvailable values: \"nvme\", \"abs\".",
 							Computed:    true,
 							Validators: []validator.String{
-								stringvalidator.OneOfCaseInsensitive("nvme"),
+								stringvalidator.OneOfCaseInsensitive("nvme", "abs"),
 							},
 						},
 						"updated_at": schema.StringAttribute{

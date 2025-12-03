@@ -20,7 +20,7 @@ terraform {
   required_providers {
     nirvana = {
       source  = "nirvana-labs/nirvana"
-      version = "~> 1.20.1"
+      version = "~> 1.21.0"
     }
   }
 }
@@ -34,6 +34,7 @@ provider "nirvana" {
 resource "nirvana_compute_vm" "example_compute_vm" {
   boot_volume = {
     size = 100
+    type = "nvme"
     tags = ["production", "ethereum"]
   }
   cpu_config = {
@@ -53,6 +54,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
   data_volumes = [{
     name = "my-data-volume"
     size = 100
+    type = "nvme"
     tags = ["production", "ethereum"]
   }]
   tags = ["production", "ethereum"]

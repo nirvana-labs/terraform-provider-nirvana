@@ -16,6 +16,7 @@ description: |-
 resource "nirvana_compute_volume" "example_compute_volume" {
   name = "my-data-volume"
   size = 100
+  type = "nvme"
   vm_id = "vm_id"
   tags = ["production", "ethereum"]
 }
@@ -28,6 +29,8 @@ resource "nirvana_compute_volume" "example_compute_volume" {
 
 - `name` (String) Name of the Volume.
 - `size` (Number) Size of the Volume in GB.
+- `type` (String) Type of the Volume.
+Available values: "nvme", "abs".
 - `vm_id` (String) ID of the VM the Volume is attached to.
 
 ### Optional
@@ -42,8 +45,6 @@ resource "nirvana_compute_volume" "example_compute_volume" {
 Available values: "boot", "data".
 - `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
-- `type` (String) Storage type the Volume is using.
-Available values: "nvme".
 - `updated_at` (String) When the Volume was updated.
 - `vm_name` (String) Name of the VM the Volume is attached to.
 

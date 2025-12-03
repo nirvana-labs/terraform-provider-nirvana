@@ -19,6 +19,10 @@ var _ datasource.DataSourceWithConfigValidators = (*RPCNodeFlexesDataSource)(nil
 func ListDataSourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
+			"project_id": schema.StringAttribute{
+				Description: "Project ID of resources to request",
+				Optional:    true,
+			},
 			"max_items": schema.Int64Attribute{
 				Description: "Max items to fetch, default: 1000",
 				Optional:    true,
@@ -56,6 +60,10 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 						},
 						"network": schema.StringAttribute{
 							Description: "Network type (e.g., mainnet, testnet).",
+							Computed:    true,
+						},
+						"project_id": schema.StringAttribute{
+							Description: "Project identifier associated with the RPC Node Flex.",
 							Computed:    true,
 						},
 						"tags": schema.ListAttribute{
