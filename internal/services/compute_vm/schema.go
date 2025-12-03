@@ -13,7 +13,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -68,12 +67,10 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 					},
 					"type": schema.StringAttribute{
 						Description: "Type of the Volume.\nAvailable values: \"nvme\", \"abs\".",
-						Computed:    true,
-						Optional:    true,
+						Required:    true,
 						Validators: []validator.String{
 							stringvalidator.OneOfCaseInsensitive("nvme", "abs"),
 						},
-						Default: stringdefault.StaticString("nvme"),
 					},
 					"tags": schema.ListAttribute{
 						Description: "Tags to attach to the Volume.",
@@ -96,9 +93,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			},
 			"data_volumes": schema.ListNestedAttribute{
 				Description: "Data volumes for the VM.",
-				Computed:    true,
 				Optional:    true,
-				CustomType:  customfield.NewNestedObjectListType[ComputeVMDataVolumesModel](ctx),
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"name": schema.StringAttribute{
@@ -111,12 +106,10 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						},
 						"type": schema.StringAttribute{
 							Description: "Type of the Volume.\nAvailable values: \"nvme\", \"abs\".",
-							Computed:    true,
-							Optional:    true,
+							Required:    true,
 							Validators: []validator.String{
 								stringvalidator.OneOfCaseInsensitive("nvme", "abs"),
 							},
-							Default: stringdefault.StaticString("nvme"),
 						},
 						"tags": schema.ListAttribute{
 							Description: "Tags to attach to the Volume.",
@@ -125,7 +118,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						},
 					},
 				},
-				PlanModifiers: []planmodifier.List{listplanmodifier.RequiresReplaceIfConfigured()},
+				PlanModifiers: []planmodifier.List{listplanmodifier.RequiresReplace()},
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of the VM.",
