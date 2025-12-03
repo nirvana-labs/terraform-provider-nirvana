@@ -1,5 +1,43 @@
 # Changelog
 
+## 1.21.0 (2025-12-03)
+
+Full Changelog: [v1.20.1...v1.21.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.20.1...v1.21.0)
+
+### Features
+
+* **api:** api update ([7fe846f](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/7fe846f8b2a194033f38246072973c279c7d419a))
+* **api:** api update ([df1682f](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/df1682f807fc27ae5b644eaf4fc62c3612719042))
+* **api:** api update ([2cbce09](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/2cbce09600ef8e3e36af583eb8fbb3e27dcc23d1))
+* **api:** api update ([8dddbf1](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/8dddbf1659d1fa57a921fc1aa33d7edce088e39b))
+* **api:** api update ([edb6dd4](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/edb6dd406f529d735db4b44f9517d4710f2fbd47))
+* **api:** api update ([8f63e83](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/8f63e83de9954c5bf3743a1e982fa9b076d8c9a4))
+* **api:** api update ([8400133](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/84001332815faad4b073ab317da06d817ae1f5b1))
+* **api:** manual updates ([e11d9fa](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/e11d9fa32a7fa7003e9ef89794d4b743a440344b))
+* **api:** manual updates ([1680280](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/1680280f65627ea15341ee763749b56433c81753))
+* **api:** manual updates ([d20acf5](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/d20acf5e4830c12510edde796a22a1f891d5bd3a))
+* **api:** remove migration for typescript ([ea884ad](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/ea884ad47e8f30830ba893bc32764dc44f315325))
+* **api:** update ([5ad30a6](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/5ad30a645050c2080fb51cf053030cd29b36e9b5))
+* **api:** update ([32427d2](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/32427d2594e4857c9ff089effa4e4a7d09b402d7))
+
+
+### Bug Fixes
+
+* compilation error ([11b5981](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/11b5981df96beea98686eb31acf188cf14f4fbae))
+* correctly mark a subset of fields shared between create and update calls as required ([d99780f](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/d99780f6b547900271124e85e21db9fd9f9b9576))
+* ensure derived request attribute schemas conform to the upstream configurability overrides ([8569f5c](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/8569f5c1d875df3a6ce34e5f2175645bb42306ed))
+* ensure dynamic values always yield valid container inner values ([0337287](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/0337287f28dc8e340d3720716803796de5505de1))
+* list style data sources should always have id value populated ([2054ce8](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/2054ce8eff686aed0392d5fa5782a353431d2901))
+* resolve compilation error in compute_vm resource ([4295aaa](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/4295aaa848d0e0b527c730505ae96aa899f1e92c))
+
+
+### Chores
+
+* add nvm to list of custom_casings ([ee6e0b7](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/ee6e0b7de12805a8090268f5f51ecc46b09acb3f))
+* ensure tests build as part of lint step ([76b2f2e](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/76b2f2e8970678d48f6e485c6c1c9bb11b2ed01f))
+* **internal:** address linter warnings ([f989271](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/f98927124e01cf96763a5e6f854357087996b733))
+* **internal:** codegen related update ([7e5f41d](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/7e5f41df19d38bb3b22b231b07a1e4e380d70ba9))
+
 ## 1.20.1 (2025-11-10)
 
 Full Changelog: [v1.20.0...v1.20.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.20.0...v1.20.1)
