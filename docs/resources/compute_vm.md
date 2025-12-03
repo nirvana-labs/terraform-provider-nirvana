@@ -84,12 +84,12 @@ Available values: "pending", "creating", "updating", "ready", "deleting", "delet
 Required:
 
 - `size` (Number) Size of the Volume in GB.
+- `type` (String) Type of the Volume.
+Available values: "nvme", "abs".
 
 Optional:
 
 - `tags` (List of String) Tags to attach to the Volume.
-- `type` (String) Type of the Volume.
-Available values: "nvme", "abs".
 
 
 <a id="nestedatt--cpu_config"></a>
@@ -123,12 +123,12 @@ Required:
 
 - `name` (String) Name of the Volume.
 - `size` (Number) Size of the Volume in GB.
+- `type` (String) Type of the Volume.
+Available values: "nvme", "abs".
 
 Optional:
 
 - `tags` (List of String) Tags to attach to the Volume.
-- `type` (String) Type of the Volume.
-Available values: "nvme", "abs".
 
 ## Import
 

@@ -10,8 +10,8 @@ import (
 
 type ComputeVolumeModel struct {
 	ID        types.String      `tfsdk:"id" json:"id,computed"`
+	Type      types.String      `tfsdk:"type" json:"type,required"`
 	VMID      types.String      `tfsdk:"vm_id" json:"vm_id,required"`
-	Type      types.String      `tfsdk:"type" json:"type,computed_optional"`
 	Name      types.String      `tfsdk:"name" json:"name,required"`
 	Size      types.Int64       `tfsdk:"size" json:"size,required"`
 	Tags      *[]types.String   `tfsdk:"tags" json:"tags,optional"`
