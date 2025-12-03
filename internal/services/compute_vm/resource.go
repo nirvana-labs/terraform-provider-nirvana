@@ -238,10 +238,8 @@ func (r *ComputeVMResource) Read(ctx context.Context, req resource.ReadRequest, 
 					}
 				case compute.VolumeKindData:
 					// Only include this volume if it matches something in the original configuration
-					if !oldState.DataVolumes.IsNullOrUnknown() {
-						dataVolumes, d := oldState.DataVolumes.AsStructSliceT(ctx)
-						resp.Diagnostics.Append(d...)
-						for _, configuredVolume := range dataVolumes {
+					if oldState.DataVolumes != nil {
+						for _, configuredVolume := range *oldState.DataVolumes {
 							if volume.Name == configuredVolume.Name.ValueString() &&
 								volume.Size == configuredVolume.Size.ValueInt64() {
 								configuredVolumeIDs = append(configuredVolumeIDs, types.StringValue(volume.ID))
@@ -278,21 +276,24 @@ func (r *ComputeVMResource) Read(ctx context.Context, req resource.ReadRequest, 
 			}
 
 			// Set data_volumes with only the volumes that match the configuration
-			if !oldState.DataVolumes.IsNullOrUnknown() {
+			if oldState.DataVolumes != nil {
 				// DataVolumes was configured in Terraform, so we should update it with matching volumes
 				if len(configuredDataVolumes) > 0 {
-					dataVolumes, d := customfield.NewObjectList(ctx, configuredDataVolumes)
-					resp.Diagnostics.Append(d...)
-					data.DataVolumes = dataVolumes
+					dataVolumePtrs := make([]*ComputeVMDataVolumesModel, len(configuredDataVolumes))
+					for i := range configuredDataVolumes {
+						dataVolumePtrs[i] = &configuredDataVolumes[i]
+					}
+					data.DataVolumes = &dataVolumePtrs
 				} else {
 					// Configuration had data_volumes but none are attached now
 					// Keep the field as configured (empty slice) rather than nil
-					data.DataVolumes = customfield.NestedObjectList[ComputeVMDataVolumesModel]{}
+					emptySlice := []*ComputeVMDataVolumesModel{}
+					data.DataVolumes = &emptySlice
 				}
 			} else {
 				// DataVolumes was never configured in Terraform, so volumes are managed externally
 				// Keep it nil to indicate this resource doesn't manage data volumes
-				data.DataVolumes = customfield.NestedObjectList[ComputeVMDataVolumesModel]{}
+				data.DataVolumes = nil
 			}
 		}
 	}
@@ -417,7 +418,7 @@ func (r *ComputeVMResource) ImportState(ctx context.Context, req resource.Import
 			// For import, we don't populate data_volumes since we don't know if they
 			// were originally configured in Terraform. The user will need to add them
 			// to their configuration if they want to manage them through this resource.
-			data.DataVolumes = customfield.NestedObjectList[ComputeVMDataVolumesModel]{}
+			data.DataVolumes = nil
 		}
 	}
 
