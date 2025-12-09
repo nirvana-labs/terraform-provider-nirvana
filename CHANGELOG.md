@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.21.1 (2025-12-09)
+
+Full Changelog: [v1.21.0...v1.21.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.21.0...v1.21.1)
+
+### Chores
+
+* **internal:** codegen related update ([d8e972f](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/d8e972fbe77f9f6335c327a95c2208507ab3ce30))
+
 ## 1.21.0 (2025-12-03)
 
 Full Changelog: [v1.20.1...v1.21.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.20.1...v1.21.0)
