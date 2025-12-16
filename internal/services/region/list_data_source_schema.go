@@ -31,10 +31,6 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 				CustomType:  customfield.NewNestedObjectListType[RegionsItemsDataSourceModel](ctx),
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
-						"id": schema.StringAttribute{
-							Description: "Name of the region.",
-							Computed:    true,
-						},
 						"availability": schema.StringAttribute{
 							Description: "Availability status of the region.\nAvailable values: \"live\", \"preview\", \"maintenance\", \"sunset\".",
 							Computed:    true,
