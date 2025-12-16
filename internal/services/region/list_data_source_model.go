@@ -27,6 +27,7 @@ func (m *RegionsDataSourceModel) toListParams(_ context.Context) (params regions
 }
 
 type RegionsItemsDataSourceModel struct {
+	ID           types.String                                               `tfsdk:"id" json:"name,computed"`
 	Availability types.String                                               `tfsdk:"availability" json:"availability,computed"`
 	Compute      customfield.NestedObject[RegionsComputeDataSourceModel]    `tfsdk:"compute" json:"compute,computed"`
 	Name         types.String                                               `tfsdk:"name" json:"name,computed"`
