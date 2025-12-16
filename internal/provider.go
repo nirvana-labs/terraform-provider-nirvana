@@ -21,6 +21,7 @@ import (
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_connect_connection"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_firewall_rule"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_vpc"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/region"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/rpc_node_flex"
 )
 
@@ -118,6 +119,8 @@ func (p *NirvanaProvider) DataSources(ctx context.Context) []func() datasource.D
 	return []func() datasource.DataSource{
 		api_key.NewAPIKeyDataSource,
 		api_key.NewAPIKeysDataSource,
+		region.NewRegionDataSource,
+		region.NewRegionsDataSource,
 		compute_vm.NewComputeVMDataSource,
 		compute_vm.NewComputeVMsDataSource,
 		compute_vm_os_image.NewComputeVMOSImagesDataSource,
