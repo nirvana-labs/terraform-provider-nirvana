@@ -119,7 +119,6 @@ func (p *NirvanaProvider) DataSources(ctx context.Context) []func() datasource.D
 	return []func() datasource.DataSource{
 		api_key.NewAPIKeyDataSource,
 		api_key.NewAPIKeysDataSource,
-		region.NewRegionDataSource,
 		region.NewRegionsDataSource,
 		compute_vm.NewComputeVMDataSource,
 		compute_vm.NewComputeVMsDataSource,

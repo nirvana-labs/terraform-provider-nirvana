@@ -37,7 +37,6 @@ Read-Only:
 - `availability` (String) Availability status of the region.
 Available values: "live", "preview", "maintenance", "sunset".
 - `compute` (Attributes) Compute products available in this region. (see [below for nested schema](#nestedatt--items--compute))
-- `id` (String) Name of the region.
 - `name` (String) Name of the region.
 - `networking` (Attributes) Networking products available in this region. (see [below for nested schema](#nestedatt--items--networking))
 - `storage` (Attributes) Storage products available in this region. (see [below for nested schema](#nestedatt--items--storage))
