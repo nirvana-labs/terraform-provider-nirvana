@@ -32,6 +32,7 @@ type ComputeVolumesItemsDataSourceModel struct {
 	CreatedAt timetypes.RFC3339              `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
 	Kind      types.String                   `tfsdk:"kind" json:"kind,computed"`
 	Name      types.String                   `tfsdk:"name" json:"name,computed"`
+	Region    types.String                   `tfsdk:"region" json:"region,computed"`
 	Size      types.Int64                    `tfsdk:"size" json:"size,computed"`
 	Status    types.String                   `tfsdk:"status" json:"status,computed"`
 	Tags      customfield.List[types.String] `tfsdk:"tags" json:"tags,computed"`

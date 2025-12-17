@@ -32,6 +32,7 @@ data "nirvana_compute_volume" "example_compute_volume" {
 - `kind` (String) Volume kind.
 Available values: "boot", "data".
 - `name` (String) Name of the Volume.
+- `region` (String) Region where the Volume is located.
 - `size` (Number) Size of the Volume in GB.
 - `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
