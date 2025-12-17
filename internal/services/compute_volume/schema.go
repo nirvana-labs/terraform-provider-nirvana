@@ -63,6 +63,10 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 					stringvalidator.OneOfCaseInsensitive("boot", "data"),
 				},
 			},
+			"region": schema.StringAttribute{
+				Description: "Region where the Volume is located.",
+				Computed:    true,
+			},
 			"status": schema.StringAttribute{
 				Description: "Status of the resource.\nAvailable values: \"pending\", \"creating\", \"updating\", \"ready\", \"deleting\", \"deleted\", \"error\".",
 				Computed:    true,

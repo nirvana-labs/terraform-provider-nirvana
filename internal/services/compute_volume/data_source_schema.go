@@ -41,6 +41,10 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Description: "Name of the Volume.",
 				Computed:    true,
 			},
+			"region": schema.StringAttribute{
+				Description: "Region where the Volume is located.",
+				Computed:    true,
+			},
 			"size": schema.Int64Attribute{
 				Description: "Size of the Volume in GB.",
 				Computed:    true,
