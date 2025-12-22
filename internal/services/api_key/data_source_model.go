@@ -23,6 +23,6 @@ type APIKeyDataSourceModel struct {
 }
 
 type APIKeySourceIPRuleDataSourceModel struct {
-	In    customfield.List[types.String] `tfsdk:"in" json:"in,computed"`
-	NotIn customfield.List[types.String] `tfsdk:"not_in" json:"not_in,computed"`
+	Allowed customfield.List[types.String] `tfsdk:"allowed" json:"allowed,computed"`
+	Blocked customfield.List[types.String] `tfsdk:"blocked" json:"blocked,computed"`
 }
