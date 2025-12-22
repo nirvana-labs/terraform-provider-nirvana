@@ -32,8 +32,17 @@ data "nirvana_api_key" "example_api_key" {
 - `id` (String) The ID of this resource.
 - `key` (String, Sensitive) API Key. Only returned on creation.
 - `name` (String) API Key name.
+- `source_ip_rule` (Attributes) IP filter configuration for the API Key. (see [below for nested schema](#nestedatt--source_ip_rule))
 - `starts_at` (String) When the API Key starts to be valid.
 - `status` (String) Status of the API Key.
 Available values: "active", "inactive", "expired".
 - `tags` (List of String) Tags to attach to the API Key.
 - `updated_at` (String) When the API Key was updated.
+
+<a id="nestedatt--source_ip_rule"></a>
+### Nested Schema for `source_ip_rule`
+
+Read-Only:
+
+- `in` (List of String) List of IPv4/IPv6 CIDR addresses to allow.
+- `not_in` (List of String) List of IPv4/IPv6 CIDR addresses to deny.
