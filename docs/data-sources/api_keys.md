@@ -51,5 +51,5 @@ Available values: "active", "inactive", "expired".
 
 Read-Only:
 
-- `in` (List of String) List of IPv4/IPv6 CIDR addresses to allow.
-- `not_in` (List of String) List of IPv4/IPv6 CIDR addresses to deny.
+- `allowed` (List of String) List of IPv4/IPv6 CIDR addresses to allow.
+- `blocked` (List of String) List of IPv4/IPv6 CIDR addresses to deny.

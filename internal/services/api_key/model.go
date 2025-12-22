@@ -30,6 +30,6 @@ func (m APIKeyModel) MarshalJSONForUpdate(state APIKeyModel) (data []byte, err e
 }
 
 type APIKeySourceIPRuleModel struct {
-	In    *[]types.String `tfsdk:"in" json:"in,optional"`
-	NotIn *[]types.String `tfsdk:"not_in" json:"not_in,optional"`
+	Allowed *[]types.String `tfsdk:"allowed" json:"allowed,optional"`
+	Blocked *[]types.String `tfsdk:"blocked" json:"blocked,optional"`
 }
