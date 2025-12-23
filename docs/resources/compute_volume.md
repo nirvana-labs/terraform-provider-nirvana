@@ -43,6 +43,7 @@ Available values: "nvme", "abs".
 - `id` (String) Unique identifier for the Operation.
 - `kind` (String) Volume kind.
 Available values: "boot", "data".
+- `region` (String) Region where the Volume is located.
 - `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `updated_at` (String) When the Volume was updated.

@@ -16,6 +16,10 @@ description: |-
 resource "nirvana_api_key" "example_api_key" {
   expires_at = "2025-12-31T23:59:59Z"
   name = "My API Key"
+  source_ip_rule = {
+    allowed = ["192.168.1.0/24", "10.0.0.0/8"]
+    blocked = ["192.168.1.100/32"]
+  }
   starts_at = "2025-01-01T00:00:00Z"
   tags = ["production", "ethereum"]
 }
@@ -31,6 +35,7 @@ resource "nirvana_api_key" "example_api_key" {
 
 ### Optional
 
+- `source_ip_rule` (Attributes) IP filter configuration for the API Key. (see [below for nested schema](#nestedatt--source_ip_rule))
 - `starts_at` (String) When the API Key starts to be valid.
 - `tags` (List of String) Tags to attach to the API Key.
 
@@ -42,6 +47,14 @@ resource "nirvana_api_key" "example_api_key" {
 - `status` (String) Status of the API Key.
 Available values: "active", "inactive", "expired".
 - `updated_at` (String) When the API Key was updated.
+
+<a id="nestedatt--source_ip_rule"></a>
+### Nested Schema for `source_ip_rule`
+
+Optional:
+
+- `allowed` (List of String) List of IPv4/IPv6 CIDR addresses to allow.
+- `blocked` (List of String) List of IPv4/IPv6 CIDR addresses to deny.
 
 ## Import
 
