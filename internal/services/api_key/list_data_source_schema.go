@@ -52,18 +52,18 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 							Computed:    true,
 						},
 						"source_ip_rule": schema.SingleNestedAttribute{
-							Description: "IP filter configuration for the API Key.",
+							Description: "IP filter rules.",
 							Computed:    true,
 							CustomType:  customfield.NewNestedObjectType[APIKeysSourceIPRuleDataSourceModel](ctx),
 							Attributes: map[string]schema.Attribute{
 								"allowed": schema.ListAttribute{
-									Description: "List of IPv4/IPv6 CIDR addresses to allow.",
+									Description: "List of IPv4 CIDR addresses to allow.",
 									Computed:    true,
 									CustomType:  customfield.NewListType[types.String](ctx),
 									ElementType: types.StringType,
 								},
 								"blocked": schema.ListAttribute{
-									Description: "List of IPv4/IPv6 CIDR addresses to deny.",
+									Description: "List of IPv4 CIDR addresses to deny.",
 									Computed:    true,
 									CustomType:  customfield.NewListType[types.String](ctx),
 									ElementType: types.StringType,

@@ -39,7 +39,7 @@ Read-Only:
 - `id` (String) API Key ID.
 - `key` (String, Sensitive) API Key. Only returned on creation.
 - `name` (String) API Key name.
-- `source_ip_rule` (Attributes) IP filter configuration for the API Key. (see [below for nested schema](#nestedatt--items--source_ip_rule))
+- `source_ip_rule` (Attributes) IP filter rules. (see [below for nested schema](#nestedatt--items--source_ip_rule))
 - `starts_at` (String) When the API Key starts to be valid.
 - `status` (String) Status of the API Key.
 Available values: "active", "inactive", "expired".
@@ -51,5 +51,5 @@ Available values: "active", "inactive", "expired".
 
 Read-Only:
 
-- `allowed` (List of String) List of IPv4/IPv6 CIDR addresses to allow.
-- `blocked` (List of String) List of IPv4/IPv6 CIDR addresses to deny.
+- `allowed` (List of String) List of IPv4 CIDR addresses to allow.
+- `blocked` (List of String) List of IPv4 CIDR addresses to deny.

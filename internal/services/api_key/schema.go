@@ -47,16 +47,16 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				ElementType: types.StringType,
 			},
 			"source_ip_rule": schema.SingleNestedAttribute{
-				Description: "IP filter configuration for the API Key.",
+				Description: "IP filter rules.",
 				Optional:    true,
 				Attributes: map[string]schema.Attribute{
 					"allowed": schema.ListAttribute{
-						Description: "List of IPv4/IPv6 CIDR addresses to allow.",
+						Description: "List of IPv4 CIDR addresses to allow.",
 						Optional:    true,
 						ElementType: types.StringType,
 					},
 					"blocked": schema.ListAttribute{
-						Description: "List of IPv4/IPv6 CIDR addresses to deny.",
+						Description: "List of IPv4 CIDR addresses to deny.",
 						Optional:    true,
 						ElementType: types.StringType,
 					},
