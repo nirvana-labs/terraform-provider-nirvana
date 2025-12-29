@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.23.1 (2025-12-29)
+
+Full Changelog: [v1.23.0...v1.23.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.23.0...v1.23.1)
+
+### Features
+
+* **api:** api update ([4bd6e4b](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/4bd6e4bf6687725142d65b60aa81c16b3c6639dd))
+
 ## 1.23.0 (2025-12-22)
 
 Full Changelog: [v1.22.0...v1.23.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.22.0...v1.23.0)

@@ -35,7 +35,7 @@ resource "nirvana_api_key" "example_api_key" {
 
 ### Optional
 
-- `source_ip_rule` (Attributes) IP filter configuration for the API Key. (see [below for nested schema](#nestedatt--source_ip_rule))
+- `source_ip_rule` (Attributes) IP filter rules. (see [below for nested schema](#nestedatt--source_ip_rule))
 - `starts_at` (String) When the API Key starts to be valid.
 - `tags` (List of String) Tags to attach to the API Key.
 
@@ -53,8 +53,8 @@ Available values: "active", "inactive", "expired".
 
 Optional:
 
-- `allowed` (List of String) List of IPv4/IPv6 CIDR addresses to allow.
-- `blocked` (List of String) List of IPv4/IPv6 CIDR addresses to deny.
+- `allowed` (List of String) List of IPv4 CIDR addresses to allow.
+- `blocked` (List of String) List of IPv4 CIDR addresses to deny.
 
 ## Import
 
