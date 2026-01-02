@@ -15,10 +15,11 @@ description: |-
 ```terraform
 resource "nirvana_compute_volume" "example_compute_volume" {
   name = "my-data-volume"
+  region = "us-wdc-1"
   size = 100
   type = "nvme"
-  vm_id = "vm_id"
   tags = ["production", "ethereum"]
+  vm_id = "123e4567-e89b-12d3-a456-426614174000"
 }
 ```
 
@@ -28,14 +29,16 @@ resource "nirvana_compute_volume" "example_compute_volume" {
 ### Required
 
 - `name` (String) Name of the Volume.
+- `region` (String) Region the resource is in.
+Available values: "us-sea-1", "us-sva-1", "us-sva-2", "us-chi-1", "us-wdc-1", "eu-frk-1", "ap-sin-1", "ap-seo-1", "ap-tyo-1".
 - `size` (Number) Size of the Volume in GB.
 - `type` (String) Type of the Volume.
 Available values: "nvme", "abs".
-- `vm_id` (String) ID of the VM the Volume is attached to.
 
 ### Optional
 
 - `tags` (List of String) Tags to attach to the Volume.
+- `vm_id` (String) ID of the VM the Volume is attached to.
 
 ### Read-Only
 
@@ -43,7 +46,6 @@ Available values: "nvme", "abs".
 - `id` (String) Unique identifier for the Operation.
 - `kind` (String) Volume kind.
 Available values: "boot", "data".
-- `region` (String) Region where the Volume is located.
 - `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `updated_at` (String) When the Volume was updated.
