@@ -25,6 +25,24 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Computed:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
 			},
+			"region": schema.StringAttribute{
+				Description: "Region the resource is in.\nAvailable values: \"us-sea-1\", \"us-sva-1\", \"us-sva-2\", \"us-chi-1\", \"us-wdc-1\", \"eu-frk-1\", \"ap-sin-1\", \"ap-seo-1\", \"ap-tyo-1\".",
+				Required:    true,
+				Validators: []validator.String{
+					stringvalidator.OneOfCaseInsensitive(
+						"us-sea-1",
+						"us-sva-1",
+						"us-sva-2",
+						"us-chi-1",
+						"us-wdc-1",
+						"eu-frk-1",
+						"ap-sin-1",
+						"ap-seo-1",
+						"ap-tyo-1",
+					),
+				},
+				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
+			},
 			"type": schema.StringAttribute{
 				Description: "Type of the Volume.\nAvailable values: \"nvme\", \"abs\".",
 				Required:    true,
@@ -35,7 +53,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			},
 			"vm_id": schema.StringAttribute{
 				Description:   "ID of the VM the Volume is attached to.",
-				Required:      true,
+				Optional:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"name": schema.StringAttribute{
@@ -62,10 +80,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive("boot", "data"),
 				},
-			},
-			"region": schema.StringAttribute{
-				Description: "Region where the Volume is located.",
-				Computed:    true,
 			},
 			"status": schema.StringAttribute{
 				Description: "Status of the resource.\nAvailable values: \"pending\", \"creating\", \"updating\", \"ready\", \"deleting\", \"deleted\", \"error\".",
