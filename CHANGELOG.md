@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.24.3 (2026-01-15)
+
+Full Changelog: [v1.24.2...v1.24.3](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.24.2...v1.24.3)
+
+### Chores
+
+* **internal:** codegen related update ([b11c0bc](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/b11c0bc565e6c6fdbf9df325241311e5d59a7b59))
+* **internal:** codegen related update ([23f7c08](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/23f7c0855fc0924b1376b56ee9abc772528f1a39))
+* update Go SDK version ([21b6d03](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/21b6d03bc110d3e489b2bb20f9408dfc88ed2b83))
+
 ## 1.24.2 (2026-01-06)
 
 Full Changelog: [v1.24.1...v1.24.2](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.24.1...v1.24.2)
