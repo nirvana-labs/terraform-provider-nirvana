@@ -5,7 +5,6 @@ go 1.23.0
 toolchain go1.23.9
 
 require (
-	github.com/nirvana-labs/nirvana-go v0.0.0
 	github.com/davecgh/go-spew v1.1.1
 	github.com/hashicorp/terraform-plugin-docs v0.16.0
 	github.com/hashicorp/terraform-plugin-framework v1.15.0
@@ -14,6 +13,7 @@ require (
 	github.com/hashicorp/terraform-plugin-framework-validators v0.17.0
 	github.com/hashicorp/terraform-plugin-go v0.28.0
 	github.com/hashicorp/terraform-plugin-log v0.9.0
+	github.com/nirvana-labs/nirvana-go v1.34.0
 	github.com/tidwall/gjson v1.18.0
 	github.com/tidwall/sjson v1.2.5
 )
@@ -75,5 +75,3 @@ require (
 	google.golang.org/grpc v1.72.1 // indirect
 	google.golang.org/protobuf v1.36.6 // indirect
 )
-
-replace github.com/nirvana-labs/nirvana-go => github.com/stainless-sdks/Nirvana Labs-go main
