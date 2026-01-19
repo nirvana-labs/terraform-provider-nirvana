@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.24.4 (2026-01-19)
+
+Full Changelog: [v1.24.3...v1.24.4](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.24.3...v1.24.4)
+
+### Chores
+
+* bump dependency version ([8cb175e](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/8cb175ed786838707dc2aa00ff89b3c4d04ec5dc))
+* **internal:** update `actions/checkout` version ([4290547](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/4290547fe146141614eb435c5112eea1d3b00b89))
+
 ## 1.24.3 (2026-01-15)
 
 Full Changelog: [v1.24.2...v1.24.3](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.24.2...v1.24.3)
