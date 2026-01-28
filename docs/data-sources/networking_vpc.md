@@ -32,7 +32,7 @@ data "nirvana_networking_vpc" "example_networking_vpc" {
 - `id` (String) The ID of this resource.
 - `name` (String) Name of the VPC.
 - `region` (String) Region the resource is in.
-Available values: "us-sea-1", "us-sva-1", "us-sva-2", "us-chi-1", "us-wdc-1", "eu-frk-1", "ap-sin-1", "ap-seo-1", "ap-tyo-1".
+Available values: "us-sea-1", "us-sva-1", "us-sva-2", "us-chi-1", "us-wdc-1", "eu-frk-1", "ap-sin-1", "ap-tyo-1".
 - `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `subnet` (Attributes) Subnet of the VPC. (see [below for nested schema](#nestedatt--subnet))
