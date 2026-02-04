@@ -16,6 +16,7 @@ type ComputeVMModel struct {
 	SubnetID        types.String                   `tfsdk:"subnet_id" json:"subnet_id,required"`
 	BootVolume      *ComputeVMBootVolumeModel      `tfsdk:"boot_volume" json:"boot_volume,required,no_refresh"`
 	SSHKey          *ComputeVMSSHKeyModel          `tfsdk:"ssh_key" json:"ssh_key,required,no_refresh"`
+	ProjectID       types.String                   `tfsdk:"project_id" json:"project_id,optional"`
 	DataVolumes     *[]*ComputeVMDataVolumesModel  `tfsdk:"data_volumes" json:"data_volumes,optional,no_refresh"`
 	Name            types.String                   `tfsdk:"name" json:"name,required"`
 	PublicIPEnabled types.Bool                     `tfsdk:"public_ip_enabled" json:"public_ip_enabled,required"`

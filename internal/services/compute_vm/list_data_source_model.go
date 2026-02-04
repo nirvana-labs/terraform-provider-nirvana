@@ -9,6 +9,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go/compute"
+	"github.com/nirvana-labs/nirvana-go/packages/param"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
@@ -17,12 +18,17 @@ type ComputeVMsItemsListDataSourceEnvelope struct {
 }
 
 type ComputeVMsDataSourceModel struct {
-	MaxItems types.Int64                                                  `tfsdk:"max_items"`
-	Items    customfield.NestedObjectList[ComputeVMsItemsDataSourceModel] `tfsdk:"items"`
+	ProjectID types.String                                                 `tfsdk:"project_id" query:"project_id,optional"`
+	MaxItems  types.Int64                                                  `tfsdk:"max_items"`
+	Items     customfield.NestedObjectList[ComputeVMsItemsDataSourceModel] `tfsdk:"items"`
 }
 
 func (m *ComputeVMsDataSourceModel) toListParams(_ context.Context) (params compute.VMListParams, diags diag.Diagnostics) {
 	params = compute.VMListParams{}
+
+	if !m.ProjectID.IsNull() {
+		params.ProjectID = param.NewOpt(m.ProjectID.ValueString())
+	}
 
 	return
 }
@@ -36,6 +42,7 @@ type ComputeVMsItemsDataSourceModel struct {
 	MemoryConfig    customfield.NestedObject[ComputeVMsMemoryConfigDataSourceModel] `tfsdk:"memory_config" json:"memory_config,computed"`
 	Name            types.String                                                    `tfsdk:"name" json:"name,computed"`
 	PrivateIP       types.String                                                    `tfsdk:"private_ip" json:"private_ip,computed"`
+	ProjectID       types.String                                                    `tfsdk:"project_id" json:"project_id,computed"`
 	PublicIP        types.String                                                    `tfsdk:"public_ip" json:"public_ip,computed"`
 	PublicIPEnabled types.Bool                                                      `tfsdk:"public_ip_enabled" json:"public_ip_enabled,computed"`
 	Region          types.String                                                    `tfsdk:"region" json:"region,computed"`

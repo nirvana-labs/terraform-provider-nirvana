@@ -6,10 +6,12 @@ import (
 	"context"
 
 	"github.com/hashicorp/terraform-plugin-framework-timetypes/timetypes"
+	"github.com/hashicorp/terraform-plugin-framework-validators/datasourcevalidator"
 	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
@@ -24,7 +26,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Computed: true,
 			},
 			"connection_id": schema.StringAttribute{
-				Required: true,
+				Optional: true,
 			},
 			"asn": schema.Int64Attribute{
 				Description: "ASN",
@@ -50,6 +52,10 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of the Connect Connection",
+				Computed:    true,
+			},
+			"project_id": schema.StringAttribute{
+				Description: "Project ID the Connect Connection belongs to",
 				Computed:    true,
 			},
 			"provider_asn": schema.Int64Attribute{
@@ -128,6 +134,15 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 					},
 				},
 			},
+			"find_one_by": schema.SingleNestedAttribute{
+				Optional: true,
+				Attributes: map[string]schema.Attribute{
+					"project_id": schema.StringAttribute{
+						Description: "Project ID of resources to request",
+						Optional:    true,
+					},
+				},
+			},
 		},
 	}
 }
@@ -137,5 +152,7 @@ func (d *NetworkingConnectConnectionDataSource) Schema(ctx context.Context, req 
 }
 
 func (d *NetworkingConnectConnectionDataSource) ConfigValidators(_ context.Context) []datasource.ConfigValidator {
-	return []datasource.ConfigValidator{}
+	return []datasource.ConfigValidator{
+		datasourcevalidator.ExactlyOneOf(path.MatchRoot("connection_id"), path.MatchRoot("find_one_by")),
+	}
 }

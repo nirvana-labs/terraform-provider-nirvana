@@ -71,6 +71,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				ElementType:   types.StringType,
 				PlanModifiers: []planmodifier.List{listplanmodifier.RequiresReplace()},
 			},
+			"project_id": schema.StringAttribute{
+				Description:   "Project ID the Connect Connection belongs to",
+				Optional:      true,
+				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
+			},
 			"aws": schema.SingleNestedAttribute{
 				Description: "AWS provider configuration",
 				Optional:    true,

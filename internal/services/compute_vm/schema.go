@@ -89,6 +89,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 				PlanModifiers: []planmodifier.Object{objectplanmodifier.RequiresReplace()},
 			},
+			"project_id": schema.StringAttribute{
+				Description:   "Project ID to create the VM in.",
+				Optional:      true,
+				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
+			},
 			"data_volumes": schema.ListNestedAttribute{
 				Description: "Data volumes for the VM.",
 				Optional:    true,

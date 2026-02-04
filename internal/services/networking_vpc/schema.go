@@ -42,6 +42,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
+			"project_id": schema.StringAttribute{
+				Description:   "Project ID the VPC belongs to.",
+				Optional:      true,
+				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
+			},
 			"name": schema.StringAttribute{
 				Description: "Name of the VPC.",
 				Required:    true,

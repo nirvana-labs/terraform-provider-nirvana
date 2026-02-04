@@ -12,6 +12,7 @@ import (
 type NetworkingVPCModel struct {
 	ID              types.String                                       `tfsdk:"id" json:"id,computed"`
 	Region          types.String                                       `tfsdk:"region" json:"region,required"`
+	ProjectID       types.String                                       `tfsdk:"project_id" json:"project_id,optional"`
 	Name            types.String                                       `tfsdk:"name" json:"name,required"`
 	SubnetName      types.String                                       `tfsdk:"subnet_name" json:"subnet_name,required,no_refresh"`
 	Tags            *[]types.String                                    `tfsdk:"tags" json:"tags,optional"`

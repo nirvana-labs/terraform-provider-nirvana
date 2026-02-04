@@ -8,5 +8,6 @@ resource "nirvana_networking_connect_connection" "example_networking_connect_con
     account_id = "523816707215"
     region = "us-east-1"
   }
+  project_id = "123e4567-e89b-12d3-a456-426614174000"
   tags = ["production", "ethereum"]
 }
