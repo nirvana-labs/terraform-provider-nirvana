@@ -9,6 +9,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go/networking"
+	"github.com/nirvana-labs/nirvana-go/packages/param"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
@@ -17,12 +18,17 @@ type NetworkingConnectConnectionsItemsListDataSourceEnvelope struct {
 }
 
 type NetworkingConnectConnectionsDataSourceModel struct {
-	MaxItems types.Int64                                                                    `tfsdk:"max_items"`
-	Items    customfield.NestedObjectList[NetworkingConnectConnectionsItemsDataSourceModel] `tfsdk:"items"`
+	ProjectID types.String                                                                   `tfsdk:"project_id" query:"project_id,optional"`
+	MaxItems  types.Int64                                                                    `tfsdk:"max_items"`
+	Items     customfield.NestedObjectList[NetworkingConnectConnectionsItemsDataSourceModel] `tfsdk:"items"`
 }
 
 func (m *NetworkingConnectConnectionsDataSourceModel) toListParams(_ context.Context) (params networking.ConnectConnectionListParams, diags diag.Diagnostics) {
 	params = networking.ConnectConnectionListParams{}
+
+	if !m.ProjectID.IsNull() {
+		params.ProjectID = param.NewOpt(m.ProjectID.ValueString())
+	}
 
 	return
 }
@@ -35,6 +41,7 @@ type NetworkingConnectConnectionsItemsDataSourceModel struct {
 	CIDRs            customfield.List[types.String]                                           `tfsdk:"cidrs" json:"cidrs,computed"`
 	CreatedAt        timetypes.RFC3339                                                        `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
 	Name             types.String                                                             `tfsdk:"name" json:"name,computed"`
+	ProjectID        types.String                                                             `tfsdk:"project_id" json:"project_id,computed"`
 	ProviderASN      types.Int64                                                              `tfsdk:"provider_asn" json:"provider_asn,computed"`
 	ProviderCIDRs    customfield.List[types.String]                                           `tfsdk:"provider_cidrs" json:"provider_cidrs,computed"`
 	ProviderRouterIP types.String                                                             `tfsdk:"provider_router_ip" json:"provider_router_ip,computed"`

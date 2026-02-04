@@ -63,6 +63,10 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},
+			"project_id": schema.StringAttribute{
+				Description: "Project ID the Operation belongs to.",
+				Computed:    true,
+			},
 			"status": schema.StringAttribute{
 				Description: "Status of the resource.\nAvailable values: \"pending\", \"creating\", \"updating\", \"ready\", \"deleting\", \"deleted\", \"error\".",
 				Computed:    true,
