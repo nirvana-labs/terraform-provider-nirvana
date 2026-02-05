@@ -14,7 +14,7 @@ description: |-
 
 ```terraform
 data "nirvana_compute_volumes" "example_compute_volumes" {
-
+  project_id = "project_id"
 }
 ```
 
@@ -24,6 +24,7 @@ data "nirvana_compute_volumes" "example_compute_volumes" {
 ### Optional
 
 - `max_items` (Number) Max items to fetch, default: 1000
+- `project_id` (String) Project ID of resources to request
 
 ### Read-Only
 
@@ -39,6 +40,7 @@ Read-Only:
 - `kind` (String) Volume kind.
 Available values: "boot", "data".
 - `name` (String) Name of the Volume.
+- `project_id` (String) Project ID the Volume belongs to.
 - `region` (String) Region the resource is in.
 Available values: "us-sea-1", "us-sva-1", "us-sva-2", "us-chi-1", "us-wdc-1", "eu-frk-1", "ap-sin-1".
 - `size` (Number) Size of the Volume in GB.

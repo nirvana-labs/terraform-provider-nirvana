@@ -18,6 +18,7 @@ resource "nirvana_compute_volume" "example_compute_volume" {
   region = "us-wdc-1"
   size = 100
   type = "nvme"
+  project_id = "123e4567-e89b-12d3-a456-426614174000"
   tags = ["production", "ethereum"]
   vm_id = "123e4567-e89b-12d3-a456-426614174000"
 }
@@ -37,6 +38,7 @@ Available values: "nvme", "abs".
 
 ### Optional
 
+- `project_id` (String) Project ID the Volume belongs to.
 - `tags` (List of String) Tags to attach to the Volume.
 - `vm_id` (String) ID of the VM the Volume is attached to.
 

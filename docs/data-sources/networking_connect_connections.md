@@ -14,7 +14,7 @@ description: |-
 
 ```terraform
 data "nirvana_networking_connect_connections" "example_networking_connect_connections" {
-
+  project_id = "project_id"
 }
 ```
 
@@ -24,6 +24,7 @@ data "nirvana_networking_connect_connections" "example_networking_connect_connec
 ### Optional
 
 - `max_items` (Number) Max items to fetch, default: 1000
+- `project_id` (String) Project ID of resources to request
 
 ### Read-Only
 
@@ -42,6 +43,7 @@ Available values: 50, 200, 500, 1000, 2000.
 - `created_at` (String) When the Connect Connection was created
 - `id` (String) Unique identifier for the Connect Connection
 - `name` (String) Name of the Connect Connection
+- `project_id` (String) Project ID the Connect Connection belongs to
 - `provider_asn` (Number) Provider ASN
 - `provider_cidrs` (List of String) Provider CIDRs for the Connect Connection
 - `provider_router_ip` (String) Provider Router IP for the Connect Connection
