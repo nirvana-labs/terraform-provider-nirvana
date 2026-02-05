@@ -39,6 +39,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
     type = "nvme"
     tags = ["production", "ethereum"]
   }]
+  project_id = "123e4567-e89b-12d3-a456-426614174000"
   tags = ["production", "ethereum"]
 }
 ```
@@ -62,6 +63,7 @@ Available values: "us-sea-1", "us-sva-1", "us-sva-2", "us-chi-1", "us-wdc-1", "e
 ### Optional
 
 - `data_volumes` (Attributes List) Data volumes for the VM. (see [below for nested schema](#nestedatt--data_volumes))
+- `project_id` (String) Project ID to create the VM in.
 - `tags` (List of String) Tags to attach to the VM.
 
 ### Read-Only

@@ -14,7 +14,7 @@ description: |-
 
 ```terraform
 data "nirvana_compute_vms" "example_compute_vms" {
-
+  project_id = "project_id"
 }
 ```
 
@@ -24,6 +24,7 @@ data "nirvana_compute_vms" "example_compute_vms" {
 ### Optional
 
 - `max_items` (Number) Max items to fetch, default: 1000
+- `project_id` (String) Project ID of resources to request
 
 ### Read-Only
 
@@ -42,6 +43,7 @@ Read-Only:
 - `memory_config` (Attributes) Memory configuration for the VM. (see [below for nested schema](#nestedatt--items--memory_config))
 - `name` (String) Name of the VM.
 - `private_ip` (String) Private IP of the VM.
+- `project_id` (String) Project ID the VM belongs to.
 - `public_ip` (String) Public IP of the VM.
 - `public_ip_enabled` (Boolean) Whether the public IP is enabled for the VM.
 - `region` (String) Region the resource is in.

@@ -14,7 +14,7 @@ description: |-
 
 ```terraform
 data "nirvana_networking_vpcs" "example_networking_vpcs" {
-
+  project_id = "project_id"
 }
 ```
 
@@ -24,6 +24,7 @@ data "nirvana_networking_vpcs" "example_networking_vpcs" {
 ### Optional
 
 - `max_items` (Number) Max items to fetch, default: 1000
+- `project_id` (String) Project ID of resources to request
 
 ### Read-Only
 
@@ -38,6 +39,7 @@ Read-Only:
 - `firewall_rule_ids` (List of String) IDs of the Firewall Rules associated with the VPC.
 - `id` (String) Unique identifier for the VPC.
 - `name` (String) Name of the VPC.
+- `project_id` (String) Project ID the VPC belongs to.
 - `region` (String) Region the resource is in.
 Available values: "us-sea-1", "us-sva-1", "us-sva-2", "us-chi-1", "us-wdc-1", "eu-frk-1", "ap-sin-1".
 - `status` (String) Status of the resource.

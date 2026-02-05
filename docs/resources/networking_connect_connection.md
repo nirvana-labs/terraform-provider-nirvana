@@ -23,6 +23,7 @@ resource "nirvana_networking_connect_connection" "example_networking_connect_con
     account_id = "523816707215"
     region = "us-east-1"
   }
+  project_id = "123e4567-e89b-12d3-a456-426614174000"
   tags = ["production", "ethereum"]
 }
 ```
@@ -43,6 +44,7 @@ Available values: "us-sea-1", "us-sva-1", "us-sva-2", "us-chi-1", "us-wdc-1", "e
 ### Optional
 
 - `aws` (Attributes) AWS provider configuration (see [below for nested schema](#nestedatt--aws))
+- `project_id` (String) Project ID the Connect Connection belongs to
 - `tags` (List of String) Tags to attach to the Connect Connection
 
 ### Read-Only

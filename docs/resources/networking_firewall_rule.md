@@ -45,6 +45,7 @@ Available values: "tcp", "udp".
 
 - `created_at` (String) When the Firewall Rule was created.
 - `id` (String) Unique identifier for the Operation.
+- `project_id` (String) Project ID the Operation belongs to.
 - `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `updated_at` (String) When the Firewall Rule was updated.

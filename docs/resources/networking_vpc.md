@@ -17,6 +17,7 @@ resource "nirvana_networking_vpc" "example_networking_vpc" {
   name = "my-vpc"
   region = "us-wdc-1"
   subnet_name = "my-subnet"
+  project_id = "123e4567-e89b-12d3-a456-426614174000"
   tags = ["production", "ethereum"]
 }
 ```
@@ -33,6 +34,7 @@ Available values: "us-sea-1", "us-sva-1", "us-sva-2", "us-chi-1", "us-wdc-1", "e
 
 ### Optional
 
+- `project_id` (String) Project ID the VPC belongs to.
 - `tags` (List of String) Tags to attach to the VPC.
 
 ### Read-Only
