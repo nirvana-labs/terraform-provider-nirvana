@@ -49,6 +49,6 @@ Available values: "nvme", "abs".
 <a id="nestedatt--find_one_by"></a>
 ### Nested Schema for `find_one_by`
 
-Optional:
+Required:
 
 - `project_id` (String) Project ID of resources to request

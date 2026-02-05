@@ -27,6 +27,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
   }
   name = "my-vm"
   os_image_name = "ubuntu-noble-2025-10-01"
+  project_id = "123e4567-e89b-12d3-a456-426614174000"
   public_ip_enabled = true
   region = "us-wdc-1"
   ssh_key = {
@@ -39,7 +40,6 @@ resource "nirvana_compute_vm" "example_compute_vm" {
     type = "nvme"
     tags = ["production", "ethereum"]
   }]
-  project_id = "123e4567-e89b-12d3-a456-426614174000"
   tags = ["production", "ethereum"]
 }
 ```
@@ -54,6 +54,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
 - `memory_config` (Attributes) Memory configuration for the VM. (see [below for nested schema](#nestedatt--memory_config))
 - `name` (String) Name of the VM.
 - `os_image_name` (String) Name of the OS Image to use for the VM.
+- `project_id` (String) Project ID to create the VM in.
 - `public_ip_enabled` (Boolean) Whether to enable public IP for the VM.
 - `region` (String) Region the resource is in.
 Available values: "us-sea-1", "us-sva-1", "us-sva-2", "us-chi-1", "us-wdc-1", "eu-frk-1", "ap-sin-1".
@@ -63,7 +64,6 @@ Available values: "us-sea-1", "us-sva-1", "us-sva-2", "us-chi-1", "us-wdc-1", "e
 ### Optional
 
 - `data_volumes` (Attributes List) Data volumes for the VM. (see [below for nested schema](#nestedatt--data_volumes))
-- `project_id` (String) Project ID to create the VM in.
 - `tags` (List of String) Tags to attach to the VM.
 
 ### Read-Only
