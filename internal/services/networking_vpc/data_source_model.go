@@ -9,7 +9,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go/networking"
-	"github.com/nirvana-labs/nirvana-go/packages/param"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
@@ -29,10 +28,8 @@ type NetworkingVPCDataSourceModel struct {
 }
 
 func (m *NetworkingVPCDataSourceModel) toListParams(_ context.Context) (params networking.VPCListParams, diags diag.Diagnostics) {
-	params = networking.VPCListParams{}
-
-	if !m.FindOneBy.ProjectID.IsNull() {
-		params.ProjectID = param.NewOpt(m.FindOneBy.ProjectID.ValueString())
+	params = networking.VPCListParams{
+		ProjectID: m.FindOneBy.ProjectID.ValueString(),
 	}
 
 	return
@@ -47,5 +44,5 @@ type NetworkingVPCSubnetDataSourceModel struct {
 }
 
 type NetworkingVPCFindOneByDataSourceModel struct {
-	ProjectID types.String `tfsdk:"project_id" query:"project_id,optional"`
+	ProjectID types.String `tfsdk:"project_id" query:"project_id,required"`
 }

@@ -11,10 +11,10 @@ import (
 type NetworkingConnectConnectionModel struct {
 	ID               types.String                         `tfsdk:"id" json:"id,computed"`
 	BandwidthMbps    types.Int64                          `tfsdk:"bandwidth_mbps" json:"bandwidth_mbps,required"`
+	ProjectID        types.String                         `tfsdk:"project_id" json:"project_id,required"`
 	Region           types.String                         `tfsdk:"region" json:"region,required"`
 	CIDRs            *[]types.String                      `tfsdk:"cidrs" json:"cidrs,required"`
 	ProviderCIDRs    *[]types.String                      `tfsdk:"provider_cidrs" json:"provider_cidrs,required"`
-	ProjectID        types.String                         `tfsdk:"project_id" json:"project_id,optional"`
 	AWS              *NetworkingConnectConnectionAWSModel `tfsdk:"aws" json:"aws,optional"`
 	Name             types.String                         `tfsdk:"name" json:"name,required"`
 	Tags             *[]types.String                      `tfsdk:"tags" json:"tags,optional"`

@@ -43,6 +43,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 				PlanModifiers: []planmodifier.Int64{int64planmodifier.RequiresReplace()},
 			},
+			"project_id": schema.StringAttribute{
+				Description:   "Project ID the Connect Connection belongs to",
+				Required:      true,
+				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
+			},
 			"region": schema.StringAttribute{
 				Description: "Region the resource is in.\nAvailable values: \"us-sea-1\", \"us-sva-1\", \"us-sva-2\", \"us-chi-1\", \"us-wdc-1\", \"eu-frk-1\", \"ap-sin-1\".",
 				Required:    true,
@@ -70,11 +75,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Required:      true,
 				ElementType:   types.StringType,
 				PlanModifiers: []planmodifier.List{listplanmodifier.RequiresReplace()},
-			},
-			"project_id": schema.StringAttribute{
-				Description:   "Project ID the Connect Connection belongs to",
-				Optional:      true,
-				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"aws": schema.SingleNestedAttribute{
 				Description: "AWS provider configuration",
