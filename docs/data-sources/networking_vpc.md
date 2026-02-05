@@ -44,7 +44,7 @@ Available values: "pending", "creating", "updating", "ready", "deleting", "delet
 <a id="nestedatt--find_one_by"></a>
 ### Nested Schema for `find_one_by`
 
-Optional:
+Required:
 
 - `project_id` (String) Project ID of resources to request
 
