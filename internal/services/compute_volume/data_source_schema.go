@@ -112,7 +112,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Attributes: map[string]schema.Attribute{
 					"project_id": schema.StringAttribute{
 						Description: "Project ID of resources to request",
-						Optional:    true,
+						Required:    true,
 					},
 				},
 			},

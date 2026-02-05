@@ -9,7 +9,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go/networking"
-	"github.com/nirvana-labs/nirvana-go/packages/param"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
@@ -35,10 +34,8 @@ type NetworkingConnectConnectionDataSourceModel struct {
 }
 
 func (m *NetworkingConnectConnectionDataSourceModel) toListParams(_ context.Context) (params networking.ConnectConnectionListParams, diags diag.Diagnostics) {
-	params = networking.ConnectConnectionListParams{}
-
-	if !m.FindOneBy.ProjectID.IsNull() {
-		params.ProjectID = param.NewOpt(m.FindOneBy.ProjectID.ValueString())
+	params = networking.ConnectConnectionListParams{
+		ProjectID: m.FindOneBy.ProjectID.ValueString(),
 	}
 
 	return
@@ -49,5 +46,5 @@ type NetworkingConnectConnectionAWSDataSourceModel struct {
 }
 
 type NetworkingConnectConnectionFindOneByDataSourceModel struct {
-	ProjectID types.String `tfsdk:"project_id" query:"project_id,optional"`
+	ProjectID types.String `tfsdk:"project_id" query:"project_id,required"`
 }

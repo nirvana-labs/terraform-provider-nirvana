@@ -9,7 +9,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go/compute"
-	"github.com/nirvana-labs/nirvana-go/packages/param"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
@@ -37,10 +36,8 @@ type ComputeVMDataSourceModel struct {
 }
 
 func (m *ComputeVMDataSourceModel) toListParams(_ context.Context) (params compute.VMListParams, diags diag.Diagnostics) {
-	params = compute.VMListParams{}
-
-	if !m.FindOneBy.ProjectID.IsNull() {
-		params.ProjectID = param.NewOpt(m.FindOneBy.ProjectID.ValueString())
+	params = compute.VMListParams{
+		ProjectID: m.FindOneBy.ProjectID.ValueString(),
 	}
 
 	return
@@ -55,5 +52,5 @@ type ComputeVMMemoryConfigDataSourceModel struct {
 }
 
 type ComputeVMFindOneByDataSourceModel struct {
-	ProjectID types.String `tfsdk:"project_id" query:"project_id,optional"`
+	ProjectID types.String `tfsdk:"project_id" query:"project_id,required"`
 }

@@ -9,7 +9,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go/compute"
-	"github.com/nirvana-labs/nirvana-go/packages/param"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
@@ -18,16 +17,14 @@ type ComputeVolumesItemsListDataSourceEnvelope struct {
 }
 
 type ComputeVolumesDataSourceModel struct {
-	ProjectID types.String                                                     `tfsdk:"project_id" query:"project_id,optional"`
+	ProjectID types.String                                                     `tfsdk:"project_id" query:"project_id,required"`
 	MaxItems  types.Int64                                                      `tfsdk:"max_items"`
 	Items     customfield.NestedObjectList[ComputeVolumesItemsDataSourceModel] `tfsdk:"items"`
 }
 
 func (m *ComputeVolumesDataSourceModel) toListParams(_ context.Context) (params compute.VolumeListParams, diags diag.Diagnostics) {
-	params = compute.VolumeListParams{}
-
-	if !m.ProjectID.IsNull() {
-		params.ProjectID = param.NewOpt(m.ProjectID.ValueString())
+	params = compute.VolumeListParams{
+		ProjectID: m.ProjectID.ValueString(),
 	}
 
 	return

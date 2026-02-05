@@ -9,7 +9,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go/networking"
-	"github.com/nirvana-labs/nirvana-go/packages/param"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
@@ -18,16 +17,14 @@ type NetworkingConnectConnectionsItemsListDataSourceEnvelope struct {
 }
 
 type NetworkingConnectConnectionsDataSourceModel struct {
-	ProjectID types.String                                                                   `tfsdk:"project_id" query:"project_id,optional"`
+	ProjectID types.String                                                                   `tfsdk:"project_id" query:"project_id,required"`
 	MaxItems  types.Int64                                                                    `tfsdk:"max_items"`
 	Items     customfield.NestedObjectList[NetworkingConnectConnectionsItemsDataSourceModel] `tfsdk:"items"`
 }
 
 func (m *NetworkingConnectConnectionsDataSourceModel) toListParams(_ context.Context) (params networking.ConnectConnectionListParams, diags diag.Diagnostics) {
-	params = networking.ConnectConnectionListParams{}
-
-	if !m.ProjectID.IsNull() {
-		params.ProjectID = param.NewOpt(m.ProjectID.ValueString())
+	params = networking.ConnectConnectionListParams{
+		ProjectID: m.ProjectID.ValueString(),
 	}
 
 	return
