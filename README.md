@@ -20,7 +20,7 @@ terraform {
   required_providers {
     nirvana = {
       source  = "nirvana-labs/nirvana"
-      version = "~> 1.26.0"
+      version = "~> 1.27.0"
     }
   }
 }
@@ -45,6 +45,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
   }
   name = "my-vm"
   os_image_name = "ubuntu-noble-2025-10-01"
+  project_id = "123e4567-e89b-12d3-a456-426614174000"
   public_ip_enabled = true
   region = "us-wdc-1"
   ssh_key = {

@@ -18,6 +18,7 @@ type NetworkingFirewallRuleModel struct {
 	DestinationPorts   *[]types.String   `tfsdk:"destination_ports" json:"destination_ports,required"`
 	Tags               *[]types.String   `tfsdk:"tags" json:"tags,optional"`
 	CreatedAt          timetypes.RFC3339 `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
+	ProjectID          types.String      `tfsdk:"project_id" json:"project_id,computed,no_refresh"`
 	Status             types.String      `tfsdk:"status" json:"status,computed"`
 	UpdatedAt          timetypes.RFC3339 `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
 }

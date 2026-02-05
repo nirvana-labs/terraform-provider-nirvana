@@ -12,6 +12,7 @@ import (
 type ComputeVMModel struct {
 	ID              types.String                   `tfsdk:"id" json:"id,computed"`
 	OSImageName     types.String                   `tfsdk:"os_image_name" json:"os_image_name,required,no_refresh"`
+	ProjectID       types.String                   `tfsdk:"project_id" json:"project_id,required"`
 	Region          types.String                   `tfsdk:"region" json:"region,required"`
 	SubnetID        types.String                   `tfsdk:"subnet_id" json:"subnet_id,required"`
 	BootVolume      *ComputeVMBootVolumeModel      `tfsdk:"boot_volume" json:"boot_volume,required,no_refresh"`

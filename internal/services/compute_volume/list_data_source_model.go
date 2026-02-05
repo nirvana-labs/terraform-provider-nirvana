@@ -17,12 +17,15 @@ type ComputeVolumesItemsListDataSourceEnvelope struct {
 }
 
 type ComputeVolumesDataSourceModel struct {
-	MaxItems types.Int64                                                      `tfsdk:"max_items"`
-	Items    customfield.NestedObjectList[ComputeVolumesItemsDataSourceModel] `tfsdk:"items"`
+	ProjectID types.String                                                     `tfsdk:"project_id" query:"project_id,required"`
+	MaxItems  types.Int64                                                      `tfsdk:"max_items"`
+	Items     customfield.NestedObjectList[ComputeVolumesItemsDataSourceModel] `tfsdk:"items"`
 }
 
 func (m *ComputeVolumesDataSourceModel) toListParams(_ context.Context) (params compute.VolumeListParams, diags diag.Diagnostics) {
-	params = compute.VolumeListParams{}
+	params = compute.VolumeListParams{
+		ProjectID: m.ProjectID.ValueString(),
+	}
 
 	return
 }
@@ -32,6 +35,7 @@ type ComputeVolumesItemsDataSourceModel struct {
 	CreatedAt timetypes.RFC3339              `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
 	Kind      types.String                   `tfsdk:"kind" json:"kind,computed"`
 	Name      types.String                   `tfsdk:"name" json:"name,computed"`
+	ProjectID types.String                   `tfsdk:"project_id" json:"project_id,computed"`
 	Region    types.String                   `tfsdk:"region" json:"region,computed"`
 	Size      types.Int64                    `tfsdk:"size" json:"size,computed"`
 	Status    types.String                   `tfsdk:"status" json:"status,computed"`

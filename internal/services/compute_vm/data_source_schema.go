@@ -6,10 +6,12 @@ import (
 	"context"
 
 	"github.com/hashicorp/terraform-plugin-framework-timetypes/timetypes"
+	"github.com/hashicorp/terraform-plugin-framework-validators/datasourcevalidator"
 	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
@@ -24,7 +26,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Computed: true,
 			},
 			"vm_id": schema.StringAttribute{
-				Required: true,
+				Optional: true,
 			},
 			"boot_volume_id": schema.StringAttribute{
 				Description: "ID of the boot volume attached to the VM.",
@@ -41,6 +43,10 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 			},
 			"private_ip": schema.StringAttribute{
 				Description: "Private IP of the VM.",
+				Computed:    true,
+			},
+			"project_id": schema.StringAttribute{
+				Description: "Project ID the VM belongs to.",
 				Computed:    true,
 			},
 			"public_ip": schema.StringAttribute{
@@ -138,6 +144,15 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 					},
 				},
 			},
+			"find_one_by": schema.SingleNestedAttribute{
+				Optional: true,
+				Attributes: map[string]schema.Attribute{
+					"project_id": schema.StringAttribute{
+						Description: "Project ID of resources to request",
+						Required:    true,
+					},
+				},
+			},
 		},
 	}
 }
@@ -147,5 +162,7 @@ func (d *ComputeVMDataSource) Schema(ctx context.Context, req datasource.SchemaR
 }
 
 func (d *ComputeVMDataSource) ConfigValidators(_ context.Context) []datasource.ConfigValidator {
-	return []datasource.ConfigValidator{}
+	return []datasource.ConfigValidator{
+		datasourcevalidator.ExactlyOneOf(path.MatchRoot("vm_id"), path.MatchRoot("find_one_by")),
+	}
 }

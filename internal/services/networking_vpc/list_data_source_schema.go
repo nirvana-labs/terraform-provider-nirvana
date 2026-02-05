@@ -20,6 +20,10 @@ var _ datasource.DataSourceWithConfigValidators = (*NetworkingVPCsDataSource)(ni
 func ListDataSourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
+			"project_id": schema.StringAttribute{
+				Description: "Project ID of resources to request",
+				Required:    true,
+			},
 			"max_items": schema.Int64Attribute{
 				Description: "Max items to fetch, default: 1000",
 				Optional:    true,
@@ -50,6 +54,10 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 						},
 						"name": schema.StringAttribute{
 							Description: "Name of the VPC.",
+							Computed:    true,
+						},
+						"project_id": schema.StringAttribute{
+							Description: "Project ID the VPC belongs to.",
 							Computed:    true,
 						},
 						"region": schema.StringAttribute{

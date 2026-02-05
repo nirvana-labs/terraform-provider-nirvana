@@ -8,7 +8,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework-timetypes/timetypes"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/nirvana-labs/nirvana-go/packages/param"
 	"github.com/nirvana-labs/nirvana-go/rpc_nodes"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
@@ -18,16 +17,14 @@ type RPCNodeFlexesItemsListDataSourceEnvelope struct {
 }
 
 type RPCNodeFlexesDataSourceModel struct {
-	ProjectID types.String                                                    `tfsdk:"project_id" query:"project_id,optional"`
+	ProjectID types.String                                                    `tfsdk:"project_id" query:"project_id,required"`
 	MaxItems  types.Int64                                                     `tfsdk:"max_items"`
 	Items     customfield.NestedObjectList[RPCNodeFlexesItemsDataSourceModel] `tfsdk:"items"`
 }
 
 func (m *RPCNodeFlexesDataSourceModel) toListParams(_ context.Context) (params rpc_nodes.FlexListParams, diags diag.Diagnostics) {
-	params = rpc_nodes.FlexListParams{}
-
-	if !m.ProjectID.IsNull() {
-		params.ProjectID = param.NewOpt(m.ProjectID.ValueString())
+	params = rpc_nodes.FlexListParams{
+		ProjectID: m.ProjectID.ValueString(),
 	}
 
 	return

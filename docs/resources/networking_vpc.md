@@ -15,6 +15,7 @@ description: |-
 ```terraform
 resource "nirvana_networking_vpc" "example_networking_vpc" {
   name = "my-vpc"
+  project_id = "123e4567-e89b-12d3-a456-426614174000"
   region = "us-wdc-1"
   subnet_name = "my-subnet"
   tags = ["production", "ethereum"]
@@ -27,6 +28,7 @@ resource "nirvana_networking_vpc" "example_networking_vpc" {
 ### Required
 
 - `name` (String) Name of the VPC.
+- `project_id` (String) Project ID the VPC belongs to.
 - `region` (String) Region the resource is in.
 Available values: "us-sea-1", "us-sva-1", "us-sva-2", "us-chi-1", "us-wdc-1", "eu-frk-1", "ap-sin-1".
 - `subnet_name` (String) Name of the subnet to create.

@@ -15,6 +15,7 @@ description: |-
 ```terraform
 resource "nirvana_compute_volume" "example_compute_volume" {
   name = "my-data-volume"
+  project_id = "123e4567-e89b-12d3-a456-426614174000"
   region = "us-wdc-1"
   size = 100
   type = "nvme"
@@ -29,6 +30,7 @@ resource "nirvana_compute_volume" "example_compute_volume" {
 ### Required
 
 - `name` (String) Name of the Volume.
+- `project_id` (String) Project ID the Volume belongs to.
 - `region` (String) Region the resource is in.
 Available values: "us-sea-1", "us-sva-1", "us-sva-2", "us-chi-1", "us-wdc-1", "eu-frk-1", "ap-sin-1".
 - `size` (Number) Size of the Volume in GB.

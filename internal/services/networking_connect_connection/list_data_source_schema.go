@@ -20,6 +20,10 @@ var _ datasource.DataSourceWithConfigValidators = (*NetworkingConnectConnections
 func ListDataSourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
+			"project_id": schema.StringAttribute{
+				Description: "Project ID of resources to request",
+				Required:    true,
+			},
 			"max_items": schema.Int64Attribute{
 				Description: "Max items to fetch, default: 1000",
 				Optional:    true,
@@ -78,6 +82,10 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 						},
 						"name": schema.StringAttribute{
 							Description: "Name of the Connect Connection",
+							Computed:    true,
+						},
+						"project_id": schema.StringAttribute{
+							Description: "Project ID the Connect Connection belongs to",
 							Computed:    true,
 						},
 						"provider_asn": schema.Int64Attribute{
