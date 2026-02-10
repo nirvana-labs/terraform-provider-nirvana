@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.27.2 (2026-02-10)
+
+Full Changelog: [v1.27.1...v1.27.2](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.27.1...v1.27.2)
+
+### Chores
+
+* **internal:** codegen related update ([1859916](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/1859916db46660b9112cc9f1c7456346c1f42d2d))
+
 ## 1.27.1 (2026-02-06)
 
 Full Changelog: [v1.27.0...v1.27.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.27.0...v1.27.1)
