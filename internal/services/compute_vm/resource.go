@@ -237,10 +237,15 @@ func (r *ComputeVMResource) Read(ctx context.Context, req resource.ReadRequest, 
 					for i, tag := range volume.Tags {
 						tags[i] = types.StringValue(tag)
 					}
+					// Preserve nil tags when API returns empty array and old state had nil (user didn't configure tags)
+					var tagsPtr *[]types.String
+					if len(tags) > 0 || (oldState.BootVolume != nil && oldState.BootVolume.Tags != nil) {
+						tagsPtr = &tags
+					}
 					bootVolume = &ComputeVMBootVolumeModel{
 						Size: types.Int64Value(volume.Size),
 						Type: types.StringValue(string(volume.Type)),
-						Tags: &tags,
+						Tags: tagsPtr,
 					}
 				case compute.VolumeKindData:
 					// Only include this volume if it matches something in the original configuration
@@ -253,11 +258,16 @@ func (r *ComputeVMResource) Read(ctx context.Context, req resource.ReadRequest, 
 								for i, tag := range volume.Tags {
 									tags[i] = types.StringValue(tag)
 								}
+								// Preserve nil tags when API returns empty array and old state had nil
+								var tagsPtr *[]types.String
+								if len(tags) > 0 || configuredVolume.Tags != nil {
+									tagsPtr = &tags
+								}
 								configuredDataVolumes = append(configuredDataVolumes, ComputeVMDataVolumesModel{
 									Name: types.StringValue(volume.Name),
 									Size: types.Int64Value(volume.Size),
 									Type: types.StringValue(string(volume.Type)),
-									Tags: &tags,
+									Tags: tagsPtr,
 								})
 								break
 							}
@@ -406,10 +416,15 @@ func (r *ComputeVMResource) ImportState(ctx context.Context, req resource.Import
 					for i, tag := range volume.Tags {
 						tags[i] = types.StringValue(tag)
 					}
+					// During import, set tags to nil if API returns empty (no prior state to reference)
+					var tagsPtr *[]types.String
+					if len(tags) > 0 {
+						tagsPtr = &tags
+					}
 					bootVolume = &ComputeVMBootVolumeModel{
 						Size: types.Int64Value(volume.Size),
 						Type: types.StringValue(string(volume.Type)),
-						Tags: &tags,
+						Tags: tagsPtr,
 					}
 				case compute.VolumeKindData:
 					// During import, we don't collect data volume IDs since we don't know
