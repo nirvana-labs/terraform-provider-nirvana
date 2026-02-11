@@ -233,8 +233,14 @@ func (r *ComputeVMResource) Read(ctx context.Context, req resource.ReadRequest, 
 				switch volume.Kind {
 				case compute.VolumeKindBoot:
 					bootVolumeID = types.StringValue(volume.ID)
+					tags := make([]types.String, len(volume.Tags))
+					for i, tag := range volume.Tags {
+						tags[i] = types.StringValue(tag)
+					}
 					bootVolume = &ComputeVMBootVolumeModel{
 						Size: types.Int64Value(volume.Size),
+						Type: types.StringValue(string(volume.Type)),
+						Tags: &tags,
 					}
 				case compute.VolumeKindData:
 					// Only include this volume if it matches something in the original configuration
@@ -243,9 +249,15 @@ func (r *ComputeVMResource) Read(ctx context.Context, req resource.ReadRequest, 
 							if volume.Name == configuredVolume.Name.ValueString() &&
 								volume.Size == configuredVolume.Size.ValueInt64() {
 								configuredVolumeIDs = append(configuredVolumeIDs, types.StringValue(volume.ID))
+								tags := make([]types.String, len(volume.Tags))
+								for i, tag := range volume.Tags {
+									tags[i] = types.StringValue(tag)
+								}
 								configuredDataVolumes = append(configuredDataVolumes, ComputeVMDataVolumesModel{
 									Name: types.StringValue(volume.Name),
 									Size: types.Int64Value(volume.Size),
+									Type: types.StringValue(string(volume.Type)),
+									Tags: &tags,
 								})
 								break
 							}
@@ -390,8 +402,14 @@ func (r *ComputeVMResource) ImportState(ctx context.Context, req resource.Import
 				switch volume.Kind {
 				case compute.VolumeKindBoot:
 					bootVolumeID = types.StringValue(volume.ID)
+					tags := make([]types.String, len(volume.Tags))
+					for i, tag := range volume.Tags {
+						tags[i] = types.StringValue(tag)
+					}
 					bootVolume = &ComputeVMBootVolumeModel{
 						Size: types.Int64Value(volume.Size),
+						Type: types.StringValue(string(volume.Type)),
+						Tags: &tags,
 					}
 				case compute.VolumeKindData:
 					// During import, we don't collect data volume IDs since we don't know
