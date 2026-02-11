@@ -37,10 +37,6 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},
-			"user_id": schema.StringAttribute{
-				Description: "User ID that owns the project.",
-				Computed:    true,
-			},
 			"tags": schema.ListAttribute{
 				Description: "Tags attached to the Project.",
 				Computed:    true,
