@@ -32,4 +32,3 @@ data "nirvana_project" "example_project" {
 - `name` (String) Project name.
 - `tags` (List of String) Tags attached to the Project.
 - `updated_at` (String) When the Project was updated.
-- `user_id` (String) User ID that owns the project.

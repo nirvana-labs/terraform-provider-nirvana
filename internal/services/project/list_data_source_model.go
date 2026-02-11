@@ -33,5 +33,4 @@ type ProjectsItemsDataSourceModel struct {
 	Name      types.String                   `tfsdk:"name" json:"name,computed"`
 	Tags      customfield.List[types.String] `tfsdk:"tags" json:"tags,computed"`
 	UpdatedAt timetypes.RFC3339              `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
-	UserID    types.String                   `tfsdk:"user_id" json:"user_id,computed"`
 }

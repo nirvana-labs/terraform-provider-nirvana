@@ -35,7 +35,6 @@ resource "nirvana_project" "example_project" {
 - `created_at` (String) When the Project was created.
 - `id` (String) Project ID.
 - `updated_at` (String) When the Project was updated.
-- `user_id` (String) User ID that owns the project.
 
 ## Import
 

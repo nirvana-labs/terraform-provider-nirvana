@@ -14,7 +14,6 @@ type ProjectModel struct {
 	Tags      *[]types.String   `tfsdk:"tags" json:"tags,optional"`
 	CreatedAt timetypes.RFC3339 `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
 	UpdatedAt timetypes.RFC3339 `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
-	UserID    types.String      `tfsdk:"user_id" json:"user_id,computed"`
 }
 
 func (m ProjectModel) MarshalJSON() (data []byte, err error) {
