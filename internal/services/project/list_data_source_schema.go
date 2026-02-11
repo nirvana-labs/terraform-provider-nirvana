@@ -45,51 +45,6 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 							Description: "Project name.",
 							Computed:    true,
 						},
-						"resources": schema.SingleNestedAttribute{
-							Description: "Resource counts for the project.",
-							Computed:    true,
-							CustomType:  customfield.NewNestedObjectType[ProjectsResourcesDataSourceModel](ctx),
-							Attributes: map[string]schema.Attribute{
-								"blockchain": schema.SingleNestedAttribute{
-									Description: "Blockchain resources.",
-									Computed:    true,
-									CustomType:  customfield.NewNestedObjectType[ProjectsResourcesBlockchainDataSourceModel](ctx),
-									Attributes: map[string]schema.Attribute{
-										"rpc_nodes_dedicated": schema.Int64Attribute{
-											Description: "Number of dedicated RPC nodes in the project.",
-											Computed:    true,
-										},
-										"rpc_nodes_flex": schema.Int64Attribute{
-											Description: "Number of flex RPC nodes in the project.",
-											Computed:    true,
-										},
-									},
-								},
-								"cloud": schema.SingleNestedAttribute{
-									Description: "Cloud infrastructure resources.",
-									Computed:    true,
-									CustomType:  customfield.NewNestedObjectType[ProjectsResourcesCloudDataSourceModel](ctx),
-									Attributes: map[string]schema.Attribute{
-										"connect_connections": schema.Int64Attribute{
-											Description: "Number of Connect connections in the project.",
-											Computed:    true,
-										},
-										"vms": schema.Int64Attribute{
-											Description: "Number of VMs in the project.",
-											Computed:    true,
-										},
-										"volumes": schema.Int64Attribute{
-											Description: "Number of volumes in the project.",
-											Computed:    true,
-										},
-										"vpcs": schema.Int64Attribute{
-											Description: "Number of VPCs in the project.",
-											Computed:    true,
-										},
-									},
-								},
-							},
-						},
 						"tags": schema.ListAttribute{
 							Description: "Tags attached to the Project.",
 							Computed:    true,

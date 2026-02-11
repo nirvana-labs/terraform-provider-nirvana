@@ -34,36 +34,8 @@ resource "nirvana_project" "example_project" {
 
 - `created_at` (String) When the Project was created.
 - `id` (String) Project ID.
-- `resources` (Attributes) Resource counts for the project. (see [below for nested schema](#nestedatt--resources))
 - `updated_at` (String) When the Project was updated.
 - `user_id` (String) User ID that owns the project.
-
-<a id="nestedatt--resources"></a>
-### Nested Schema for `resources`
-
-Read-Only:
-
-- `blockchain` (Attributes) Blockchain resources. (see [below for nested schema](#nestedatt--resources--blockchain))
-- `cloud` (Attributes) Cloud infrastructure resources. (see [below for nested schema](#nestedatt--resources--cloud))
-
-<a id="nestedatt--resources--blockchain"></a>
-### Nested Schema for `resources.blockchain`
-
-Read-Only:
-
-- `rpc_nodes_dedicated` (Number) Number of dedicated RPC nodes in the project.
-- `rpc_nodes_flex` (Number) Number of flex RPC nodes in the project.
-
-
-<a id="nestedatt--resources--cloud"></a>
-### Nested Schema for `resources.cloud`
-
-Read-Only:
-
-- `connect_connections` (Number) Number of Connect connections in the project.
-- `vms` (Number) Number of VMs in the project.
-- `volumes` (Number) Number of volumes in the project.
-- `vpcs` (Number) Number of VPCs in the project.
 
 ## Import
 

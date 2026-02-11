@@ -11,7 +11,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
 var _ resource.ResourceWithConfigValidators = (*ProjectResource)(nil)
@@ -46,51 +45,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			"user_id": schema.StringAttribute{
 				Description: "User ID that owns the project.",
 				Computed:    true,
-			},
-			"resources": schema.SingleNestedAttribute{
-				Description: "Resource counts for the project.",
-				Computed:    true,
-				CustomType:  customfield.NewNestedObjectType[ProjectResourcesModel](ctx),
-				Attributes: map[string]schema.Attribute{
-					"blockchain": schema.SingleNestedAttribute{
-						Description: "Blockchain resources.",
-						Computed:    true,
-						CustomType:  customfield.NewNestedObjectType[ProjectResourcesBlockchainModel](ctx),
-						Attributes: map[string]schema.Attribute{
-							"rpc_nodes_dedicated": schema.Int64Attribute{
-								Description: "Number of dedicated RPC nodes in the project.",
-								Computed:    true,
-							},
-							"rpc_nodes_flex": schema.Int64Attribute{
-								Description: "Number of flex RPC nodes in the project.",
-								Computed:    true,
-							},
-						},
-					},
-					"cloud": schema.SingleNestedAttribute{
-						Description: "Cloud infrastructure resources.",
-						Computed:    true,
-						CustomType:  customfield.NewNestedObjectType[ProjectResourcesCloudModel](ctx),
-						Attributes: map[string]schema.Attribute{
-							"connect_connections": schema.Int64Attribute{
-								Description: "Number of Connect connections in the project.",
-								Computed:    true,
-							},
-							"vms": schema.Int64Attribute{
-								Description: "Number of VMs in the project.",
-								Computed:    true,
-							},
-							"volumes": schema.Int64Attribute{
-								Description: "Number of volumes in the project.",
-								Computed:    true,
-							},
-							"vpcs": schema.Int64Attribute{
-								Description: "Number of VPCs in the project.",
-								Computed:    true,
-							},
-						},
-					},
-				},
 			},
 		},
 	}
