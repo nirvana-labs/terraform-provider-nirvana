@@ -55,7 +55,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
   data_volumes = [{
     name = "my-data-volume"
     size = 100
-    type = "nvme"
+    type = "abs"
     tags = ["production", "ethereum"]
   }]
   tags = ["production", "ethereum"]
