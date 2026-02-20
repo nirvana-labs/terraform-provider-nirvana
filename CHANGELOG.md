@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.31.1 (2026-02-20)
+
+Full Changelog: [v1.31.0...v1.31.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.31.0...v1.31.1)
+
+### Features
+
+* **api:** api update ([3183ac8](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/3183ac8deea4601dc7e56d024d214fea173247b4))
+
+
+### Bug Fixes
+
+* spurious update plans for float attributes after import ([ce4d877](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/ce4d877586b97c5fd6578cac0c125549f963ac0d))
+
+
+### Chores
+
+* **internal:** codegen related update ([a6bf4f4](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/a6bf4f4ee8a90060bd80eb0d54ab3c5553cce3dc))
+* **internal:** remove mock server code ([299aa7b](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/299aa7b8b84a38e3973e6eaa936d682f6dac4769))
+
 ## 1.31.0 (2026-02-18)
 
 Full Changelog: [v1.30.1...v1.31.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.30.1...v1.31.0)
