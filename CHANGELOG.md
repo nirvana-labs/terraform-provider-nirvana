@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.32.1 (2026-03-10)
+
+Full Changelog: [v1.32.0...v1.32.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.32.0...v1.32.1)
+
+### Chores
+
+* **docs:** update terraform-plugin-docs to v0.24.0 ([c3f6f41](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/c3f6f4171552c9cfbb2614ce8179bd2c14d1f890))
+
 ## 1.32.0 (2026-03-09)
 
 Full Changelog: [v1.31.5...v1.32.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.31.5...v1.32.0)
