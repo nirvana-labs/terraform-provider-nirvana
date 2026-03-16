@@ -39,12 +39,25 @@ Read-Only:
 - `id` (String) API Key ID.
 - `key` (String, Sensitive) API Key. Only returned on creation.
 - `name` (String) API Key name.
+- `permissions` (Attributes List) Scoped permissions for this API key. (see [below for nested schema](#nestedatt--items--permissions))
+- `project_ids` (List of String) Project IDs this API key is scoped to.
 - `source_ip_rule` (Attributes) IP filter rules. (see [below for nested schema](#nestedatt--items--source_ip_rule))
 - `starts_at` (String) When the API Key starts to be valid.
 - `status` (String) Status of the API Key.
 Available values: "active", "inactive", "expired".
 - `tags` (List of String) Tags to attach to the API Key.
 - `updated_at` (String) When the API Key was updated.
+
+<a id="nestedatt--items--permissions"></a>
+### Nested Schema for `items.permissions`
+
+Read-Only:
+
+- `permission` (String) Permission level: "read" or "edit".
+Available values: "read", "edit".
+- `resource_type` (String) Resource type this permission applies to.
+Available values: "vm", "vpc", "volume", "connect_connection", "rpc_node_dedicated", "rpc_node_flex", "nks_cluster", "nks_worker_pool", "project", "api_key".
+
 
 <a id="nestedatt--items--source_ip_rule"></a>
 ### Nested Schema for `items.source_ip_rule`
