@@ -9,16 +9,18 @@ import (
 )
 
 type APIKeyModel struct {
-	ID           types.String             `tfsdk:"id" json:"id,computed"`
-	ExpiresAt    timetypes.RFC3339        `tfsdk:"expires_at" json:"expires_at,required" format:"date-time"`
-	StartsAt     timetypes.RFC3339        `tfsdk:"starts_at" json:"starts_at,optional" format:"date-time"`
-	Name         types.String             `tfsdk:"name" json:"name,required"`
-	Tags         *[]types.String          `tfsdk:"tags" json:"tags,optional"`
-	SourceIPRule *APIKeySourceIPRuleModel `tfsdk:"source_ip_rule" json:"source_ip_rule,optional"`
-	CreatedAt    timetypes.RFC3339        `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
-	Key          types.String             `tfsdk:"key" json:"key,computed"`
-	Status       types.String             `tfsdk:"status" json:"status,computed"`
-	UpdatedAt    timetypes.RFC3339        `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
+	ID           types.String               `tfsdk:"id" json:"id,computed"`
+	ExpiresAt    timetypes.RFC3339          `tfsdk:"expires_at" json:"expires_at,required" format:"date-time"`
+	StartsAt     timetypes.RFC3339          `tfsdk:"starts_at" json:"starts_at,optional" format:"date-time"`
+	Name         types.String               `tfsdk:"name" json:"name,required"`
+	ProjectIDs   *[]types.String            `tfsdk:"project_ids" json:"project_ids,required"`
+	Permissions  *[]*APIKeyPermissionsModel `tfsdk:"permissions" json:"permissions,required"`
+	Tags         *[]types.String            `tfsdk:"tags" json:"tags,optional"`
+	SourceIPRule *APIKeySourceIPRuleModel   `tfsdk:"source_ip_rule" json:"source_ip_rule,optional"`
+	CreatedAt    timetypes.RFC3339          `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
+	Key          types.String               `tfsdk:"key" json:"key,computed"`
+	Status       types.String               `tfsdk:"status" json:"status,computed"`
+	UpdatedAt    timetypes.RFC3339          `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
 }
 
 func (m APIKeyModel) MarshalJSON() (data []byte, err error) {
@@ -27,6 +29,11 @@ func (m APIKeyModel) MarshalJSON() (data []byte, err error) {
 
 func (m APIKeyModel) MarshalJSONForUpdate(state APIKeyModel) (data []byte, err error) {
 	return apijson.MarshalForPatch(m, state)
+}
+
+type APIKeyPermissionsModel struct {
+	Permission   types.String `tfsdk:"permission" json:"permission,required"`
+	ResourceType types.String `tfsdk:"resource_type" json:"resource_type,required"`
 }
 
 type APIKeySourceIPRuleModel struct {
