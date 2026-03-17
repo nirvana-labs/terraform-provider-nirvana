@@ -1,16 +1,13 @@
 #!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-if [[ -n "$1" ]]; then
-  LOCAL_GO="$1"
-  shift
-else
-  LOCAL_GO=../Nirvana Labs-go
-fi
+# Mark the necessary Go modules as private to avoid Go's proxy
+export GOPRIVATE="${GOPRIVATE:+$GOPRIVATE,}github.com/nirvana-labs/nirvana-go,github.com/stainless-sdks/nirvana-go"
 
-echo "==> Linking with local directory"
+REPLACEMENT="${1:-"../Nirvana Labs-go"}"
+echo "==> Replacing Go SDK with $REPLACEMENT"
+go mod edit -replace github.com/nirvana-labs/nirvana-go="$REPLACEMENT"
 go mod tidy -e
-go mod edit -replace github.com/nirvana-labs/nirvana-go="$LOCAL_GO"
