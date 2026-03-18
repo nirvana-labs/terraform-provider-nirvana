@@ -58,6 +58,17 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 					},
 				},
 			},
+			"nks": schema.SingleNestedAttribute{
+				Description: "NKS products available in this region.",
+				Computed:    true,
+				CustomType:  customfield.NewNestedObjectType[RegionNKSDataSourceModel](ctx),
+				Attributes: map[string]schema.Attribute{
+					"clusters": schema.BoolAttribute{
+						Description: "Clusters indicates if NKS managed Kubernetes clusters are available.",
+						Computed:    true,
+					},
+				},
+			},
 			"storage": schema.SingleNestedAttribute{
 				Description: "Storage products available in this region.",
 				Computed:    true,
