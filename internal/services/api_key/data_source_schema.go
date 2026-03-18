@@ -65,51 +65,11 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},
-			"project_ids": schema.ListAttribute{
-				Description: "Project IDs this API key is scoped to.",
-				Computed:    true,
-				CustomType:  customfield.NewListType[types.String](ctx),
-				ElementType: types.StringType,
-			},
 			"tags": schema.ListAttribute{
 				Description: "Tags to attach to the API Key.",
 				Computed:    true,
 				CustomType:  customfield.NewListType[types.String](ctx),
 				ElementType: types.StringType,
-			},
-			"permissions": schema.ListNestedAttribute{
-				Description: "Scoped permissions for this API key.",
-				Computed:    true,
-				CustomType:  customfield.NewNestedObjectListType[APIKeyPermissionsDataSourceModel](ctx),
-				NestedObject: schema.NestedAttributeObject{
-					Attributes: map[string]schema.Attribute{
-						"permission": schema.StringAttribute{
-							Description: "Permission level: \"read\" or \"edit\".\nAvailable values: \"read\", \"edit\".",
-							Computed:    true,
-							Validators: []validator.String{
-								stringvalidator.OneOfCaseInsensitive("read", "edit"),
-							},
-						},
-						"resource_type": schema.StringAttribute{
-							Description: "Resource type this permission applies to.\nAvailable values: \"vm\", \"vpc\", \"volume\", \"connect_connection\", \"rpc_node_dedicated\", \"rpc_node_flex\", \"nks_cluster\", \"nks_worker_pool\", \"project\", \"api_key\".",
-							Computed:    true,
-							Validators: []validator.String{
-								stringvalidator.OneOfCaseInsensitive(
-									"vm",
-									"vpc",
-									"volume",
-									"connect_connection",
-									"rpc_node_dedicated",
-									"rpc_node_flex",
-									"nks_cluster",
-									"nks_worker_pool",
-									"project",
-									"api_key",
-								),
-							},
-						},
-					},
-				},
 			},
 			"source_ip_rule": schema.SingleNestedAttribute{
 				Description: "IP filter rules.",

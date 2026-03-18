@@ -40,6 +40,7 @@ Available values: "live", "preview", "maintenance", "sunset".
 - `id` (String) Name of the region.
 - `name` (String) Name of the region.
 - `networking` (Attributes) Networking products available in this region. (see [below for nested schema](#nestedatt--items--networking))
+- `nks` (Attributes) NKS products available in this region. (see [below for nested schema](#nestedatt--items--nks))
 - `storage` (Attributes) Storage products available in this region. (see [below for nested schema](#nestedatt--items--storage))
 
 <a id="nestedatt--items--compute"></a>
@@ -57,6 +58,14 @@ Read-Only:
 
 - `connect` (Boolean) Connect indicates if Nirvana Connect is available.
 - `vpcs` (Boolean) VPCs indicates if Virtual Private Clouds are available.
+
+
+<a id="nestedatt--items--nks"></a>
+### Nested Schema for `items.nks`
+
+Read-Only:
+
+- `clusters` (Boolean) Clusters indicates if NKS managed Kubernetes clusters are available.
 
 
 <a id="nestedatt--items--storage"></a>

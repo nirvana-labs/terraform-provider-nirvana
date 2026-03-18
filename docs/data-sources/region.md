@@ -31,6 +31,7 @@ data "nirvana_region" "example_region" {
 Available values: "live", "preview", "maintenance", "sunset".
 - `compute` (Attributes) Compute products available in this region. (see [below for nested schema](#nestedatt--compute))
 - `networking` (Attributes) Networking products available in this region. (see [below for nested schema](#nestedatt--networking))
+- `nks` (Attributes) NKS products available in this region. (see [below for nested schema](#nestedatt--nks))
 - `storage` (Attributes) Storage products available in this region. (see [below for nested schema](#nestedatt--storage))
 
 <a id="nestedatt--compute"></a>
@@ -48,6 +49,14 @@ Read-Only:
 
 - `connect` (Boolean) Connect indicates if Nirvana Connect is available.
 - `vpcs` (Boolean) VPCs indicates if Virtual Private Clouds are available.
+
+
+<a id="nestedatt--nks"></a>
+### Nested Schema for `nks`
+
+Read-Only:
+
+- `clusters` (Boolean) Clusters indicates if NKS managed Kubernetes clusters are available.
 
 
 <a id="nestedatt--storage"></a>
