@@ -41,6 +41,44 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Description: "API Key name.",
 				Required:    true,
 			},
+			"project_ids": schema.ListAttribute{
+				Description: "Project IDs this API key is scoped to. At least one is required.",
+				Required:    true,
+				ElementType: types.StringType,
+			},
+			"permissions": schema.ListNestedAttribute{
+				Description: "Scoped permissions for this API key. At least one is required.",
+				Required:    true,
+				NestedObject: schema.NestedAttributeObject{
+					Attributes: map[string]schema.Attribute{
+						"permission": schema.StringAttribute{
+							Description: "Permission level: \"read\" or \"edit\".\nAvailable values: \"read\", \"edit\".",
+							Required:    true,
+							Validators: []validator.String{
+								stringvalidator.OneOfCaseInsensitive("read", "edit"),
+							},
+						},
+						"resource_type": schema.StringAttribute{
+							Description: "Resource type this permission applies to.\nAvailable values: \"vm\", \"vpc\", \"volume\", \"connect_connection\", \"rpc_node_dedicated\", \"rpc_node_flex\", \"nks_cluster\", \"nks_node_pool\", \"project\", \"api_key\".",
+							Required:    true,
+							Validators: []validator.String{
+								stringvalidator.OneOfCaseInsensitive(
+									"vm",
+									"vpc",
+									"volume",
+									"connect_connection",
+									"rpc_node_dedicated",
+									"rpc_node_flex",
+									"nks_cluster",
+									"nks_node_pool",
+									"project",
+									"api_key",
+								),
+							},
+						},
+					},
+				},
+			},
 			"tags": schema.ListAttribute{
 				Description: "Tags to attach to the API Key.",
 				Optional:    true,
