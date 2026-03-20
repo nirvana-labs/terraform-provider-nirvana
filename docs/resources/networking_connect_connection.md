@@ -40,7 +40,7 @@ Available values: 50, 200, 500, 1000, 2000.
 - `project_id` (String) Project ID the Connect Connection belongs to
 - `provider_cidrs` (List of String) Provider CIDRs. Must be in network-aligned/canonical form.
 - `region` (String) Region the resource is in.
-Available values: "us-sea-1", "us-sva-1", "us-sva-2", "us-chi-1", "us-wdc-1", "eu-frk-1", "ap-sin-1".
+Available values: "us-sea-1", "us-sva-1", "us-sva-2", "us-chi-1", "us-wdc-1".
 
 ### Optional
 
