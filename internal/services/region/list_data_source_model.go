@@ -32,6 +32,7 @@ type RegionsItemsDataSourceModel struct {
 	Compute      customfield.NestedObject[RegionsComputeDataSourceModel]    `tfsdk:"compute" json:"compute,computed"`
 	Name         types.String                                               `tfsdk:"name" json:"name,computed"`
 	Networking   customfield.NestedObject[RegionsNetworkingDataSourceModel] `tfsdk:"networking" json:"networking,computed"`
+	NKS          customfield.NestedObject[RegionsNKSDataSourceModel]        `tfsdk:"nks" json:"nks,computed"`
 	Storage      customfield.NestedObject[RegionsStorageDataSourceModel]    `tfsdk:"storage" json:"storage,computed"`
 }
 
@@ -42,6 +43,10 @@ type RegionsComputeDataSourceModel struct {
 type RegionsNetworkingDataSourceModel struct {
 	Connect types.Bool `tfsdk:"connect" json:"connect,computed"`
 	VPCs    types.Bool `tfsdk:"vpcs" json:"vpcs,computed"`
+}
+
+type RegionsNKSDataSourceModel struct {
+	Clusters types.Bool `tfsdk:"clusters" json:"clusters,computed"`
 }
 
 type RegionsStorageDataSourceModel struct {

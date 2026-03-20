@@ -1,5 +1,28 @@
 # Changelog
 
+## 1.33.0 (2026-03-20)
+
+Full Changelog: [v1.32.2...v1.33.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.32.2...v1.33.0)
+
+### Features
+
+* **api:** api update ([986441a](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/986441af7de76d11f060e422f9a1b107b4c6df18))
+* **api:** api update ([3657bd2](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/3657bd2a7443d383ea9c070232b31be9f151dbb0))
+* **api:** api update ([eabc69d](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/eabc69d6527d1e04282d1caa90d1455039af35bb))
+
+
+### Bug Fixes
+
+* improve linking behavior when developing on a branch not in the Go SDK ([923e1d8](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/923e1d85d22ed0af55d61f787ae4f8a5b1523d97))
+* improved workflow for developing on branches ([eb256a0](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/eb256a073bb7911c05a55a2f159678baf6def686))
+* no longer require an API key when building on production repos ([d1e2580](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/d1e258021a438f8841746eafd1d5ad40473ef8d6))
+
+
+### Chores
+
+* **internal:** codegen related update ([0697c56](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/0697c5610f39108120342f84e9037fce7804d628))
+* **internal:** tweak CI branches ([25aa26a](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/25aa26aa60c956fb22b6044df0218b36c5bf3679))
+
 ## 1.32.2 (2026-03-12)
 
 Full Changelog: [v1.32.1...v1.32.2](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.32.1...v1.32.2)
