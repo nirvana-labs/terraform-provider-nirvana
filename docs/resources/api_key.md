@@ -16,6 +16,11 @@ description: |-
 resource "nirvana_api_key" "example_api_key" {
   expires_at = "2025-12-31T23:59:59Z"
   name = "My API Key"
+  permissions = [{
+    permission = "edit"
+    resource_type = "vm"
+  }]
+  project_ids = ["123e4567-e89b-12d3-a456-426614174000", "123e4567-e89b-12d3-a456-426614174001"]
   source_ip_rule = {
     allowed = ["192.168.1.0/24", "10.0.0.0/8"]
     blocked = ["192.168.1.100/32"]
@@ -32,6 +37,8 @@ resource "nirvana_api_key" "example_api_key" {
 
 - `expires_at` (String) When the API Key expires and is no longer valid.
 - `name` (String) API Key name.
+- `permissions` (Attributes List) Scoped permissions for this API key. At least one is required. (see [below for nested schema](#nestedatt--permissions))
+- `project_ids` (List of String) Project IDs this API key is scoped to. At least one is required.
 
 ### Optional
 
@@ -47,6 +54,17 @@ resource "nirvana_api_key" "example_api_key" {
 - `status` (String) Status of the API Key.
 Available values: "active", "inactive", "expired".
 - `updated_at` (String) When the API Key was updated.
+
+<a id="nestedatt--permissions"></a>
+### Nested Schema for `permissions`
+
+Required:
+
+- `permission` (String) Permission level: "read" or "edit".
+Available values: "read", "edit".
+- `resource_type` (String) Resource type this permission applies to.
+Available values: "vm", "vpc", "volume", "connect_connection", "rpc_node_dedicated", "rpc_node_flex", "nks_cluster", "nks_node_pool", "project", "api_key".
+
 
 <a id="nestedatt--source_ip_rule"></a>
 ### Nested Schema for `source_ip_rule`

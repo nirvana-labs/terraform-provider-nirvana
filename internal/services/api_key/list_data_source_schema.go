@@ -51,6 +51,46 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 							Description: "API Key name.",
 							Computed:    true,
 						},
+						"permissions": schema.ListNestedAttribute{
+							Description: "Scoped permissions for this API key.",
+							Computed:    true,
+							CustomType:  customfield.NewNestedObjectListType[APIKeysPermissionsDataSourceModel](ctx),
+							NestedObject: schema.NestedAttributeObject{
+								Attributes: map[string]schema.Attribute{
+									"permission": schema.StringAttribute{
+										Description: "Permission level: \"read\" or \"edit\".\nAvailable values: \"read\", \"edit\".",
+										Computed:    true,
+										Validators: []validator.String{
+											stringvalidator.OneOfCaseInsensitive("read", "edit"),
+										},
+									},
+									"resource_type": schema.StringAttribute{
+										Description: "Resource type this permission applies to.\nAvailable values: \"vm\", \"vpc\", \"volume\", \"connect_connection\", \"rpc_node_dedicated\", \"rpc_node_flex\", \"nks_cluster\", \"nks_node_pool\", \"project\", \"api_key\".",
+										Computed:    true,
+										Validators: []validator.String{
+											stringvalidator.OneOfCaseInsensitive(
+												"vm",
+												"vpc",
+												"volume",
+												"connect_connection",
+												"rpc_node_dedicated",
+												"rpc_node_flex",
+												"nks_cluster",
+												"nks_node_pool",
+												"project",
+												"api_key",
+											),
+										},
+									},
+								},
+							},
+						},
+						"project_ids": schema.ListAttribute{
+							Description: "Project IDs this API key is scoped to.",
+							Computed:    true,
+							CustomType:  customfield.NewListType[types.String](ctx),
+							ElementType: types.StringType,
+						},
 						"source_ip_rule": schema.SingleNestedAttribute{
 							Description: "IP filter rules.",
 							Computed:    true,
