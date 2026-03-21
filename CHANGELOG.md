@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.34.1 (2026-03-21)
+
+Full Changelog: [v1.34.0...v1.34.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.34.0...v1.34.1)
+
+### Chores
+
+* **tests:** bump steady to v0.19.4 ([fe86a37](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/fe86a37a2147f4b1ddee59e6fd98f80ee5ce5459))
+
 ## 1.34.0 (2026-03-20)
 
 Full Changelog: [v1.33.0...v1.34.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.33.0...v1.34.0)
