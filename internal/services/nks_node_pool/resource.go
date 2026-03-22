@@ -7,10 +7,12 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"time"
 
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go"
+	"github.com/nirvana-labs/nirvana-go/lib"
 	"github.com/nirvana-labs/nirvana-go/nks"
 	"github.com/nirvana-labs/nirvana-go/option"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/apijson"
@@ -24,12 +26,15 @@ var _ resource.ResourceWithModifyPlan = (*NKSNodePoolResource)(nil)
 var _ resource.ResourceWithImportState = (*NKSNodePoolResource)(nil)
 
 func NewResource() resource.Resource {
-	return &NKSNodePoolResource{}
+	return &NKSNodePoolResource{
+		waiter: lib.NewOperationWaiter().WithLinearBackoff(1*time.Second, 500*time.Millisecond, 10*time.Second),
+	}
 }
 
 // NKSNodePoolResource defines the resource implementation.
 type NKSNodePoolResource struct {
 	client *nirvana.Client
+	waiter *lib.OperationWaiter
 }
 
 func (r *NKSNodePoolResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
@@ -69,12 +74,26 @@ func (r *NKSNodePoolResource) Create(ctx context.Context, req resource.CreateReq
 		resp.Diagnostics.AddError("failed to serialize http request", err.Error())
 		return
 	}
-	res := new(http.Response)
-	_, err = r.client.NKS.Clusters.Pools.New(
+	operation, err := r.client.NKS.Clusters.Pools.New(
 		ctx,
 		data.ClusterID.ValueString(),
 		nks.ClusterPoolNewParams{},
 		option.WithRequestBody("application/json", dataBytes),
+		option.WithMiddleware(logging.Middleware(ctx)),
+	)
+	if err != nil {
+		resp.Diagnostics.AddError("failed to make http request", err.Error())
+		return
+	}
+	if errWaitForOperation := r.waiter.Wait(ctx, r.client, operation.ID); errWaitForOperation != nil {
+		resp.Diagnostics.AddError("failed to wait for operation", errWaitForOperation.Error())
+		return
+	}
+	res := new(http.Response)
+	_, err = r.client.NKS.Clusters.Pools.Get(
+		ctx,
+		data.ClusterID.ValueString(),
+		operation.ResourceID,
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
@@ -183,7 +202,7 @@ func (r *NKSNodePoolResource) Delete(ctx context.Context, req resource.DeleteReq
 		return
 	}
 
-	_, err := r.client.NKS.Clusters.Pools.Delete(
+	operation, err := r.client.NKS.Clusters.Pools.Delete(
 		ctx,
 		data.ClusterID.ValueString(),
 		data.ID.ValueString(),
@@ -191,6 +210,10 @@ func (r *NKSNodePoolResource) Delete(ctx context.Context, req resource.DeleteReq
 	)
 	if err != nil {
 		resp.Diagnostics.AddError("failed to make http request", err.Error())
+		return
+	}
+	if errWaitForOperation := r.waiter.Wait(ctx, r.client, operation.ID); errWaitForOperation != nil {
+		resp.Diagnostics.AddError("failed to wait for operation", errWaitForOperation.Error())
 		return
 	}
 
