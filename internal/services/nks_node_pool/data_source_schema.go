@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-package nks_cluster_pool
+package nks_node_pool
 
 import (
 	"context"
@@ -15,7 +15,7 @@ import (
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
-var _ datasource.DataSourceWithConfigValidators = (*NKSClusterPoolDataSource)(nil)
+var _ datasource.DataSourceWithConfigValidators = (*NKSNodePoolDataSource)(nil)
 
 func DataSourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
@@ -71,12 +71,12 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 			"node_config": schema.SingleNestedAttribute{
 				Description: "Node configuration.",
 				Computed:    true,
-				CustomType:  customfield.NewNestedObjectType[NKSClusterPoolNodeConfigDataSourceModel](ctx),
+				CustomType:  customfield.NewNestedObjectType[NKSNodePoolNodeConfigDataSourceModel](ctx),
 				Attributes: map[string]schema.Attribute{
 					"boot_volume": schema.SingleNestedAttribute{
 						Description: "Boot volume configuration.",
 						Computed:    true,
-						CustomType:  customfield.NewNestedObjectType[NKSClusterPoolNodeConfigBootVolumeDataSourceModel](ctx),
+						CustomType:  customfield.NewNestedObjectType[NKSNodePoolNodeConfigBootVolumeDataSourceModel](ctx),
 						Attributes: map[string]schema.Attribute{
 							"size": schema.Int64Attribute{
 								Description: "Size of the boot volume in GB.",
@@ -97,7 +97,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 					"cpu_config": schema.SingleNestedAttribute{
 						Description: "CPU configuration.",
 						Computed:    true,
-						CustomType:  customfield.NewNestedObjectType[NKSClusterPoolNodeConfigCPUConfigDataSourceModel](ctx),
+						CustomType:  customfield.NewNestedObjectType[NKSNodePoolNodeConfigCPUConfigDataSourceModel](ctx),
 						Attributes: map[string]schema.Attribute{
 							"vcpu": schema.Int64Attribute{
 								Description: "Number of virtual CPUs.",
@@ -111,7 +111,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 					"memory_config": schema.SingleNestedAttribute{
 						Description: "Memory configuration.",
 						Computed:    true,
-						CustomType:  customfield.NewNestedObjectType[NKSClusterPoolNodeConfigMemoryConfigDataSourceModel](ctx),
+						CustomType:  customfield.NewNestedObjectType[NKSNodePoolNodeConfigMemoryConfigDataSourceModel](ctx),
 						Attributes: map[string]schema.Attribute{
 							"size": schema.Int64Attribute{
 								Description: "Size of the memory in GB.",
@@ -128,10 +128,10 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 	}
 }
 
-func (d *NKSClusterPoolDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
+func (d *NKSNodePoolDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = DataSourceSchema(ctx)
 }
 
-func (d *NKSClusterPoolDataSource) ConfigValidators(_ context.Context) []datasource.ConfigValidator {
+func (d *NKSNodePoolDataSource) ConfigValidators(_ context.Context) []datasource.ConfigValidator {
 	return []datasource.ConfigValidator{}
 }

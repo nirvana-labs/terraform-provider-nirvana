@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-package nks_cluster_pool
+package nks_node_pool
 
 import (
 	"context"
@@ -13,21 +13,21 @@ import (
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
-type NKSClusterPoolsDataSource struct {
+type NKSNodePoolsDataSource struct {
 	client *nirvana.Client
 }
 
-var _ datasource.DataSourceWithConfigure = (*NKSClusterPoolsDataSource)(nil)
+var _ datasource.DataSourceWithConfigure = (*NKSNodePoolsDataSource)(nil)
 
-func NewNKSClusterPoolsDataSource() datasource.DataSource {
-	return &NKSClusterPoolsDataSource{}
+func NewNKSNodePoolsDataSource() datasource.DataSource {
+	return &NKSNodePoolsDataSource{}
 }
 
-func (d *NKSClusterPoolsDataSource) Metadata(ctx context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
-	resp.TypeName = req.ProviderTypeName + "_nks_cluster_pools"
+func (d *NKSNodePoolsDataSource) Metadata(ctx context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
+	resp.TypeName = req.ProviderTypeName + "_nks_node_pools"
 }
 
-func (d *NKSClusterPoolsDataSource) Configure(ctx context.Context, req datasource.ConfigureRequest, resp *datasource.ConfigureResponse) {
+func (d *NKSNodePoolsDataSource) Configure(ctx context.Context, req datasource.ConfigureRequest, resp *datasource.ConfigureResponse) {
 	if req.ProviderData == nil {
 		return
 	}
@@ -46,8 +46,8 @@ func (d *NKSClusterPoolsDataSource) Configure(ctx context.Context, req datasourc
 	d.client = client
 }
 
-func (d *NKSClusterPoolsDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
-	var data *NKSClusterPoolsDataSourceModel
+func (d *NKSNodePoolsDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
+	var data *NKSNodePoolsDataSourceModel
 
 	resp.Diagnostics.Append(req.Config.Get(ctx, &data)...)
 
@@ -61,7 +61,7 @@ func (d *NKSClusterPoolsDataSource) Read(ctx context.Context, req datasource.Rea
 		return
 	}
 
-	env := NKSClusterPoolsItemsListDataSourceEnvelope{}
+	env := NKSNodePoolsItemsListDataSourceEnvelope{}
 	maxItems := int(data.MaxItems.ValueInt64())
 	acc := []attr.Value{}
 	if maxItems <= 0 {
@@ -96,7 +96,7 @@ func (d *NKSClusterPoolsDataSource) Read(ctx context.Context, req datasource.Rea
 	}
 
 	acc = acc[:min(len(acc), maxItems)]
-	result, diags := customfield.NewObjectListFromAttributes[NKSClusterPoolsItemsDataSourceModel](ctx, acc)
+	result, diags := customfield.NewObjectListFromAttributes[NKSNodePoolsItemsDataSourceModel](ctx, acc)
 	resp.Diagnostics.Append(diags...)
 	data.Items = result
 

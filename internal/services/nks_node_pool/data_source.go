@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-package nks_cluster_pool
+package nks_node_pool
 
 import (
 	"context"
@@ -15,21 +15,21 @@ import (
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/logging"
 )
 
-type NKSClusterPoolDataSource struct {
+type NKSNodePoolDataSource struct {
 	client *nirvana.Client
 }
 
-var _ datasource.DataSourceWithConfigure = (*NKSClusterPoolDataSource)(nil)
+var _ datasource.DataSourceWithConfigure = (*NKSNodePoolDataSource)(nil)
 
-func NewNKSClusterPoolDataSource() datasource.DataSource {
-	return &NKSClusterPoolDataSource{}
+func NewNKSNodePoolDataSource() datasource.DataSource {
+	return &NKSNodePoolDataSource{}
 }
 
-func (d *NKSClusterPoolDataSource) Metadata(ctx context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
-	resp.TypeName = req.ProviderTypeName + "_nks_cluster_pool"
+func (d *NKSNodePoolDataSource) Metadata(ctx context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
+	resp.TypeName = req.ProviderTypeName + "_nks_node_pool"
 }
 
-func (d *NKSClusterPoolDataSource) Configure(ctx context.Context, req datasource.ConfigureRequest, resp *datasource.ConfigureResponse) {
+func (d *NKSNodePoolDataSource) Configure(ctx context.Context, req datasource.ConfigureRequest, resp *datasource.ConfigureResponse) {
 	if req.ProviderData == nil {
 		return
 	}
@@ -48,8 +48,8 @@ func (d *NKSClusterPoolDataSource) Configure(ctx context.Context, req datasource
 	d.client = client
 }
 
-func (d *NKSClusterPoolDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
-	var data *NKSClusterPoolDataSourceModel
+func (d *NKSNodePoolDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
+	var data *NKSNodePoolDataSourceModel
 
 	resp.Diagnostics.Append(req.Config.Get(ctx, &data)...)
 
