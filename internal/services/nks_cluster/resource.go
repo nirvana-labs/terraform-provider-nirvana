@@ -7,10 +7,12 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"time"
 
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go"
+	"github.com/nirvana-labs/nirvana-go/lib"
 	"github.com/nirvana-labs/nirvana-go/nks"
 	"github.com/nirvana-labs/nirvana-go/option"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/apijson"
@@ -24,12 +26,15 @@ var _ resource.ResourceWithModifyPlan = (*NKSClusterResource)(nil)
 var _ resource.ResourceWithImportState = (*NKSClusterResource)(nil)
 
 func NewResource() resource.Resource {
-	return &NKSClusterResource{}
+	return &NKSClusterResource{
+		waiter: lib.NewOperationWaiter().WithLinearBackoff(1*time.Second, 500*time.Millisecond, 10*time.Second),
+	}
 }
 
 // NKSClusterResource defines the resource implementation.
 type NKSClusterResource struct {
 	client *nirvana.Client
+	waiter *lib.OperationWaiter
 }
 
 func (r *NKSClusterResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
@@ -69,11 +74,24 @@ func (r *NKSClusterResource) Create(ctx context.Context, req resource.CreateRequ
 		resp.Diagnostics.AddError("failed to serialize http request", err.Error())
 		return
 	}
-	res := new(http.Response)
-	_, err = r.client.NKS.Clusters.New(
+	operation, err := r.client.NKS.Clusters.New(
 		ctx,
 		nks.ClusterNewParams{},
 		option.WithRequestBody("application/json", dataBytes),
+		option.WithMiddleware(logging.Middleware(ctx)),
+	)
+	if err != nil {
+		resp.Diagnostics.AddError("failed to make http request", err.Error())
+		return
+	}
+	if errWaitForOperation := r.waiter.Wait(ctx, r.client, operation.ID); errWaitForOperation != nil {
+		resp.Diagnostics.AddError("failed to wait for operation", errWaitForOperation.Error())
+		return
+	}
+	res := new(http.Response)
+	_, err = r.client.NKS.Clusters.Get(
+		ctx,
+		operation.ResourceID,
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
@@ -180,13 +198,17 @@ func (r *NKSClusterResource) Delete(ctx context.Context, req resource.DeleteRequ
 		return
 	}
 
-	_, err := r.client.NKS.Clusters.Delete(
+	operation, err := r.client.NKS.Clusters.Delete(
 		ctx,
 		data.ID.ValueString(),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
 	if err != nil {
 		resp.Diagnostics.AddError("failed to make http request", err.Error())
+		return
+	}
+	if errWaitForOperation := r.waiter.Wait(ctx, r.client, operation.ID); errWaitForOperation != nil {
+		resp.Diagnostics.AddError("failed to wait for operation", errWaitForOperation.Error())
 		return
 	}
 
