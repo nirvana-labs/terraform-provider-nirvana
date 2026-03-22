@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-package nks_cluster_pool
+package nks_node_pool
 
 import (
 	"context"
@@ -19,24 +19,24 @@ import (
 )
 
 // Ensure provider defined types fully satisfy framework interfaces.
-var _ resource.ResourceWithConfigure = (*NKSClusterPoolResource)(nil)
-var _ resource.ResourceWithModifyPlan = (*NKSClusterPoolResource)(nil)
-var _ resource.ResourceWithImportState = (*NKSClusterPoolResource)(nil)
+var _ resource.ResourceWithConfigure = (*NKSNodePoolResource)(nil)
+var _ resource.ResourceWithModifyPlan = (*NKSNodePoolResource)(nil)
+var _ resource.ResourceWithImportState = (*NKSNodePoolResource)(nil)
 
 func NewResource() resource.Resource {
-	return &NKSClusterPoolResource{}
+	return &NKSNodePoolResource{}
 }
 
-// NKSClusterPoolResource defines the resource implementation.
-type NKSClusterPoolResource struct {
+// NKSNodePoolResource defines the resource implementation.
+type NKSNodePoolResource struct {
 	client *nirvana.Client
 }
 
-func (r *NKSClusterPoolResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
-	resp.TypeName = req.ProviderTypeName + "_nks_cluster_pool"
+func (r *NKSNodePoolResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
+	resp.TypeName = req.ProviderTypeName + "_nks_node_pool"
 }
 
-func (r *NKSClusterPoolResource) Configure(ctx context.Context, req resource.ConfigureRequest, resp *resource.ConfigureResponse) {
+func (r *NKSNodePoolResource) Configure(ctx context.Context, req resource.ConfigureRequest, resp *resource.ConfigureResponse) {
 	if req.ProviderData == nil {
 		return
 	}
@@ -55,8 +55,8 @@ func (r *NKSClusterPoolResource) Configure(ctx context.Context, req resource.Con
 	r.client = client
 }
 
-func (r *NKSClusterPoolResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
-	var data *NKSClusterPoolModel
+func (r *NKSNodePoolResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
+	var data *NKSNodePoolModel
 
 	resp.Diagnostics.Append(req.Plan.Get(ctx, &data)...)
 
@@ -92,8 +92,8 @@ func (r *NKSClusterPoolResource) Create(ctx context.Context, req resource.Create
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
-func (r *NKSClusterPoolResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
-	var data *NKSClusterPoolModel
+func (r *NKSNodePoolResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
+	var data *NKSNodePoolModel
 
 	resp.Diagnostics.Append(req.Plan.Get(ctx, &data)...)
 
@@ -101,7 +101,7 @@ func (r *NKSClusterPoolResource) Update(ctx context.Context, req resource.Update
 		return
 	}
 
-	var state *NKSClusterPoolModel
+	var state *NKSNodePoolModel
 
 	resp.Diagnostics.Append(req.State.Get(ctx, &state)...)
 
@@ -138,8 +138,8 @@ func (r *NKSClusterPoolResource) Update(ctx context.Context, req resource.Update
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
-func (r *NKSClusterPoolResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
-	var data *NKSClusterPoolModel
+func (r *NKSNodePoolResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
+	var data *NKSNodePoolModel
 
 	resp.Diagnostics.Append(req.State.Get(ctx, &data)...)
 
@@ -174,8 +174,8 @@ func (r *NKSClusterPoolResource) Read(ctx context.Context, req resource.ReadRequ
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
-func (r *NKSClusterPoolResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
-	var data *NKSClusterPoolModel
+func (r *NKSNodePoolResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
+	var data *NKSNodePoolModel
 
 	resp.Diagnostics.Append(req.State.Get(ctx, &data)...)
 
@@ -197,8 +197,8 @@ func (r *NKSClusterPoolResource) Delete(ctx context.Context, req resource.Delete
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
-func (r *NKSClusterPoolResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
-	var data = new(NKSClusterPoolModel)
+func (r *NKSNodePoolResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
+	var data = new(NKSNodePoolModel)
 
 	path_cluster_id := ""
 	path_pool_id := ""
@@ -238,6 +238,6 @@ func (r *NKSClusterPoolResource) ImportState(ctx context.Context, req resource.I
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
-func (r *NKSClusterPoolResource) ModifyPlan(_ context.Context, _ resource.ModifyPlanRequest, _ *resource.ModifyPlanResponse) {
+func (r *NKSNodePoolResource) ModifyPlan(_ context.Context, _ resource.ModifyPlanRequest, _ *resource.ModifyPlanResponse) {
 
 }

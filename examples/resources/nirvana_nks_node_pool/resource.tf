@@ -1,4 +1,4 @@
-resource "nirvana_nks_cluster_pool" "example_nks_cluster_pool" {
+resource "nirvana_nks_node_pool" "example_nks_node_pool" {
   cluster_id = "cluster_id"
   name = "my-node-pool"
   node_config = {
