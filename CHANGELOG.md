@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.35.1 (2026-03-22)
+
+Full Changelog: [v1.35.0...v1.35.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.35.0...v1.35.1)
+
+### Bug Fixes
+
+* **nks:** add Operation wait support to Create and Delete for NKS Cluster and Node Pool ([#271](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/271)) ([27810e2](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/27810e25261e64586a8fe634f29570cfb0a5d1b8))
+
 ## 1.35.0 (2026-03-22)
 
 Full Changelog: [v1.34.1...v1.35.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.34.1...v1.35.0)
