@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.35.1 (2026-03-24)
+
+Full Changelog: [v1.35.1...v1.35.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.35.1...v1.35.1)
+
+### Features
+
+* **api:** api update ([4f59d69](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/4f59d69112fe5af6008f1839e3f3594aa48241ec))
+
+
+### Bug Fixes
+
+* patch style requests should never send empty json body for objects ([82316fb](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/82316fb761913dcdad8d3daa631e0d764ff79b60))
+
+
+### Chores
+
+* **internal:** update gitignore ([f196f1e](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/f196f1ec4a55970ccd243966e4cb5d4bd249972f))
+
 ## 1.35.1 (2026-03-22)
 
 Full Changelog: [v1.35.0...v1.35.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.35.0...v1.35.1)
