@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.36.0 (2026-03-27)
+
+Full Changelog: [v1.35.1...v1.36.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.35.1...v1.36.0)
+
+### Features
+
+* **api:** api update ([67a9dda](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/67a9ddaa4d0382d98769b96e643164c700aea7c5))
+
+
+### Chores
+
+* **internal:** codegen related update ([2169699](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/2169699aaf58f85923b07f0be6d9010e7329ff53))
+* **internal:** codegen related update ([36ad97b](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/36ad97b866ac00438ad61ce15e9abb9f0f8e8aa1))
+
 ## 1.35.1 (2026-03-24)
 
 Full Changelog: [v1.35.1...v1.35.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.35.1...v1.35.1)
