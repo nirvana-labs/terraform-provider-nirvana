@@ -10,7 +10,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
@@ -31,14 +30,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			"cluster_id": schema.StringAttribute{
 				Required:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
-			},
-			"node_count": schema.Int64Attribute{
-				Description: "Number of nodes. Must be between 1 and 100.",
-				Required:    true,
-				Validators: []validator.Int64{
-					int64validator.Between(1, 100),
-				},
-				PlanModifiers: []planmodifier.Int64{int64planmodifier.RequiresReplace()},
 			},
 			"node_config": schema.SingleNestedAttribute{
 				Description: "Node configuration.",
@@ -96,6 +87,13 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			"name": schema.StringAttribute{
 				Description: "Name of the node pool.",
 				Required:    true,
+			},
+			"node_count": schema.Int64Attribute{
+				Description: "Number of nodes. Must be between 1 and 100.",
+				Required:    true,
+				Validators: []validator.Int64{
+					int64validator.Between(1, 100),
+				},
 			},
 			"tags": schema.ListAttribute{
 				Description: "Tags to attach to the node pool.",

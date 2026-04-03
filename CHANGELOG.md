@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.38.0 (2026-04-03)
+
+Full Changelog: [v1.37.1...v1.38.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.37.1...v1.38.0)
+
+### Features
+
+* **api:** api update ([ec31fc5](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/ec31fc54caac53b7201b5721fe5ba92dc6d0d9ef))
+* **api:** api update ([464cbb0](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/464cbb058a23d2252309353ae4ec024982286cd5))
+* **api:** api update ([7cfcd55](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/7cfcd55979a166cf64074bfa37109a4ecbd66db8))
+* **api:** api update ([4da7969](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/4da796949f79b715c41f3fba0a06df185e606e91))
+* **api:** api update ([e1a8009](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/e1a8009f29a070090423e240a57e23cb4c6b49e7))
+* **api:** api update ([9ef87d2](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/9ef87d2b8b7d7326d321d82e6b88164f1e9dae8c))
+* **api:** api update ([10b4243](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/10b42437aa8056087d479895a489234ddc16e11f))
+
+
+### Chores
+
+* **internal:** codegen related update ([9f4c306](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/9f4c306abed33483b88b7a9bceb43f4d5233606a))
+* **internal:** codegen related update ([7a62df5](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/7a62df5b121ec8f32af1be7643bf995e5c5a0d7c))
+
 ## 1.37.1 (2026-03-31)
 
 Full Changelog: [v1.37.0...v1.37.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.37.0...v1.37.1)
