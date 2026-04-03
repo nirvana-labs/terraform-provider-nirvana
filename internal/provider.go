@@ -18,6 +18,7 @@ import (
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/compute_vm"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/compute_vm_os_image"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/compute_volume"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/instance_type"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_connect_connection"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_firewall_rule"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_vpc"
@@ -129,6 +130,8 @@ func (p *NirvanaProvider) DataSources(ctx context.Context) []func() datasource.D
 		project.NewProjectsDataSource,
 		region.NewRegionDataSource,
 		region.NewRegionsDataSource,
+		instance_type.NewInstanceTypeDataSource,
+		instance_type.NewInstanceTypesDataSource,
 		compute_vm.NewComputeVMDataSource,
 		compute_vm.NewComputeVMsDataSource,
 		compute_vm_os_image.NewComputeVMOSImagesDataSource,
