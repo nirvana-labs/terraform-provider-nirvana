@@ -30,20 +30,11 @@ func (m NKSNodePoolModel) MarshalJSONForUpdate(state NKSNodePoolModel) (data []b
 }
 
 type NKSNodePoolNodeConfigModel struct {
-	BootVolume   *NKSNodePoolNodeConfigBootVolumeModel   `tfsdk:"boot_volume" json:"boot_volume,required"`
-	CPUConfig    *NKSNodePoolNodeConfigCPUConfigModel    `tfsdk:"cpu_config" json:"cpu_config,required"`
-	MemoryConfig *NKSNodePoolNodeConfigMemoryConfigModel `tfsdk:"memory_config" json:"memory_config,required"`
+	BootVolume   *NKSNodePoolNodeConfigBootVolumeModel `tfsdk:"boot_volume" json:"boot_volume,required"`
+	InstanceType types.String                          `tfsdk:"instance_type" json:"instance_type,required"`
 }
 
 type NKSNodePoolNodeConfigBootVolumeModel struct {
 	Size types.Int64  `tfsdk:"size" json:"size,required"`
 	Type types.String `tfsdk:"type" json:"type,required"`
-}
-
-type NKSNodePoolNodeConfigCPUConfigModel struct {
-	Vcpu types.Int64 `tfsdk:"vcpu" json:"vcpu,required"`
-}
-
-type NKSNodePoolNodeConfigMemoryConfigModel struct {
-	Size types.Int64 `tfsdk:"size" json:"size,required"`
 }

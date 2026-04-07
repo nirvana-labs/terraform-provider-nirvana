@@ -41,20 +41,11 @@ type NKSNodePoolsItemsDataSourceModel struct {
 }
 
 type NKSNodePoolsNodeConfigDataSourceModel struct {
-	BootVolume   customfield.NestedObject[NKSNodePoolsNodeConfigBootVolumeDataSourceModel]   `tfsdk:"boot_volume" json:"boot_volume,computed"`
-	CPUConfig    customfield.NestedObject[NKSNodePoolsNodeConfigCPUConfigDataSourceModel]    `tfsdk:"cpu_config" json:"cpu_config,computed"`
-	MemoryConfig customfield.NestedObject[NKSNodePoolsNodeConfigMemoryConfigDataSourceModel] `tfsdk:"memory_config" json:"memory_config,computed"`
+	BootVolume   customfield.NestedObject[NKSNodePoolsNodeConfigBootVolumeDataSourceModel] `tfsdk:"boot_volume" json:"boot_volume,computed"`
+	InstanceType types.String                                                              `tfsdk:"instance_type" json:"instance_type,computed"`
 }
 
 type NKSNodePoolsNodeConfigBootVolumeDataSourceModel struct {
 	Size types.Int64  `tfsdk:"size" json:"size,computed"`
 	Type types.String `tfsdk:"type" json:"type,computed"`
-}
-
-type NKSNodePoolsNodeConfigCPUConfigDataSourceModel struct {
-	Vcpu types.Int64 `tfsdk:"vcpu" json:"vcpu,computed"`
-}
-
-type NKSNodePoolsNodeConfigMemoryConfigDataSourceModel struct {
-	Size types.Int64 `tfsdk:"size" json:"size,computed"`
 }

@@ -55,31 +55,9 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 							},
 						},
 					},
-					"cpu_config": schema.SingleNestedAttribute{
-						Description: "CPU configuration.",
+					"instance_type": schema.StringAttribute{
+						Description: "Instance type name used for worker nodes.",
 						Required:    true,
-						Attributes: map[string]schema.Attribute{
-							"vcpu": schema.Int64Attribute{
-								Description: "Number of virtual CPUs.",
-								Required:    true,
-								Validators: []validator.Int64{
-									int64validator.Between(1, 52),
-								},
-							},
-						},
-					},
-					"memory_config": schema.SingleNestedAttribute{
-						Description: "Memory configuration.",
-						Required:    true,
-						Attributes: map[string]schema.Attribute{
-							"size": schema.Int64Attribute{
-								Description: "Size of the memory in GB.",
-								Required:    true,
-								Validators: []validator.Int64{
-									int64validator.Between(1, 480),
-								},
-							},
-						},
 					},
 				},
 				PlanModifiers: []planmodifier.Object{objectplanmodifier.RequiresReplace()},
