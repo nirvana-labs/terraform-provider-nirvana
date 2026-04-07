@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.39.0 (2026-04-07)
+
+Full Changelog: [v1.38.0...v1.39.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.38.0...v1.39.0)
+
+### Features
+
+* add per-resource api permissions to schema description ([b863c6e](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/b863c6e94bdefb99275c205e13abce5c564e87f7))
+
+
+### Bug Fixes
+
+* **ci:** in custom setup-go, pass through go-version and cache-dependency-path ([8a8e5f3](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/8a8e5f39991de2dd2874a7fe121b851a0b7d3f75))
+* fall back to main branch if linking fails in CI ([705fd30](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/705fd30edee0f06d8d34a7ee5c35bfea6be02203))
+* fix quoting typo ([1a213f9](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/1a213f9b895bf343e1b06dc4e9aa7ad1119958ea))
+
+
+### Chores
+
+* **internal:** codegen related update ([8fc9a6f](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/8fc9a6fcf67315050b76f7d778f26fdb3df7218d))
+
 ## 1.38.0 (2026-04-03)
 
 Full Changelog: [v1.37.1...v1.38.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.37.1...v1.38.0)
