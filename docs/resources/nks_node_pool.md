@@ -21,12 +21,7 @@ resource "nirvana_nks_node_pool" "example_nks_node_pool" {
       size = 100
       type = "abs"
     }
-    cpu_config = {
-      vcpu = 4
-    }
-    memory_config = {
-      size = 8
-    }
+    instance_type = "n1-standard-8"
   }
   node_count = 3
   tags = ["production", "ethereum"]
@@ -62,8 +57,7 @@ Available values: "pending", "creating", "updating", "ready", "deleting", "delet
 Required:
 
 - `boot_volume` (Attributes) Boot volume configuration. (see [below for nested schema](#nestedatt--node_config--boot_volume))
-- `cpu_config` (Attributes) CPU configuration. (see [below for nested schema](#nestedatt--node_config--cpu_config))
-- `memory_config` (Attributes) Memory configuration. (see [below for nested schema](#nestedatt--node_config--memory_config))
+- `instance_type` (String) Instance type name used for worker nodes.
 
 <a id="nestedatt--node_config--boot_volume"></a>
 ### Nested Schema for `node_config.boot_volume`
@@ -73,22 +67,6 @@ Required:
 - `size` (Number) Size of the boot volume in GB.
 - `type` (String) Type of the Volume.
 Available values: "nvme", "abs".
-
-
-<a id="nestedatt--node_config--cpu_config"></a>
-### Nested Schema for `node_config.cpu_config`
-
-Required:
-
-- `vcpu` (Number) Number of virtual CPUs.
-
-
-<a id="nestedatt--node_config--memory_config"></a>
-### Nested Schema for `node_config.memory_config`
-
-Required:
-
-- `size` (Number) Size of the memory in GB.
 
 ## Import
 

@@ -55,8 +55,7 @@ Available values: "pending", "creating", "updating", "ready", "deleting", "delet
 Read-Only:
 
 - `boot_volume` (Attributes) Boot volume configuration. (see [below for nested schema](#nestedatt--items--node_config--boot_volume))
-- `cpu_config` (Attributes) CPU configuration. (see [below for nested schema](#nestedatt--items--node_config--cpu_config))
-- `memory_config` (Attributes) Memory configuration. (see [below for nested schema](#nestedatt--items--node_config--memory_config))
+- `instance_type` (String) Instance type name.
 
 <a id="nestedatt--items--node_config--boot_volume"></a>
 ### Nested Schema for `items.node_config.boot_volume`
@@ -66,19 +65,3 @@ Read-Only:
 - `size` (Number) Size of the boot volume in GB.
 - `type` (String) Type of the Volume.
 Available values: "nvme", "abs".
-
-
-<a id="nestedatt--items--node_config--cpu_config"></a>
-### Nested Schema for `items.node_config.cpu_config`
-
-Read-Only:
-
-- `vcpu` (Number) Number of virtual CPUs.
-
-
-<a id="nestedatt--items--node_config--memory_config"></a>
-### Nested Schema for `items.node_config.memory_config`
-
-Read-Only:
-
-- `size` (Number) Size of the memory in GB.

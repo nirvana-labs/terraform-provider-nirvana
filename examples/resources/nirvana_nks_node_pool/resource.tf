@@ -6,12 +6,7 @@ resource "nirvana_nks_node_pool" "example_nks_node_pool" {
       size = 100
       type = "abs"
     }
-    cpu_config = {
-      vcpu = 4
-    }
-    memory_config = {
-      size = 8
-    }
+    instance_type = "n1-standard-8"
   }
   node_count = 3
   tags = ["production", "ethereum"]
