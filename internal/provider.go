@@ -23,6 +23,7 @@ import (
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_firewall_rule"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_vpc"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/nks_cluster"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/nks_cluster_kubeconfig"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/nks_node_pool"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/project"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/region"
@@ -147,6 +148,7 @@ func (p *NirvanaProvider) DataSources(ctx context.Context) []func() datasource.D
 		rpc_node_flex.NewRPCNodeFlexesDataSource,
 		nks_cluster.NewNKSClusterDataSource,
 		nks_cluster.NewNKSClustersDataSource,
+		nks_cluster_kubeconfig.NewNKSClusterKubeconfigDataSource,
 		nks_node_pool.NewNKSNodePoolDataSource,
 		nks_node_pool.NewNKSNodePoolsDataSource,
 	}
