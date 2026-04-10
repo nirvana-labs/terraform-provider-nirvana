@@ -16,7 +16,7 @@ description: |-
 resource "nirvana_nks_cluster" "example_nks_cluster" {
   name = "my-cluster"
   project_id = "123e4567-e89b-12d3-a456-426614174000"
-  region = "us-wdc-1"
+  region = "us-sva-2"
   vpc_id = "123e4567-e89b-12d3-a456-426614174000"
   tags = ["production", "ethereum"]
 }
@@ -30,7 +30,7 @@ resource "nirvana_nks_cluster" "example_nks_cluster" {
 - `name` (String) Name of the Cluster.
 - `project_id` (String) Project ID to create the Cluster in.
 - `region` (String) Region the resource is in.
-Available values: "us-sva-1", "us-sva-2", "us-chi-1", "us-wdc-1".
+Available values: "us-sea-1", "us-sva-1", "us-sva-2", "us-chi-1", "ap-sin-1".
 - `vpc_id` (String) ID of the VPC to use for the Cluster.
 
 ### Optional

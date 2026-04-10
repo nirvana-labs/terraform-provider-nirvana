@@ -16,7 +16,7 @@ description: |-
 resource "nirvana_compute_volume" "example_compute_volume" {
   name = "my-data-volume"
   project_id = "123e4567-e89b-12d3-a456-426614174000"
-  region = "us-wdc-1"
+  region = "us-sva-2"
   size = 100
   type = "abs"
   tags = ["production", "ethereum"]
@@ -32,7 +32,7 @@ resource "nirvana_compute_volume" "example_compute_volume" {
 - `name` (String) Name of the Volume.
 - `project_id` (String) Project ID the Volume belongs to.
 - `region` (String) Region the resource is in.
-Available values: "us-sva-1", "us-sva-2", "us-chi-1", "us-wdc-1".
+Available values: "us-sea-1", "us-sva-1", "us-sva-2", "us-chi-1", "ap-sin-1".
 - `size` (Number) Size of the Volume in GB.
 - `type` (String) Type of the Volume.
 Available values: "nvme", "abs".

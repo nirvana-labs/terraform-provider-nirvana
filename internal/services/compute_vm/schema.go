@@ -40,14 +40,15 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"region": schema.StringAttribute{
-				Description: "Region the resource is in.\nAvailable values: \"us-sva-1\", \"us-sva-2\", \"us-chi-1\", \"us-wdc-1\".",
+				Description: "Region the resource is in.\nAvailable values: \"us-sea-1\", \"us-sva-1\", \"us-sva-2\", \"us-chi-1\", \"ap-sin-1\".",
 				Required:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
+						"us-sea-1",
 						"us-sva-1",
 						"us-sva-2",
 						"us-chi-1",
-						"us-wdc-1",
+						"ap-sin-1",
 					),
 				},
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
