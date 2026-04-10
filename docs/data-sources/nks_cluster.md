@@ -36,7 +36,7 @@ data "nirvana_nks_cluster" "example_nks_cluster" {
 - `project_id` (String) Project ID the Cluster belongs to.
 - `public_ip` (String) Public IP of the Cluster.
 - `region` (String) Region the resource is in.
-Available values: "us-sea-1", "us-sva-1", "us-sva-2", "us-chi-1", "ap-sin-1".
+Available values: "us-sva-1", "us-sva-2", "us-chi-1".
 - `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `tags` (List of String) Tags attached to the Cluster.

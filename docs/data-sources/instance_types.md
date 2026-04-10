@@ -41,7 +41,7 @@ Read-Only:
 - `memory_gb` (Number)
 - `name` (String)
 - `region` (String) Region the resource is in.
-Available values: "us-sea-1", "us-sva-1", "us-sva-2", "us-chi-1", "ap-sin-1".
+Available values: "us-sva-1", "us-sva-2", "us-chi-1".
 - `series` (String)
 - `updated_at` (String) When the Instance Type was updated.
 - `vcpu` (Number)
