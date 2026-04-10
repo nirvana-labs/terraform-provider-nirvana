@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.41.0 (2026-04-10)
+
+Full Changelog: [v1.40.0...v1.41.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.40.0...v1.41.0)
+
+### Features
+
+* **api:** api update ([9051fbf](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/9051fbf9b9ecc38eda49f14ab4143ce28476982c))
+* **api:** api update ([bb12d26](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/bb12d264e6f0559cb183a65904cb108aff261a33))
+* **api:** api update ([a528af3](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/a528af3672fc81e8b45fee7c1226bb57bbbc4532))
+
+
+### Bug Fixes
+
+* fix for failing to drop invalid module replace in link script ([f321833](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/f3218334866178c016f80a7672aef3b8c3d3d535))
+
+
+### Chores
+
+* pin go releaser version ([d75babb](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/d75babb0c977d74fb1e3c23c7fe8231c61d69b61))
+
 ## 1.40.0 (2026-04-07)
 
 Full Changelog: [v1.39.0...v1.40.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.39.0...v1.40.0)

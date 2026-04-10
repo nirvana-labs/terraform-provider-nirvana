@@ -14,7 +14,7 @@ description: |-
 
 ```terraform
 data "nirvana_region" "example_region" {
-  name = "us-wdc-1"
+  name = "us-sva-2"
 }
 ```
 
