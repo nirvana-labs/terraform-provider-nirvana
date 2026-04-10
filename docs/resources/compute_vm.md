@@ -29,7 +29,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
   os_image_name = "ubuntu-noble-2025-10-01"
   project_id = "123e4567-e89b-12d3-a456-426614174000"
   public_ip_enabled = true
-  region = "us-wdc-1"
+  region = "us-sva-2"
   ssh_key = {
     public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDBIASkmwNiLcdlW6927Zjt1Hf7Kw/PpEZ4Zm+wU9wn2"
   }
@@ -57,7 +57,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
 - `project_id` (String) Project ID to create the VM in.
 - `public_ip_enabled` (Boolean) Whether to enable public IP for the VM.
 - `region` (String) Region the resource is in.
-Available values: "us-sva-1", "us-sva-2", "us-chi-1", "us-wdc-1".
+Available values: "us-sea-1", "us-sva-1", "us-sva-2", "us-chi-1", "ap-sin-1".
 - `ssh_key` (Attributes) Public SSH key configuration for the VM. (see [below for nested schema](#nestedatt--ssh_key))
 - `subnet_id` (String) ID of the subnet to use for the VM.
 

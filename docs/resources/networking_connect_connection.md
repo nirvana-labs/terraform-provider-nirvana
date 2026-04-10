@@ -19,7 +19,7 @@ resource "nirvana_networking_connect_connection" "example_networking_connect_con
   name = "my-connect-connection"
   project_id = "123e4567-e89b-12d3-a456-426614174000"
   provider_cidrs = ["172.16.0.0/16"]
-  region = "us-wdc-1"
+  region = "us-sva-2"
   aws = {
     account_id = "523816707215"
     region = "us-east-1"
@@ -40,7 +40,7 @@ Available values: 50, 200, 500, 1000, 2000.
 - `project_id` (String) Project ID the Connect Connection belongs to
 - `provider_cidrs` (List of String) Provider CIDRs. Must be in network-aligned/canonical form.
 - `region` (String) Region the resource is in.
-Available values: "us-sva-1", "us-sva-2", "us-chi-1", "us-wdc-1".
+Available values: "us-sea-1", "us-sva-1", "us-sva-2", "us-chi-1", "ap-sin-1".
 
 ### Optional
 
