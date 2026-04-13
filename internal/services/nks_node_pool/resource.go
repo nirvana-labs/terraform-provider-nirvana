@@ -133,13 +133,27 @@ func (r *NKSNodePoolResource) Update(ctx context.Context, req resource.UpdateReq
 		resp.Diagnostics.AddError("failed to serialize http request", err.Error())
 		return
 	}
-	res := new(http.Response)
-	_, err = r.client.NKS.Clusters.Pools.Update(
+	operation, err := r.client.NKS.Clusters.Pools.Update(
 		ctx,
 		data.ClusterID.ValueString(),
 		data.ID.ValueString(),
 		nks.ClusterPoolUpdateParams{},
 		option.WithRequestBody("application/json", dataBytes),
+		option.WithMiddleware(logging.Middleware(ctx)),
+	)
+	if err != nil {
+		resp.Diagnostics.AddError("failed to make http request", err.Error())
+		return
+	}
+	if errWaitForOperation := r.waiter.Wait(ctx, r.client, operation.ID); errWaitForOperation != nil {
+		resp.Diagnostics.AddError("failed to wait for operation", errWaitForOperation.Error())
+		return
+	}
+	res := new(http.Response)
+	_, err = r.client.NKS.Clusters.Pools.Get(
+		ctx,
+		data.ClusterID.ValueString(),
+		operation.ResourceID,
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)

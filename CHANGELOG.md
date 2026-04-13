@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.42.0 (2026-04-13)
+
+Full Changelog: [v1.41.0...v1.42.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.41.0...v1.42.0)
+
+### Bug Fixes
+
+* **nks:** add Operation wait support for NKS Node Pool Update ([#281](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/281)) ([4a3e62f](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/4a3e62f01a8ecb318b6cee069cab485df4abfed3))
+
 ## 1.41.0 (2026-04-10)
 
 Full Changelog: [v1.40.0...v1.41.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.40.0...v1.41.0)
