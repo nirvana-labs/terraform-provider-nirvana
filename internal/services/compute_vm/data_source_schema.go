@@ -37,6 +37,10 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
 			},
+			"instance_type": schema.StringAttribute{
+				Description: "Instance type name.",
+				Computed:    true,
+			},
 			"name": schema.StringAttribute{
 				Description: "Name of the VM.",
 				Computed:    true,
@@ -121,7 +125,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 						Description: "Number of virtual CPUs.",
 						Computed:    true,
 						Validators: []validator.Int64{
-							int64validator.Between(1, 52),
+							int64validator.Between(1, 192),
 						},
 					},
 				},
@@ -135,7 +139,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 						Description: "Size of the memory in GB.",
 						Computed:    true,
 						Validators: []validator.Int64{
-							int64validator.Between(1, 480),
+							int64validator.Between(1, 768),
 						},
 					},
 				},

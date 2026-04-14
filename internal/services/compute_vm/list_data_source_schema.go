@@ -54,7 +54,7 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 									Description: "Number of virtual CPUs.",
 									Computed:    true,
 									Validators: []validator.Int64{
-										int64validator.Between(1, 52),
+										int64validator.Between(1, 192),
 									},
 								},
 							},
@@ -79,7 +79,7 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 									Description: "Size of the memory in GB.",
 									Computed:    true,
 									Validators: []validator.Int64{
-										int64validator.Between(1, 480),
+										int64validator.Between(1, 768),
 									},
 								},
 							},
@@ -151,6 +151,10 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 						},
 						"vpc_name": schema.StringAttribute{
 							Description: "Name of the VPC the VM is in.",
+							Computed:    true,
+						},
+						"instance_type": schema.StringAttribute{
+							Description: "Instance type name.",
 							Computed:    true,
 						},
 					},

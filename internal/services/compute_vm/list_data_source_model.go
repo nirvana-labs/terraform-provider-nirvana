@@ -49,6 +49,7 @@ type ComputeVMsItemsDataSourceModel struct {
 	UpdatedAt       timetypes.RFC3339                                               `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
 	VPCID           types.String                                                    `tfsdk:"vpc_id" json:"vpc_id,computed"`
 	VPCName         types.String                                                    `tfsdk:"vpc_name" json:"vpc_name,computed"`
+	InstanceType    types.String                                                    `tfsdk:"instance_type" json:"instance_type,computed"`
 }
 
 type ComputeVMsCPUConfigDataSourceModel struct {
