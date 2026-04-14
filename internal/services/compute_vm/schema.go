@@ -127,36 +127,40 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Description: "Whether to enable public IP for the VM.",
 				Required:    true,
 			},
+			"instance_type": schema.StringAttribute{
+				Description: "Instance type name.",
+				Optional:    true,
+			},
+			"tags": schema.ListAttribute{
+				Description: "Tags to attach to the VM.",
+				Optional:    true,
+				ElementType: types.StringType,
+			},
 			"cpu_config": schema.SingleNestedAttribute{
 				Description: "CPU configuration for the VM.",
-				Required:    true,
+				Optional:    true,
 				Attributes: map[string]schema.Attribute{
 					"vcpu": schema.Int64Attribute{
 						Description: "Number of virtual CPUs.",
-						Required:    true,
+						Optional:    true,
 						Validators: []validator.Int64{
-							int64validator.Between(1, 52),
+							int64validator.Between(1, 192),
 						},
 					},
 				},
 			},
 			"memory_config": schema.SingleNestedAttribute{
 				Description: "Memory configuration for the VM.",
-				Required:    true,
+				Optional:    true,
 				Attributes: map[string]schema.Attribute{
 					"size": schema.Int64Attribute{
 						Description: "Size of the memory in GB.",
-						Required:    true,
+						Optional:    true,
 						Validators: []validator.Int64{
-							int64validator.Between(1, 480),
+							int64validator.Between(1, 768),
 						},
 					},
 				},
-			},
-			"tags": schema.ListAttribute{
-				Description: "Tags to attach to the VM.",
-				Optional:    true,
-				ElementType: types.StringType,
 			},
 			"boot_volume_id": schema.StringAttribute{
 				Description: "ID of the boot volume attached to the VM.",

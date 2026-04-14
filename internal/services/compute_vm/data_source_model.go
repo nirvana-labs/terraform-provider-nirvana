@@ -17,6 +17,7 @@ type ComputeVMDataSourceModel struct {
 	VMID            types.String                                                   `tfsdk:"vm_id" path:"vm_id,optional"`
 	BootVolumeID    types.String                                                   `tfsdk:"boot_volume_id" json:"boot_volume_id,computed"`
 	CreatedAt       timetypes.RFC3339                                              `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
+	InstanceType    types.String                                                   `tfsdk:"instance_type" json:"instance_type,computed"`
 	Name            types.String                                                   `tfsdk:"name" json:"name,computed"`
 	PrivateIP       types.String                                                   `tfsdk:"private_ip" json:"private_ip,computed"`
 	ProjectID       types.String                                                   `tfsdk:"project_id" json:"project_id,computed"`

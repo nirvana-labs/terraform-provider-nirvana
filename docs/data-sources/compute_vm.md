@@ -33,6 +33,7 @@ data "nirvana_compute_vm" "example_compute_vm" {
 - `created_at` (String) When the VM was created.
 - `data_volume_ids` (List of String) IDs of the data volumes attached to the VM.
 - `id` (String) The ID of this resource.
+- `instance_type` (String) Instance type name.
 - `memory_config` (Attributes) Memory configuration for the VM. (see [below for nested schema](#nestedatt--memory_config))
 - `name` (String) Name of the VM.
 - `private_ip` (String) Private IP of the VM.
