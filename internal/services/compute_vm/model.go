@@ -20,9 +20,10 @@ type ComputeVMModel struct {
 	DataVolumes     *[]*ComputeVMDataVolumesModel  `tfsdk:"data_volumes" json:"data_volumes,optional,no_refresh"`
 	Name            types.String                   `tfsdk:"name" json:"name,required"`
 	PublicIPEnabled types.Bool                     `tfsdk:"public_ip_enabled" json:"public_ip_enabled,required"`
-	CPUConfig       *ComputeVMCPUConfigModel       `tfsdk:"cpu_config" json:"cpu_config,required"`
-	MemoryConfig    *ComputeVMMemoryConfigModel    `tfsdk:"memory_config" json:"memory_config,required"`
+	InstanceType    types.String                   `tfsdk:"instance_type" json:"instance_type,optional"`
 	Tags            *[]types.String                `tfsdk:"tags" json:"tags,optional"`
+	CPUConfig       *ComputeVMCPUConfigModel       `tfsdk:"cpu_config" json:"cpu_config,optional"`
+	MemoryConfig    *ComputeVMMemoryConfigModel    `tfsdk:"memory_config" json:"memory_config,optional"`
 	BootVolumeID    types.String                   `tfsdk:"boot_volume_id" json:"boot_volume_id,computed"`
 	CreatedAt       timetypes.RFC3339              `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
 	PrivateIP       types.String                   `tfsdk:"private_ip" json:"private_ip,computed"`
@@ -60,9 +61,9 @@ type ComputeVMDataVolumesModel struct {
 }
 
 type ComputeVMCPUConfigModel struct {
-	Vcpu types.Int64 `tfsdk:"vcpu" json:"vcpu,required"`
+	Vcpu types.Int64 `tfsdk:"vcpu" json:"vcpu,optional"`
 }
 
 type ComputeVMMemoryConfigModel struct {
-	Size types.Int64 `tfsdk:"size" json:"size,required"`
+	Size types.Int64 `tfsdk:"size" json:"size,optional"`
 }

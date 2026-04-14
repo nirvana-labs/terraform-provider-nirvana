@@ -43,6 +43,7 @@ Read-Only:
 - `created_at` (String) When the VM was created.
 - `data_volume_ids` (List of String) IDs of the data volumes attached to the VM.
 - `id` (String) Unique identifier for the VM.
+- `instance_type` (String) Instance type name.
 - `memory_config` (Attributes) Memory configuration for the VM. (see [below for nested schema](#nestedatt--items--memory_config))
 - `name` (String) Name of the VM.
 - `private_ip` (String) Private IP of the VM.
