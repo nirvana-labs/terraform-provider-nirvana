@@ -84,7 +84,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Required:    true,
 				Attributes: map[string]schema.Attribute{
 					"public_key": schema.StringAttribute{
-						Description: "Public key to and and use to access the VM.",
+						Description: "Public key to and use to access the VM.",
 						Required:    true,
 					},
 				},

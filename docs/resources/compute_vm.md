@@ -101,7 +101,7 @@ Optional:
 
 Required:
 
-- `public_key` (String) Public key to and and use to access the VM.
+- `public_key` (String) Public key to and use to access the VM.
 
 
 <a id="nestedatt--cpu_config"></a>
