@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.43.2 (2026-04-17)
+
+Full Changelog: [v1.43.1...v1.43.2](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.43.1...v1.43.2)
+
+### Documentation
+
+* update example values in README ([256daff](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/256daff8a2da608990a4fb4fcabbbc6dbf1ccca3))
+
 ## 1.43.1 (2026-04-15)
 
 Full Changelog: [v1.43.0...v1.43.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.43.0...v1.43.1)
