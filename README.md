@@ -20,7 +20,7 @@ terraform {
   required_providers {
     nirvana = {
       source  = "nirvana-labs/nirvana"
-      version = "~> 1.43.1"
+      version = "~> 1.43.2"
     }
   }
 }
@@ -34,14 +34,14 @@ provider "nirvana" {
 resource "nirvana_compute_vm" "example_compute_vm" {
   boot_volume = {
     size = 100
-    type = "nvme"
+    type = "abs"
     tags = ["production", "ethereum"]
   }
   name = "my-vm"
   os_image_name = "ubuntu-noble-2025-10-01"
   project_id = "123e4567-e89b-12d3-a456-426614174000"
   public_ip_enabled = true
-  region = "us-sva-1"
+  region = "us-sva-2"
   ssh_key = {
     public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDBIASkmwNiLcdlW6927Zjt1Hf7Kw/PpEZ4Zm+wU9wn2"
   }
@@ -55,7 +55,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
     type = "abs"
     tags = ["production", "ethereum"]
   }]
-  instance_type = "n1-standard-8"
+  instance_type = "n1-standard-2"
   memory_config = {
     size = 2
   }
