@@ -28,14 +28,15 @@ func (m *InstanceTypesDataSourceModel) toListParams(_ context.Context) (params i
 }
 
 type InstanceTypesItemsDataSourceModel struct {
-	ID        types.String      `tfsdk:"id" json:"name,computed"`
-	Chipset   types.String      `tfsdk:"chipset" json:"chipset,computed"`
-	CreatedAt timetypes.RFC3339 `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
-	Family    types.String      `tfsdk:"family" json:"family,computed"`
-	MemoryGB  types.Int64       `tfsdk:"memory_gb" json:"memory_gb,computed"`
-	Name      types.String      `tfsdk:"name" json:"name,computed"`
-	Region    types.String      `tfsdk:"region" json:"region,computed"`
-	Series    types.String      `tfsdk:"series" json:"series,computed"`
-	UpdatedAt timetypes.RFC3339 `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
-	Vcpu      types.Int64       `tfsdk:"vcpu" json:"vcpu,computed"`
+	ID                   types.String      `tfsdk:"id" json:"name,computed"`
+	Chipset              types.String      `tfsdk:"chipset" json:"chipset,computed"`
+	CreatedAt            timetypes.RFC3339 `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
+	Family               types.String      `tfsdk:"family" json:"family,computed"`
+	MemoryGB             types.Int64       `tfsdk:"memory_gb" json:"memory_gb,computed"`
+	Name                 types.String      `tfsdk:"name" json:"name,computed"`
+	NetworkBandwidthGbps types.Float64     `tfsdk:"network_bandwidth_gbps" json:"network_bandwidth_gbps,computed"`
+	Region               types.String      `tfsdk:"region" json:"region,computed"`
+	Series               types.String      `tfsdk:"series" json:"series,computed"`
+	UpdatedAt            timetypes.RFC3339 `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
+	Vcpu                 types.Int64       `tfsdk:"vcpu" json:"vcpu,computed"`
 }

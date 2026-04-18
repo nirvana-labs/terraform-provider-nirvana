@@ -33,6 +33,7 @@ data "nirvana_instance_type" "example_instance_type" {
 - `created_at` (String) When the Instance Type was created.
 - `family` (String)
 - `memory_gb` (Number)
+- `network_bandwidth_gbps` (Number) Network bandwidth in Gbps.
 - `series` (String)
 - `updated_at` (String) When the Instance Type was updated.
 - `vcpu` (Number)
