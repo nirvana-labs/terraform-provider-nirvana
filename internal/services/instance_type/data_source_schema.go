@@ -45,6 +45,10 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 			"memory_gb": schema.Int64Attribute{
 				Computed: true,
 			},
+			"network_bandwidth_gbps": schema.Float64Attribute{
+				Description: "Network bandwidth in Gbps.",
+				Computed:    true,
+			},
 			"series": schema.StringAttribute{
 				Computed: true,
 			},

@@ -40,6 +40,7 @@ Read-Only:
 - `id` (String)
 - `memory_gb` (Number)
 - `name` (String)
+- `network_bandwidth_gbps` (Number) Network bandwidth in Gbps.
 - `region` (String) Region the resource is in.
 Available values: "us-sva-1", "us-sva-2", "us-chi-1".
 - `series` (String)

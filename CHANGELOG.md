@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.44.0 (2026-04-19)
+
+Full Changelog: [v1.43.2...v1.44.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.43.2...v1.44.0)
+
+### Features
+
+* add network_bandwidth_gbps to InstanceType ([22ab811](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/22ab8116daf3122c33d3216c06344145ed31500f))
+
+
+### Chores
+
+* **internal:** codegen related update ([9897483](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/989748304f3a3e67d53e2e7dc9473034f8b2665f))
+
 ## 1.43.2 (2026-04-17)
 
 Full Changelog: [v1.43.1...v1.43.2](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.43.1...v1.43.2)

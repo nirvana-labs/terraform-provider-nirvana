@@ -52,6 +52,10 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 						"name": schema.StringAttribute{
 							Computed: true,
 						},
+						"network_bandwidth_gbps": schema.Float64Attribute{
+							Description: "Network bandwidth in Gbps.",
+							Computed:    true,
+						},
 						"region": schema.StringAttribute{
 							Description: "Region the resource is in.\nAvailable values: \"us-sva-1\", \"us-sva-2\", \"us-chi-1\".",
 							Computed:    true,
