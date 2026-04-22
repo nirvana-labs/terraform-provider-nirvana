@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.45.0 (2026-04-22)
+
+Full Changelog: [v1.44.1...v1.45.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.44.1...v1.45.0)
+
+### Features
+
+* **api:** add labels field to nks_node_pool ([8c0cde3](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/8c0cde3a2e444e9c743b38431d443ca23e9bcd9d))
+
 ## 1.44.1 (2026-04-22)
 
 Full Changelog: [v1.44.0...v1.44.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.44.0...v1.44.1)
