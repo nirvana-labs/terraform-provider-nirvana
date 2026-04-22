@@ -10,7 +10,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
@@ -30,6 +29,17 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			"cluster_id": schema.StringAttribute{
 				Required:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
+			},
+			"name": schema.StringAttribute{
+				Description: "Name of the node pool.",
+				Required:    true,
+			},
+			"node_count": schema.Int64Attribute{
+				Description: "Number of nodes. Must be between 1 and 100.",
+				Required:    true,
+				Validators: []validator.Int64{
+					int64validator.Between(1, 100),
+				},
 			},
 			"node_config": schema.SingleNestedAttribute{
 				Description: "Node configuration.",
@@ -59,18 +69,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						Description: "Instance type name used for worker nodes.",
 						Required:    true,
 					},
-				},
-				PlanModifiers: []planmodifier.Object{objectplanmodifier.RequiresReplace()},
-			},
-			"name": schema.StringAttribute{
-				Description: "Name of the node pool.",
-				Required:    true,
-			},
-			"node_count": schema.Int64Attribute{
-				Description: "Number of nodes. Must be between 1 and 100.",
-				Required:    true,
-				Validators: []validator.Int64{
-					int64validator.Between(1, 100),
+					"labels": schema.ListAttribute{
+						Description: "Kubernetes labels to apply to each node in the pool. Each entry is \"key=value\".\nKeys under kubernetes.io, k8s.io, and nirvanalabs.io prefixes are reserved.",
+						Optional:    true,
+						ElementType: types.StringType,
+					},
 				},
 			},
 			"tags": schema.ListAttribute{

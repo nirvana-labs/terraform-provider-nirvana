@@ -83,6 +83,12 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 									Description: "Instance type name.",
 									Computed:    true,
 								},
+								"labels": schema.ListAttribute{
+									Description: `Kubernetes labels applied to each node in the pool. Each entry is "key=value".`,
+									Computed:    true,
+									CustomType:  customfield.NewListType[types.String](ctx),
+									ElementType: types.StringType,
+								},
 							},
 						},
 						"node_count": schema.Int64Attribute{
