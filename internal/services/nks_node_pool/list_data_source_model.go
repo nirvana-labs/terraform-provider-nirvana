@@ -43,6 +43,7 @@ type NKSNodePoolsItemsDataSourceModel struct {
 type NKSNodePoolsNodeConfigDataSourceModel struct {
 	BootVolume   customfield.NestedObject[NKSNodePoolsNodeConfigBootVolumeDataSourceModel] `tfsdk:"boot_volume" json:"boot_volume,computed"`
 	InstanceType types.String                                                              `tfsdk:"instance_type" json:"instance_type,computed"`
+	Labels       customfield.List[types.String]                                            `tfsdk:"labels" json:"labels,computed"`
 }
 
 type NKSNodePoolsNodeConfigBootVolumeDataSourceModel struct {

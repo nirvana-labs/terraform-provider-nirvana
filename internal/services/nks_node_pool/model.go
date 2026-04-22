@@ -11,9 +11,9 @@ import (
 type NKSNodePoolModel struct {
 	ID         types.String                `tfsdk:"id" json:"id,computed"`
 	ClusterID  types.String                `tfsdk:"cluster_id" path:"cluster_id,required"`
-	NodeConfig *NKSNodePoolNodeConfigModel `tfsdk:"node_config" json:"node_config,required"`
 	Name       types.String                `tfsdk:"name" json:"name,required"`
 	NodeCount  types.Int64                 `tfsdk:"node_count" json:"node_count,required"`
+	NodeConfig *NKSNodePoolNodeConfigModel `tfsdk:"node_config" json:"node_config,required"`
 	Tags       *[]types.String             `tfsdk:"tags" json:"tags,optional"`
 	CreatedAt  timetypes.RFC3339           `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
 	ProjectID  types.String                `tfsdk:"project_id" json:"project_id,computed,no_refresh"`
@@ -32,6 +32,7 @@ func (m NKSNodePoolModel) MarshalJSONForUpdate(state NKSNodePoolModel) (data []b
 type NKSNodePoolNodeConfigModel struct {
 	BootVolume   *NKSNodePoolNodeConfigBootVolumeModel `tfsdk:"boot_volume" json:"boot_volume,required"`
 	InstanceType types.String                          `tfsdk:"instance_type" json:"instance_type,required"`
+	Labels       *[]types.String                       `tfsdk:"labels" json:"labels,optional"`
 }
 
 type NKSNodePoolNodeConfigBootVolumeModel struct {
