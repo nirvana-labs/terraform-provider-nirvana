@@ -22,6 +22,7 @@ resource "nirvana_nks_node_pool" "example_nks_node_pool" {
       type = "abs"
     }
     instance_type = "n1-standard-8"
+    labels = ["env=prod", "team=platform"]
   }
   node_count = 3
   tags = ["production", "ethereum"]
@@ -58,6 +59,11 @@ Required:
 
 - `boot_volume` (Attributes) Boot volume configuration. (see [below for nested schema](#nestedatt--node_config--boot_volume))
 - `instance_type` (String) Instance type name used for worker nodes.
+
+Optional:
+
+- `labels` (List of String) Kubernetes labels to apply to each node in the pool. Each entry is "key=value".
+Keys under kubernetes.io, k8s.io, and nirvanalabs.io prefixes are reserved.
 
 <a id="nestedatt--node_config--boot_volume"></a>
 ### Nested Schema for `node_config.boot_volume`

@@ -46,6 +46,7 @@ Read-Only:
 
 - `boot_volume` (Attributes) Boot volume configuration. (see [below for nested schema](#nestedatt--node_config--boot_volume))
 - `instance_type` (String) Instance type name.
+- `labels` (List of String) Kubernetes labels applied to each node in the pool. Each entry is "key=value".
 
 <a id="nestedatt--node_config--boot_volume"></a>
 ### Nested Schema for `node_config.boot_volume`
