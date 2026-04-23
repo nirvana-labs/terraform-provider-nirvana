@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.45.1 (2026-04-23)
+
+Full Changelog: [v1.45.0...v1.45.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.45.0...v1.45.1)
+
+### Bug Fixes
+
+* **tests:** update hc-install to fix PGP key mismatch ([0c991d5](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/0c991d548dfc2d8971b68b4ae3eb570584b16f92))
+
+
+### Chores
+
+* add local tmpfile directory ([d83d0d1](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/d83d0d1a10e15b677d5fa6bee767a5e30dab7bb4))
+* **internal:** more robust bootstrap script ([d3e66fe](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/d3e66fee994f63b7befb41662802af7c78e157c8))
+
 ## 1.45.0 (2026-04-22)
 
 Full Changelog: [v1.44.1...v1.45.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.44.1...v1.45.0)
