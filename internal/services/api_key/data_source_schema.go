@@ -40,6 +40,10 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Computed:    true,
 				Sensitive:   true,
 			},
+			"managed": schema.BoolAttribute{
+				Description: "Whether this API key is system-managed.",
+				Computed:    true,
+			},
 			"name": schema.StringAttribute{
 				Description: "API Key name.",
 				Computed:    true,
@@ -91,7 +95,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 							},
 						},
 						"resource_type": schema.StringAttribute{
-							Description: "Resource type this permission applies to.\nAvailable values: \"vm\", \"vpc\", \"volume\", \"connect_connection\", \"rpc_node_dedicated\", \"rpc_node_flex\", \"nks_cluster\", \"nks_node_pool\", \"project\", \"api_key\".",
+							Description: "Resource type this permission applies to.\nAvailable values: \"vm\", \"vpc\", \"volume\", \"connect_connection\", \"rpc_node_dedicated\", \"rpc_node_flex\", \"nks_cluster\", \"nks_node_pool\", \"project\", \"api_key\", \"organization\", \"audit_log\".",
 							Computed:    true,
 							Validators: []validator.String{
 								stringvalidator.OneOfCaseInsensitive(
@@ -105,6 +109,8 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 									"nks_node_pool",
 									"project",
 									"api_key",
+									"organization",
+									"audit_log",
 								),
 							},
 						},
