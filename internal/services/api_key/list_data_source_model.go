@@ -31,6 +31,7 @@ type APIKeysItemsDataSourceModel struct {
 	ID           types.String                                                    `tfsdk:"id" json:"id,computed"`
 	CreatedAt    timetypes.RFC3339                                               `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
 	ExpiresAt    timetypes.RFC3339                                               `tfsdk:"expires_at" json:"expires_at,computed" format:"date-time"`
+	Managed      types.Bool                                                      `tfsdk:"managed" json:"managed,computed"`
 	Name         types.String                                                    `tfsdk:"name" json:"name,computed"`
 	Permissions  customfield.NestedObjectList[APIKeysPermissionsDataSourceModel] `tfsdk:"permissions" json:"permissions,computed"`
 	ProjectIDs   customfield.List[types.String]                                  `tfsdk:"project_ids" json:"project_ids,computed"`

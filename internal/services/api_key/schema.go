@@ -59,7 +59,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 							},
 						},
 						"resource_type": schema.StringAttribute{
-							Description: "Resource type this permission applies to.\nAvailable values: \"vm\", \"vpc\", \"volume\", \"connect_connection\", \"rpc_node_dedicated\", \"rpc_node_flex\", \"nks_cluster\", \"nks_node_pool\", \"project\", \"api_key\".",
+							Description: "Resource type this permission applies to.\nAvailable values: \"vm\", \"vpc\", \"volume\", \"connect_connection\", \"rpc_node_dedicated\", \"rpc_node_flex\", \"nks_cluster\", \"nks_node_pool\", \"project\", \"api_key\", \"organization\", \"audit_log\".",
 							Required:    true,
 							Validators: []validator.String{
 								stringvalidator.OneOfCaseInsensitive(
@@ -73,6 +73,8 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 									"nks_node_pool",
 									"project",
 									"api_key",
+									"organization",
+									"audit_log",
 								),
 							},
 						},
@@ -109,6 +111,10 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Description: "API Key. Only returned on creation.",
 				Computed:    true,
 				Sensitive:   true,
+			},
+			"managed": schema.BoolAttribute{
+				Description: "Whether this API key is system-managed.",
+				Computed:    true,
 			},
 			"status": schema.StringAttribute{
 				Description: "Status of the API Key.\nAvailable values: \"active\", \"inactive\", \"expired\".",
