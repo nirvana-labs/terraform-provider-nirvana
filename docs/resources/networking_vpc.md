@@ -30,7 +30,7 @@ resource "nirvana_networking_vpc" "example_networking_vpc" {
 - `name` (String) Name of the VPC.
 - `project_id` (String) Project ID the VPC belongs to.
 - `region` (String) Region the resource is in.
-Available values: "us-sva-1", "us-sva-2", "us-chi-1".
+Available values: "us-sva-1", "us-sva-2".
 - `subnet_name` (String) Name of the subnet to create.
 
 ### Optional

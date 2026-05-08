@@ -45,7 +45,7 @@ Available values: "boot", "data".
 - `name` (String) Name of the Volume.
 - `project_id` (String) Project ID the Volume belongs to.
 - `region` (String) Region the resource is in.
-Available values: "us-sva-1", "us-sva-2", "us-chi-1".
+Available values: "us-sva-1", "us-sva-2".
 - `size` (Number) Size of the Volume in GB.
 - `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
