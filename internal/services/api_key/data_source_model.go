@@ -14,6 +14,7 @@ type APIKeyDataSourceModel struct {
 	CreatedAt    timetypes.RFC3339                                              `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
 	ExpiresAt    timetypes.RFC3339                                              `tfsdk:"expires_at" json:"expires_at,computed" format:"date-time"`
 	Key          types.String                                                   `tfsdk:"key" json:"key,computed"`
+	Managed      types.Bool                                                     `tfsdk:"managed" json:"managed,computed"`
 	Name         types.String                                                   `tfsdk:"name" json:"name,computed"`
 	StartsAt     timetypes.RFC3339                                              `tfsdk:"starts_at" json:"starts_at,computed" format:"date-time"`
 	Status       types.String                                                   `tfsdk:"status" json:"status,computed"`

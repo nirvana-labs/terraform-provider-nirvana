@@ -19,6 +19,7 @@ type APIKeyModel struct {
 	SourceIPRule *APIKeySourceIPRuleModel   `tfsdk:"source_ip_rule" json:"source_ip_rule,optional"`
 	CreatedAt    timetypes.RFC3339          `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
 	Key          types.String               `tfsdk:"key" json:"key,computed"`
+	Managed      types.Bool                 `tfsdk:"managed" json:"managed,computed"`
 	Status       types.String               `tfsdk:"status" json:"status,computed"`
 	UpdatedAt    timetypes.RFC3339          `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
 }

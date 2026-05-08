@@ -51,6 +51,7 @@ resource "nirvana_api_key" "example_api_key" {
 - `created_at` (String) When the API Key was created.
 - `id` (String) API Key ID.
 - `key` (String, Sensitive) API Key. Only returned on creation.
+- `managed` (Boolean) Whether this API key is system-managed.
 - `status` (String) Status of the API Key.
 Available values: "active", "inactive", "expired".
 - `updated_at` (String) When the API Key was updated.
@@ -63,7 +64,7 @@ Required:
 - `permission` (String) Permission level: "read" or "edit".
 Available values: "read", "edit".
 - `resource_type` (String) Resource type this permission applies to.
-Available values: "vm", "vpc", "volume", "connect_connection", "rpc_node_dedicated", "rpc_node_flex", "nks_cluster", "nks_node_pool", "project", "api_key".
+Available values: "vm", "vpc", "volume", "connect_connection", "rpc_node_dedicated", "rpc_node_flex", "nks_cluster", "nks_node_pool", "project", "api_key", "organization", "audit_log".
 
 
 <a id="nestedatt--source_ip_rule"></a>
