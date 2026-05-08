@@ -30,7 +30,7 @@ resource "nirvana_nks_cluster" "example_nks_cluster" {
 - `name` (String) Name of the Cluster.
 - `project_id` (String) Project ID to create the Cluster in.
 - `region` (String) Region the resource is in.
-Available values: "us-sva-1", "us-sva-2", "us-chi-1".
+Available values: "us-sva-1", "us-sva-2".
 - `vpc_id` (String) ID of the VPC to use for the Cluster.
 
 ### Optional
