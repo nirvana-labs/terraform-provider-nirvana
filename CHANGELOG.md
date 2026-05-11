@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.45.4 (2026-05-08)
+
+Full Changelog: [v1.45.3...v1.45.4](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.45.3...v1.45.4)
+
+### Bug Fixes
+
+* **types:** remove us-chi-1 from region enum across resources ([99a408e](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/99a408e887b86aef8794b38bcf69d957f65179c9))
+
 ## 1.45.3 (2026-05-08)
 
 Full Changelog: [v1.45.2...v1.45.3](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.45.2...v1.45.3)
