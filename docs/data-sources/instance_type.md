@@ -25,7 +25,7 @@ data "nirvana_instance_type" "example_instance_type" {
 ### Required
 
 - `name` (String)
-- `region` (String) Available values: "us-sva-1", "us-sva-2".
+- `region` (String) Available values: "us-sva-2".
 
 ### Read-Only
 

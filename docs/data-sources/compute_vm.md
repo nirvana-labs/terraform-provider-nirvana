@@ -41,7 +41,7 @@ data "nirvana_compute_vm" "example_compute_vm" {
 - `public_ip` (String) Public IP of the VM.
 - `public_ip_enabled` (Boolean) Whether the public IP is enabled for the VM.
 - `region` (String) Region the resource is in.
-Available values: "us-sva-1", "us-sva-2".
+Available values: "us-sva-2".
 - `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `subnet_id` (String) ID of the subnet the VM is in.
