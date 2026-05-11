@@ -41,6 +41,10 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 							Description: "Unique identifier for the Cluster.",
 							Computed:    true,
 						},
+						"autoscaling": schema.BoolAttribute{
+							Description: "Whether autoscaling is enabled for the Cluster.",
+							Computed:    true,
+						},
 						"created_at": schema.StringAttribute{
 							Description: "When the Cluster was created.",
 							Computed:    true,
