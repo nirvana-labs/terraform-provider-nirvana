@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.47.0 (2026-05-11)
+
+Full Changelog: [v1.46.0...v1.47.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.46.0...v1.47.0)
+
+### Features
+
+* **api:** add autoscaling field to nks_cluster ([ef368e5](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/ef368e513211f904a968209573acc000200daed4))
+
 ## 1.46.0 (2026-05-11)
 
 Full Changelog: [v1.45.4...v1.46.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.45.4...v1.46.0)
