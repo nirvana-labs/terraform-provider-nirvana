@@ -21,10 +21,10 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Required: true,
 			},
 			"region": schema.StringAttribute{
-				Description: `Available values: "us-sva-1", "us-sva-2".`,
+				Description: `Available values: "us-sva-2".`,
 				Required:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOfCaseInsensitive("us-sva-1", "us-sva-2"),
+					stringvalidator.OneOfCaseInsensitive("us-sva-2"),
 				},
 			},
 			"chipset": schema.StringAttribute{

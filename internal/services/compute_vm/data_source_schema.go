@@ -62,10 +62,10 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Computed:    true,
 			},
 			"region": schema.StringAttribute{
-				Description: "Region the resource is in.\nAvailable values: \"us-sva-1\", \"us-sva-2\".",
+				Description: "Region the resource is in.\nAvailable values: \"us-sva-2\".",
 				Computed:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOfCaseInsensitive("us-sva-1", "us-sva-2"),
+					stringvalidator.OneOfCaseInsensitive("us-sva-2"),
 				},
 			},
 			"status": schema.StringAttribute{

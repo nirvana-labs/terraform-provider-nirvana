@@ -32,7 +32,7 @@ resource "nirvana_compute_volume" "example_compute_volume" {
 - `name` (String) Name of the Volume.
 - `project_id` (String) Project ID the Volume belongs to.
 - `region` (String) Region the resource is in.
-Available values: "us-sva-1", "us-sva-2".
+Available values: "us-sva-2".
 - `size` (Number) Size of the Volume in GB.
 - `type` (String) Type of the Volume.
 Available values: "nvme", "abs".
