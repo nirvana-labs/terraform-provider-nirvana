@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.46.0 (2026-05-11)
+
+Full Changelog: [v1.45.4...v1.46.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.45.4...v1.46.0)
+
+### Features
+
+* **api:** add autoscaling field to region NKS response ([2af4d11](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/2af4d11623dc41a442ec48fb6fcf12efd1d3fdca))
+
 ## 1.45.4 (2026-05-08)
 
 Full Changelog: [v1.45.3...v1.45.4](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.45.3...v1.45.4)
