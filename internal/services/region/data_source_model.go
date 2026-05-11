@@ -26,7 +26,8 @@ type RegionNetworkingDataSourceModel struct {
 }
 
 type RegionNKSDataSourceModel struct {
-	Clusters types.Bool `tfsdk:"clusters" json:"clusters,computed"`
+	Autoscaling types.Bool `tfsdk:"autoscaling" json:"autoscaling,computed"`
+	Clusters    types.Bool `tfsdk:"clusters" json:"clusters,computed"`
 }
 
 type RegionStorageDataSourceModel struct {

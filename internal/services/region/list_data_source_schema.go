@@ -82,6 +82,10 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 							Computed:    true,
 							CustomType:  customfield.NewNestedObjectType[RegionsNKSDataSourceModel](ctx),
 							Attributes: map[string]schema.Attribute{
+								"autoscaling": schema.BoolAttribute{
+									Description: "Autoscaling indicates if NKS node pool autoscaling is available.",
+									Computed:    true,
+								},
 								"clusters": schema.BoolAttribute{
 									Description: "Clusters indicates if NKS managed Kubernetes clusters are available.",
 									Computed:    true,
