@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.47.1 (2026-05-11)
+
+Full Changelog: [v1.47.0...v1.47.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.47.0...v1.47.1)
+
+### Bug Fixes
+
+* **nks:** add Operation wait support to Update for NKS Cluster ([#295](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/295)) ([a9e55d2](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/a9e55d2f1d7f27896dea72b91979d5beb939afa5))
+
 ## 1.47.0 (2026-05-11)
 
 Full Changelog: [v1.46.0...v1.47.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.46.0...v1.47.0)
