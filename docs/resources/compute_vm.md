@@ -56,7 +56,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
 - `project_id` (String) Project ID to create the VM in.
 - `public_ip_enabled` (Boolean) Whether to enable public IP for the VM.
 - `region` (String) Region the resource is in.
-Available values: "us-sva-1", "us-sva-2".
+Available values: "us-sva-2".
 - `ssh_key` (Attributes) Public SSH key configuration for the VM. (see [below for nested schema](#nestedatt--ssh_key))
 - `subnet_id` (String) ID of the subnet to use for the VM.
 

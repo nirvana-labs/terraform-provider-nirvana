@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.47.2 (2026-05-11)
+
+Full Changelog: [v1.47.1...v1.47.2](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.47.1...v1.47.2)
+
+### Bug Fixes
+
+* **types:** remove us-sva-1 from region enum across compute/networking/nks resources ([8a2597c](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/8a2597c522d6edebbfd0f50509b273502ae683fc))
+
 ## 1.47.1 (2026-05-11)
 
 Full Changelog: [v1.47.0...v1.47.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.47.0...v1.47.1)
