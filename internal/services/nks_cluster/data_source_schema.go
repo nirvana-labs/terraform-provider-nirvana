@@ -27,6 +27,10 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 			"cluster_id": schema.StringAttribute{
 				Optional: true,
 			},
+			"autoscaling": schema.BoolAttribute{
+				Description: "Whether autoscaling is enabled for the Cluster.",
+				Computed:    true,
+			},
 			"created_at": schema.StringAttribute{
 				Description: "When the Cluster was created.",
 				Computed:    true,

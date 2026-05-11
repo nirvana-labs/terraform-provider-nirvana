@@ -28,6 +28,7 @@ data "nirvana_nks_cluster" "example_nks_cluster" {
 
 ### Read-Only
 
+- `autoscaling` (Boolean) Whether autoscaling is enabled for the Cluster.
 - `created_at` (String) When the Cluster was created.
 - `id` (String) The ID of this resource.
 - `name` (String) Name of the Cluster.
