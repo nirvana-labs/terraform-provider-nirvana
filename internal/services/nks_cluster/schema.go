@@ -44,6 +44,10 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Required:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
+			"autoscaling": schema.BoolAttribute{
+				Description: "Whether to enable autoscaling for the Cluster.",
+				Required:    true,
+			},
 			"name": schema.StringAttribute{
 				Description: "Name of the Cluster.",
 				Required:    true,

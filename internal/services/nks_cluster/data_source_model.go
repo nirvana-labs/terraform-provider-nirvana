@@ -13,20 +13,21 @@ import (
 )
 
 type NKSClusterDataSourceModel struct {
-	ID        types.String                        `tfsdk:"id" path:"cluster_id,computed"`
-	ClusterID types.String                        `tfsdk:"cluster_id" path:"cluster_id,optional"`
-	CreatedAt timetypes.RFC3339                   `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
-	Name      types.String                        `tfsdk:"name" json:"name,computed"`
-	PrivateIP types.String                        `tfsdk:"private_ip" json:"private_ip,computed"`
-	ProjectID types.String                        `tfsdk:"project_id" json:"project_id,computed"`
-	PublicIP  types.String                        `tfsdk:"public_ip" json:"public_ip,computed"`
-	Region    types.String                        `tfsdk:"region" json:"region,computed"`
-	Status    types.String                        `tfsdk:"status" json:"status,computed"`
-	UpdatedAt timetypes.RFC3339                   `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
-	VPCID     types.String                        `tfsdk:"vpc_id" json:"vpc_id,computed"`
-	PoolIDs   customfield.List[types.String]      `tfsdk:"pool_ids" json:"pool_ids,computed"`
-	Tags      customfield.List[types.String]      `tfsdk:"tags" json:"tags,computed"`
-	FindOneBy *NKSClusterFindOneByDataSourceModel `tfsdk:"find_one_by"`
+	ID          types.String                        `tfsdk:"id" path:"cluster_id,computed"`
+	ClusterID   types.String                        `tfsdk:"cluster_id" path:"cluster_id,optional"`
+	Autoscaling types.Bool                          `tfsdk:"autoscaling" json:"autoscaling,computed"`
+	CreatedAt   timetypes.RFC3339                   `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
+	Name        types.String                        `tfsdk:"name" json:"name,computed"`
+	PrivateIP   types.String                        `tfsdk:"private_ip" json:"private_ip,computed"`
+	ProjectID   types.String                        `tfsdk:"project_id" json:"project_id,computed"`
+	PublicIP    types.String                        `tfsdk:"public_ip" json:"public_ip,computed"`
+	Region      types.String                        `tfsdk:"region" json:"region,computed"`
+	Status      types.String                        `tfsdk:"status" json:"status,computed"`
+	UpdatedAt   timetypes.RFC3339                   `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
+	VPCID       types.String                        `tfsdk:"vpc_id" json:"vpc_id,computed"`
+	PoolIDs     customfield.List[types.String]      `tfsdk:"pool_ids" json:"pool_ids,computed"`
+	Tags        customfield.List[types.String]      `tfsdk:"tags" json:"tags,computed"`
+	FindOneBy   *NKSClusterFindOneByDataSourceModel `tfsdk:"find_one_by"`
 }
 
 func (m *NKSClusterDataSourceModel) toListParams(_ context.Context) (params nks.ClusterListParams, diags diag.Diagnostics) {
