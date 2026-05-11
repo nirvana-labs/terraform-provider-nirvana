@@ -56,6 +56,7 @@ Read-Only:
 
 Read-Only:
 
+- `autoscaling` (Boolean) Autoscaling indicates if NKS node pool autoscaling is available.
 - `clusters` (Boolean) Clusters indicates if NKS managed Kubernetes clusters are available.
 
 
