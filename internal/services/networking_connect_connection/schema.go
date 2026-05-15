@@ -27,7 +27,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			"id": schema.StringAttribute{
 				Description:   "Unique identifier for the Operation.",
 				Computed:      true,
-				PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
+				PlanModifiers: []planmodifier.String{stringplanmodifier.UseNonNullStateForUnknown()},
 			},
 			"bandwidth_mbps": schema.Int64Attribute{
 				Description: "Connect Connection speed in Mbps\nAvailable values: 50, 200, 500, 1000, 2000.",
