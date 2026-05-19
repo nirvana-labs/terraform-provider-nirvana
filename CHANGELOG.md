@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.47.3 (2026-05-19)
+
+Full Changelog: [v1.47.2...v1.47.3](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.47.2...v1.47.3)
+
+### Chores
+
+* **internal:** codegen related update ([c561b4a](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/c561b4ae77d096bbcef090f8117dabeaf2873a00))
+* **internal:** codegen related update ([5fe3e60](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/5fe3e602c6571a189b846c61575d5cb4d77c0f6b))
+* **internal:** codegen related update ([94af2a2](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/94af2a2e9a58bb84e18048d45b5262cd70b13a72))
+* update terraform-plugin-framework to v1.19.0 ([9f26c4b](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/9f26c4b4f80aad89917f184e8c92cb62e48bae01))
+
 ## 1.47.2 (2026-05-11)
 
 Full Changelog: [v1.47.1...v1.47.2](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.47.1...v1.47.2)
