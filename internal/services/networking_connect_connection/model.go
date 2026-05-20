@@ -6,25 +6,27 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework-timetypes/timetypes"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/apijson"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
 type NetworkingConnectConnectionModel struct {
-	ID               types.String                         `tfsdk:"id" json:"id,computed"`
-	BandwidthMbps    types.Int64                          `tfsdk:"bandwidth_mbps" json:"bandwidth_mbps,required"`
-	ProjectID        types.String                         `tfsdk:"project_id" json:"project_id,required"`
-	Region           types.String                         `tfsdk:"region" json:"region,required"`
-	CIDRs            *[]types.String                      `tfsdk:"cidrs" json:"cidrs,required"`
-	ProviderCIDRs    *[]types.String                      `tfsdk:"provider_cidrs" json:"provider_cidrs,required"`
-	AWS              *NetworkingConnectConnectionAWSModel `tfsdk:"aws" json:"aws,optional"`
-	Name             types.String                         `tfsdk:"name" json:"name,required"`
-	Tags             *[]types.String                      `tfsdk:"tags" json:"tags,optional"`
-	ASN              types.Int64                          `tfsdk:"asn" json:"asn,computed"`
-	CreatedAt        timetypes.RFC3339                    `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
-	ProviderASN      types.Int64                          `tfsdk:"provider_asn" json:"provider_asn,computed"`
-	ProviderRouterIP types.String                         `tfsdk:"provider_router_ip" json:"provider_router_ip,computed"`
-	RouterIP         types.String                         `tfsdk:"router_ip" json:"router_ip,computed"`
-	Status           types.String                         `tfsdk:"status" json:"status,computed"`
-	UpdatedAt        timetypes.RFC3339                    `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
+	ID               types.String                                                      `tfsdk:"id" json:"id,computed"`
+	BandwidthMbps    types.Int64                                                       `tfsdk:"bandwidth_mbps" json:"bandwidth_mbps,required"`
+	ProjectID        types.String                                                      `tfsdk:"project_id" json:"project_id,required"`
+	Region           types.String                                                      `tfsdk:"region" json:"region,required"`
+	CIDRs            *[]types.String                                                   `tfsdk:"cidrs" json:"cidrs,required"`
+	ProviderCIDRs    *[]types.String                                                   `tfsdk:"provider_cidrs" json:"provider_cidrs,required"`
+	AWS              *NetworkingConnectConnectionAWSModel                              `tfsdk:"aws" json:"aws,optional"`
+	Name             types.String                                                      `tfsdk:"name" json:"name,required"`
+	Tags             *[]types.String                                                   `tfsdk:"tags" json:"tags,optional"`
+	ASN              types.Int64                                                       `tfsdk:"asn" json:"asn,computed"`
+	CreatedAt        timetypes.RFC3339                                                 `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
+	ProviderASN      types.Int64                                                       `tfsdk:"provider_asn" json:"provider_asn,computed"`
+	ProviderRouterIP types.String                                                      `tfsdk:"provider_router_ip" json:"provider_router_ip,computed"`
+	RouterIP         types.String                                                      `tfsdk:"router_ip" json:"router_ip,computed"`
+	Status           types.String                                                      `tfsdk:"status" json:"status,computed"`
+	UpdatedAt        timetypes.RFC3339                                                 `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
+	Details          customfield.NestedObject[NetworkingConnectConnectionDetailsModel] `tfsdk:"details" json:"details,computed,no_refresh"`
 }
 
 func (m NetworkingConnectConnectionModel) MarshalJSON() (data []byte, err error) {
@@ -38,4 +40,13 @@ func (m NetworkingConnectConnectionModel) MarshalJSONForUpdate(state NetworkingC
 type NetworkingConnectConnectionAWSModel struct {
 	AccountID types.String `tfsdk:"account_id" json:"account_id,required,no_refresh"`
 	Region    types.String `tfsdk:"region" json:"region,required"`
+}
+
+type NetworkingConnectConnectionDetailsModel struct {
+	Changes customfield.NestedObjectMap[NetworkingConnectConnectionDetailsChangesModel] `tfsdk:"changes" json:"changes,computed"`
+}
+
+type NetworkingConnectConnectionDetailsChangesModel struct {
+	From types.String `tfsdk:"from" json:"from,computed"`
+	To   types.String `tfsdk:"to" json:"to,computed"`
 }

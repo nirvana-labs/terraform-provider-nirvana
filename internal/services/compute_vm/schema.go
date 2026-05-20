@@ -209,6 +209,30 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				CustomType:  customfield.NewListType[types.String](ctx),
 				ElementType: types.StringType,
 			},
+			"details": schema.SingleNestedAttribute{
+				Description: "Structured details about what an operation is changing.",
+				Computed:    true,
+				CustomType:  customfield.NewNestedObjectType[ComputeVMDetailsModel](ctx),
+				Attributes: map[string]schema.Attribute{
+					"changes": schema.MapNestedAttribute{
+						Description: "Map of changed field names to their from/to diffs. Keys depend on the parent operation's kind+type.",
+						Computed:    true,
+						CustomType:  customfield.NewNestedObjectMapType[ComputeVMDetailsChangesModel](ctx),
+						NestedObject: schema.NestedAttributeObject{
+							Attributes: map[string]schema.Attribute{
+								"from": schema.StringAttribute{
+									Description: "Previous value.",
+									Computed:    true,
+								},
+								"to": schema.StringAttribute{
+									Description: "New value.",
+									Computed:    true,
+								},
+							},
+						},
+					},
+				},
+			},
 		},
 	}
 }
