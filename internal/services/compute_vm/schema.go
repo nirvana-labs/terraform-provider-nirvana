@@ -115,6 +115,10 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				},
 				PlanModifiers: []planmodifier.List{listplanmodifier.RequiresReplace()},
 			},
+			"instance_type": schema.StringAttribute{
+				Description: "Instance type name.",
+				Required:    true,
+			},
 			"name": schema.StringAttribute{
 				Description: "Name of the VM.",
 				Required:    true,
@@ -123,40 +127,10 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Description: "Whether to enable public IP for the VM.",
 				Required:    true,
 			},
-			"instance_type": schema.StringAttribute{
-				Description: "Instance type name.",
-				Optional:    true,
-			},
 			"tags": schema.ListAttribute{
 				Description: "Tags to attach to the VM.",
 				Optional:    true,
 				ElementType: types.StringType,
-			},
-			"cpu_config": schema.SingleNestedAttribute{
-				Description: "CPU configuration for the VM.",
-				Optional:    true,
-				Attributes: map[string]schema.Attribute{
-					"vcpu": schema.Int64Attribute{
-						Description: "Number of virtual CPUs.",
-						Optional:    true,
-						Validators: []validator.Int64{
-							int64validator.Between(1, 192),
-						},
-					},
-				},
-			},
-			"memory_config": schema.SingleNestedAttribute{
-				Description: "Memory configuration for the VM.",
-				Optional:    true,
-				Attributes: map[string]schema.Attribute{
-					"size": schema.Int64Attribute{
-						Description: "Size of the memory in GB.",
-						Optional:    true,
-						Validators: []validator.Int64{
-							int64validator.Between(1, 768),
-						},
-					},
-				},
 			},
 			"boot_volume_id": schema.StringAttribute{
 				Description: "ID of the boot volume attached to the VM.",
@@ -208,6 +182,34 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Computed:    true,
 				CustomType:  customfield.NewListType[types.String](ctx),
 				ElementType: types.StringType,
+			},
+			"cpu_config": schema.SingleNestedAttribute{
+				Description: "CPU configuration for the VM.",
+				Computed:    true,
+				CustomType:  customfield.NewNestedObjectType[ComputeVMCPUConfigModel](ctx),
+				Attributes: map[string]schema.Attribute{
+					"vcpu": schema.Int64Attribute{
+						Description: "Number of virtual CPUs.",
+						Computed:    true,
+						Validators: []validator.Int64{
+							int64validator.Between(1, 192),
+						},
+					},
+				},
+			},
+			"memory_config": schema.SingleNestedAttribute{
+				Description: "Memory configuration for the VM.",
+				Computed:    true,
+				CustomType:  customfield.NewNestedObjectType[ComputeVMMemoryConfigModel](ctx),
+				Attributes: map[string]schema.Attribute{
+					"size": schema.Int64Attribute{
+						Description: "Size of the memory in GB.",
+						Computed:    true,
+						Validators: []validator.Int64{
+							int64validator.Between(1, 768),
+						},
+					},
+				},
 			},
 		},
 	}

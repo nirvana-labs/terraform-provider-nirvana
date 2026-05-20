@@ -4,6 +4,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
     type = "abs"
     tags = ["production", "ethereum"]
   }
+  instance_type = "n1-standard-8"
   name = "my-vm"
   os_image_name = "ubuntu-noble-2025-10-01"
   project_id = "123e4567-e89b-12d3-a456-426614174000"
@@ -13,18 +14,11 @@ resource "nirvana_compute_vm" "example_compute_vm" {
     public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDBIASkmwNiLcdlW6927Zjt1Hf7Kw/PpEZ4Zm+wU9wn2"
   }
   subnet_id = "123e4567-e89b-12d3-a456-426614174000"
-  cpu_config = {
-    vcpu = 2
-  }
   data_volumes = [{
     name = "my-data-volume"
     size = 100
     type = "abs"
     tags = ["production", "ethereum"]
   }]
-  instance_type = "n1-standard-8"
-  memory_config = {
-    size = 2
-  }
   tags = ["production", "ethereum"]
 }
