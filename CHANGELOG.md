@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.48.0 (2026-05-20)
+
+Full Changelog: [v1.47.3...v1.48.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.47.3...v1.48.0)
+
+### Features
+
+* **api:** add details field to compute/networking/nks resources ([2ef1a36](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/2ef1a36757a50f3ad6b0e08a8acebfaa21dada70))
+
+
+### Bug Fixes
+
+* **types:** make instance_type required, cpu_config/memory_config computed in compute_vm ([55bf643](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/55bf643f866d050085d91b83d34d3fe9cd06d434))
+
 ## 1.47.3 (2026-05-19)
 
 Full Changelog: [v1.47.2...v1.47.3](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.47.2...v1.47.3)
