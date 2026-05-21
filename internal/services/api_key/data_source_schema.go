@@ -95,7 +95,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 							},
 						},
 						"resource_type": schema.StringAttribute{
-							Description: "Resource type this permission applies to.\nAvailable values: \"vm\", \"vpc\", \"volume\", \"connect_connection\", \"rpc_node_dedicated\", \"rpc_node_flex\", \"nks_cluster\", \"nks_node_pool\", \"project\", \"api_key\", \"organization\", \"audit_log\".",
+							Description: "Resource type this permission applies to.\nAvailable values: \"vm\", \"vpc\", \"volume\", \"connect_connection\", \"rpc_node_dedicated\", \"rpc_node_flex\", \"nks_cluster\", \"nks_node_pool\", \"project\", \"api_key\", \"organization\", \"audit_log\", \"usage\".",
 							Computed:    true,
 							Validators: []validator.String{
 								stringvalidator.OneOfCaseInsensitive(
@@ -111,6 +111,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 									"api_key",
 									"organization",
 									"audit_log",
+									"usage",
 								),
 							},
 						},
