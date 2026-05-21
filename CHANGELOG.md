@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.49.0 (2026-05-21)
+
+Full Changelog: [v1.48.0...v1.49.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.48.0...v1.49.0)
+
+### Features
+
+* **api:** add usage resource type to api_key permissions ([20e5815](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/20e581564f6080c21fad6d558919c4ab2beb937e))
+
 ## 1.48.0 (2026-05-20)
 
 Full Changelog: [v1.47.3...v1.48.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.47.3...v1.48.0)
