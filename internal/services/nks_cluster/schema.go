@@ -26,6 +26,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Computed:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.UseNonNullStateForUnknown()},
 			},
+			"kubernetes_version": schema.StringAttribute{
+				Description:   "Kubernetes version for the Cluster.",
+				Required:      true,
+				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
+			},
 			"project_id": schema.StringAttribute{
 				Description:   "Project ID to create the Cluster in.",
 				Required:      true,
