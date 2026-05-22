@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.50.0 (2026-05-22)
+
+Full Changelog: [v1.49.0...v1.50.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.49.0...v1.50.0)
+
+### Features
+
+* **api:** add kubernetes_version parameter to nks_cluster ([aa29dcf](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/aa29dcf5c655f1389283c990d952e4e7b0b72792))
+* **api:** manual updates ([e2f81c0](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/e2f81c0e66d575bd99921de3f66557986ffeb692))
+
+
+### Chores
+
+* **internal:** regenerate SDK with no functional changes ([3f310ba](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/3f310ba58c429b59df0d889059a6d3159457c905))
+
 ## 1.49.0 (2026-05-21)
 
 Full Changelog: [v1.48.0...v1.49.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.48.0...v1.49.0)
