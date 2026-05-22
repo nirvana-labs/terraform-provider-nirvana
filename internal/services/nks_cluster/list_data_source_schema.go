@@ -50,6 +50,10 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 							Computed:    true,
 							CustomType:  timetypes.RFC3339Type{},
 						},
+						"kubernetes_version": schema.StringAttribute{
+							Description: "Kubernetes version of the Cluster.",
+							Computed:    true,
+						},
 						"name": schema.StringAttribute{
 							Description: "Name of the Cluster.",
 							Computed:    true,
