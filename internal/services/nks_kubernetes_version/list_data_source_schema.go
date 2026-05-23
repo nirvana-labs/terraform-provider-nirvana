@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-package nks_cluster_kubernetes_version
+package nks_kubernetes_version
 
 import (
 	"context"
@@ -13,7 +13,7 @@ import (
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
-var _ datasource.DataSourceWithConfigValidators = (*NKSClusterKubernetesVersionsDataSource)(nil)
+var _ datasource.DataSourceWithConfigValidators = (*NKSKubernetesVersionsDataSource)(nil)
 
 func ListDataSourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
@@ -28,7 +28,7 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 			"items": schema.ListNestedAttribute{
 				Description: "The items returned by the data source",
 				Computed:    true,
-				CustomType:  customfield.NewNestedObjectListType[NKSClusterKubernetesVersionsItemsDataSourceModel](ctx),
+				CustomType:  customfield.NewNestedObjectListType[NKSKubernetesVersionsItemsDataSourceModel](ctx),
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"created_at": schema.StringAttribute{
@@ -51,10 +51,10 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 	}
 }
 
-func (d *NKSClusterKubernetesVersionsDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
+func (d *NKSKubernetesVersionsDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = ListDataSourceSchema(ctx)
 }
 
-func (d *NKSClusterKubernetesVersionsDataSource) ConfigValidators(_ context.Context) []datasource.ConfigValidator {
+func (d *NKSKubernetesVersionsDataSource) ConfigValidators(_ context.Context) []datasource.ConfigValidator {
 	return []datasource.ConfigValidator{}
 }
