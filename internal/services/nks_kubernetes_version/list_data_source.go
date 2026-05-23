@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-package nks_cluster_kubernetes_version
+package nks_kubernetes_version
 
 import (
 	"context"
@@ -13,21 +13,21 @@ import (
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
-type NKSClusterKubernetesVersionsDataSource struct {
+type NKSKubernetesVersionsDataSource struct {
 	client *nirvana.Client
 }
 
-var _ datasource.DataSourceWithConfigure = (*NKSClusterKubernetesVersionsDataSource)(nil)
+var _ datasource.DataSourceWithConfigure = (*NKSKubernetesVersionsDataSource)(nil)
 
-func NewNKSClusterKubernetesVersionsDataSource() datasource.DataSource {
-	return &NKSClusterKubernetesVersionsDataSource{}
+func NewNKSKubernetesVersionsDataSource() datasource.DataSource {
+	return &NKSKubernetesVersionsDataSource{}
 }
 
-func (d *NKSClusterKubernetesVersionsDataSource) Metadata(ctx context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
-	resp.TypeName = req.ProviderTypeName + "_nks_cluster_kubernetes_versions"
+func (d *NKSKubernetesVersionsDataSource) Metadata(ctx context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
+	resp.TypeName = req.ProviderTypeName + "_nks_kubernetes_versions"
 }
 
-func (d *NKSClusterKubernetesVersionsDataSource) Configure(ctx context.Context, req datasource.ConfigureRequest, resp *datasource.ConfigureResponse) {
+func (d *NKSKubernetesVersionsDataSource) Configure(ctx context.Context, req datasource.ConfigureRequest, resp *datasource.ConfigureResponse) {
 	if req.ProviderData == nil {
 		return
 	}
@@ -46,8 +46,8 @@ func (d *NKSClusterKubernetesVersionsDataSource) Configure(ctx context.Context, 
 	d.client = client
 }
 
-func (d *NKSClusterKubernetesVersionsDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
-	var data *NKSClusterKubernetesVersionsDataSourceModel
+func (d *NKSKubernetesVersionsDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
+	var data *NKSKubernetesVersionsDataSourceModel
 
 	resp.Diagnostics.Append(req.Config.Get(ctx, &data)...)
 
@@ -61,13 +61,13 @@ func (d *NKSClusterKubernetesVersionsDataSource) Read(ctx context.Context, req d
 		return
 	}
 
-	env := NKSClusterKubernetesVersionsItemsListDataSourceEnvelope{}
+	env := NKSKubernetesVersionsItemsListDataSourceEnvelope{}
 	maxItems := int(data.MaxItems.ValueInt64())
 	acc := []attr.Value{}
 	if maxItems <= 0 {
 		maxItems = 1000
 	}
-	page, err := d.client.NKS.Clusters.KubernetesVersions.List(ctx, params)
+	page, err := d.client.NKS.KubernetesVersions.List(ctx, params)
 	if err != nil {
 		resp.Diagnostics.AddError("failed to make http request", err.Error())
 		return
@@ -92,7 +92,7 @@ func (d *NKSClusterKubernetesVersionsDataSource) Read(ctx context.Context, req d
 	}
 
 	acc = acc[:min(len(acc), maxItems)]
-	result, diags := customfield.NewObjectListFromAttributes[NKSClusterKubernetesVersionsItemsDataSourceModel](ctx, acc)
+	result, diags := customfield.NewObjectListFromAttributes[NKSKubernetesVersionsItemsDataSourceModel](ctx, acc)
 	resp.Diagnostics.Append(diags...)
 	data.Items = result
 

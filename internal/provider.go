@@ -24,7 +24,7 @@ import (
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_vpc"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/nks_cluster"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/nks_cluster_kubeconfig"
-	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/nks_cluster_kubernetes_version"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/nks_kubernetes_version"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/nks_node_pool"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/project"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/region"
@@ -147,9 +147,9 @@ func (p *NirvanaProvider) DataSources(ctx context.Context) []func() datasource.D
 		networking_connect_connection.NewNetworkingConnectConnectionsDataSource,
 		rpc_node_flex.NewRPCNodeFlexDataSource,
 		rpc_node_flex.NewRPCNodeFlexesDataSource,
+		nks_kubernetes_version.NewNKSKubernetesVersionsDataSource,
 		nks_cluster.NewNKSClusterDataSource,
 		nks_cluster.NewNKSClustersDataSource,
-		nks_cluster_kubernetes_version.NewNKSClusterKubernetesVersionsDataSource,
 		nks_cluster_kubeconfig.NewNKSClusterKubeconfigDataSource,
 		nks_node_pool.NewNKSNodePoolDataSource,
 		nks_node_pool.NewNKSNodePoolsDataSource,
