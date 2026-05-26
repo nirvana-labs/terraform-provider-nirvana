@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.51.1 (2026-05-26)
+
+Full Changelog: [v1.51.0...v1.51.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.51.0...v1.51.1)
+
+### Bug Fixes
+
+* manually generate docs ([#303](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/303)) ([bf12a3d](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/bf12a3de80ae155efd23d730e5127001b7354068))
+
 ## 1.51.0 (2026-05-26)
 
 Full Changelog: [v1.50.0...v1.51.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.50.0...v1.51.0)
