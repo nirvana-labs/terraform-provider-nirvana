@@ -31,6 +31,7 @@ data "nirvana_nks_cluster" "example_nks_cluster" {
 - `autoscaling` (Boolean) Whether autoscaling is enabled for the Cluster.
 - `created_at` (String) When the Cluster was created.
 - `id` (String) The ID of this resource.
+- `kubernetes_version` (String) Kubernetes version of the Cluster.
 - `name` (String) Name of the Cluster.
 - `pool_ids` (List of String) IDs of pools belonging to this Cluster.
 - `private_ip` (String) Private IP (VIP) of the Cluster.

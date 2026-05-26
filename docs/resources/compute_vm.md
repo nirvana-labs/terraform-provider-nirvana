@@ -19,6 +19,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
     type = "abs"
     tags = ["production", "ethereum"]
   }
+  instance_type = "n1-standard-8"
   name = "my-vm"
   os_image_name = "ubuntu-noble-2025-10-01"
   project_id = "123e4567-e89b-12d3-a456-426614174000"
@@ -28,19 +29,12 @@ resource "nirvana_compute_vm" "example_compute_vm" {
     public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDBIASkmwNiLcdlW6927Zjt1Hf7Kw/PpEZ4Zm+wU9wn2"
   }
   subnet_id = "123e4567-e89b-12d3-a456-426614174000"
-  cpu_config = {
-    vcpu = 2
-  }
   data_volumes = [{
     name = "my-data-volume"
     size = 100
     type = "abs"
     tags = ["production", "ethereum"]
   }]
-  instance_type = "n1-standard-8"
-  memory_config = {
-    size = 2
-  }
   tags = ["production", "ethereum"]
 }
 ```
@@ -51,6 +45,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
 ### Required
 
 - `boot_volume` (Attributes) Boot volume for the VM. (see [below for nested schema](#nestedatt--boot_volume))
+- `instance_type` (String) Instance type name.
 - `name` (String) Name of the VM.
 - `os_image_name` (String) Name of the OS Image to use for the VM.
 - `project_id` (String) Project ID to create the VM in.
@@ -62,18 +57,17 @@ Available values: "us-sva-2".
 
 ### Optional
 
-- `cpu_config` (Attributes) CPU configuration for the VM. (see [below for nested schema](#nestedatt--cpu_config))
 - `data_volumes` (Attributes List) Data volumes for the VM. (see [below for nested schema](#nestedatt--data_volumes))
-- `instance_type` (String) Instance type name.
-- `memory_config` (Attributes) Memory configuration for the VM. (see [below for nested schema](#nestedatt--memory_config))
 - `tags` (List of String) Tags to attach to the VM.
 
 ### Read-Only
 
 - `boot_volume_id` (String) ID of the boot volume attached to the VM.
+- `cpu_config` (Attributes) CPU configuration for the VM. (see [below for nested schema](#nestedatt--cpu_config))
 - `created_at` (String) When the VM was created.
 - `data_volume_ids` (List of String) IDs of the data volumes attached to the VM.
 - `id` (String) Unique identifier for the Operation.
+- `memory_config` (Attributes) Memory configuration for the VM. (see [below for nested schema](#nestedatt--memory_config))
 - `private_ip` (String) Private IP of the VM.
 - `public_ip` (String) Public IP of the VM.
 - `status` (String) Status of the resource.
@@ -104,14 +98,6 @@ Required:
 - `public_key` (String) Public key to and use to access the VM.
 
 
-<a id="nestedatt--cpu_config"></a>
-### Nested Schema for `cpu_config`
-
-Optional:
-
-- `vcpu` (Number) Number of virtual CPUs.
-
-
 <a id="nestedatt--data_volumes"></a>
 ### Nested Schema for `data_volumes`
 
@@ -127,10 +113,18 @@ Optional:
 - `tags` (List of String) Tags to attach to the Volume.
 
 
+<a id="nestedatt--cpu_config"></a>
+### Nested Schema for `cpu_config`
+
+Read-Only:
+
+- `vcpu` (Number) Number of virtual CPUs.
+
+
 <a id="nestedatt--memory_config"></a>
 ### Nested Schema for `memory_config`
 
-Optional:
+Read-Only:
 
 - `size` (Number) Size of the memory in GB.
 
