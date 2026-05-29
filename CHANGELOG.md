@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.51.3 (2026-05-29)
+
+Full Changelog: [v1.51.2...v1.51.3](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.51.2...v1.51.3)
+
+### Bug Fixes
+
+* **scripts:** export GOPRIVATE and use `go mod tidy -e` in scripts/generate-docs ([c9bbffe](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/c9bbffefd91c6d69188a1ad56c0eb7addbe3b84f))
+
 ## 1.51.2 (2026-05-28)
 
 Full Changelog: [v1.51.1...v1.51.2](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.51.1...v1.51.2)
