@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.52.0 (2026-06-01)
+
+Full Changelog: [v1.51.4...v1.52.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.51.4...v1.52.0)
+
+### Features
+
+* **api:** remove rpc_node_flex resource and data sources ([f987485](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/f9874854364a5f7de6b42df339e407bcef9584c2))
+
 ## 1.51.4 (2026-05-30)
 
 Full Changelog: [v1.51.3...v1.51.4](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.51.3...v1.51.4)
