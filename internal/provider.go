@@ -28,7 +28,6 @@ import (
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/nks_node_pool"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/project"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/region"
-	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/rpc_node_flex"
 )
 
 var _ provider.ProviderWithConfigValidators = (*NirvanaProvider)(nil)
@@ -118,7 +117,6 @@ func (p *NirvanaProvider) Resources(ctx context.Context) []func() resource.Resou
 		networking_vpc.NewResource,
 		networking_firewall_rule.NewResource,
 		networking_connect_connection.NewResource,
-		rpc_node_flex.NewResource,
 		nks_cluster.NewResource,
 		nks_node_pool.NewResource,
 	}
@@ -145,8 +143,6 @@ func (p *NirvanaProvider) DataSources(ctx context.Context) []func() datasource.D
 		networking_firewall_rule.NewNetworkingFirewallRulesDataSource,
 		networking_connect_connection.NewNetworkingConnectConnectionDataSource,
 		networking_connect_connection.NewNetworkingConnectConnectionsDataSource,
-		rpc_node_flex.NewRPCNodeFlexDataSource,
-		rpc_node_flex.NewRPCNodeFlexesDataSource,
 		nks_kubernetes_version.NewNKSKubernetesVersionsDataSource,
 		nks_cluster.NewNKSClusterDataSource,
 		nks_cluster.NewNKSClustersDataSource,
