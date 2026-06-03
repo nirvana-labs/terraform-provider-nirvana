@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.52.1 (2026-06-03)
+
+Full Changelog: [v1.52.0...v1.52.1](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.52.0...v1.52.1)
+
+### Chores
+
+* **internal:** regenerate SDK with no functional changes ([dfa8d71](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/dfa8d714b9363388dd3d25eb4fa512f623b8ca00))
+
 ## 1.52.0 (2026-06-01)
 
 Full Changelog: [v1.51.4...v1.52.0](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.51.4...v1.52.0)
