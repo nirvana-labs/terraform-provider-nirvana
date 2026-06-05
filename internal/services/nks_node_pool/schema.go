@@ -74,6 +74,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						Optional:    true,
 						ElementType: types.StringType,
 					},
+					"taints": schema.ListAttribute{
+						Description: "Kubernetes taints to apply to each node in the pool at creation time.\nEach entry is \"key=value:Effect\" where Effect is NoSchedule, PreferNoSchedule, or NoExecute.\nTaints are immutable after pool creation.",
+						Optional:    true,
+						ElementType: types.StringType,
+					},
 				},
 			},
 			"tags": schema.ListAttribute{

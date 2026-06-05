@@ -8,6 +8,7 @@ resource "nirvana_nks_node_pool" "example_nks_node_pool" {
     }
     instance_type = "n1-standard-8"
     labels = ["env=prod", "team=platform"]
+    taints = ["dedicated=gpu:NoSchedule"]
   }
   node_count = 3
   tags = ["production", "ethereum"]

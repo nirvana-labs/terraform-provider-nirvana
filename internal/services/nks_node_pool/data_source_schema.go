@@ -104,6 +104,12 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 						CustomType:  customfield.NewListType[types.String](ctx),
 						ElementType: types.StringType,
 					},
+					"taints": schema.ListAttribute{
+						Description: `Kubernetes taints applied to each node in the pool. Each entry is "key=value:Effect".`,
+						Computed:    true,
+						CustomType:  customfield.NewListType[types.String](ctx),
+						ElementType: types.StringType,
+					},
 				},
 			},
 		},

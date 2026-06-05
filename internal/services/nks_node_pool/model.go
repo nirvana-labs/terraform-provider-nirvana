@@ -33,6 +33,7 @@ type NKSNodePoolNodeConfigModel struct {
 	BootVolume   *NKSNodePoolNodeConfigBootVolumeModel `tfsdk:"boot_volume" json:"boot_volume,required"`
 	InstanceType types.String                          `tfsdk:"instance_type" json:"instance_type,required"`
 	Labels       *[]types.String                       `tfsdk:"labels" json:"labels,optional"`
+	Taints       *[]types.String                       `tfsdk:"taints" json:"taints,optional"`
 }
 
 type NKSNodePoolNodeConfigBootVolumeModel struct {
