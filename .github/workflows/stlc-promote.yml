@@ -88,11 +88,14 @@ jobs:
           # This keeps the existing docs; regenerating them at release (tfplugindocs)
           # is tracked separately (CORE-4507).
           rm -rf docs
+          # NB: release-doctor.yml is intentionally NOT restored — stlc generates
+          # it with the RELEASE_PLEASE_TOKEN check-env now that the target has
+          # publish.release, and production's older copy is missing that line
+          # (false "token not set" failures). Let the generated one through.
           for path in \
             .github/actions/setup-go/action.yml \
             .github/workflows/ci.yml \
             .github/workflows/publish-release.yml \
-            .github/workflows/release-doctor.yml \
             .goreleaser.yml \
             docs \
             scripts/bootstrap \
