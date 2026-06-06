@@ -15,33 +15,23 @@ on:
       - 'stl-preview-base/**'
 
 env:
-  GOPRIVATE: github.com/nirvana-labs/nirvana-go,github.com/nirvana-labs/nirvana-go-staging
+  GOPRIVATE: github.com/nirvana-labs/nirvana-go,github.com/stainless-sdks/nirvana-go
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    runs-on: ${{ github.repository == 'stainless-sdks/nirvana-terraform' && 'depot-ubuntu-24.04' || 'ubuntu-latest' }}
     if: github.event_name == 'push' || github.event.pull_request.head.repo.fork
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          persist-credentials: false
 
-      # The Go SDK module is a private repo, so authenticate the fetch with a
-      # fine-grained PAT (`Contents: Read` on the Go SDK repo) stored as the
-      # `GO_REPO_READ_TOKEN` secret. persist-credentials:false above keeps the
-      # checkout's repo-scoped token from shadowing this. Sealed as custom code
-      # so stlc preserves it across regenerations (mirrors nirvana-cli-staging).
-      - name: Authenticate git for the private Go SDK repo
-        shell: bash
-        env:
-          GO_MODULE_REPO: ${{ github.repository == 'nirvana-labs/terraform-provider-nirvana-staging' && 'nirvana-labs/nirvana-go-staging' || 'nirvana-labs/nirvana-go' }}
-        run: git config --global url."https://x-access-token:${{ secrets.GO_REPO_READ_TOKEN }}@github.com/${GO_MODULE_REPO}".insteadOf "https://github.com/${GO_MODULE_REPO}"
       - uses: ./.github/actions/setup-go
+        with:
+          stainless-api-key: ${{ secrets.STAINLESS_API_KEY }}
 
       - name: Link staging branch
-        if: github.repository == 'nirvana-labs/terraform-provider-nirvana-staging'
+        if: github.repository == 'stainless-sdks/nirvana-terraform'
         run: |
-          ./scripts/link 'github.com/nirvana-labs/nirvana-go-staging@${{ github.ref_name }}' || true
+          ./scripts/link 'github.com/stainless-sdks/nirvana-go@${{ github.ref_name }}' || true
 
       - name: Bootstrap
         run: ./scripts/bootstrap
@@ -50,29 +40,19 @@ jobs:
         run: ./scripts/lint
 
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ github.repository == 'stainless-sdks/nirvana-terraform' && 'depot-ubuntu-24.04' || 'ubuntu-latest' }}
     if: github.event_name == 'push' || github.event.pull_request.head.repo.fork
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          persist-credentials: false
 
-      # The Go SDK module is a private repo, so authenticate the fetch with a
-      # fine-grained PAT (`Contents: Read` on the Go SDK repo) stored as the
-      # `GO_REPO_READ_TOKEN` secret. persist-credentials:false above keeps the
-      # checkout's repo-scoped token from shadowing this. Sealed as custom code
-      # so stlc preserves it across regenerations (mirrors nirvana-cli-staging).
-      - name: Authenticate git for the private Go SDK repo
-        shell: bash
-        env:
-          GO_MODULE_REPO: ${{ github.repository == 'nirvana-labs/terraform-provider-nirvana-staging' && 'nirvana-labs/nirvana-go-staging' || 'nirvana-labs/nirvana-go' }}
-        run: git config --global url."https://x-access-token:${{ secrets.GO_REPO_READ_TOKEN }}@github.com/${GO_MODULE_REPO}".insteadOf "https://github.com/${GO_MODULE_REPO}"
       - uses: ./.github/actions/setup-go
+        with:
+          stainless-api-key: ${{ secrets.STAINLESS_API_KEY }}
 
       - name: Link staging branch
-        if: github.repository == 'nirvana-labs/terraform-provider-nirvana-staging'
+        if: github.repository == 'stainless-sdks/nirvana-terraform'
         run: |
-          ./scripts/link 'github.com/nirvana-labs/nirvana-go-staging@${{ github.ref_name }}' || true
+          ./scripts/link 'github.com/stainless-sdks/nirvana-go@${{ github.ref_name }}' || true
 
       - name: Bootstrap
         run: ./scripts/bootstrap
