@@ -81,12 +81,20 @@ jobs:
           # (e.g. the private-go-staging auth in ci.yml) and staging artifact slugs
           # never reach production. release-please.yml is intentionally NOT restored
           # — the generated one must land on production to wire the release flow.
+          #
+          # docs/ is preserved from production main too: stlc strips the Terraform
+          # Registry docs to a docs/.keep on staging (they're not generated in CI),
+          # so without this the release would blank the published provider's docs.
+          # This keeps the existing docs; regenerating them at release (tfplugindocs)
+          # is tracked separately (CORE-4507).
+          rm -rf docs
           for path in \
             .github/actions/setup-go/action.yml \
             .github/workflows/ci.yml \
             .github/workflows/publish-release.yml \
             .github/workflows/release-doctor.yml \
             .goreleaser.yml \
+            docs \
             scripts/bootstrap \
             scripts/build \
             scripts/format \
