@@ -3,6 +3,6 @@
 set -euo pipefail
 
 # Mark the necessary Go modules as private to avoid Go's proxy
-export GOPRIVATE="${GOPRIVATE:+$GOPRIVATE,}github.com/nirvana-labs/nirvana-go,github.com/nirvana-labs/nirvana-go-staging"
+export GOPRIVATE="${GOPRIVATE:+$GOPRIVATE,}github.com/nirvana-labs/nirvana-go,github.com/stainless-sdks/nirvana-go"
 
 go build -o terraform-provider-nirvana
