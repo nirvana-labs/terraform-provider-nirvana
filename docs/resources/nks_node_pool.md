@@ -23,6 +23,7 @@ resource "nirvana_nks_node_pool" "example_nks_node_pool" {
     }
     instance_type = "n1-standard-8"
     labels = ["env=prod", "team=platform"]
+    taints = ["dedicated=gpu:NoSchedule"]
   }
   node_count = 3
   tags = ["production", "ethereum"]
@@ -37,10 +38,10 @@ resource "nirvana_nks_node_pool" "example_nks_node_pool" {
 - `cluster_id` (String)
 - `name` (String) Name of the node pool.
 - `node_config` (Attributes) Node configuration. (see [below for nested schema](#nestedatt--node_config))
-- `node_count` (Number) Number of nodes. Must be between 1 and 100.
 
 ### Optional
 
+- `node_count` (Number) Number of nodes. Must be between 0 and 100.
 - `tags` (List of String) Tags to attach to the node pool.
 
 ### Read-Only
@@ -64,6 +65,9 @@ Optional:
 
 - `labels` (List of String) Kubernetes labels to apply to each node in the pool. Each entry is "key=value".
 Keys under kubernetes.io, k8s.io, and nirvanalabs.io prefixes are reserved.
+- `taints` (List of String) Kubernetes taints to apply to each node in the pool at creation time.
+Each entry is "key=value:Effect" where Effect is NoSchedule, PreferNoSchedule, or NoExecute.
+Taints are immutable after pool creation.
 
 <a id="nestedatt--node_config--boot_volume"></a>
 ### Nested Schema for `node_config.boot_volume`

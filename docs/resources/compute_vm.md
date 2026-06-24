@@ -21,7 +21,7 @@ resource "nirvana_compute_vm" "example_compute_vm" {
   }
   instance_type = "n1-standard-8"
   name = "my-vm"
-  os_image_name = "ubuntu-noble-2025-10-01"
+  os_image_name = "ubuntu-noble-2026-05-18"
   project_id = "123e4567-e89b-12d3-a456-426614174000"
   public_ip_enabled = true
   region = "us-sva-2"
