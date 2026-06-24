@@ -34,13 +34,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Description: "Name of the node pool.",
 				Required:    true,
 			},
-			"node_count": schema.Int64Attribute{
-				Description: "Number of nodes. Must be between 1 and 100.",
-				Required:    true,
-				Validators: []validator.Int64{
-					int64validator.Between(1, 100),
-				},
-			},
 			"node_config": schema.SingleNestedAttribute{
 				Description: "Node configuration.",
 				Required:    true,
@@ -79,6 +72,13 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						Optional:    true,
 						ElementType: types.StringType,
 					},
+				},
+			},
+			"node_count": schema.Int64Attribute{
+				Description: "Number of nodes. Must be between 0 and 100.",
+				Optional:    true,
+				Validators: []validator.Int64{
+					int64validator.Between(0, 100),
 				},
 			},
 			"tags": schema.ListAttribute{
