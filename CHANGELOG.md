@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.52.10](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.52.9...v1.52.10) (2026-07-03)
+
+
+### Chores
+
+* **release:** update SDK ([#329](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/329)) ([2a4f550](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/2a4f5501aef8df90d4e6ce3351ae6eeb001e2c4c))
+
+
+### Build System
+
+* **deps:** bump golang.org/x/net from 0.48.0 to 0.55.0 ([#328](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/328)) ([49ae9d2](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/49ae9d262cf1d0418f3cd705976cdd92d8638de0))
+
 ## [1.52.9](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.52.8...v1.52.9) (2026-06-30)
 
 
