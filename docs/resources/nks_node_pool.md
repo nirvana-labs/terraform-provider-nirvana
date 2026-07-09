@@ -59,15 +59,16 @@ Available values: "pending", "creating", "updating", "ready", "deleting", "delet
 Required:
 
 - `boot_volume` (Attributes) Boot volume configuration. (see [below for nested schema](#nestedatt--node_config--boot_volume))
-- `instance_type` (String) Instance type name used for worker nodes.
+- `instance_type` (String) Instance type name used for worker nodes. Immutable after pool creation.
 
 Optional:
 
 - `labels` (List of String) Kubernetes labels to apply to each node in the pool. Each entry is "key=value".
 Keys under kubernetes.io, k8s.io, and nirvanalabs.io prefixes are reserved.
+Immutable after pool creation.
 - `taints` (List of String) Kubernetes taints to apply to each node in the pool at creation time.
 Each entry is "key=value:Effect" where Effect is NoSchedule, PreferNoSchedule, or NoExecute.
-Taints are immutable after pool creation.
+Immutable after pool creation.
 
 <a id="nestedatt--node_config--boot_volume"></a>
 ### Nested Schema for `node_config.boot_volume`

@@ -11,8 +11,8 @@ import (
 type NKSNodePoolModel struct {
 	ID         types.String                `tfsdk:"id" json:"id,computed"`
 	ClusterID  types.String                `tfsdk:"cluster_id" path:"cluster_id,required"`
-	Name       types.String                `tfsdk:"name" json:"name,required"`
 	NodeConfig *NKSNodePoolNodeConfigModel `tfsdk:"node_config" json:"node_config,required"`
+	Name       types.String                `tfsdk:"name" json:"name,required"`
 	NodeCount  types.Int64                 `tfsdk:"node_count" json:"node_count,optional"`
 	Tags       *[]types.String             `tfsdk:"tags" json:"tags,optional"`
 	CreatedAt  timetypes.RFC3339           `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
