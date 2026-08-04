@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.52.25](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.52.24...v1.52.25) (2026-08-04)
+
+
+### Bug Fixes
+
+* raise nks_cluster operation wait timeout to 30 minutes ([#362](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/362)) ([3119ad9](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/3119ad9c99ce53301c680eb326aa1fd100a57a52))
+
+
+### Chores
+
+* **release:** update SDK ([#361](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/361)) ([fb2df6e](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/fb2df6e3fe5bf112026d818264ac7ddf600bd3db))
+
 ## [1.52.24](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.52.23...v1.52.24) (2026-07-30)
 
 
