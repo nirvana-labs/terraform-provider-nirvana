@@ -27,7 +27,11 @@ var _ resource.ResourceWithImportState = (*NKSClusterResource)(nil)
 
 func NewResource() resource.Resource {
 	return &NKSClusterResource{
-		waiter: lib.NewOperationWaiter().WithLinearBackoff(1*time.Second, 500*time.Millisecond, 10*time.Second),
+		// Cluster provisioning brings up the full controller node set and routinely
+		// exceeds the SDK's 10 minute lib.DefaultTimeout.
+		waiter: lib.NewOperationWaiter().
+			WithTimeout(30*time.Minute).
+			WithLinearBackoff(1*time.Second, 500*time.Millisecond, 10*time.Second),
 	}
 }
 
