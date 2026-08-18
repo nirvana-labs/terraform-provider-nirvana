@@ -15,6 +15,14 @@ description: |-
 ```terraform
 data "nirvana_compute_volumes" "example_compute_volumes" {
   project_id = "project_id"
+  attached = true
+  kind = "boot"
+  name = "name"
+  region = "region"
+  status = "pending"
+  tags = ["string"]
+  type = "nvme"
+  vm_id = "vm_id"
 }
 ```
 
@@ -27,7 +35,19 @@ data "nirvana_compute_volumes" "example_compute_volumes" {
 
 ### Optional
 
+- `attached` (Boolean) Filter by whether the Volume is attached to a VM. Combine with vm_id and both must hold.
+- `kind` (String) Filter by Volume kind
+Available values: "boot", "data".
 - `max_items` (Number) Max items to fetch, default: 1000
+- `name` (String) Filter by a case-insensitive substring of the Volume name
+- `region` (String) Filter by region
+- `sort` (String) Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name, status, size
+- `status` (String) Filter by Volume status
+Available values: "pending", "creating", "updating", "ready", "deleting", "error".
+- `tags` (List of String) Filter by tags. Repeat the parameter to require several tags; a Volume must carry all of them.
+- `type` (String) Filter by storage type
+Available values: "nvme", "abs".
+- `vm_id` (String) Filter by the VM the Volume is attached to
 
 ### Read-Only
 

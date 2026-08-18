@@ -9,6 +9,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go/compute"
+	"github.com/nirvana-labs/nirvana-go/packages/param"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
@@ -17,12 +18,25 @@ type ComputeVMOSImagesItemsListDataSourceEnvelope struct {
 }
 
 type ComputeVMOSImagesDataSourceModel struct {
-	MaxItems types.Int64                                                         `tfsdk:"max_items"`
-	Items    customfield.NestedObjectList[ComputeVMOSImagesItemsDataSourceModel] `tfsdk:"items"`
+	DisplayName types.String                                                        `tfsdk:"display_name" query:"display_name,optional"`
+	Name        types.String                                                        `tfsdk:"name" query:"name,optional"`
+	Sort        types.String                                                        `tfsdk:"sort" query:"sort,computed_optional"`
+	MaxItems    types.Int64                                                         `tfsdk:"max_items"`
+	Items       customfield.NestedObjectList[ComputeVMOSImagesItemsDataSourceModel] `tfsdk:"items"`
 }
 
 func (m *ComputeVMOSImagesDataSourceModel) toListParams(_ context.Context) (params compute.VMOSImageListParams, diags diag.Diagnostics) {
 	params = compute.VMOSImageListParams{}
+
+	if !m.DisplayName.IsNull() {
+		params.DisplayName = param.NewOpt(m.DisplayName.ValueString())
+	}
+	if !m.Name.IsNull() {
+		params.Name = param.NewOpt(m.Name.ValueString())
+	}
+	if !m.Sort.IsNull() {
+		params.Sort = param.NewOpt(m.Sort.ValueString())
+	}
 
 	return
 }

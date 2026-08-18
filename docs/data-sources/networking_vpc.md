@@ -48,6 +48,15 @@ Required:
 
 - `project_id` (String) Project ID of resources to request
 
+Optional:
+
+- `name` (String) Filter by a case-insensitive substring of the VPC name
+- `region` (String) Filter by region
+- `sort` (String) Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name, status
+- `status` (String) Filter by VPC status
+Available values: "pending", "creating", "updating", "ready", "deleting", "error".
+- `tags` (List of String) Filter by tags. Repeat the parameter to require several tags; a VPC must carry all of them.
+
 
 <a id="nestedatt--subnet"></a>
 ### Nested Schema for `subnet`

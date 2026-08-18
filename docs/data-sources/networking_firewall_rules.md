@@ -15,6 +15,10 @@ description: |-
 ```terraform
 data "nirvana_networking_firewall_rules" "example_networking_firewall_rules" {
   vpc_id = "vpc_id"
+  name = "name"
+  protocol = "tcp"
+  status = "pending"
+  tags = ["string"]
 }
 ```
 
@@ -28,6 +32,13 @@ data "nirvana_networking_firewall_rules" "example_networking_firewall_rules" {
 ### Optional
 
 - `max_items` (Number) Max items to fetch, default: 1000
+- `name` (String) Filter by a case-insensitive substring of the Firewall Rule name
+- `protocol` (String) Filter by protocol
+Available values: "tcp", "udp".
+- `sort` (String) Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name, status, protocol
+- `status` (String) Filter by Firewall Rule status
+Available values: "pending", "creating", "updating", "ready", "deleting", "error".
+- `tags` (List of String) Filter by tags. Repeat the parameter to require several tags; a Firewall Rule must carry all of them.
 
 ### Read-Only
 

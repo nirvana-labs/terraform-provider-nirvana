@@ -15,6 +15,13 @@ description: |-
 ```terraform
 data "nirvana_networking_connect_connections" "example_networking_connect_connections" {
   project_id = "project_id"
+  bandwidth_mbps = 50
+  name = "name"
+  networking_connect_connection_provider = "provider"
+  provider_region = "provider_region"
+  region = "region"
+  status = "pending"
+  tags = ["string"]
 }
 ```
 
@@ -27,7 +34,17 @@ data "nirvana_networking_connect_connections" "example_networking_connect_connec
 
 ### Optional
 
+- `bandwidth_mbps` (Number) Filter by provisioned bandwidth in Mbps
+Available values: 50, 200, 500, 1000, 2000.
 - `max_items` (Number) Max items to fetch, default: 1000
+- `name` (String) Filter by a case-insensitive substring of the Connect Connection name
+- `networking_connect_connection_provider` (String) Filter by provider
+- `provider_region` (String) Filter by the provider's own region
+- `region` (String) Filter by Nirvana region
+- `sort` (String) Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name, status, bandwidth_mbps
+- `status` (String) Filter by Connect Connection status
+Available values: "pending", "creating", "updating", "ready", "deleting", "error".
+- `tags` (List of String) Filter by tags. Repeat the parameter to require several tags; a Connect Connection must carry all of them.
 
 ### Read-Only
 

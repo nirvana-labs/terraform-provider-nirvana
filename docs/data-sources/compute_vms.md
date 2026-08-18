@@ -15,6 +15,13 @@ description: |-
 ```terraform
 data "nirvana_compute_vms" "example_compute_vms" {
   project_id = "project_id"
+  name = "name"
+  public_ip_enabled = true
+  region = "region"
+  status = "pending"
+  subnet_id = "subnet_id"
+  tags = ["string"]
+  vpc_id = "vpc_id"
 }
 ```
 
@@ -28,6 +35,15 @@ data "nirvana_compute_vms" "example_compute_vms" {
 ### Optional
 
 - `max_items` (Number) Max items to fetch, default: 1000
+- `name` (String) Filter by a case-insensitive substring of the VM name
+- `public_ip_enabled` (Boolean) Filter by whether a public IP is enabled
+- `region` (String) Filter by region
+- `sort` (String) Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name, status, vcpu, memory
+- `status` (String) Filter by VM status
+Available values: "pending", "creating", "updating", "ready", "deleting", "error".
+- `subnet_id` (String) Filter by the subnet the VM is attached to
+- `tags` (List of String) Filter by tags. Repeat the parameter to require several tags; a VM must carry all of them.
+- `vpc_id` (String) Filter by the VPC the VM is attached to
 
 ### Read-Only
 

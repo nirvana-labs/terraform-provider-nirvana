@@ -106,6 +106,60 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 						Description: "Project ID of resources to request",
 						Required:    true,
 					},
+					"attached": schema.BoolAttribute{
+						Description: "Filter by whether the Volume is attached to a VM. Combine with vm_id and both must hold.",
+						Optional:    true,
+					},
+					"kind": schema.StringAttribute{
+						Description: "Filter by Volume kind\nAvailable values: \"boot\", \"data\".",
+						Optional:    true,
+						Validators: []validator.String{
+							stringvalidator.OneOfCaseInsensitive("boot", "data"),
+						},
+					},
+					"name": schema.StringAttribute{
+						Description: "Filter by a case-insensitive substring of the Volume name",
+						Optional:    true,
+					},
+					"region": schema.StringAttribute{
+						Description: "Filter by region",
+						Optional:    true,
+					},
+					"sort": schema.StringAttribute{
+						Description: "Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name, status, size",
+						Computed:    true,
+						Optional:    true,
+					},
+					"status": schema.StringAttribute{
+						Description: "Filter by Volume status\nAvailable values: \"pending\", \"creating\", \"updating\", \"ready\", \"deleting\", \"error\".",
+						Optional:    true,
+						Validators: []validator.String{
+							stringvalidator.OneOfCaseInsensitive(
+								"pending",
+								"creating",
+								"updating",
+								"ready",
+								"deleting",
+								"error",
+							),
+						},
+					},
+					"tags": schema.ListAttribute{
+						Description: "Filter by tags. Repeat the parameter to require several tags; a Volume must carry all of them.",
+						Optional:    true,
+						ElementType: types.StringType,
+					},
+					"type": schema.StringAttribute{
+						Description: "Filter by storage type\nAvailable values: \"nvme\", \"abs\".",
+						Optional:    true,
+						Validators: []validator.String{
+							stringvalidator.OneOfCaseInsensitive("nvme", "abs"),
+						},
+					},
+					"vm_id": schema.StringAttribute{
+						Description: "Filter by the VM the Volume is attached to",
+						Optional:    true,
+					},
 				},
 			},
 		},

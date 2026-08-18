@@ -115,6 +115,38 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 						Description: "Project ID of resources to request",
 						Required:    true,
 					},
+					"name": schema.StringAttribute{
+						Description: "Filter by a case-insensitive substring of the VPC name",
+						Optional:    true,
+					},
+					"region": schema.StringAttribute{
+						Description: "Filter by region",
+						Optional:    true,
+					},
+					"sort": schema.StringAttribute{
+						Description: "Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name, status",
+						Computed:    true,
+						Optional:    true,
+					},
+					"status": schema.StringAttribute{
+						Description: "Filter by VPC status\nAvailable values: \"pending\", \"creating\", \"updating\", \"ready\", \"deleting\", \"error\".",
+						Optional:    true,
+						Validators: []validator.String{
+							stringvalidator.OneOfCaseInsensitive(
+								"pending",
+								"creating",
+								"updating",
+								"ready",
+								"deleting",
+								"error",
+							),
+						},
+					},
+					"tags": schema.ListAttribute{
+						Description: "Filter by tags. Repeat the parameter to require several tags; a VPC must carry all of them.",
+						Optional:    true,
+						ElementType: types.StringType,
+					},
 				},
 			},
 		},

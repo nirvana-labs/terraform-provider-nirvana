@@ -24,8 +24,12 @@ data "nirvana_networking_firewall_rule" "example_networking_firewall_rule" {
 
 ### Required
 
-- `firewall_rule_id` (String)
 - `vpc_id` (String)
+
+### Optional
+
+- `find_one_by` (Attributes) (see [below for nested schema](#nestedatt--find_one_by))
+- `firewall_rule_id` (String)
 
 ### Read-Only
 
@@ -41,3 +45,16 @@ Available values: "tcp", "udp".
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `tags` (List of String) Tags to attach to the Firewall Rule.
 - `updated_at` (String) When the Firewall Rule was updated.
+
+<a id="nestedatt--find_one_by"></a>
+### Nested Schema for `find_one_by`
+
+Optional:
+
+- `name` (String) Filter by a case-insensitive substring of the Firewall Rule name
+- `protocol` (String) Filter by protocol
+Available values: "tcp", "udp".
+- `sort` (String) Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name, status, protocol
+- `status` (String) Filter by Firewall Rule status
+Available values: "pending", "creating", "updating", "ready", "deleting", "error".
+- `tags` (List of String) Filter by tags. Repeat the parameter to require several tags; a Firewall Rule must carry all of them.

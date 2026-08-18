@@ -6,9 +6,11 @@ import (
 	"context"
 
 	"github.com/hashicorp/terraform-plugin-framework-timetypes/timetypes"
+	"github.com/hashicorp/terraform-plugin-framework-validators/datasourcevalidator"
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
@@ -23,7 +25,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Computed: true,
 			},
 			"firewall_rule_id": schema.StringAttribute{
-				Required: true,
+				Optional: true,
 			},
 			"vpc_id": schema.StringAttribute{
 				Required: true,
@@ -84,6 +86,46 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				CustomType:  customfield.NewListType[types.String](ctx),
 				ElementType: types.StringType,
 			},
+			"find_one_by": schema.SingleNestedAttribute{
+				Optional: true,
+				Attributes: map[string]schema.Attribute{
+					"name": schema.StringAttribute{
+						Description: "Filter by a case-insensitive substring of the Firewall Rule name",
+						Optional:    true,
+					},
+					"protocol": schema.StringAttribute{
+						Description: "Filter by protocol\nAvailable values: \"tcp\", \"udp\".",
+						Optional:    true,
+						Validators: []validator.String{
+							stringvalidator.OneOfCaseInsensitive("tcp", "udp"),
+						},
+					},
+					"sort": schema.StringAttribute{
+						Description: "Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name, status, protocol",
+						Computed:    true,
+						Optional:    true,
+					},
+					"status": schema.StringAttribute{
+						Description: "Filter by Firewall Rule status\nAvailable values: \"pending\", \"creating\", \"updating\", \"ready\", \"deleting\", \"error\".",
+						Optional:    true,
+						Validators: []validator.String{
+							stringvalidator.OneOfCaseInsensitive(
+								"pending",
+								"creating",
+								"updating",
+								"ready",
+								"deleting",
+								"error",
+							),
+						},
+					},
+					"tags": schema.ListAttribute{
+						Description: "Filter by tags. Repeat the parameter to require several tags; a Firewall Rule must carry all of them.",
+						Optional:    true,
+						ElementType: types.StringType,
+					},
+				},
+			},
 		},
 	}
 }
@@ -93,5 +135,7 @@ func (d *NetworkingFirewallRuleDataSource) Schema(ctx context.Context, req datas
 }
 
 func (d *NetworkingFirewallRuleDataSource) ConfigValidators(_ context.Context) []datasource.ConfigValidator {
-	return []datasource.ConfigValidator{}
+	return []datasource.ConfigValidator{
+		datasourcevalidator.ExactlyOneOf(path.MatchRoot("firewall_rule_id"), path.MatchRoot("find_one_by")),
+	}
 }

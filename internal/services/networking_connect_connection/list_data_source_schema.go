@@ -24,6 +24,59 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 				Description: "Project ID of resources to request",
 				Required:    true,
 			},
+			"bandwidth_mbps": schema.Int64Attribute{
+				Description: "Filter by provisioned bandwidth in Mbps\nAvailable values: 50, 200, 500, 1000, 2000.",
+				Optional:    true,
+				Validators: []validator.Int64{
+					int64validator.OneOf(
+						50,
+						200,
+						500,
+						1000,
+						2000,
+					),
+				},
+			},
+			"name": schema.StringAttribute{
+				Description: "Filter by a case-insensitive substring of the Connect Connection name",
+				Optional:    true,
+			},
+			"networking_connect_connection_provider": schema.StringAttribute{
+				Description: "Filter by provider",
+				Optional:    true,
+			},
+			"provider_region": schema.StringAttribute{
+				Description: "Filter by the provider's own region",
+				Optional:    true,
+			},
+			"region": schema.StringAttribute{
+				Description: "Filter by Nirvana region",
+				Optional:    true,
+			},
+			"status": schema.StringAttribute{
+				Description: "Filter by Connect Connection status\nAvailable values: \"pending\", \"creating\", \"updating\", \"ready\", \"deleting\", \"error\".",
+				Optional:    true,
+				Validators: []validator.String{
+					stringvalidator.OneOfCaseInsensitive(
+						"pending",
+						"creating",
+						"updating",
+						"ready",
+						"deleting",
+						"error",
+					),
+				},
+			},
+			"tags": schema.ListAttribute{
+				Description: "Filter by tags. Repeat the parameter to require several tags; a Connect Connection must carry all of them.",
+				Optional:    true,
+				ElementType: types.StringType,
+			},
+			"sort": schema.StringAttribute{
+				Description: "Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name, status, bandwidth_mbps",
+				Computed:    true,
+				Optional:    true,
+			},
 			"max_items": schema.Int64Attribute{
 				Description: "Max items to fetch, default: 1000",
 				Optional:    true,

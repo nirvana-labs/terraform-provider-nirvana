@@ -9,6 +9,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go/networking"
+	"github.com/nirvana-labs/nirvana-go/packages/param"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
@@ -18,12 +19,39 @@ type NetworkingFirewallRulesItemsListDataSourceEnvelope struct {
 
 type NetworkingFirewallRulesDataSourceModel struct {
 	VPCID    types.String                                                              `tfsdk:"vpc_id" path:"vpc_id,required"`
+	Name     types.String                                                              `tfsdk:"name" query:"name,optional"`
+	Protocol types.String                                                              `tfsdk:"protocol" query:"protocol,optional"`
+	Status   types.String                                                              `tfsdk:"status" query:"status,optional"`
+	Tags     *[]types.String                                                           `tfsdk:"tags" query:"tags,optional"`
+	Sort     types.String                                                              `tfsdk:"sort" query:"sort,computed_optional"`
 	MaxItems types.Int64                                                               `tfsdk:"max_items"`
 	Items    customfield.NestedObjectList[NetworkingFirewallRulesItemsDataSourceModel] `tfsdk:"items"`
 }
 
 func (m *NetworkingFirewallRulesDataSourceModel) toListParams(_ context.Context) (params networking.FirewallRuleListParams, diags diag.Diagnostics) {
-	params = networking.FirewallRuleListParams{}
+	mTags := []string{}
+	if m.Tags != nil {
+		for _, item := range *m.Tags {
+			mTags = append(mTags, item.ValueString())
+		}
+	}
+
+	params = networking.FirewallRuleListParams{
+		Tags: mTags,
+	}
+
+	if !m.Name.IsNull() {
+		params.Name = param.NewOpt(m.Name.ValueString())
+	}
+	if !m.Protocol.IsNull() {
+		params.Protocol = networking.FirewallRuleListParamsProtocol(m.Protocol.ValueString())
+	}
+	if !m.Sort.IsNull() {
+		params.Sort = param.NewOpt(m.Sort.ValueString())
+	}
+	if !m.Status.IsNull() {
+		params.Status = networking.FirewallRuleListParamsStatus(m.Status.ValueString())
+	}
 
 	return
 }

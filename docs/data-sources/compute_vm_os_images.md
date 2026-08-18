@@ -14,7 +14,8 @@ description: |-
 
 ```terraform
 data "nirvana_compute_vm_os_images" "example_compute_vm_os_images" {
-
+  display_name = "display_name"
+  name = "name"
 }
 ```
 
@@ -23,7 +24,10 @@ data "nirvana_compute_vm_os_images" "example_compute_vm_os_images" {
 
 ### Optional
 
+- `display_name` (String) Filter by a case-insensitive substring of the OS Image display name
 - `max_items` (Number) Max items to fetch, default: 1000
+- `name` (String) Filter by a case-insensitive substring of the OS Image name
+- `sort` (String) Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, name, display_name, position. An image name embeds its version, so name:asc is lexicographic rather than newest-first; position is the catalog's intended display order.
 
 ### Read-Only
 

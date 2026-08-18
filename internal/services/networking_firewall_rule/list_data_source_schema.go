@@ -23,6 +23,41 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 			"vpc_id": schema.StringAttribute{
 				Required: true,
 			},
+			"name": schema.StringAttribute{
+				Description: "Filter by a case-insensitive substring of the Firewall Rule name",
+				Optional:    true,
+			},
+			"protocol": schema.StringAttribute{
+				Description: "Filter by protocol\nAvailable values: \"tcp\", \"udp\".",
+				Optional:    true,
+				Validators: []validator.String{
+					stringvalidator.OneOfCaseInsensitive("tcp", "udp"),
+				},
+			},
+			"status": schema.StringAttribute{
+				Description: "Filter by Firewall Rule status\nAvailable values: \"pending\", \"creating\", \"updating\", \"ready\", \"deleting\", \"error\".",
+				Optional:    true,
+				Validators: []validator.String{
+					stringvalidator.OneOfCaseInsensitive(
+						"pending",
+						"creating",
+						"updating",
+						"ready",
+						"deleting",
+						"error",
+					),
+				},
+			},
+			"tags": schema.ListAttribute{
+				Description: "Filter by tags. Repeat the parameter to require several tags; a Firewall Rule must carry all of them.",
+				Optional:    true,
+				ElementType: types.StringType,
+			},
+			"sort": schema.StringAttribute{
+				Description: "Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name, status, protocol",
+				Computed:    true,
+				Optional:    true,
+			},
 			"max_items": schema.Int64Attribute{
 				Description: "Max items to fetch, default: 1000",
 				Optional:    true,
