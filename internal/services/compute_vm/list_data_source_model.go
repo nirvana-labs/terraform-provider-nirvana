@@ -9,6 +9,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go/compute"
+	"github.com/nirvana-labs/nirvana-go/packages/param"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
@@ -17,14 +18,52 @@ type ComputeVMsItemsListDataSourceEnvelope struct {
 }
 
 type ComputeVMsDataSourceModel struct {
-	ProjectID types.String                                                 `tfsdk:"project_id" query:"project_id,required"`
-	MaxItems  types.Int64                                                  `tfsdk:"max_items"`
-	Items     customfield.NestedObjectList[ComputeVMsItemsDataSourceModel] `tfsdk:"items"`
+	ProjectID       types.String                                                 `tfsdk:"project_id" query:"project_id,required"`
+	Name            types.String                                                 `tfsdk:"name" query:"name,optional"`
+	PublicIPEnabled types.Bool                                                   `tfsdk:"public_ip_enabled" query:"public_ip_enabled,optional"`
+	Region          types.String                                                 `tfsdk:"region" query:"region,optional"`
+	Status          types.String                                                 `tfsdk:"status" query:"status,optional"`
+	SubnetID        types.String                                                 `tfsdk:"subnet_id" query:"subnet_id,optional"`
+	VPCID           types.String                                                 `tfsdk:"vpc_id" query:"vpc_id,optional"`
+	Tags            *[]types.String                                              `tfsdk:"tags" query:"tags,optional"`
+	Sort            types.String                                                 `tfsdk:"sort" query:"sort,computed_optional"`
+	MaxItems        types.Int64                                                  `tfsdk:"max_items"`
+	Items           customfield.NestedObjectList[ComputeVMsItemsDataSourceModel] `tfsdk:"items"`
 }
 
 func (m *ComputeVMsDataSourceModel) toListParams(_ context.Context) (params compute.VMListParams, diags diag.Diagnostics) {
+	mTags := []string{}
+	if m.Tags != nil {
+		for _, item := range *m.Tags {
+			mTags = append(mTags, item.ValueString())
+		}
+	}
+
 	params = compute.VMListParams{
 		ProjectID: m.ProjectID.ValueString(),
+		Tags:      mTags,
+	}
+
+	if !m.Name.IsNull() {
+		params.Name = param.NewOpt(m.Name.ValueString())
+	}
+	if !m.PublicIPEnabled.IsNull() {
+		params.PublicIPEnabled = param.NewOpt(m.PublicIPEnabled.ValueBool())
+	}
+	if !m.Region.IsNull() {
+		params.Region = param.NewOpt(m.Region.ValueString())
+	}
+	if !m.Sort.IsNull() {
+		params.Sort = param.NewOpt(m.Sort.ValueString())
+	}
+	if !m.Status.IsNull() {
+		params.Status = compute.VMListParamsStatus(m.Status.ValueString())
+	}
+	if !m.SubnetID.IsNull() {
+		params.SubnetID = param.NewOpt(m.SubnetID.ValueString())
+	}
+	if !m.VPCID.IsNull() {
+		params.VPCID = param.NewOpt(m.VPCID.ValueString())
 	}
 
 	return

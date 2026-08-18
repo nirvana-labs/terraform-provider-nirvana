@@ -55,6 +55,19 @@ Required:
 
 - `project_id` (String) Project ID of resources to request
 
+Optional:
+
+- `bandwidth_mbps` (Number) Filter by provisioned bandwidth in Mbps
+Available values: 50, 200, 500, 1000, 2000.
+- `name` (String) Filter by a case-insensitive substring of the Connect Connection name
+- `networking_connect_connection_provider` (String) Filter by provider
+- `provider_region` (String) Filter by the provider's own region
+- `region` (String) Filter by Nirvana region
+- `sort` (String) Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name, status, bandwidth_mbps
+- `status` (String) Filter by Connect Connection status
+Available values: "pending", "creating", "updating", "ready", "deleting", "error".
+- `tags` (List of String) Filter by tags. Repeat the parameter to require several tags; a Connect Connection must carry all of them.
+
 
 <a id="nestedatt--aws"></a>
 ### Nested Schema for `aws`

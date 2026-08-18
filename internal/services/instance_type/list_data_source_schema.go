@@ -19,6 +19,55 @@ var _ datasource.DataSourceWithConfigValidators = (*InstanceTypesDataSource)(nil
 func ListDataSourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
+			"chipset": schema.StringAttribute{
+				Description: "Filter by chipset",
+				Optional:    true,
+			},
+			"family": schema.StringAttribute{
+				Description: "Filter by family",
+				Optional:    true,
+			},
+			"memory_gb_max": schema.Int64Attribute{
+				Description: "Only Instance Types with at most this much memory, in GB",
+				Optional:    true,
+			},
+			"memory_gb_min": schema.Int64Attribute{
+				Description: "Only Instance Types with at least this much memory, in GB",
+				Optional:    true,
+			},
+			"name": schema.StringAttribute{
+				Description: "Filter by a case-insensitive substring of the Instance Type name",
+				Optional:    true,
+			},
+			"network_bandwidth_gbps_max": schema.Float64Attribute{
+				Description: "Only Instance Types with at most this much network bandwidth, in Gbps",
+				Optional:    true,
+			},
+			"network_bandwidth_gbps_min": schema.Float64Attribute{
+				Description: "Only Instance Types with at least this much network bandwidth, in Gbps",
+				Optional:    true,
+			},
+			"region": schema.StringAttribute{
+				Description: "Filter by region",
+				Optional:    true,
+			},
+			"series": schema.StringAttribute{
+				Description: "Filter by series",
+				Optional:    true,
+			},
+			"vcpu_max": schema.Int64Attribute{
+				Description: "Only Instance Types with at most this many vCPUs",
+				Optional:    true,
+			},
+			"vcpu_min": schema.Int64Attribute{
+				Description: "Only Instance Types with at least this many vCPUs",
+				Optional:    true,
+			},
+			"sort": schema.StringAttribute{
+				Description: "Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: series, family, name, vcpu, memory_gb, network_bandwidth_gbps",
+				Computed:    true,
+				Optional:    true,
+			},
 			"max_items": schema.Int64Attribute{
 				Description: "Max items to fetch, default: 1000",
 				Optional:    true,

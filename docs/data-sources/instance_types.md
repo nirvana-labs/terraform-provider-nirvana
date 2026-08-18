@@ -14,7 +14,17 @@ description: |-
 
 ```terraform
 data "nirvana_instance_types" "example_instance_types" {
-
+  chipset = "chipset"
+  family = "family"
+  memory_gb_max = 0
+  memory_gb_min = 0
+  name = "name"
+  network_bandwidth_gbps_max = 0
+  network_bandwidth_gbps_min = 0
+  region = "region"
+  series = "series"
+  vcpu_max = 0
+  vcpu_min = 0
 }
 ```
 
@@ -23,7 +33,19 @@ data "nirvana_instance_types" "example_instance_types" {
 
 ### Optional
 
+- `chipset` (String) Filter by chipset
+- `family` (String) Filter by family
 - `max_items` (Number) Max items to fetch, default: 1000
+- `memory_gb_max` (Number) Only Instance Types with at most this much memory, in GB
+- `memory_gb_min` (Number) Only Instance Types with at least this much memory, in GB
+- `name` (String) Filter by a case-insensitive substring of the Instance Type name
+- `network_bandwidth_gbps_max` (Number) Only Instance Types with at most this much network bandwidth, in Gbps
+- `network_bandwidth_gbps_min` (Number) Only Instance Types with at least this much network bandwidth, in Gbps
+- `region` (String) Filter by region
+- `series` (String) Filter by series
+- `sort` (String) Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: series, family, name, vcpu, memory_gb, network_bandwidth_gbps
+- `vcpu_max` (Number) Only Instance Types with at most this many vCPUs
+- `vcpu_min` (Number) Only Instance Types with at least this many vCPUs
 
 ### Read-Only
 

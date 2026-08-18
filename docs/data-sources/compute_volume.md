@@ -52,3 +52,18 @@ Available values: "nvme", "abs".
 Required:
 
 - `project_id` (String) Project ID of resources to request
+
+Optional:
+
+- `attached` (Boolean) Filter by whether the Volume is attached to a VM. Combine with vm_id and both must hold.
+- `kind` (String) Filter by Volume kind
+Available values: "boot", "data".
+- `name` (String) Filter by a case-insensitive substring of the Volume name
+- `region` (String) Filter by region
+- `sort` (String) Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name, status, size
+- `status` (String) Filter by Volume status
+Available values: "pending", "creating", "updating", "ready", "deleting", "error".
+- `tags` (List of String) Filter by tags. Repeat the parameter to require several tags; a Volume must carry all of them.
+- `type` (String) Filter by storage type
+Available values: "nvme", "abs".
+- `vm_id` (String) Filter by the VM the Volume is attached to

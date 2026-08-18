@@ -9,6 +9,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go/networking"
+	"github.com/nirvana-labs/nirvana-go/packages/param"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
@@ -28,8 +29,29 @@ type NetworkingVPCDataSourceModel struct {
 }
 
 func (m *NetworkingVPCDataSourceModel) toListParams(_ context.Context) (params networking.VPCListParams, diags diag.Diagnostics) {
+	mFindOneByTags := []string{}
+	if m.FindOneBy.Tags != nil {
+		for _, item := range *m.FindOneBy.Tags {
+			mFindOneByTags = append(mFindOneByTags, item.ValueString())
+		}
+	}
+
 	params = networking.VPCListParams{
 		ProjectID: m.FindOneBy.ProjectID.ValueString(),
+		Tags:      mFindOneByTags,
+	}
+
+	if !m.FindOneBy.Name.IsNull() {
+		params.Name = param.NewOpt(m.FindOneBy.Name.ValueString())
+	}
+	if !m.FindOneBy.Region.IsNull() {
+		params.Region = param.NewOpt(m.FindOneBy.Region.ValueString())
+	}
+	if !m.FindOneBy.Sort.IsNull() {
+		params.Sort = param.NewOpt(m.FindOneBy.Sort.ValueString())
+	}
+	if !m.FindOneBy.Status.IsNull() {
+		params.Status = networking.VPCListParamsStatus(m.FindOneBy.Status.ValueString())
 	}
 
 	return
@@ -44,5 +66,10 @@ type NetworkingVPCSubnetDataSourceModel struct {
 }
 
 type NetworkingVPCFindOneByDataSourceModel struct {
-	ProjectID types.String `tfsdk:"project_id" query:"project_id,required"`
+	ProjectID types.String    `tfsdk:"project_id" query:"project_id,required"`
+	Name      types.String    `tfsdk:"name" query:"name,optional"`
+	Region    types.String    `tfsdk:"region" query:"region,optional"`
+	Sort      types.String    `tfsdk:"sort" query:"sort,computed_optional"`
+	Status    types.String    `tfsdk:"status" query:"status,optional"`
+	Tags      *[]types.String `tfsdk:"tags" query:"tags,optional"`
 }

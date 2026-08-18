@@ -15,6 +15,10 @@ description: |-
 ```terraform
 data "nirvana_networking_vpcs" "example_networking_vpcs" {
   project_id = "project_id"
+  name = "name"
+  region = "region"
+  status = "pending"
+  tags = ["string"]
 }
 ```
 
@@ -28,6 +32,12 @@ data "nirvana_networking_vpcs" "example_networking_vpcs" {
 ### Optional
 
 - `max_items` (Number) Max items to fetch, default: 1000
+- `name` (String) Filter by a case-insensitive substring of the VPC name
+- `region` (String) Filter by region
+- `sort` (String) Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name, status
+- `status` (String) Filter by VPC status
+Available values: "pending", "creating", "updating", "ready", "deleting", "error".
+- `tags` (List of String) Filter by tags. Repeat the parameter to require several tags; a VPC must carry all of them.
 
 ### Read-Only
 

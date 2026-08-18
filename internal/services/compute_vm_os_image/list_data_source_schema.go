@@ -18,6 +18,19 @@ var _ datasource.DataSourceWithConfigValidators = (*ComputeVMOSImagesDataSource)
 func ListDataSourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
+			"display_name": schema.StringAttribute{
+				Description: "Filter by a case-insensitive substring of the OS Image display name",
+				Optional:    true,
+			},
+			"name": schema.StringAttribute{
+				Description: "Filter by a case-insensitive substring of the OS Image name",
+				Optional:    true,
+			},
+			"sort": schema.StringAttribute{
+				Description: "Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, name, display_name, position. An image name embeds its version, so name:asc is lexicographic rather than newest-first; position is the catalog's intended display order.",
+				Computed:    true,
+				Optional:    true,
+			},
 			"max_items": schema.Int64Attribute{
 				Description: "Max items to fetch, default: 1000",
 				Optional:    true,

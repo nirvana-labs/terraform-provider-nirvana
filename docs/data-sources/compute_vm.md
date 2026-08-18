@@ -57,6 +57,18 @@ Required:
 
 - `project_id` (String) Project ID of resources to request
 
+Optional:
+
+- `name` (String) Filter by a case-insensitive substring of the VM name
+- `public_ip_enabled` (Boolean) Filter by whether a public IP is enabled
+- `region` (String) Filter by region
+- `sort` (String) Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name, status, vcpu, memory
+- `status` (String) Filter by VM status
+Available values: "pending", "creating", "updating", "ready", "deleting", "error".
+- `subnet_id` (String) Filter by the subnet the VM is attached to
+- `tags` (List of String) Filter by tags. Repeat the parameter to require several tags; a VM must carry all of them.
+- `vpc_id` (String) Filter by the VPC the VM is attached to
+
 
 <a id="nestedatt--cpu_config"></a>
 ### Nested Schema for `cpu_config`

@@ -24,6 +24,50 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 				Description: "Project ID of resources to request",
 				Required:    true,
 			},
+			"name": schema.StringAttribute{
+				Description: "Filter by a case-insensitive substring of the VM name",
+				Optional:    true,
+			},
+			"public_ip_enabled": schema.BoolAttribute{
+				Description: "Filter by whether a public IP is enabled",
+				Optional:    true,
+			},
+			"region": schema.StringAttribute{
+				Description: "Filter by region",
+				Optional:    true,
+			},
+			"status": schema.StringAttribute{
+				Description: "Filter by VM status\nAvailable values: \"pending\", \"creating\", \"updating\", \"ready\", \"deleting\", \"error\".",
+				Optional:    true,
+				Validators: []validator.String{
+					stringvalidator.OneOfCaseInsensitive(
+						"pending",
+						"creating",
+						"updating",
+						"ready",
+						"deleting",
+						"error",
+					),
+				},
+			},
+			"subnet_id": schema.StringAttribute{
+				Description: "Filter by the subnet the VM is attached to",
+				Optional:    true,
+			},
+			"vpc_id": schema.StringAttribute{
+				Description: "Filter by the VPC the VM is attached to",
+				Optional:    true,
+			},
+			"tags": schema.ListAttribute{
+				Description: "Filter by tags. Repeat the parameter to require several tags; a VM must carry all of them.",
+				Optional:    true,
+				ElementType: types.StringType,
+			},
+			"sort": schema.StringAttribute{
+				Description: "Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name, status, vcpu, memory",
+				Computed:    true,
+				Optional:    true,
+			},
 			"max_items": schema.Int64Attribute{
 				Description: "Max items to fetch, default: 1000",
 				Optional:    true,
