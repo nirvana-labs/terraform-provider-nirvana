@@ -6,8 +6,10 @@ import (
 	"context"
 
 	"github.com/hashicorp/terraform-plugin-framework-timetypes/timetypes"
+	"github.com/hashicorp/terraform-plugin-framework-validators/datasourcevalidator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
@@ -21,7 +23,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Computed: true,
 			},
 			"project_id": schema.StringAttribute{
-				Required: true,
+				Optional: true,
 			},
 			"created_at": schema.StringAttribute{
 				Description: "When the Project was created.",
@@ -43,6 +45,25 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				CustomType:  customfield.NewListType[types.String](ctx),
 				ElementType: types.StringType,
 			},
+			"find_one_by": schema.SingleNestedAttribute{
+				Optional: true,
+				Attributes: map[string]schema.Attribute{
+					"name": schema.StringAttribute{
+						Description: "Filter by a case-insensitive substring of the Project name",
+						Optional:    true,
+					},
+					"sort": schema.StringAttribute{
+						Description: "Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name",
+						Computed:    true,
+						Optional:    true,
+					},
+					"tags": schema.ListAttribute{
+						Description: "Filter by tags. Repeat the parameter to require several tags; a Project must carry all of them.",
+						Optional:    true,
+						ElementType: types.StringType,
+					},
+				},
+			},
 		},
 	}
 }
@@ -52,5 +73,7 @@ func (d *ProjectDataSource) Schema(ctx context.Context, req datasource.SchemaReq
 }
 
 func (d *ProjectDataSource) ConfigValidators(_ context.Context) []datasource.ConfigValidator {
-	return []datasource.ConfigValidator{}
+	return []datasource.ConfigValidator{
+		datasourcevalidator.ExactlyOneOf(path.MatchRoot("project_id"), path.MatchRoot("find_one_by")),
+	}
 }

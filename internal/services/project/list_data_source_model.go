@@ -8,6 +8,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework-timetypes/timetypes"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/nirvana-labs/nirvana-go/packages/param"
 	"github.com/nirvana-labs/nirvana-go/projects"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
@@ -17,12 +18,31 @@ type ProjectsItemsListDataSourceEnvelope struct {
 }
 
 type ProjectsDataSourceModel struct {
+	Name     types.String                                               `tfsdk:"name" query:"name,optional"`
+	Tags     *[]types.String                                            `tfsdk:"tags" query:"tags,optional"`
+	Sort     types.String                                               `tfsdk:"sort" query:"sort,computed_optional"`
 	MaxItems types.Int64                                                `tfsdk:"max_items"`
 	Items    customfield.NestedObjectList[ProjectsItemsDataSourceModel] `tfsdk:"items"`
 }
 
 func (m *ProjectsDataSourceModel) toListParams(_ context.Context) (params projects.ProjectListParams, diags diag.Diagnostics) {
-	params = projects.ProjectListParams{}
+	mTags := []string{}
+	if m.Tags != nil {
+		for _, item := range *m.Tags {
+			mTags = append(mTags, item.ValueString())
+		}
+	}
+
+	params = projects.ProjectListParams{
+		Tags: mTags,
+	}
+
+	if !m.Name.IsNull() {
+		params.Name = param.NewOpt(m.Name.ValueString())
+	}
+	if !m.Sort.IsNull() {
+		params.Sort = param.NewOpt(m.Sort.ValueString())
+	}
 
 	return
 }

@@ -20,6 +20,31 @@ var _ datasource.DataSourceWithConfigValidators = (*APIKeysDataSource)(nil)
 func ListDataSourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
+			"name": schema.StringAttribute{
+				Description: "Filter by a case-insensitive substring of the API key name",
+				Optional:    true,
+			},
+			"status": schema.StringAttribute{
+				Description: "Filter by API key status, read against the current instant\nAvailable values: \"active\", \"inactive\", \"expired\".",
+				Optional:    true,
+				Validators: []validator.String{
+					stringvalidator.OneOfCaseInsensitive(
+						"active",
+						"inactive",
+						"expired",
+					),
+				},
+			},
+			"tags": schema.ListAttribute{
+				Description: "Filter by tags. Repeat the parameter to require several tags; an API key must carry all of them.",
+				Optional:    true,
+				ElementType: types.StringType,
+			},
+			"sort": schema.StringAttribute{
+				Description: "Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name, expires_at",
+				Computed:    true,
+				Optional:    true,
+			},
 			"max_items": schema.Int64Attribute{
 				Description: "Max items to fetch, default: 1000",
 				Optional:    true,
