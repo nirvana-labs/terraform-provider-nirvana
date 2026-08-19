@@ -9,6 +9,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go/api_keys"
+	"github.com/nirvana-labs/nirvana-go/packages/param"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
@@ -17,12 +18,35 @@ type APIKeysItemsListDataSourceEnvelope struct {
 }
 
 type APIKeysDataSourceModel struct {
+	Name     types.String                                              `tfsdk:"name" query:"name,optional"`
+	Status   types.String                                              `tfsdk:"status" query:"status,optional"`
+	Tags     *[]types.String                                           `tfsdk:"tags" query:"tags,optional"`
+	Sort     types.String                                              `tfsdk:"sort" query:"sort,computed_optional"`
 	MaxItems types.Int64                                               `tfsdk:"max_items"`
 	Items    customfield.NestedObjectList[APIKeysItemsDataSourceModel] `tfsdk:"items"`
 }
 
 func (m *APIKeysDataSourceModel) toListParams(_ context.Context) (params api_keys.APIKeyListParams, diags diag.Diagnostics) {
-	params = api_keys.APIKeyListParams{}
+	mTags := []string{}
+	if m.Tags != nil {
+		for _, item := range *m.Tags {
+			mTags = append(mTags, item.ValueString())
+		}
+	}
+
+	params = api_keys.APIKeyListParams{
+		Tags: mTags,
+	}
+
+	if !m.Name.IsNull() {
+		params.Name = param.NewOpt(m.Name.ValueString())
+	}
+	if !m.Sort.IsNull() {
+		params.Sort = param.NewOpt(m.Sort.ValueString())
+	}
+	if !m.Status.IsNull() {
+		params.Status = api_keys.APIKeyListParamsStatus(m.Status.ValueString())
+	}
 
 	return
 }

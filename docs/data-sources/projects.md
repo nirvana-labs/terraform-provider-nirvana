@@ -14,7 +14,8 @@ description: |-
 
 ```terraform
 data "nirvana_projects" "example_projects" {
-
+  name = "name"
+  tags = ["string"]
 }
 ```
 
@@ -24,6 +25,9 @@ data "nirvana_projects" "example_projects" {
 ### Optional
 
 - `max_items` (Number) Max items to fetch, default: 1000
+- `name` (String) Filter by a case-insensitive substring of the Project name
+- `sort` (String) Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name
+- `tags` (List of String) Filter by tags. Repeat the parameter to require several tags; a Project must carry all of them.
 
 ### Read-Only
 

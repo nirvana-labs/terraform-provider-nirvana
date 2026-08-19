@@ -14,7 +14,9 @@ description: |-
 
 ```terraform
 data "nirvana_api_keys" "example_api_keys" {
-
+  name = "name"
+  status = "active"
+  tags = ["string"]
 }
 ```
 
@@ -24,6 +26,11 @@ data "nirvana_api_keys" "example_api_keys" {
 ### Optional
 
 - `max_items` (Number) Max items to fetch, default: 1000
+- `name` (String) Filter by a case-insensitive substring of the API key name
+- `sort` (String) Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name, expires_at
+- `status` (String) Filter by API key status, read against the current instant
+Available values: "active", "inactive", "expired".
+- `tags` (List of String) Filter by tags. Repeat the parameter to require several tags; an API key must carry all of them.
 
 ### Read-Only
 
