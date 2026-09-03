@@ -23,6 +23,46 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 			"cluster_id": schema.StringAttribute{
 				Required: true,
 			},
+			"instance_type": schema.StringAttribute{
+				Description: "Filter by the instance type the pool's nodes run",
+				Optional:    true,
+			},
+			"name": schema.StringAttribute{
+				Description: "Filter by a case-insensitive substring of the node pool name",
+				Optional:    true,
+			},
+			"node_count_max": schema.Int64Attribute{
+				Description: "Only pools with at most this many nodes",
+				Optional:    true,
+			},
+			"node_count_min": schema.Int64Attribute{
+				Description: "Only pools with at least this many nodes",
+				Optional:    true,
+			},
+			"status": schema.StringAttribute{
+				Description: "Filter by node pool status\nAvailable values: \"pending\", \"creating\", \"updating\", \"ready\", \"deleting\", \"error\".",
+				Optional:    true,
+				Validators: []validator.String{
+					stringvalidator.OneOfCaseInsensitive(
+						"pending",
+						"creating",
+						"updating",
+						"ready",
+						"deleting",
+						"error",
+					),
+				},
+			},
+			"tags": schema.ListAttribute{
+				Description: "Filter by tags. Repeat the parameter to require several tags; a node pool must carry all of them.",
+				Optional:    true,
+				ElementType: types.StringType,
+			},
+			"sort": schema.StringAttribute{
+				Description: "Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name, status, node_count",
+				Computed:    true,
+				Optional:    true,
+			},
 			"max_items": schema.Int64Attribute{
 				Description: "Max items to fetch, default: 1000",
 				Optional:    true,

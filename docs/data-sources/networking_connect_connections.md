@@ -20,7 +20,7 @@ data "nirvana_networking_connect_connections" "example_networking_connect_connec
   networking_connect_connection_provider = "provider"
   provider_region = "provider_region"
   region = "region"
-  status = "pending"
+  status = "ready"
   tags = ["string"]
 }
 ```

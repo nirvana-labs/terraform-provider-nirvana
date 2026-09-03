@@ -14,7 +14,7 @@ description: |-
 
 ```terraform
 data "nirvana_nks_kubernetes_versions" "example_nks_kubernetes_versions" {
-
+  name = "name"
 }
 ```
 
@@ -24,6 +24,8 @@ data "nirvana_nks_kubernetes_versions" "example_nks_kubernetes_versions" {
 ### Optional
 
 - `max_items` (Number) Max items to fetch, default: 1000
+- `name` (String) Filter by a case-insensitive substring of the version name, e.g. 1.34
+- `sort` (String) Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, version
 
 ### Read-Only
 

@@ -18,6 +18,51 @@ var _ datasource.DataSourceWithConfigValidators = (*RegionsDataSource)(nil)
 func ListDataSourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
+			"availability": schema.StringAttribute{
+				Description: "Filter by region availability\nAvailable values: \"live\", \"preview\", \"maintenance\", \"sunset\".",
+				Optional:    true,
+				Validators: []validator.String{
+					stringvalidator.OneOfCaseInsensitive(
+						"live",
+						"preview",
+						"maintenance",
+						"sunset",
+					),
+				},
+			},
+			"compute_vms": schema.BoolAttribute{
+				Description: "Only regions where Virtual Machines are available",
+				Optional:    true,
+			},
+			"networking_connect": schema.BoolAttribute{
+				Description: "Only regions where Nirvana Connect is available",
+				Optional:    true,
+			},
+			"networking_vpcs": schema.BoolAttribute{
+				Description: "Only regions where VPCs are available",
+				Optional:    true,
+			},
+			"nks_autoscaling": schema.BoolAttribute{
+				Description: "Only regions where NKS node pool autoscaling is available",
+				Optional:    true,
+			},
+			"nks_clusters": schema.BoolAttribute{
+				Description: "Only regions where NKS clusters are available",
+				Optional:    true,
+			},
+			"storage_abs": schema.BoolAttribute{
+				Description: "Only regions where Accelerated Block Storage is available",
+				Optional:    true,
+			},
+			"storage_local_nvme": schema.BoolAttribute{
+				Description: "Only regions where locally-attached NVMe storage is available",
+				Optional:    true,
+			},
+			"sort": schema.StringAttribute{
+				Description: "Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: longitude, name, availability",
+				Computed:    true,
+				Optional:    true,
+			},
 			"max_items": schema.Int64Attribute{
 				Description: "Max items to fetch, default: 1000",
 				Optional:    true,

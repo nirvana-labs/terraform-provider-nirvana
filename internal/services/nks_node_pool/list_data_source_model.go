@@ -9,6 +9,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/nirvana-go/nks"
+	"github.com/nirvana-labs/nirvana-go/packages/param"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
@@ -17,13 +18,48 @@ type NKSNodePoolsItemsListDataSourceEnvelope struct {
 }
 
 type NKSNodePoolsDataSourceModel struct {
-	ClusterID types.String                                                   `tfsdk:"cluster_id" path:"cluster_id,required"`
-	MaxItems  types.Int64                                                    `tfsdk:"max_items"`
-	Items     customfield.NestedObjectList[NKSNodePoolsItemsDataSourceModel] `tfsdk:"items"`
+	ClusterID    types.String                                                   `tfsdk:"cluster_id" path:"cluster_id,required"`
+	InstanceType types.String                                                   `tfsdk:"instance_type" query:"instance_type,optional"`
+	Name         types.String                                                   `tfsdk:"name" query:"name,optional"`
+	NodeCountMax types.Int64                                                    `tfsdk:"node_count_max" query:"node_count_max,optional"`
+	NodeCountMin types.Int64                                                    `tfsdk:"node_count_min" query:"node_count_min,optional"`
+	Status       types.String                                                   `tfsdk:"status" query:"status,optional"`
+	Tags         *[]types.String                                                `tfsdk:"tags" query:"tags,optional"`
+	Sort         types.String                                                   `tfsdk:"sort" query:"sort,computed_optional"`
+	MaxItems     types.Int64                                                    `tfsdk:"max_items"`
+	Items        customfield.NestedObjectList[NKSNodePoolsItemsDataSourceModel] `tfsdk:"items"`
 }
 
 func (m *NKSNodePoolsDataSourceModel) toListParams(_ context.Context) (params nks.ClusterPoolListParams, diags diag.Diagnostics) {
-	params = nks.ClusterPoolListParams{}
+	mTags := []string{}
+	if m.Tags != nil {
+		for _, item := range *m.Tags {
+			mTags = append(mTags, item.ValueString())
+		}
+	}
+
+	params = nks.ClusterPoolListParams{
+		Tags: mTags,
+	}
+
+	if !m.InstanceType.IsNull() {
+		params.InstanceType = param.NewOpt(m.InstanceType.ValueString())
+	}
+	if !m.Name.IsNull() {
+		params.Name = param.NewOpt(m.Name.ValueString())
+	}
+	if !m.NodeCountMax.IsNull() {
+		params.NodeCountMax = param.NewOpt(m.NodeCountMax.ValueInt64())
+	}
+	if !m.NodeCountMin.IsNull() {
+		params.NodeCountMin = param.NewOpt(m.NodeCountMin.ValueInt64())
+	}
+	if !m.Sort.IsNull() {
+		params.Sort = param.NewOpt(m.Sort.ValueString())
+	}
+	if !m.Status.IsNull() {
+		params.Status = nks.ClusterPoolListParamsStatus(m.Status.ValueString())
+	}
 
 	return
 }

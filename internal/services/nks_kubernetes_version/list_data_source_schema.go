@@ -18,6 +18,15 @@ var _ datasource.DataSourceWithConfigValidators = (*NKSKubernetesVersionsDataSou
 func ListDataSourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
+			"name": schema.StringAttribute{
+				Description: "Filter by a case-insensitive substring of the version name, e.g. 1.34",
+				Optional:    true,
+			},
+			"sort": schema.StringAttribute{
+				Description: "Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, version",
+				Computed:    true,
+				Optional:    true,
+			},
 			"max_items": schema.Int64Attribute{
 				Description: "Max items to fetch, default: 1000",
 				Optional:    true,

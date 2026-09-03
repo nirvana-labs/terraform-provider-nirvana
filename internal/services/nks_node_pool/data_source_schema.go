@@ -6,10 +6,12 @@ import (
 	"context"
 
 	"github.com/hashicorp/terraform-plugin-framework-timetypes/timetypes"
+	"github.com/hashicorp/terraform-plugin-framework-validators/datasourcevalidator"
 	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
@@ -24,7 +26,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Computed: true,
 			},
 			"pool_id": schema.StringAttribute{
-				Required: true,
+				Optional: true,
 			},
 			"cluster_id": schema.StringAttribute{
 				Required: true,
@@ -112,6 +114,51 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 					},
 				},
 			},
+			"find_one_by": schema.SingleNestedAttribute{
+				Optional: true,
+				Attributes: map[string]schema.Attribute{
+					"instance_type": schema.StringAttribute{
+						Description: "Filter by the instance type the pool's nodes run",
+						Optional:    true,
+					},
+					"name": schema.StringAttribute{
+						Description: "Filter by a case-insensitive substring of the node pool name",
+						Optional:    true,
+					},
+					"node_count_max": schema.Int64Attribute{
+						Description: "Only pools with at most this many nodes",
+						Optional:    true,
+					},
+					"node_count_min": schema.Int64Attribute{
+						Description: "Only pools with at least this many nodes",
+						Optional:    true,
+					},
+					"sort": schema.StringAttribute{
+						Description: "Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name, status, node_count",
+						Computed:    true,
+						Optional:    true,
+					},
+					"status": schema.StringAttribute{
+						Description: "Filter by node pool status\nAvailable values: \"pending\", \"creating\", \"updating\", \"ready\", \"deleting\", \"error\".",
+						Optional:    true,
+						Validators: []validator.String{
+							stringvalidator.OneOfCaseInsensitive(
+								"pending",
+								"creating",
+								"updating",
+								"ready",
+								"deleting",
+								"error",
+							),
+						},
+					},
+					"tags": schema.ListAttribute{
+						Description: "Filter by tags. Repeat the parameter to require several tags; a node pool must carry all of them.",
+						Optional:    true,
+						ElementType: types.StringType,
+					},
+				},
+			},
 		},
 	}
 }
@@ -121,5 +168,7 @@ func (d *NKSNodePoolDataSource) Schema(ctx context.Context, req datasource.Schem
 }
 
 func (d *NKSNodePoolDataSource) ConfigValidators(_ context.Context) []datasource.ConfigValidator {
-	return []datasource.ConfigValidator{}
+	return []datasource.ConfigValidator{
+		datasourcevalidator.ExactlyOneOf(path.MatchRoot("pool_id"), path.MatchRoot("find_one_by")),
+	}
 }

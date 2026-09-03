@@ -7,6 +7,7 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/nirvana-labs/nirvana-go/packages/param"
 	"github.com/nirvana-labs/nirvana-go/regions"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
@@ -16,12 +17,49 @@ type RegionsItemsListDataSourceEnvelope struct {
 }
 
 type RegionsDataSourceModel struct {
-	MaxItems types.Int64                                               `tfsdk:"max_items"`
-	Items    customfield.NestedObjectList[RegionsItemsDataSourceModel] `tfsdk:"items"`
+	Availability      types.String                                              `tfsdk:"availability" query:"availability,optional"`
+	ComputeVMs        types.Bool                                                `tfsdk:"compute_vms" query:"compute_vms,optional"`
+	NetworkingConnect types.Bool                                                `tfsdk:"networking_connect" query:"networking_connect,optional"`
+	NetworkingVPCs    types.Bool                                                `tfsdk:"networking_vpcs" query:"networking_vpcs,optional"`
+	NKSAutoscaling    types.Bool                                                `tfsdk:"nks_autoscaling" query:"nks_autoscaling,optional"`
+	NKSClusters       types.Bool                                                `tfsdk:"nks_clusters" query:"nks_clusters,optional"`
+	StorageABS        types.Bool                                                `tfsdk:"storage_abs" query:"storage_abs,optional"`
+	StorageLocalNvme  types.Bool                                                `tfsdk:"storage_local_nvme" query:"storage_local_nvme,optional"`
+	Sort              types.String                                              `tfsdk:"sort" query:"sort,computed_optional"`
+	MaxItems          types.Int64                                               `tfsdk:"max_items"`
+	Items             customfield.NestedObjectList[RegionsItemsDataSourceModel] `tfsdk:"items"`
 }
 
 func (m *RegionsDataSourceModel) toListParams(_ context.Context) (params regions.RegionListParams, diags diag.Diagnostics) {
 	params = regions.RegionListParams{}
+
+	if !m.Availability.IsNull() {
+		params.Availability = regions.RegionListParamsAvailability(m.Availability.ValueString())
+	}
+	if !m.ComputeVMs.IsNull() {
+		params.ComputeVMs = param.NewOpt(m.ComputeVMs.ValueBool())
+	}
+	if !m.NetworkingConnect.IsNull() {
+		params.NetworkingConnect = param.NewOpt(m.NetworkingConnect.ValueBool())
+	}
+	if !m.NetworkingVPCs.IsNull() {
+		params.NetworkingVPCs = param.NewOpt(m.NetworkingVPCs.ValueBool())
+	}
+	if !m.NKSAutoscaling.IsNull() {
+		params.NKSAutoscaling = param.NewOpt(m.NKSAutoscaling.ValueBool())
+	}
+	if !m.NKSClusters.IsNull() {
+		params.NKSClusters = param.NewOpt(m.NKSClusters.ValueBool())
+	}
+	if !m.Sort.IsNull() {
+		params.Sort = param.NewOpt(m.Sort.ValueString())
+	}
+	if !m.StorageABS.IsNull() {
+		params.StorageABS = param.NewOpt(m.StorageABS.ValueBool())
+	}
+	if !m.StorageLocalNvme.IsNull() {
+		params.StorageLocalNvme = param.NewOpt(m.StorageLocalNvme.ValueBool())
+	}
 
 	return
 }

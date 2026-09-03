@@ -15,6 +15,12 @@ description: |-
 ```terraform
 data "nirvana_nks_node_pools" "example_nks_node_pools" {
   cluster_id = "cluster_id"
+  instance_type = "instance_type"
+  name = "name"
+  node_count_max = 0
+  node_count_min = 0
+  status = "ready"
+  tags = ["string"]
 }
 ```
 
@@ -27,7 +33,15 @@ data "nirvana_nks_node_pools" "example_nks_node_pools" {
 
 ### Optional
 
+- `instance_type` (String) Filter by the instance type the pool's nodes run
 - `max_items` (Number) Max items to fetch, default: 1000
+- `name` (String) Filter by a case-insensitive substring of the node pool name
+- `node_count_max` (Number) Only pools with at most this many nodes
+- `node_count_min` (Number) Only pools with at least this many nodes
+- `sort` (String) Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name, status, node_count
+- `status` (String) Filter by node pool status
+Available values: "pending", "creating", "updating", "ready", "deleting", "error".
+- `tags` (List of String) Filter by tags. Repeat the parameter to require several tags; a node pool must carry all of them.
 
 ### Read-Only
 
