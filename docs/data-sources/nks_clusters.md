@@ -15,6 +15,13 @@ description: |-
 ```terraform
 data "nirvana_nks_clusters" "example_nks_clusters" {
   project_id = "project_id"
+  autoscaling = true
+  kubernetes_version = "kubernetes_version"
+  name = "name"
+  region = "region"
+  status = "ready"
+  tags = ["string"]
+  vpc_id = "vpc_id"
 }
 ```
 
@@ -27,7 +34,16 @@ data "nirvana_nks_clusters" "example_nks_clusters" {
 
 ### Optional
 
+- `autoscaling` (Boolean) Filter by whether autoscaling is enabled
+- `kubernetes_version` (String) Filter by Kubernetes version, matched exactly
 - `max_items` (Number) Max items to fetch, default: 1000
+- `name` (String) Filter by a case-insensitive substring of the Cluster name
+- `region` (String) Filter by region
+- `sort` (String) Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name, status
+- `status` (String) Filter by Cluster status
+Available values: "pending", "creating", "updating", "ready", "deleting", "error".
+- `tags` (List of String) Filter by tags. Repeat the parameter to require several tags; a Cluster must carry all of them.
+- `vpc_id` (String) Filter by the VPC the Cluster is in
 
 ### Read-Only
 

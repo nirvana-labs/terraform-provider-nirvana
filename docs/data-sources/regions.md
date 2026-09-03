@@ -14,7 +14,14 @@ description: |-
 
 ```terraform
 data "nirvana_regions" "example_regions" {
-
+  availability = "live"
+  compute_vms = true
+  networking_connect = true
+  networking_vpcs = true
+  nks_autoscaling = true
+  nks_clusters = true
+  storage_abs = true
+  storage_local_nvme = true
 }
 ```
 
@@ -23,7 +30,17 @@ data "nirvana_regions" "example_regions" {
 
 ### Optional
 
+- `availability` (String) Filter by region availability
+Available values: "live", "preview", "maintenance", "sunset".
+- `compute_vms` (Boolean) Only regions where Virtual Machines are available
 - `max_items` (Number) Max items to fetch, default: 1000
+- `networking_connect` (Boolean) Only regions where Nirvana Connect is available
+- `networking_vpcs` (Boolean) Only regions where VPCs are available
+- `nks_autoscaling` (Boolean) Only regions where NKS node pool autoscaling is available
+- `nks_clusters` (Boolean) Only regions where NKS clusters are available
+- `sort` (String) Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: longitude, name, availability
+- `storage_abs` (Boolean) Only regions where Accelerated Block Storage is available
+- `storage_local_nvme` (Boolean) Only regions where locally-attached NVMe storage is available
 
 ### Read-Only
 

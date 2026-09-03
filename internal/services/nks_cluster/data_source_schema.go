@@ -106,6 +106,50 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 						Description: "Project ID of resources to request",
 						Required:    true,
 					},
+					"autoscaling": schema.BoolAttribute{
+						Description: "Filter by whether autoscaling is enabled",
+						Optional:    true,
+					},
+					"kubernetes_version": schema.StringAttribute{
+						Description: "Filter by Kubernetes version, matched exactly",
+						Optional:    true,
+					},
+					"name": schema.StringAttribute{
+						Description: "Filter by a case-insensitive substring of the Cluster name",
+						Optional:    true,
+					},
+					"region": schema.StringAttribute{
+						Description: "Filter by region",
+						Optional:    true,
+					},
+					"sort": schema.StringAttribute{
+						Description: "Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name, status",
+						Computed:    true,
+						Optional:    true,
+					},
+					"status": schema.StringAttribute{
+						Description: "Filter by Cluster status\nAvailable values: \"pending\", \"creating\", \"updating\", \"ready\", \"deleting\", \"error\".",
+						Optional:    true,
+						Validators: []validator.String{
+							stringvalidator.OneOfCaseInsensitive(
+								"pending",
+								"creating",
+								"updating",
+								"ready",
+								"deleting",
+								"error",
+							),
+						},
+					},
+					"tags": schema.ListAttribute{
+						Description: "Filter by tags. Repeat the parameter to require several tags; a Cluster must carry all of them.",
+						Optional:    true,
+						ElementType: types.StringType,
+					},
+					"vpc_id": schema.StringAttribute{
+						Description: "Filter by the VPC the Cluster is in",
+						Optional:    true,
+					},
 				},
 			},
 		},

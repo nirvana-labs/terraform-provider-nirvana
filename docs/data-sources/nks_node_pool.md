@@ -25,6 +25,10 @@ data "nirvana_nks_node_pool" "example_nks_node_pool" {
 ### Required
 
 - `cluster_id` (String)
+
+### Optional
+
+- `find_one_by` (Attributes) (see [below for nested schema](#nestedatt--find_one_by))
 - `pool_id` (String)
 
 ### Read-Only
@@ -38,6 +42,21 @@ data "nirvana_nks_node_pool" "example_nks_node_pool" {
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `tags` (List of String) Tags attached to the node pool.
 - `updated_at` (String) When the node pool was last updated.
+
+<a id="nestedatt--find_one_by"></a>
+### Nested Schema for `find_one_by`
+
+Optional:
+
+- `instance_type` (String) Filter by the instance type the pool's nodes run
+- `name` (String) Filter by a case-insensitive substring of the node pool name
+- `node_count_max` (Number) Only pools with at most this many nodes
+- `node_count_min` (Number) Only pools with at least this many nodes
+- `sort` (String) Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: created_at, updated_at, name, status, node_count
+- `status` (String) Filter by node pool status
+Available values: "pending", "creating", "updating", "ready", "deleting", "error".
+- `tags` (List of String) Filter by tags. Repeat the parameter to require several tags; a node pool must carry all of them.
+
 
 <a id="nestedatt--node_config"></a>
 ### Nested Schema for `node_config`
