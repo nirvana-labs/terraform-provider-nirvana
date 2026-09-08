@@ -34,10 +34,6 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 				Description: "Only regions where Virtual Machines are available",
 				Optional:    true,
 			},
-			"networking_connect": schema.BoolAttribute{
-				Description: "Only regions where Nirvana Connect is available",
-				Optional:    true,
-			},
 			"networking_vpcs": schema.BoolAttribute{
 				Description: "Only regions where VPCs are available",
 				Optional:    true,
@@ -112,10 +108,6 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 							Computed:    true,
 							CustomType:  customfield.NewNestedObjectType[RegionsNetworkingDataSourceModel](ctx),
 							Attributes: map[string]schema.Attribute{
-								"connect": schema.BoolAttribute{
-									Description: "Connect indicates if Nirvana Connect is available.",
-									Computed:    true,
-								},
 								"vpcs": schema.BoolAttribute{
 									Description: "VPCs indicates if Virtual Private Clouds are available.",
 									Computed:    true,

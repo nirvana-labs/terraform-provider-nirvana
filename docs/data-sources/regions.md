@@ -16,7 +16,6 @@ description: |-
 data "nirvana_regions" "example_regions" {
   availability = "live"
   compute_vms = true
-  networking_connect = true
   networking_vpcs = true
   nks_autoscaling = true
   nks_clusters = true
@@ -34,7 +33,6 @@ data "nirvana_regions" "example_regions" {
 Available values: "live", "preview", "maintenance", "sunset".
 - `compute_vms` (Boolean) Only regions where Virtual Machines are available
 - `max_items` (Number) Max items to fetch, default: 1000
-- `networking_connect` (Boolean) Only regions where Nirvana Connect is available
 - `networking_vpcs` (Boolean) Only regions where VPCs are available
 - `nks_autoscaling` (Boolean) Only regions where NKS node pool autoscaling is available
 - `nks_clusters` (Boolean) Only regions where NKS clusters are available
@@ -73,7 +71,6 @@ Read-Only:
 
 Read-Only:
 
-- `connect` (Boolean) Connect indicates if Nirvana Connect is available.
 - `vpcs` (Boolean) VPCs indicates if Virtual Private Clouds are available.
 
 

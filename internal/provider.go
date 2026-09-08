@@ -19,7 +19,6 @@ import (
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/compute_vm_os_image"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/compute_volume"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/instance_type"
-	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_connect_connection"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_firewall_rule"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/networking_vpc"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/nks_cluster"
@@ -116,7 +115,6 @@ func (p *NirvanaProvider) Resources(ctx context.Context) []func() resource.Resou
 		compute_volume.NewResource,
 		networking_vpc.NewResource,
 		networking_firewall_rule.NewResource,
-		networking_connect_connection.NewResource,
 		nks_cluster.NewResource,
 		nks_node_pool.NewResource,
 	}
@@ -141,8 +139,6 @@ func (p *NirvanaProvider) DataSources(ctx context.Context) []func() datasource.D
 		networking_vpc.NewNetworkingVPCsDataSource,
 		networking_firewall_rule.NewNetworkingFirewallRuleDataSource,
 		networking_firewall_rule.NewNetworkingFirewallRulesDataSource,
-		networking_connect_connection.NewNetworkingConnectConnectionDataSource,
-		networking_connect_connection.NewNetworkingConnectConnectionsDataSource,
 		nks_kubernetes_version.NewNKSKubernetesVersionsDataSource,
 		nks_cluster.NewNKSClusterDataSource,
 		nks_cluster.NewNKSClustersDataSource,

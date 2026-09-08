@@ -21,8 +21,7 @@ type RegionComputeDataSourceModel struct {
 }
 
 type RegionNetworkingDataSourceModel struct {
-	Connect types.Bool `tfsdk:"connect" json:"connect,computed"`
-	VPCs    types.Bool `tfsdk:"vpcs" json:"vpcs,computed"`
+	VPCs types.Bool `tfsdk:"vpcs" json:"vpcs,computed"`
 }
 
 type RegionNKSDataSourceModel struct {
