@@ -48,10 +48,6 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Computed:    true,
 				CustomType:  customfield.NewNestedObjectType[RegionNetworkingDataSourceModel](ctx),
 				Attributes: map[string]schema.Attribute{
-					"connect": schema.BoolAttribute{
-						Description: "Connect indicates if Nirvana Connect is available.",
-						Computed:    true,
-					},
 					"vpcs": schema.BoolAttribute{
 						Description: "VPCs indicates if Virtual Private Clouds are available.",
 						Computed:    true,

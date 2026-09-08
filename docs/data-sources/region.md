@@ -47,7 +47,6 @@ Read-Only:
 
 Read-Only:
 
-- `connect` (Boolean) Connect indicates if Nirvana Connect is available.
 - `vpcs` (Boolean) VPCs indicates if Virtual Private Clouds are available.
 
 
