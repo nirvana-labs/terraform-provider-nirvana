@@ -21,6 +21,7 @@ data "nirvana_regions" "example_regions" {
   nks_clusters = true
   storage_abs = true
   storage_local_nvme = true
+  storage_longhorn = true
 }
 ```
 
@@ -39,6 +40,7 @@ Available values: "live", "preview", "maintenance", "sunset".
 - `sort` (String) Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: longitude, name, availability
 - `storage_abs` (Boolean) Only regions where Accelerated Block Storage is available
 - `storage_local_nvme` (Boolean) Only regions where locally-attached NVMe storage is available
+- `storage_longhorn` (Boolean) Only regions where Longhorn replicated block storage is available
 
 ### Read-Only
 
@@ -90,3 +92,4 @@ Read-Only:
 
 - `abs` (Boolean) ABS indicates if Accelerated Block Storage is available.
 - `local_nvme` (Boolean) LocalNVMe indicates if locally-attached NVMe storage is available.
+- `longhorn` (Boolean) Longhorn indicates if Longhorn replicated block storage is available.

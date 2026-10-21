@@ -8,8 +8,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework-timetypes/timetypes"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/nirvana-labs/nirvana-go/instance_types"
-	"github.com/nirvana-labs/nirvana-go/packages/param"
+	"github.com/nirvana-labs/nirvana-go/v2/instance_types"
+	"github.com/nirvana-labs/nirvana-go/v2/packages/param"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 

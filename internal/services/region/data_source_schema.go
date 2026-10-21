@@ -82,6 +82,10 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 						Description: "LocalNVMe indicates if locally-attached NVMe storage is available.",
 						Computed:    true,
 					},
+					"longhorn": schema.BoolAttribute{
+						Description: "Longhorn indicates if Longhorn replicated block storage is available.",
+						Computed:    true,
+					},
 				},
 			},
 		},

@@ -54,6 +54,10 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 				Description: "Only regions where locally-attached NVMe storage is available",
 				Optional:    true,
 			},
+			"storage_longhorn": schema.BoolAttribute{
+				Description: "Only regions where Longhorn replicated block storage is available",
+				Optional:    true,
+			},
 			"sort": schema.StringAttribute{
 				Description: "Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: longitude, name, availability",
 				Computed:    true,
@@ -140,6 +144,10 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 								},
 								"local_nvme": schema.BoolAttribute{
 									Description: "LocalNVMe indicates if locally-attached NVMe storage is available.",
+									Computed:    true,
+								},
+								"longhorn": schema.BoolAttribute{
+									Description: "Longhorn indicates if Longhorn replicated block storage is available.",
 									Computed:    true,
 								},
 							},

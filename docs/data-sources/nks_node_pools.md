@@ -80,4 +80,4 @@ Read-Only:
 
 - `size` (Number) Size of the boot volume in GB.
 - `type` (String) Type of the Volume.
-Available values: "nvme", "abs".
+Available values: "nvme", "abs", "longhorn".
