@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/nirvana-labs/nirvana-go/option"
+	"github.com/nirvana-labs/nirvana-go/v2/option"
 
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 )

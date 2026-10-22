@@ -74,10 +74,14 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"type": schema.StringAttribute{
-				Description: "Type of the Volume.\nAvailable values: \"nvme\", \"abs\".",
+				Description: "Type of the Volume.\nAvailable values: \"nvme\", \"abs\", \"longhorn\".",
 				Computed:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOfCaseInsensitive("nvme", "abs"),
+					stringvalidator.OneOfCaseInsensitive(
+						"nvme",
+						"abs",
+						"longhorn",
+					),
 				},
 			},
 			"updated_at": schema.StringAttribute{
@@ -150,10 +154,14 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 						ElementType: types.StringType,
 					},
 					"type": schema.StringAttribute{
-						Description: "Filter by storage type\nAvailable values: \"nvme\", \"abs\".",
+						Description: "Filter by storage type\nAvailable values: \"nvme\", \"abs\", \"longhorn\".",
 						Optional:    true,
 						Validators: []validator.String{
-							stringvalidator.OneOfCaseInsensitive("nvme", "abs"),
+							stringvalidator.OneOfCaseInsensitive(
+								"nvme",
+								"abs",
+								"longhorn",
+							),
 						},
 					},
 					"vm_id": schema.StringAttribute{

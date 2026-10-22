@@ -7,8 +7,8 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/nirvana-labs/nirvana-go/packages/param"
-	"github.com/nirvana-labs/nirvana-go/regions"
+	"github.com/nirvana-labs/nirvana-go/v2/packages/param"
+	"github.com/nirvana-labs/nirvana-go/v2/regions"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
@@ -24,6 +24,7 @@ type RegionsDataSourceModel struct {
 	NKSClusters      types.Bool                                                `tfsdk:"nks_clusters" query:"nks_clusters,optional"`
 	StorageABS       types.Bool                                                `tfsdk:"storage_abs" query:"storage_abs,optional"`
 	StorageLocalNvme types.Bool                                                `tfsdk:"storage_local_nvme" query:"storage_local_nvme,optional"`
+	StorageLonghorn  types.Bool                                                `tfsdk:"storage_longhorn" query:"storage_longhorn,optional"`
 	Sort             types.String                                              `tfsdk:"sort" query:"sort,computed_optional"`
 	MaxItems         types.Int64                                               `tfsdk:"max_items"`
 	Items            customfield.NestedObjectList[RegionsItemsDataSourceModel] `tfsdk:"items"`
@@ -56,6 +57,9 @@ func (m *RegionsDataSourceModel) toListParams(_ context.Context) (params regions
 	if !m.StorageLocalNvme.IsNull() {
 		params.StorageLocalNvme = param.NewOpt(m.StorageLocalNvme.ValueBool())
 	}
+	if !m.StorageLonghorn.IsNull() {
+		params.StorageLonghorn = param.NewOpt(m.StorageLonghorn.ValueBool())
+	}
 
 	return
 }
@@ -86,4 +90,5 @@ type RegionsNKSDataSourceModel struct {
 type RegionsStorageDataSourceModel struct {
 	ABS       types.Bool `tfsdk:"abs" json:"abs,computed"`
 	LocalNvme types.Bool `tfsdk:"local_nvme" json:"local_nvme,computed"`
+	Longhorn  types.Bool `tfsdk:"longhorn" json:"longhorn,computed"`
 }

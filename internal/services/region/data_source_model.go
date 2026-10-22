@@ -32,4 +32,5 @@ type RegionNKSDataSourceModel struct {
 type RegionStorageDataSourceModel struct {
 	ABS       types.Bool `tfsdk:"abs" json:"abs,computed"`
 	LocalNvme types.Bool `tfsdk:"local_nvme" json:"local_nvme,computed"`
+	Longhorn  types.Bool `tfsdk:"longhorn" json:"longhorn,computed"`
 }

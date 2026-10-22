@@ -8,7 +8,7 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-framework/attr"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
-	"github.com/nirvana-labs/nirvana-go"
+	"github.com/nirvana-labs/nirvana-go/v2"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/apijson"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )

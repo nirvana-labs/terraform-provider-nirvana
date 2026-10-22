@@ -10,9 +10,9 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/nirvana-labs/nirvana-go"
-	"github.com/nirvana-labs/nirvana-go/api_keys"
-	"github.com/nirvana-labs/nirvana-go/option"
+	"github.com/nirvana-labs/nirvana-go/v2"
+	"github.com/nirvana-labs/nirvana-go/v2/api_keys"
+	"github.com/nirvana-labs/nirvana-go/v2/option"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/apijson"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/importpath"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/logging"

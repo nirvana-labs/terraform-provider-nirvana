@@ -66,3 +66,4 @@ Read-Only:
 
 - `abs` (Boolean) ABS indicates if Accelerated Block Storage is available.
 - `local_nvme` (Boolean) LocalNVMe indicates if locally-attached NVMe storage is available.
+- `longhorn` (Boolean) Longhorn indicates if Longhorn replicated block storage is available.

@@ -41,7 +41,7 @@ Available values: "us-sva-2".
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `tags` (List of String) Tags to attach to the Volume.
 - `type` (String) Type of the Volume.
-Available values: "nvme", "abs".
+Available values: "nvme", "abs", "longhorn".
 - `updated_at` (String) When the Volume was updated.
 - `vm_id` (String) ID of the VM the Volume is attached to.
 - `vm_name` (String) Name of the VM the Volume is attached to.
@@ -65,5 +65,5 @@ Available values: "boot", "data".
 Available values: "pending", "creating", "updating", "ready", "deleting", "error".
 - `tags` (List of String) Filter by tags. Repeat the parameter to require several tags; a Volume must carry all of them.
 - `type` (String) Filter by storage type
-Available values: "nvme", "abs".
+Available values: "nvme", "abs", "longhorn".
 - `vm_id` (String) Filter by the VM the Volume is attached to
