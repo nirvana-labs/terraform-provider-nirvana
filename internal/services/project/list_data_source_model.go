@@ -48,9 +48,15 @@ func (m *ProjectsDataSourceModel) toListParams(_ context.Context) (params projec
 }
 
 type ProjectsItemsDataSourceModel struct {
-	ID        types.String                   `tfsdk:"id" json:"id,computed"`
-	CreatedAt timetypes.RFC3339              `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
-	Name      types.String                   `tfsdk:"name" json:"name,computed"`
-	Tags      customfield.List[types.String] `tfsdk:"tags" json:"tags,computed"`
-	UpdatedAt timetypes.RFC3339              `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
+	ID        types.String                                               `tfsdk:"id" json:"id,computed"`
+	CreatedAt timetypes.RFC3339                                          `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
+	ManagedBy customfield.NestedObject[ProjectsManagedByDataSourceModel] `tfsdk:"managed_by" json:"managed_by,computed"`
+	Name      types.String                                               `tfsdk:"name" json:"name,computed"`
+	Tags      customfield.List[types.String]                             `tfsdk:"tags" json:"tags,computed"`
+	UpdatedAt timetypes.RFC3339                                          `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
+}
+
+type ProjectsManagedByDataSourceModel struct {
+	ID   types.String `tfsdk:"id" json:"id,computed"`
+	Type types.String `tfsdk:"type" json:"type,computed"`
 }

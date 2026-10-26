@@ -31,6 +31,7 @@ data "nirvana_networking_vpc" "example_networking_vpc" {
 - `created_at` (String) When the VPC was created.
 - `firewall_rule_ids` (List of String) IDs of the Firewall Rules associated with the VPC.
 - `id` (String) The ID of this resource.
+- `managed_by` (Attributes) What manages the resource, or null when nothing does. A managed resource can be read but not changed. (see [below for nested schema](#nestedatt--managed_by))
 - `name` (String) Name of the VPC.
 - `project_id` (String) Project ID the VPC belongs to.
 - `region` (String) Region the resource is in.
@@ -56,6 +57,16 @@ Optional:
 - `status` (String) Filter by VPC status
 Available values: "pending", "creating", "updating", "ready", "deleting", "error".
 - `tags` (List of String) Filter by tags. Repeat the parameter to require several tags; a VPC must carry all of them.
+
+
+<a id="nestedatt--managed_by"></a>
+### Nested Schema for `managed_by`
+
+Read-Only:
+
+- `id` (String) ID of the thing managing the resource.
+- `type` (String) Kind of thing managing the resource.
+Available values: "sandbox_environment".
 
 
 <a id="nestedatt--subnet"></a>

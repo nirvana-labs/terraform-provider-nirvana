@@ -53,6 +53,7 @@ Read-Only:
 - `destination_address` (String) Destination address of the Firewall Rule. Either VPC CIDR or VM in VPC.
 - `destination_ports` (List of String) Destination ports of the Firewall Rule.
 - `id` (String) Unique identifier for the Firewall Rule.
+- `managed_by` (Attributes) What manages the resource, or null when nothing does. A managed resource can be read but not changed. (see [below for nested schema](#nestedatt--items--managed_by))
 - `name` (String) Name of the Firewall Rule.
 - `protocol` (String) Protocol of the Firewall Rule.
 Available values: "tcp", "udp".
@@ -62,3 +63,12 @@ Available values: "pending", "creating", "updating", "ready", "deleting", "delet
 - `tags` (List of String) Tags to attach to the Firewall Rule.
 - `updated_at` (String) When the Firewall Rule was updated.
 - `vpc_id` (String) ID of the VPC the Firewall Rule belongs to.
+
+<a id="nestedatt--items--managed_by"></a>
+### Nested Schema for `items.managed_by`
+
+Read-Only:
+
+- `id` (String) ID of the thing managing the resource.
+- `type` (String) Kind of thing managing the resource.
+Available values: "sandbox_environment".

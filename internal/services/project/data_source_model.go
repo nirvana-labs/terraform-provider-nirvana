@@ -14,13 +14,14 @@ import (
 )
 
 type ProjectDataSourceModel struct {
-	ID        types.String                     `tfsdk:"id" path:"project_id,computed"`
-	ProjectID types.String                     `tfsdk:"project_id" path:"project_id,optional"`
-	CreatedAt timetypes.RFC3339                `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
-	Name      types.String                     `tfsdk:"name" json:"name,computed"`
-	UpdatedAt timetypes.RFC3339                `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
-	Tags      customfield.List[types.String]   `tfsdk:"tags" json:"tags,computed"`
-	FindOneBy *ProjectFindOneByDataSourceModel `tfsdk:"find_one_by"`
+	ID        types.String                                              `tfsdk:"id" path:"project_id,computed"`
+	ProjectID types.String                                              `tfsdk:"project_id" path:"project_id,optional"`
+	CreatedAt timetypes.RFC3339                                         `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
+	Name      types.String                                              `tfsdk:"name" json:"name,computed"`
+	UpdatedAt timetypes.RFC3339                                         `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
+	Tags      customfield.List[types.String]                            `tfsdk:"tags" json:"tags,computed"`
+	ManagedBy customfield.NestedObject[ProjectManagedByDataSourceModel] `tfsdk:"managed_by" json:"managed_by,computed"`
+	FindOneBy *ProjectFindOneByDataSourceModel                          `tfsdk:"find_one_by"`
 }
 
 func (m *ProjectDataSourceModel) toListParams(_ context.Context) (params projects.ProjectListParams, diags diag.Diagnostics) {
@@ -43,6 +44,11 @@ func (m *ProjectDataSourceModel) toListParams(_ context.Context) (params project
 	}
 
 	return
+}
+
+type ProjectManagedByDataSourceModel struct {
+	ID   types.String `tfsdk:"id" json:"id,computed"`
+	Type types.String `tfsdk:"type" json:"type,computed"`
 }
 
 type ProjectFindOneByDataSourceModel struct {

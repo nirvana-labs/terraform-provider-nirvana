@@ -32,6 +32,7 @@ data "nirvana_nks_cluster" "example_nks_cluster" {
 - `created_at` (String) When the Cluster was created.
 - `id` (String) The ID of this resource.
 - `kubernetes_version` (String) Kubernetes version of the Cluster.
+- `managed_by` (Attributes) What manages the resource, or null when nothing does. A managed resource can be read but not changed. (see [below for nested schema](#nestedatt--managed_by))
 - `name` (String) Name of the Cluster.
 - `pool_ids` (List of String) IDs of pools belonging to this Cluster.
 - `private_ip` (String) Private IP (VIP) of the Cluster.
@@ -63,3 +64,13 @@ Optional:
 Available values: "pending", "creating", "updating", "ready", "deleting", "error".
 - `tags` (List of String) Filter by tags. Repeat the parameter to require several tags; a Cluster must carry all of them.
 - `vpc_id` (String) Filter by the VPC the Cluster is in
+
+
+<a id="nestedatt--managed_by"></a>
+### Nested Schema for `managed_by`
+
+Read-Only:
+
+- `id` (String) ID of the thing managing the resource.
+- `type` (String) Kind of thing managing the resource.
+Available values: "sandbox_environment".

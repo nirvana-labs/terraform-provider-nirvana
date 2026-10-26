@@ -58,6 +58,7 @@ Read-Only:
 - `created_at` (String) When the Cluster was created.
 - `id` (String) Unique identifier for the Cluster.
 - `kubernetes_version` (String) Kubernetes version of the Cluster.
+- `managed_by` (Attributes) What manages the resource, or null when nothing does. A managed resource can be read but not changed. (see [below for nested schema](#nestedatt--items--managed_by))
 - `name` (String) Name of the Cluster.
 - `pool_ids` (List of String) IDs of pools belonging to this Cluster.
 - `private_ip` (String) Private IP (VIP) of the Cluster.
@@ -70,3 +71,12 @@ Available values: "pending", "creating", "updating", "ready", "deleting", "delet
 - `tags` (List of String) Tags attached to the Cluster.
 - `updated_at` (String) When the Cluster was last updated.
 - `vpc_id` (String) ID of the VPC the Cluster is in.
+
+<a id="nestedatt--items--managed_by"></a>
+### Nested Schema for `items.managed_by`
+
+Read-Only:
+
+- `id` (String) ID of the thing managing the resource.
+- `type` (String) Kind of thing managing the resource.
+Available values: "sandbox_environment".

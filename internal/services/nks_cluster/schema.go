@@ -101,6 +101,24 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				CustomType:  customfield.NewListType[types.String](ctx),
 				ElementType: types.StringType,
 			},
+			"managed_by": schema.SingleNestedAttribute{
+				Description: "What manages the resource, or null when nothing does. A managed resource can be read but not changed.",
+				Computed:    true,
+				CustomType:  customfield.NewNestedObjectType[NKSClusterManagedByModel](ctx),
+				Attributes: map[string]schema.Attribute{
+					"id": schema.StringAttribute{
+						Description: "ID of the thing managing the resource.",
+						Computed:    true,
+					},
+					"type": schema.StringAttribute{
+						Description: "Kind of thing managing the resource.\nAvailable values: \"sandbox_environment\".",
+						Computed:    true,
+						Validators: []validator.String{
+							stringvalidator.OneOfCaseInsensitive("sandbox_environment"),
+						},
+					},
+				},
+			},
 		},
 	}
 }

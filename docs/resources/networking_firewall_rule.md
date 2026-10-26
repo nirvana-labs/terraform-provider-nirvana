@@ -45,10 +45,20 @@ Available values: "tcp", "udp".
 
 - `created_at` (String) When the Firewall Rule was created.
 - `id` (String) Unique identifier for the Operation.
+- `managed_by` (Attributes) What manages the resource, or null when nothing does. A managed resource can be read but not changed. (see [below for nested schema](#nestedatt--managed_by))
 - `project_id` (String) Project ID the Operation belongs to.
 - `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `updated_at` (String) When the Firewall Rule was updated.
+
+<a id="nestedatt--managed_by"></a>
+### Nested Schema for `managed_by`
+
+Read-Only:
+
+- `id` (String) ID of the thing managing the resource.
+- `type` (String) Kind of thing managing the resource.
+Available values: "sandbox_environment".
 
 ## Import
 

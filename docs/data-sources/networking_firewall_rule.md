@@ -37,6 +37,7 @@ data "nirvana_networking_firewall_rule" "example_networking_firewall_rule" {
 - `destination_address` (String) Destination address of the Firewall Rule. Either VPC CIDR or VM in VPC.
 - `destination_ports` (List of String) Destination ports of the Firewall Rule.
 - `id` (String) The ID of this resource.
+- `managed_by` (Attributes) What manages the resource, or null when nothing does. A managed resource can be read but not changed. (see [below for nested schema](#nestedatt--managed_by))
 - `name` (String) Name of the Firewall Rule.
 - `protocol` (String) Protocol of the Firewall Rule.
 Available values: "tcp", "udp".
@@ -58,3 +59,13 @@ Available values: "tcp", "udp".
 - `status` (String) Filter by Firewall Rule status
 Available values: "pending", "creating", "updating", "ready", "deleting", "error".
 - `tags` (List of String) Filter by tags. Repeat the parameter to require several tags; a Firewall Rule must carry all of them.
+
+
+<a id="nestedatt--managed_by"></a>
+### Nested Schema for `managed_by`
+
+Read-Only:
+
+- `id` (String) ID of the thing managing the resource.
+- `type` (String) Kind of thing managing the resource.
+Available values: "sandbox_environment".

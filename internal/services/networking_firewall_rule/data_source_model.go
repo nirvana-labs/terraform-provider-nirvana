@@ -14,19 +14,20 @@ import (
 )
 
 type NetworkingFirewallRuleDataSourceModel struct {
-	ID                 types.String                                    `tfsdk:"id" path:"firewall_rule_id,computed"`
-	FirewallRuleID     types.String                                    `tfsdk:"firewall_rule_id" path:"firewall_rule_id,optional"`
-	VPCID              types.String                                    `tfsdk:"vpc_id" path:"vpc_id,required"`
-	CreatedAt          timetypes.RFC3339                               `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
-	DestinationAddress types.String                                    `tfsdk:"destination_address" json:"destination_address,computed"`
-	Name               types.String                                    `tfsdk:"name" json:"name,computed"`
-	Protocol           types.String                                    `tfsdk:"protocol" json:"protocol,computed"`
-	SourceAddress      types.String                                    `tfsdk:"source_address" json:"source_address,computed"`
-	Status             types.String                                    `tfsdk:"status" json:"status,computed"`
-	UpdatedAt          timetypes.RFC3339                               `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
-	DestinationPorts   customfield.List[types.String]                  `tfsdk:"destination_ports" json:"destination_ports,computed"`
-	Tags               customfield.List[types.String]                  `tfsdk:"tags" json:"tags,computed"`
-	FindOneBy          *NetworkingFirewallRuleFindOneByDataSourceModel `tfsdk:"find_one_by"`
+	ID                 types.String                                                             `tfsdk:"id" path:"firewall_rule_id,computed"`
+	FirewallRuleID     types.String                                                             `tfsdk:"firewall_rule_id" path:"firewall_rule_id,optional"`
+	VPCID              types.String                                                             `tfsdk:"vpc_id" path:"vpc_id,required"`
+	CreatedAt          timetypes.RFC3339                                                        `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
+	DestinationAddress types.String                                                             `tfsdk:"destination_address" json:"destination_address,computed"`
+	Name               types.String                                                             `tfsdk:"name" json:"name,computed"`
+	Protocol           types.String                                                             `tfsdk:"protocol" json:"protocol,computed"`
+	SourceAddress      types.String                                                             `tfsdk:"source_address" json:"source_address,computed"`
+	Status             types.String                                                             `tfsdk:"status" json:"status,computed"`
+	UpdatedAt          timetypes.RFC3339                                                        `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
+	DestinationPorts   customfield.List[types.String]                                           `tfsdk:"destination_ports" json:"destination_ports,computed"`
+	Tags               customfield.List[types.String]                                           `tfsdk:"tags" json:"tags,computed"`
+	ManagedBy          customfield.NestedObject[NetworkingFirewallRuleManagedByDataSourceModel] `tfsdk:"managed_by" json:"managed_by,computed"`
+	FindOneBy          *NetworkingFirewallRuleFindOneByDataSourceModel                          `tfsdk:"find_one_by"`
 }
 
 func (m *NetworkingFirewallRuleDataSourceModel) toListParams(_ context.Context) (params networking.FirewallRuleListParams, diags diag.Diagnostics) {
@@ -55,6 +56,11 @@ func (m *NetworkingFirewallRuleDataSourceModel) toListParams(_ context.Context) 
 	}
 
 	return
+}
+
+type NetworkingFirewallRuleManagedByDataSourceModel struct {
+	ID   types.String `tfsdk:"id" json:"id,computed"`
+	Type types.String `tfsdk:"type" json:"type,computed"`
 }
 
 type NetworkingFirewallRuleFindOneByDataSourceModel struct {

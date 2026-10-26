@@ -45,12 +45,22 @@ Available values: "us-sva-2".
 
 - `created_at` (String) When the Cluster was created.
 - `id` (String) Unique identifier for the Operation.
+- `managed_by` (Attributes) What manages the resource, or null when nothing does. A managed resource can be read but not changed. (see [below for nested schema](#nestedatt--managed_by))
 - `pool_ids` (List of String) IDs of pools belonging to this Cluster.
 - `private_ip` (String) Private IP (VIP) of the Cluster.
 - `public_ip` (String) Public IP of the Cluster.
 - `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `updated_at` (String) When the Cluster was last updated.
+
+<a id="nestedatt--managed_by"></a>
+### Nested Schema for `managed_by`
+
+Read-Only:
+
+- `id` (String) ID of the thing managing the resource.
+- `type` (String) Kind of thing managing the resource.
+Available values: "sandbox_environment".
 
 ## Import
 
