@@ -42,10 +42,21 @@ Available values: "us-sva-2".
 - `created_at` (String) When the VPC was created.
 - `firewall_rule_ids` (List of String) IDs of the Firewall Rules associated with the VPC.
 - `id` (String) Unique identifier for the Operation.
+- `managed_by` (Attributes) What manages the resource, or null when nothing does. A managed resource can be read but not changed. (see [below for nested schema](#nestedatt--managed_by))
 - `status` (String) Status of the resource.
 Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
 - `subnet` (Attributes) Subnet of the VPC. (see [below for nested schema](#nestedatt--subnet))
 - `updated_at` (String) When the VPC was updated.
+
+<a id="nestedatt--managed_by"></a>
+### Nested Schema for `managed_by`
+
+Read-Only:
+
+- `id` (String) ID of the thing managing the resource.
+- `type` (String) Kind of thing managing the resource.
+Available values: "sandbox_environment".
+
 
 <a id="nestedatt--subnet"></a>
 ### Nested Schema for `subnet`

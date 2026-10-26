@@ -34,7 +34,17 @@ resource "nirvana_project" "example_project" {
 
 - `created_at` (String) When the Project was created.
 - `id` (String) Project ID.
+- `managed_by` (Attributes) What manages the resource, or null when nothing does. A managed resource can be read but not changed. (see [below for nested schema](#nestedatt--managed_by))
 - `updated_at` (String) When the Project was updated.
+
+<a id="nestedatt--managed_by"></a>
+### Nested Schema for `managed_by`
+
+Read-Only:
+
+- `id` (String) ID of the thing managing the resource.
+- `type` (String) Kind of thing managing the resource.
+Available values: "sandbox_environment".
 
 ## Import
 

@@ -58,16 +58,22 @@ func (m *NetworkingVPCsDataSourceModel) toListParams(_ context.Context) (params 
 }
 
 type NetworkingVPCsItemsDataSourceModel struct {
-	ID              types.String                                                  `tfsdk:"id" json:"id,computed"`
-	CreatedAt       timetypes.RFC3339                                             `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
-	FirewallRuleIDs customfield.List[types.String]                                `tfsdk:"firewall_rule_ids" json:"firewall_rule_ids,computed"`
-	Name            types.String                                                  `tfsdk:"name" json:"name,computed"`
-	ProjectID       types.String                                                  `tfsdk:"project_id" json:"project_id,computed"`
-	Region          types.String                                                  `tfsdk:"region" json:"region,computed"`
-	Status          types.String                                                  `tfsdk:"status" json:"status,computed"`
-	Subnet          customfield.NestedObject[NetworkingVPCsSubnetDataSourceModel] `tfsdk:"subnet" json:"subnet,computed"`
-	Tags            customfield.List[types.String]                                `tfsdk:"tags" json:"tags,computed"`
-	UpdatedAt       timetypes.RFC3339                                             `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
+	ID              types.String                                                     `tfsdk:"id" json:"id,computed"`
+	CreatedAt       timetypes.RFC3339                                                `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
+	FirewallRuleIDs customfield.List[types.String]                                   `tfsdk:"firewall_rule_ids" json:"firewall_rule_ids,computed"`
+	ManagedBy       customfield.NestedObject[NetworkingVPCsManagedByDataSourceModel] `tfsdk:"managed_by" json:"managed_by,computed"`
+	Name            types.String                                                     `tfsdk:"name" json:"name,computed"`
+	ProjectID       types.String                                                     `tfsdk:"project_id" json:"project_id,computed"`
+	Region          types.String                                                     `tfsdk:"region" json:"region,computed"`
+	Status          types.String                                                     `tfsdk:"status" json:"status,computed"`
+	Subnet          customfield.NestedObject[NetworkingVPCsSubnetDataSourceModel]    `tfsdk:"subnet" json:"subnet,computed"`
+	Tags            customfield.List[types.String]                                   `tfsdk:"tags" json:"tags,computed"`
+	UpdatedAt       timetypes.RFC3339                                                `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
+}
+
+type NetworkingVPCsManagedByDataSourceModel struct {
+	ID   types.String `tfsdk:"id" json:"id,computed"`
+	Type types.String `tfsdk:"type" json:"type,computed"`
 }
 
 type NetworkingVPCsSubnetDataSourceModel struct {

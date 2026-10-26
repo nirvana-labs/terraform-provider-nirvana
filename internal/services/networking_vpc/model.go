@@ -10,17 +10,18 @@ import (
 )
 
 type NetworkingVPCModel struct {
-	ID              types.String                                       `tfsdk:"id" json:"id,computed"`
-	ProjectID       types.String                                       `tfsdk:"project_id" json:"project_id,required"`
-	Region          types.String                                       `tfsdk:"region" json:"region,required"`
-	Name            types.String                                       `tfsdk:"name" json:"name,required"`
-	SubnetName      types.String                                       `tfsdk:"subnet_name" json:"subnet_name,required,no_refresh"`
-	Tags            *[]types.String                                    `tfsdk:"tags" json:"tags,optional"`
-	CreatedAt       timetypes.RFC3339                                  `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
-	Status          types.String                                       `tfsdk:"status" json:"status,computed"`
-	UpdatedAt       timetypes.RFC3339                                  `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
-	FirewallRuleIDs customfield.List[types.String]                     `tfsdk:"firewall_rule_ids" json:"firewall_rule_ids,computed"`
-	Subnet          customfield.NestedObject[NetworkingVPCSubnetModel] `tfsdk:"subnet" json:"subnet,computed"`
+	ID              types.String                                          `tfsdk:"id" json:"id,computed"`
+	ProjectID       types.String                                          `tfsdk:"project_id" json:"project_id,required"`
+	Region          types.String                                          `tfsdk:"region" json:"region,required"`
+	Name            types.String                                          `tfsdk:"name" json:"name,required"`
+	SubnetName      types.String                                          `tfsdk:"subnet_name" json:"subnet_name,required,no_refresh"`
+	Tags            *[]types.String                                       `tfsdk:"tags" json:"tags,optional"`
+	CreatedAt       timetypes.RFC3339                                     `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
+	Status          types.String                                          `tfsdk:"status" json:"status,computed"`
+	UpdatedAt       timetypes.RFC3339                                     `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
+	FirewallRuleIDs customfield.List[types.String]                        `tfsdk:"firewall_rule_ids" json:"firewall_rule_ids,computed"`
+	ManagedBy       customfield.NestedObject[NetworkingVPCManagedByModel] `tfsdk:"managed_by" json:"managed_by,computed"`
+	Subnet          customfield.NestedObject[NetworkingVPCSubnetModel]    `tfsdk:"subnet" json:"subnet,computed"`
 }
 
 func (m NetworkingVPCModel) MarshalJSON() (data []byte, err error) {
@@ -29,6 +30,11 @@ func (m NetworkingVPCModel) MarshalJSON() (data []byte, err error) {
 
 func (m NetworkingVPCModel) MarshalJSONForUpdate(state NetworkingVPCModel) (data []byte, err error) {
 	return apijson.MarshalForPatch(m, state)
+}
+
+type NetworkingVPCManagedByModel struct {
+	ID   types.String `tfsdk:"id" json:"id,computed"`
+	Type types.String `tfsdk:"type" json:"type,computed"`
 }
 
 type NetworkingVPCSubnetModel struct {

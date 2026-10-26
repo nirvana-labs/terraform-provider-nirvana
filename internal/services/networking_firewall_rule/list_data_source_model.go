@@ -57,15 +57,21 @@ func (m *NetworkingFirewallRulesDataSourceModel) toListParams(_ context.Context)
 }
 
 type NetworkingFirewallRulesItemsDataSourceModel struct {
-	ID                 types.String                   `tfsdk:"id" json:"id,computed"`
-	CreatedAt          timetypes.RFC3339              `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
-	DestinationAddress types.String                   `tfsdk:"destination_address" json:"destination_address,computed"`
-	DestinationPorts   customfield.List[types.String] `tfsdk:"destination_ports" json:"destination_ports,computed"`
-	Name               types.String                   `tfsdk:"name" json:"name,computed"`
-	Protocol           types.String                   `tfsdk:"protocol" json:"protocol,computed"`
-	SourceAddress      types.String                   `tfsdk:"source_address" json:"source_address,computed"`
-	Status             types.String                   `tfsdk:"status" json:"status,computed"`
-	Tags               customfield.List[types.String] `tfsdk:"tags" json:"tags,computed"`
-	UpdatedAt          timetypes.RFC3339              `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
-	VPCID              types.String                   `tfsdk:"vpc_id" json:"vpc_id,computed"`
+	ID                 types.String                                                              `tfsdk:"id" json:"id,computed"`
+	CreatedAt          timetypes.RFC3339                                                         `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
+	DestinationAddress types.String                                                              `tfsdk:"destination_address" json:"destination_address,computed"`
+	DestinationPorts   customfield.List[types.String]                                            `tfsdk:"destination_ports" json:"destination_ports,computed"`
+	ManagedBy          customfield.NestedObject[NetworkingFirewallRulesManagedByDataSourceModel] `tfsdk:"managed_by" json:"managed_by,computed"`
+	Name               types.String                                                              `tfsdk:"name" json:"name,computed"`
+	Protocol           types.String                                                              `tfsdk:"protocol" json:"protocol,computed"`
+	SourceAddress      types.String                                                              `tfsdk:"source_address" json:"source_address,computed"`
+	Status             types.String                                                              `tfsdk:"status" json:"status,computed"`
+	Tags               customfield.List[types.String]                                            `tfsdk:"tags" json:"tags,computed"`
+	UpdatedAt          timetypes.RFC3339                                                         `tfsdk:"updated_at" json:"updated_at,computed" format:"date-time"`
+	VPCID              types.String                                                              `tfsdk:"vpc_id" json:"vpc_id,computed"`
+}
+
+type NetworkingFirewallRulesManagedByDataSourceModel struct {
+	ID   types.String `tfsdk:"id" json:"id,computed"`
+	Type types.String `tfsdk:"type" json:"type,computed"`
 }
