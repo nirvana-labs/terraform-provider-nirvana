@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.52.37](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.52.36...v1.52.37) (2026-10-29)
+
+
+### Chores
+
+* **release:** update SDK ([#387](https://github.com/nirvana-labs/terraform-provider-nirvana/issues/387)) ([eaaf7b4](https://github.com/nirvana-labs/terraform-provider-nirvana/commit/eaaf7b46f3ba2590c2d22ad0d7f75b86499a77ee))
+
 ## [1.52.36](https://github.com/nirvana-labs/terraform-provider-nirvana/compare/v1.52.35...v1.52.36) (2026-10-26)
 
 
