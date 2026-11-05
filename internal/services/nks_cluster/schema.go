@@ -37,10 +37,10 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"region": schema.StringAttribute{
-				Description: "Region the resource is in.\nAvailable values: \"us-sva-2\".",
+				Description: "Region the resource is in.\nAvailable values: \"us-sva-2\", \"us-wdc-1\".",
 				Required:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOfCaseInsensitive("us-sva-2"),
+					stringvalidator.OneOfCaseInsensitive("us-sva-2", "us-wdc-1"),
 				},
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
@@ -111,10 +111,10 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						Computed:    true,
 					},
 					"type": schema.StringAttribute{
-						Description: "Kind of thing managing the resource.\nAvailable values: \"sandbox_environment\".",
+						Description: "Kind of thing managing the resource: a sandbox cluster, or managed_sandboxes for the project that holds an organization's sandbox clusters, identified by the organization ID.\nAvailable values: \"sandbox_cluster\", \"managed_sandboxes\".",
 						Computed:    true,
 						Validators: []validator.String{
-							stringvalidator.OneOfCaseInsensitive("sandbox_environment"),
+							stringvalidator.OneOfCaseInsensitive("sandbox_cluster", "managed_sandboxes"),
 						},
 					},
 				},
