@@ -97,13 +97,15 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 							},
 						},
 						"resource_type": schema.StringAttribute{
-							Description: "Resource type this permission applies to.\nAvailable values: \"vm\", \"vpc\", \"volume\", \"rpc_node_dedicated\", \"rpc_node_flex\", \"nks_cluster\", \"nks_node_pool\", \"project\", \"api_key\", \"organization\", \"audit_log\", \"usage\", \"billing\", \"billing_x402\".",
+							Description: "Resource type this permission applies to.\nAvailable values: \"vm\", \"vpc\", \"volume\", \"bucket\", \"object_storage_key\", \"rpc_node_dedicated\", \"rpc_node_flex\", \"nks_cluster\", \"nks_node_pool\", \"project\", \"api_key\", \"organization\", \"audit_log\", \"usage\", \"billing\", \"billing_x402\", \"sandbox_cluster\", \"sandbox\".",
 							Computed:    true,
 							Validators: []validator.String{
 								stringvalidator.OneOfCaseInsensitive(
 									"vm",
 									"vpc",
 									"volume",
+									"bucket",
+									"object_storage_key",
 									"rpc_node_dedicated",
 									"rpc_node_flex",
 									"nks_cluster",
@@ -115,6 +117,8 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 									"usage",
 									"billing",
 									"billing_x402",
+									"sandbox_cluster",
+									"sandbox",
 								),
 							},
 						},

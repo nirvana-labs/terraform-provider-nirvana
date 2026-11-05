@@ -34,7 +34,7 @@ resource "nirvana_nks_cluster" "example_nks_cluster" {
 - `name` (String) Name of the Cluster.
 - `project_id` (String) Project ID to create the Cluster in.
 - `region` (String) Region the resource is in.
-Available values: "us-sva-2".
+Available values: "us-sva-2", "us-wdc-1".
 - `vpc_id` (String) ID of the VPC to use for the Cluster.
 
 ### Optional
@@ -59,8 +59,8 @@ Available values: "pending", "creating", "updating", "ready", "deleting", "delet
 Read-Only:
 
 - `id` (String) ID of the thing managing the resource.
-- `type` (String) Kind of thing managing the resource.
-Available values: "sandbox_environment".
+- `type` (String) Kind of thing managing the resource: a sandbox cluster, or managed_sandboxes for the project that holds an organization's sandbox clusters, identified by the organization ID.
+Available values: "sandbox_cluster", "managed_sandboxes".
 
 ## Import
 

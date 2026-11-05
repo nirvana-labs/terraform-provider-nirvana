@@ -64,7 +64,7 @@ Required:
 - `permission` (String) Permission level: "read" or "edit".
 Available values: "read", "edit".
 - `resource_type` (String) Resource type this permission applies to.
-Available values: "vm", "vpc", "volume", "rpc_node_dedicated", "rpc_node_flex", "nks_cluster", "nks_node_pool", "project", "api_key", "organization", "audit_log", "usage", "billing", "billing_x402".
+Available values: "vm", "vpc", "volume", "bucket", "object_storage_key", "rpc_node_dedicated", "rpc_node_flex", "nks_cluster", "nks_node_pool", "project", "api_key", "organization", "audit_log", "usage", "billing", "billing_x402", "sandbox_cluster", "sandbox".
 
 
 <a id="nestedatt--source_ip_rule"></a>

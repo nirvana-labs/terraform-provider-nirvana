@@ -43,8 +43,8 @@ resource "nirvana_project" "example_project" {
 Read-Only:
 
 - `id` (String) ID of the thing managing the resource.
-- `type` (String) Kind of thing managing the resource.
-Available values: "sandbox_environment".
+- `type` (String) Kind of thing managing the resource: a sandbox cluster, or managed_sandboxes for the project that holds an organization's sandbox clusters, identified by the organization ID.
+Available values: "sandbox_cluster", "managed_sandboxes".
 
 ## Import
 
