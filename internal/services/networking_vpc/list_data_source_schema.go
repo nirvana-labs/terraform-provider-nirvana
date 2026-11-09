@@ -94,10 +94,10 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 									Computed:    true,
 								},
 								"type": schema.StringAttribute{
-									Description: "Kind of thing managing the resource: a sandbox cluster, or managed_sandboxes for the project that holds an organization's sandbox clusters, identified by the organization ID.\nAvailable values: \"sandbox_cluster\", \"managed_sandboxes\".",
+									Description: "Kind of thing managing the resource.\nAvailable values: \"sandbox_cluster\".",
 									Computed:    true,
 									Validators: []validator.String{
-										stringvalidator.OneOfCaseInsensitive("sandbox_cluster", "managed_sandboxes"),
+										stringvalidator.OneOfCaseInsensitive("sandbox_cluster"),
 									},
 								},
 							},
