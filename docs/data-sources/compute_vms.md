@@ -69,7 +69,7 @@ Read-Only:
 - `region` (String) Region the resource is in.
 Available values: "us-sva-2", "us-wdc-1".
 - `status` (String) Status of the resource.
-Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
+Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error", "suspended".
 - `subnet_id` (String) ID of the subnet the VM is in.
 - `tags` (List of String) Tags to attach to the VM.
 - `updated_at` (String) When the VM was updated.

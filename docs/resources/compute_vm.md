@@ -71,7 +71,7 @@ Available values: "us-sva-2", "us-wdc-1".
 - `private_ip` (String) Private IP of the VM.
 - `public_ip` (String) Public IP of the VM.
 - `status` (String) Status of the resource.
-Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
+Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error", "suspended".
 - `updated_at` (String) When the VM was updated.
 - `vpc_id` (String) ID of the VPC the VM is in.
 - `vpc_name` (String) Name of the VPC the VM is in.

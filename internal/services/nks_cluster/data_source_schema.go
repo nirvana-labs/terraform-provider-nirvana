@@ -64,7 +64,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				},
 			},
 			"status": schema.StringAttribute{
-				Description: "Status of the resource.\nAvailable values: \"pending\", \"creating\", \"updating\", \"ready\", \"deleting\", \"deleted\", \"error\".",
+				Description: "Status of the resource.\nAvailable values: \"pending\", \"creating\", \"updating\", \"ready\", \"deleting\", \"deleted\", \"error\", \"suspended\".",
 				Computed:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
@@ -75,6 +75,7 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 						"deleting",
 						"deleted",
 						"error",
+						"suspended",
 					),
 				},
 			},

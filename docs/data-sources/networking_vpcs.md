@@ -57,7 +57,7 @@ Read-Only:
 - `region` (String) Region the resource is in.
 Available values: "us-sva-2", "us-wdc-1".
 - `status` (String) Status of the resource.
-Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
+Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error", "suspended".
 - `subnet` (Attributes) Subnet of the VPC. (see [below for nested schema](#nestedatt--items--subnet))
 - `tags` (List of String) Tags to attach to the VPC.
 - `updated_at` (String) When the VPC was updated.

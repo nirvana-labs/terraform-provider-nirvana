@@ -59,7 +59,7 @@ Read-Only:
 - `node_config` (Attributes) Node configuration. (see [below for nested schema](#nestedatt--items--node_config))
 - `node_count` (Number) Number of nodes.
 - `status` (String) Status of the resource.
-Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
+Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error", "suspended".
 - `tags` (List of String) Tags attached to the node pool.
 - `updated_at` (String) When the node pool was last updated.
 

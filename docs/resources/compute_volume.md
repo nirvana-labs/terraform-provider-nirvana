@@ -49,7 +49,7 @@ Available values: "nvme", "abs", "longhorn".
 - `kind` (String) Volume kind.
 Available values: "boot", "data".
 - `status` (String) Status of the resource.
-Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
+Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error", "suspended".
 - `updated_at` (String) When the Volume was updated.
 - `vm_name` (String) Name of the VM the Volume is attached to.
 
