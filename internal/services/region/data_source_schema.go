@@ -86,6 +86,10 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 						Description: "Longhorn indicates if Longhorn replicated block storage is available.",
 						Computed:    true,
 					},
+					"object": schema.BoolAttribute{
+						Description: "Object storage (S3-compatible buckets) is available.",
+						Computed:    true,
+					},
 				},
 			},
 		},

@@ -7,4 +7,5 @@ data "nirvana_regions" "example_regions" {
   storage_abs = true
   storage_local_nvme = true
   storage_longhorn = true
+  storage_object = true
 }

@@ -58,6 +58,10 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 				Description: "Only regions where Longhorn replicated block storage is available",
 				Optional:    true,
 			},
+			"storage_object": schema.BoolAttribute{
+				Description: "Only regions where object storage (S3-compatible buckets) is available",
+				Optional:    true,
+			},
 			"sort": schema.StringAttribute{
 				Description: "Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: longitude, name, availability",
 				Computed:    true,
@@ -148,6 +152,10 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 								},
 								"longhorn": schema.BoolAttribute{
 									Description: "Longhorn indicates if Longhorn replicated block storage is available.",
+									Computed:    true,
+								},
+								"object": schema.BoolAttribute{
+									Description: "Object storage (S3-compatible buckets) is available.",
 									Computed:    true,
 								},
 							},
