@@ -44,7 +44,7 @@ Available values: "us-sva-2", "us-wdc-1".
 - `id` (String) Unique identifier for the Operation.
 - `managed_by` (Attributes) What manages the resource, or null when nothing does. A managed resource can be read but not changed. (see [below for nested schema](#nestedatt--managed_by))
 - `status` (String) Status of the resource.
-Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
+Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error", "suspended".
 - `subnet` (Attributes) Subnet of the VPC. (see [below for nested schema](#nestedatt--subnet))
 - `updated_at` (String) When the VPC was updated.
 

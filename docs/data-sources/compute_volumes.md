@@ -68,7 +68,7 @@ Available values: "boot", "data".
 Available values: "us-sva-2", "us-wdc-1".
 - `size` (Number) Size of the Volume in GB.
 - `status` (String) Status of the resource.
-Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
+Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error", "suspended".
 - `tags` (List of String) Tags to attach to the Volume.
 - `type` (String) Type of the Volume.
 Available values: "nvme", "abs", "longhorn".

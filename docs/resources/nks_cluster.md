@@ -50,7 +50,7 @@ Available values: "us-sva-2", "us-wdc-1".
 - `private_ip` (String) Private IP (VIP) of the Cluster.
 - `public_ip` (String) Public IP of the Cluster.
 - `status` (String) Status of the resource.
-Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
+Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error", "suspended".
 - `updated_at` (String) When the Cluster was last updated.
 
 <a id="nestedatt--managed_by"></a>

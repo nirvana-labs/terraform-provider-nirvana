@@ -9,9 +9,9 @@ import (
 	"net/http"
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
-	"github.com/nirvana-labs/nirvana-go/v2"
-	"github.com/nirvana-labs/nirvana-go/v2/instance_types"
-	"github.com/nirvana-labs/nirvana-go/v2/option"
+	"github.com/nirvana-labs/nirvana-go/v3"
+	"github.com/nirvana-labs/nirvana-go/v3/instance_types"
+	"github.com/nirvana-labs/nirvana-go/v3/option"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/apijson"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/logging"
 )

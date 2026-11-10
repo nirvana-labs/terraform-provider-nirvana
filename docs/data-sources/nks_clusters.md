@@ -67,7 +67,7 @@ Read-Only:
 - `region` (String) Region the resource is in.
 Available values: "us-sva-2", "us-wdc-1".
 - `status` (String) Status of the resource.
-Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
+Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error", "suspended".
 - `tags` (List of String) Tags attached to the Cluster.
 - `updated_at` (String) When the Cluster was last updated.
 - `vpc_id` (String) ID of the VPC the Cluster is in.

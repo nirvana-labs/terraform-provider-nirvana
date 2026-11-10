@@ -48,7 +48,7 @@ Available values: "tcp", "udp".
 - `managed_by` (Attributes) What manages the resource, or null when nothing does. A managed resource can be read but not changed. (see [below for nested schema](#nestedatt--managed_by))
 - `project_id` (String) Project ID the Operation belongs to.
 - `status` (String) Status of the resource.
-Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
+Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error", "suspended".
 - `updated_at` (String) When the Firewall Rule was updated.
 
 <a id="nestedatt--managed_by"></a>

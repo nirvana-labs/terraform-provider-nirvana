@@ -50,7 +50,7 @@ resource "nirvana_nks_node_pool" "example_nks_node_pool" {
 - `id` (String) Unique identifier for the Operation.
 - `project_id` (String) Project ID the Operation belongs to.
 - `status` (String) Status of the resource.
-Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error".
+Available values: "pending", "creating", "updating", "ready", "deleting", "deleted", "error", "suspended".
 - `updated_at` (String) When the node pool was last updated.
 
 <a id="nestedatt--node_config"></a>

@@ -7,8 +7,8 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/nirvana-labs/nirvana-go/v2/packages/param"
-	"github.com/nirvana-labs/nirvana-go/v2/regions"
+	"github.com/nirvana-labs/nirvana-go/v3/packages/param"
+	"github.com/nirvana-labs/nirvana-go/v3/regions"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/customfield"
 )
 
