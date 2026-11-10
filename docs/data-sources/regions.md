@@ -22,6 +22,7 @@ data "nirvana_regions" "example_regions" {
   storage_abs = true
   storage_local_nvme = true
   storage_longhorn = true
+  storage_object = true
 }
 ```
 
@@ -41,6 +42,7 @@ Available values: "live", "preview", "maintenance", "sunset".
 - `storage_abs` (Boolean) Only regions where Accelerated Block Storage is available
 - `storage_local_nvme` (Boolean) Only regions where locally-attached NVMe storage is available
 - `storage_longhorn` (Boolean) Only regions where Longhorn replicated block storage is available
+- `storage_object` (Boolean) Only regions where object storage (S3-compatible buckets) is available
 
 ### Read-Only
 
@@ -93,3 +95,4 @@ Read-Only:
 - `abs` (Boolean) ABS indicates if Accelerated Block Storage is available.
 - `local_nvme` (Boolean) LocalNVMe indicates if locally-attached NVMe storage is available.
 - `longhorn` (Boolean) Longhorn indicates if Longhorn replicated block storage is available.
+- `object` (Boolean) Object storage (S3-compatible buckets) is available.

@@ -25,6 +25,7 @@ type RegionsDataSourceModel struct {
 	StorageABS       types.Bool                                                `tfsdk:"storage_abs" query:"storage_abs,optional"`
 	StorageLocalNvme types.Bool                                                `tfsdk:"storage_local_nvme" query:"storage_local_nvme,optional"`
 	StorageLonghorn  types.Bool                                                `tfsdk:"storage_longhorn" query:"storage_longhorn,optional"`
+	StorageObject    types.Bool                                                `tfsdk:"storage_object" query:"storage_object,optional"`
 	Sort             types.String                                              `tfsdk:"sort" query:"sort,computed_optional"`
 	MaxItems         types.Int64                                               `tfsdk:"max_items"`
 	Items            customfield.NestedObjectList[RegionsItemsDataSourceModel] `tfsdk:"items"`
@@ -60,6 +61,9 @@ func (m *RegionsDataSourceModel) toListParams(_ context.Context) (params regions
 	if !m.StorageLonghorn.IsNull() {
 		params.StorageLonghorn = param.NewOpt(m.StorageLonghorn.ValueBool())
 	}
+	if !m.StorageObject.IsNull() {
+		params.StorageObject = param.NewOpt(m.StorageObject.ValueBool())
+	}
 
 	return
 }
@@ -91,4 +95,5 @@ type RegionsStorageDataSourceModel struct {
 	ABS       types.Bool `tfsdk:"abs" json:"abs,computed"`
 	LocalNvme types.Bool `tfsdk:"local_nvme" json:"local_nvme,computed"`
 	Longhorn  types.Bool `tfsdk:"longhorn" json:"longhorn,computed"`
+	Object    types.Bool `tfsdk:"object" json:"object,computed"`
 }

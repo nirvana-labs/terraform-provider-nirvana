@@ -27,6 +27,8 @@ import (
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/nks_node_pool"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/project"
 	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/region"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/storage_bucket"
+	"github.com/nirvana-labs/terraform-provider-nirvana/internal/services/storage_key"
 )
 
 var _ provider.ProviderWithConfigValidators = (*NirvanaProvider)(nil)
@@ -117,6 +119,8 @@ func (p *NirvanaProvider) Resources(ctx context.Context) []func() resource.Resou
 		networking_firewall_rule.NewResource,
 		nks_cluster.NewResource,
 		nks_node_pool.NewResource,
+		storage_bucket.NewResource,
+		storage_key.NewResource,
 	}
 }
 
@@ -145,6 +149,10 @@ func (p *NirvanaProvider) DataSources(ctx context.Context) []func() datasource.D
 		nks_cluster_kubeconfig.NewNKSClusterKubeconfigDataSource,
 		nks_node_pool.NewNKSNodePoolDataSource,
 		nks_node_pool.NewNKSNodePoolsDataSource,
+		storage_bucket.NewStorageBucketDataSource,
+		storage_bucket.NewStorageBucketsDataSource,
+		storage_key.NewStorageKeyDataSource,
+		storage_key.NewStorageKeysDataSource,
 	}
 }
 
