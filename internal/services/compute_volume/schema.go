@@ -39,13 +39,13 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"type": schema.StringAttribute{
-				Description: "Type of the Volume.\nAvailable values: \"nvme\", \"abs\", \"longhorn\".",
+				Description: "Type of the Volume.\nAvailable values: \"nvme\", \"abs\", \"ceph\".",
 				Required:    true,
 				Validators: []validator.String{
 					stringvalidator.OneOfCaseInsensitive(
 						"nvme",
 						"abs",
-						"longhorn",
+						"ceph",
 					),
 				},
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},

@@ -35,7 +35,7 @@ resource "nirvana_compute_volume" "example_compute_volume" {
 Available values: "us-sva-2", "us-wdc-1".
 - `size` (Number) Size of the Volume in GB.
 - `type` (String) Type of the Volume.
-Available values: "nvme", "abs", "longhorn".
+Available values: "nvme", "abs", "ceph".
 
 ### Optional
 

@@ -78,12 +78,12 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 						Description: "ABS indicates if Accelerated Block Storage is available.",
 						Computed:    true,
 					},
-					"local_nvme": schema.BoolAttribute{
-						Description: "LocalNVMe indicates if locally-attached NVMe storage is available.",
+					"ceph": schema.BoolAttribute{
+						Description: "Ceph indicates if Ceph replicated block storage is available.",
 						Computed:    true,
 					},
-					"longhorn": schema.BoolAttribute{
-						Description: "Longhorn indicates if Longhorn replicated block storage is available.",
+					"local_nvme": schema.BoolAttribute{
+						Description: "LocalNVMe indicates if locally-attached NVMe storage is available.",
 						Computed:    true,
 					},
 					"object": schema.BoolAttribute{
