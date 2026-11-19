@@ -111,13 +111,13 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 											},
 										},
 										"type": schema.StringAttribute{
-											Description: "Type of the Volume.\nAvailable values: \"nvme\", \"abs\", \"longhorn\".",
+											Description: "Type of the Volume.\nAvailable values: \"nvme\", \"abs\", \"ceph\".",
 											Computed:    true,
 											Validators: []validator.String{
 												stringvalidator.OneOfCaseInsensitive(
 													"nvme",
 													"abs",
-													"longhorn",
+													"ceph",
 												),
 											},
 										},

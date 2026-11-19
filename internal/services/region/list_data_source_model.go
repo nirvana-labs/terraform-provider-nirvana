@@ -23,8 +23,8 @@ type RegionsDataSourceModel struct {
 	NKSAutoscaling   types.Bool                                                `tfsdk:"nks_autoscaling" query:"nks_autoscaling,optional"`
 	NKSClusters      types.Bool                                                `tfsdk:"nks_clusters" query:"nks_clusters,optional"`
 	StorageABS       types.Bool                                                `tfsdk:"storage_abs" query:"storage_abs,optional"`
+	StorageCeph      types.Bool                                                `tfsdk:"storage_ceph" query:"storage_ceph,optional"`
 	StorageLocalNvme types.Bool                                                `tfsdk:"storage_local_nvme" query:"storage_local_nvme,optional"`
-	StorageLonghorn  types.Bool                                                `tfsdk:"storage_longhorn" query:"storage_longhorn,optional"`
 	StorageObject    types.Bool                                                `tfsdk:"storage_object" query:"storage_object,optional"`
 	Sort             types.String                                              `tfsdk:"sort" query:"sort,computed_optional"`
 	MaxItems         types.Int64                                               `tfsdk:"max_items"`
@@ -55,11 +55,11 @@ func (m *RegionsDataSourceModel) toListParams(_ context.Context) (params regions
 	if !m.StorageABS.IsNull() {
 		params.StorageABS = param.NewOpt(m.StorageABS.ValueBool())
 	}
+	if !m.StorageCeph.IsNull() {
+		params.StorageCeph = param.NewOpt(m.StorageCeph.ValueBool())
+	}
 	if !m.StorageLocalNvme.IsNull() {
 		params.StorageLocalNvme = param.NewOpt(m.StorageLocalNvme.ValueBool())
-	}
-	if !m.StorageLonghorn.IsNull() {
-		params.StorageLonghorn = param.NewOpt(m.StorageLonghorn.ValueBool())
 	}
 	if !m.StorageObject.IsNull() {
 		params.StorageObject = param.NewOpt(m.StorageObject.ValueBool())
@@ -93,7 +93,7 @@ type RegionsNKSDataSourceModel struct {
 
 type RegionsStorageDataSourceModel struct {
 	ABS       types.Bool `tfsdk:"abs" json:"abs,computed"`
+	Ceph      types.Bool `tfsdk:"ceph" json:"ceph,computed"`
 	LocalNvme types.Bool `tfsdk:"local_nvme" json:"local_nvme,computed"`
-	Longhorn  types.Bool `tfsdk:"longhorn" json:"longhorn,computed"`
 	Object    types.Bool `tfsdk:"object" json:"object,computed"`
 }
