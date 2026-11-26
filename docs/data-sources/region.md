@@ -65,5 +65,4 @@ Read-Only:
 Read-Only:
 
 - `abs` (Boolean) ABS indicates if Accelerated Block Storage is available.
-- `local_nvme` (Boolean) LocalNVMe indicates if locally-attached NVMe storage is available.
 - `object` (Boolean) Object storage (S3-compatible buckets) is available.

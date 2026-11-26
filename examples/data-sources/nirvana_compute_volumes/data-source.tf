@@ -6,6 +6,6 @@ data "nirvana_compute_volumes" "example_compute_volumes" {
   region = "region"
   status = "ready"
   tags = ["string"]
-  type = "nvme"
+  type = "abs"
   vm_id = "vm_id"
 }

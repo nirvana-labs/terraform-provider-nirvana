@@ -17,17 +17,16 @@ type RegionsItemsListDataSourceEnvelope struct {
 }
 
 type RegionsDataSourceModel struct {
-	Availability     types.String                                              `tfsdk:"availability" query:"availability,optional"`
-	ComputeVMs       types.Bool                                                `tfsdk:"compute_vms" query:"compute_vms,optional"`
-	NetworkingVPCs   types.Bool                                                `tfsdk:"networking_vpcs" query:"networking_vpcs,optional"`
-	NKSAutoscaling   types.Bool                                                `tfsdk:"nks_autoscaling" query:"nks_autoscaling,optional"`
-	NKSClusters      types.Bool                                                `tfsdk:"nks_clusters" query:"nks_clusters,optional"`
-	StorageABS       types.Bool                                                `tfsdk:"storage_abs" query:"storage_abs,optional"`
-	StorageLocalNvme types.Bool                                                `tfsdk:"storage_local_nvme" query:"storage_local_nvme,optional"`
-	StorageObject    types.Bool                                                `tfsdk:"storage_object" query:"storage_object,optional"`
-	Sort             types.String                                              `tfsdk:"sort" query:"sort,computed_optional"`
-	MaxItems         types.Int64                                               `tfsdk:"max_items"`
-	Items            customfield.NestedObjectList[RegionsItemsDataSourceModel] `tfsdk:"items"`
+	Availability   types.String                                              `tfsdk:"availability" query:"availability,optional"`
+	ComputeVMs     types.Bool                                                `tfsdk:"compute_vms" query:"compute_vms,optional"`
+	NetworkingVPCs types.Bool                                                `tfsdk:"networking_vpcs" query:"networking_vpcs,optional"`
+	NKSAutoscaling types.Bool                                                `tfsdk:"nks_autoscaling" query:"nks_autoscaling,optional"`
+	NKSClusters    types.Bool                                                `tfsdk:"nks_clusters" query:"nks_clusters,optional"`
+	StorageABS     types.Bool                                                `tfsdk:"storage_abs" query:"storage_abs,optional"`
+	StorageObject  types.Bool                                                `tfsdk:"storage_object" query:"storage_object,optional"`
+	Sort           types.String                                              `tfsdk:"sort" query:"sort,computed_optional"`
+	MaxItems       types.Int64                                               `tfsdk:"max_items"`
+	Items          customfield.NestedObjectList[RegionsItemsDataSourceModel] `tfsdk:"items"`
 }
 
 func (m *RegionsDataSourceModel) toListParams(_ context.Context) (params regions.RegionListParams, diags diag.Diagnostics) {
@@ -53,9 +52,6 @@ func (m *RegionsDataSourceModel) toListParams(_ context.Context) (params regions
 	}
 	if !m.StorageABS.IsNull() {
 		params.StorageABS = param.NewOpt(m.StorageABS.ValueBool())
-	}
-	if !m.StorageLocalNvme.IsNull() {
-		params.StorageLocalNvme = param.NewOpt(m.StorageLocalNvme.ValueBool())
 	}
 	if !m.StorageObject.IsNull() {
 		params.StorageObject = param.NewOpt(m.StorageObject.ValueBool())
@@ -88,7 +84,6 @@ type RegionsNKSDataSourceModel struct {
 }
 
 type RegionsStorageDataSourceModel struct {
-	ABS       types.Bool `tfsdk:"abs" json:"abs,computed"`
-	LocalNvme types.Bool `tfsdk:"local_nvme" json:"local_nvme,computed"`
-	Object    types.Bool `tfsdk:"object" json:"object,computed"`
+	ABS    types.Bool `tfsdk:"abs" json:"abs,computed"`
+	Object types.Bool `tfsdk:"object" json:"object,computed"`
 }

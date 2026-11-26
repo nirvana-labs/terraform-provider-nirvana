@@ -50,10 +50,6 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 				Description: "Only regions where Accelerated Block Storage is available",
 				Optional:    true,
 			},
-			"storage_local_nvme": schema.BoolAttribute{
-				Description: "Only regions where locally-attached NVMe storage is available",
-				Optional:    true,
-			},
 			"storage_object": schema.BoolAttribute{
 				Description: "Only regions where object storage (S3-compatible buckets) is available",
 				Optional:    true,
@@ -140,10 +136,6 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 							Attributes: map[string]schema.Attribute{
 								"abs": schema.BoolAttribute{
 									Description: "ABS indicates if Accelerated Block Storage is available.",
-									Computed:    true,
-								},
-								"local_nvme": schema.BoolAttribute{
-									Description: "LocalNVMe indicates if locally-attached NVMe storage is available.",
 									Computed:    true,
 								},
 								"object": schema.BoolAttribute{
