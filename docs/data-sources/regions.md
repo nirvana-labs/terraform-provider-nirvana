@@ -20,7 +20,6 @@ data "nirvana_regions" "example_regions" {
   nks_autoscaling = true
   nks_clusters = true
   storage_abs = true
-  storage_ceph = true
   storage_local_nvme = true
   storage_object = true
 }
@@ -40,7 +39,6 @@ Available values: "live", "preview", "maintenance", "sunset".
 - `nks_clusters` (Boolean) Only regions where NKS clusters are available
 - `sort` (String) Comma-separated sort terms in precedence order, each field:asc or field:desc. Fields: longitude, name, availability
 - `storage_abs` (Boolean) Only regions where Accelerated Block Storage is available
-- `storage_ceph` (Boolean) Only regions where Ceph replicated block storage is available
 - `storage_local_nvme` (Boolean) Only regions where locally-attached NVMe storage is available
 - `storage_object` (Boolean) Only regions where object storage (S3-compatible buckets) is available
 
@@ -93,6 +91,5 @@ Read-Only:
 Read-Only:
 
 - `abs` (Boolean) ABS indicates if Accelerated Block Storage is available.
-- `ceph` (Boolean) Ceph indicates if Ceph replicated block storage is available.
 - `local_nvme` (Boolean) LocalNVMe indicates if locally-attached NVMe storage is available.
 - `object` (Boolean) Object storage (S3-compatible buckets) is available.

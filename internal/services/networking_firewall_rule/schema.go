@@ -59,10 +59,24 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Optional:    true,
 				ElementType: types.StringType,
 			},
+			"action": schema.StringAttribute{
+				Description: "What the Firewall Rule does with the traffic it matches. Rules you create allow traffic.\nAvailable values: \"allow\", \"deny\".",
+				Computed:    true,
+				Validators: []validator.String{
+					stringvalidator.OneOfCaseInsensitive("allow", "deny"),
+				},
+			},
 			"created_at": schema.StringAttribute{
 				Description: "When the Firewall Rule was created.",
 				Computed:    true,
 				CustomType:  timetypes.RFC3339Type{},
+			},
+			"direction": schema.StringAttribute{
+				Description: "Direction of the traffic the Firewall Rule matches. Rules you create are ingress rules.\nAvailable values: \"ingress\", \"egress\".",
+				Computed:    true,
+				Validators: []validator.String{
+					stringvalidator.OneOfCaseInsensitive("ingress", "egress"),
+				},
 			},
 			"project_id": schema.StringAttribute{
 				Description: "Project ID the Operation belongs to.",
@@ -95,14 +109,14 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				CustomType:  customfield.NewNestedObjectType[NetworkingFirewallRuleManagedByModel](ctx),
 				Attributes: map[string]schema.Attribute{
 					"id": schema.StringAttribute{
-						Description: "ID of the thing managing the resource.",
+						Description: "ID of the thing managing the resource. For a vpc_egress_policy, the ID of the VPC.",
 						Computed:    true,
 					},
 					"type": schema.StringAttribute{
-						Description: "Kind of thing managing the resource.\nAvailable values: \"sandbox_cluster\".",
+						Description: "Kind of thing managing the resource. A vpc_egress_policy manages the Firewall Rules that block outbound traffic to ports commonly used for abuse.\nAvailable values: \"sandbox_cluster\", \"vpc_egress_policy\".",
 						Computed:    true,
 						Validators: []validator.String{
-							stringvalidator.OneOfCaseInsensitive("sandbox_cluster"),
+							stringvalidator.OneOfCaseInsensitive("sandbox_cluster", "vpc_egress_policy"),
 						},
 					},
 				},

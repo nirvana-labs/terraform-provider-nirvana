@@ -43,7 +43,11 @@ Available values: "tcp", "udp".
 
 ### Read-Only
 
+- `action` (String) What the Firewall Rule does with the traffic it matches. Rules you create allow traffic.
+Available values: "allow", "deny".
 - `created_at` (String) When the Firewall Rule was created.
+- `direction` (String) Direction of the traffic the Firewall Rule matches. Rules you create are ingress rules.
+Available values: "ingress", "egress".
 - `id` (String) Unique identifier for the Operation.
 - `managed_by` (Attributes) What manages the resource, or null when nothing does. A managed resource can be read but not changed. (see [below for nested schema](#nestedatt--managed_by))
 - `project_id` (String) Project ID the Operation belongs to.
@@ -56,9 +60,9 @@ Available values: "pending", "creating", "updating", "ready", "deleting", "delet
 
 Read-Only:
 
-- `id` (String) ID of the thing managing the resource.
-- `type` (String) Kind of thing managing the resource.
-Available values: "sandbox_cluster".
+- `id` (String) ID of the thing managing the resource. For a vpc_egress_policy, the ID of the VPC.
+- `type` (String) Kind of thing managing the resource. A vpc_egress_policy manages the Firewall Rules that block outbound traffic to ports commonly used for abuse.
+Available values: "sandbox_cluster", "vpc_egress_policy".
 
 ## Import
 

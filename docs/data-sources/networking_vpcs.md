@@ -67,9 +67,9 @@ Available values: "pending", "creating", "updating", "ready", "deleting", "delet
 
 Read-Only:
 
-- `id` (String) ID of the thing managing the resource.
-- `type` (String) Kind of thing managing the resource.
-Available values: "sandbox_cluster".
+- `id` (String) ID of the thing managing the resource. For a vpc_egress_policy, the ID of the VPC.
+- `type` (String) Kind of thing managing the resource. A vpc_egress_policy manages the Firewall Rules that block outbound traffic to ports commonly used for abuse.
+Available values: "sandbox_cluster", "vpc_egress_policy".
 
 
 <a id="nestedatt--items--subnet"></a>

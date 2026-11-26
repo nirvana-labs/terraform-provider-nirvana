@@ -61,14 +61,10 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 						Required:    true,
 					},
 					"type": schema.StringAttribute{
-						Description: "Type of the Volume.\nAvailable values: \"nvme\", \"abs\", \"ceph\".",
+						Description: "Type of the Volume.\nAvailable values: \"nvme\", \"abs\".",
 						Required:    true,
 						Validators: []validator.String{
-							stringvalidator.OneOfCaseInsensitive(
-								"nvme",
-								"abs",
-								"ceph",
-							),
+							stringvalidator.OneOfCaseInsensitive("nvme", "abs"),
 						},
 					},
 					"tags": schema.ListAttribute{
@@ -104,14 +100,10 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 							Required:    true,
 						},
 						"type": schema.StringAttribute{
-							Description: "Type of the Volume.\nAvailable values: \"nvme\", \"abs\", \"ceph\".",
+							Description: "Type of the Volume.\nAvailable values: \"nvme\", \"abs\".",
 							Required:    true,
 							Validators: []validator.String{
-								stringvalidator.OneOfCaseInsensitive(
-									"nvme",
-									"abs",
-									"ceph",
-								),
+								stringvalidator.OneOfCaseInsensitive("nvme", "abs"),
 							},
 						},
 						"tags": schema.ListAttribute{

@@ -104,14 +104,14 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 							CustomType:  customfield.NewNestedObjectType[NKSClustersManagedByDataSourceModel](ctx),
 							Attributes: map[string]schema.Attribute{
 								"id": schema.StringAttribute{
-									Description: "ID of the thing managing the resource.",
+									Description: "ID of the thing managing the resource. For a vpc_egress_policy, the ID of the VPC.",
 									Computed:    true,
 								},
 								"type": schema.StringAttribute{
-									Description: "Kind of thing managing the resource.\nAvailable values: \"sandbox_cluster\".",
+									Description: "Kind of thing managing the resource. A vpc_egress_policy manages the Firewall Rules that block outbound traffic to ports commonly used for abuse.\nAvailable values: \"sandbox_cluster\", \"vpc_egress_policy\".",
 									Computed:    true,
 									Validators: []validator.String{
-										stringvalidator.OneOfCaseInsensitive("sandbox_cluster"),
+										stringvalidator.OneOfCaseInsensitive("sandbox_cluster", "vpc_egress_policy"),
 									},
 								},
 							},
