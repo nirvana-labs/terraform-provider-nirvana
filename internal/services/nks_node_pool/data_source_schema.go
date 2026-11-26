@@ -89,14 +89,10 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 								},
 							},
 							"type": schema.StringAttribute{
-								Description: "Type of the Volume.\nAvailable values: \"nvme\", \"abs\", \"ceph\".",
+								Description: "Type of the Volume.\nAvailable values: \"nvme\", \"abs\".",
 								Computed:    true,
 								Validators: []validator.String{
-									stringvalidator.OneOfCaseInsensitive(
-										"nvme",
-										"abs",
-										"ceph",
-									),
+									stringvalidator.OneOfCaseInsensitive("nvme", "abs"),
 								},
 							},
 						},

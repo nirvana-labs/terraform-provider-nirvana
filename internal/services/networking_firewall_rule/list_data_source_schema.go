@@ -75,13 +75,20 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 							Description: "Unique identifier for the Firewall Rule.",
 							Computed:    true,
 						},
+						"action": schema.StringAttribute{
+							Description: "What the Firewall Rule does with the traffic it matches. Rules you create allow traffic.\nAvailable values: \"allow\", \"deny\".",
+							Computed:    true,
+							Validators: []validator.String{
+								stringvalidator.OneOfCaseInsensitive("allow", "deny"),
+							},
+						},
 						"created_at": schema.StringAttribute{
 							Description: "When the Firewall Rule was created.",
 							Computed:    true,
 							CustomType:  timetypes.RFC3339Type{},
 						},
 						"destination_address": schema.StringAttribute{
-							Description: "Destination address of the Firewall Rule. Either VPC CIDR or VM in VPC.",
+							Description: "Destination address of the Firewall Rule. For an ingress rule, either VPC CIDR or VM in VPC.",
 							Computed:    true,
 						},
 						"destination_ports": schema.ListAttribute{
@@ -90,20 +97,27 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 							CustomType:  customfield.NewListType[types.String](ctx),
 							ElementType: types.StringType,
 						},
+						"direction": schema.StringAttribute{
+							Description: "Direction of the traffic the Firewall Rule matches. Rules you create are ingress rules.\nAvailable values: \"ingress\", \"egress\".",
+							Computed:    true,
+							Validators: []validator.String{
+								stringvalidator.OneOfCaseInsensitive("ingress", "egress"),
+							},
+						},
 						"managed_by": schema.SingleNestedAttribute{
 							Description: "What manages the resource, or null when nothing does. A managed resource can be read but not changed.",
 							Computed:    true,
 							CustomType:  customfield.NewNestedObjectType[NetworkingFirewallRulesManagedByDataSourceModel](ctx),
 							Attributes: map[string]schema.Attribute{
 								"id": schema.StringAttribute{
-									Description: "ID of the thing managing the resource.",
+									Description: "ID of the thing managing the resource. For a vpc_egress_policy, the ID of the VPC.",
 									Computed:    true,
 								},
 								"type": schema.StringAttribute{
-									Description: "Kind of thing managing the resource.\nAvailable values: \"sandbox_cluster\".",
+									Description: "Kind of thing managing the resource. A vpc_egress_policy manages the Firewall Rules that block outbound traffic to ports commonly used for abuse.\nAvailable values: \"sandbox_cluster\", \"vpc_egress_policy\".",
 									Computed:    true,
 									Validators: []validator.String{
-										stringvalidator.OneOfCaseInsensitive("sandbox_cluster"),
+										stringvalidator.OneOfCaseInsensitive("sandbox_cluster", "vpc_egress_policy"),
 									},
 								},
 							},
@@ -120,7 +134,7 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
 							},
 						},
 						"source_address": schema.StringAttribute{
-							Description: "Source address of the Firewall Rule. Address of 0.0.0.0 requires a CIDR mask of 0.",
+							Description: "Source address of the Firewall Rule. Address of 0.0.0.0 requires a CIDR mask of 0. For an egress rule, the VPC CIDR.",
 							Computed:    true,
 						},
 						"status": schema.StringAttribute{

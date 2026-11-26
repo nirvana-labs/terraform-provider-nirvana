@@ -17,8 +17,10 @@ type NetworkingFirewallRuleDataSourceModel struct {
 	ID                 types.String                                                             `tfsdk:"id" path:"firewall_rule_id,computed"`
 	FirewallRuleID     types.String                                                             `tfsdk:"firewall_rule_id" path:"firewall_rule_id,optional"`
 	VPCID              types.String                                                             `tfsdk:"vpc_id" path:"vpc_id,required"`
+	Action             types.String                                                             `tfsdk:"action" json:"action,computed"`
 	CreatedAt          timetypes.RFC3339                                                        `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
 	DestinationAddress types.String                                                             `tfsdk:"destination_address" json:"destination_address,computed"`
+	Direction          types.String                                                             `tfsdk:"direction" json:"direction,computed"`
 	Name               types.String                                                             `tfsdk:"name" json:"name,computed"`
 	Protocol           types.String                                                             `tfsdk:"protocol" json:"protocol,computed"`
 	SourceAddress      types.String                                                             `tfsdk:"source_address" json:"source_address,computed"`

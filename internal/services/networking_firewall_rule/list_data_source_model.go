@@ -58,9 +58,11 @@ func (m *NetworkingFirewallRulesDataSourceModel) toListParams(_ context.Context)
 
 type NetworkingFirewallRulesItemsDataSourceModel struct {
 	ID                 types.String                                                              `tfsdk:"id" json:"id,computed"`
+	Action             types.String                                                              `tfsdk:"action" json:"action,computed"`
 	CreatedAt          timetypes.RFC3339                                                         `tfsdk:"created_at" json:"created_at,computed" format:"date-time"`
 	DestinationAddress types.String                                                              `tfsdk:"destination_address" json:"destination_address,computed"`
 	DestinationPorts   customfield.List[types.String]                                            `tfsdk:"destination_ports" json:"destination_ports,computed"`
+	Direction          types.String                                                              `tfsdk:"direction" json:"direction,computed"`
 	ManagedBy          customfield.NestedObject[NetworkingFirewallRulesManagedByDataSourceModel] `tfsdk:"managed_by" json:"managed_by,computed"`
 	Name               types.String                                                              `tfsdk:"name" json:"name,computed"`
 	Protocol           types.String                                                              `tfsdk:"protocol" json:"protocol,computed"`
