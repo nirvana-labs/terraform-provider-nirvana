@@ -5,6 +5,5 @@ data "nirvana_regions" "example_regions" {
   nks_autoscaling = true
   nks_clusters = true
   storage_abs = true
-  storage_local_nvme = true
   storage_object = true
 }
